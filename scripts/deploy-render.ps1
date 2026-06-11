@@ -47,11 +47,12 @@ $body = @{
         env              = "node"
         plan             = "free"
         region           = "frankfurt"
-        buildCommand     = "npm install && npm run build"
+        buildCommand     = "npm ci && npm run build"
         startCommand     = "npm start"
         healthCheckPath  = "/"
         envVars          = @(
             @{ key = "NODE_ENV"; value = "production" }
+            @{ key = "NPM_CONFIG_PRODUCTION"; value = "false" }
             @{ key = "NEXT_PUBLIC_SITE_URL"; value = $SiteUrl }
         )
     }
