@@ -1,5 +1,12 @@
-# Deploy Gautex to Render
-# Prerequisites: git push to GitHub, RENDER_API_KEY env var set
+# Deploy Gautex to Render (requires GitHub connected in Render Dashboard)
+# Usage: $env:RENDER_API_KEY = "rnd_..."; .\scripts\deploy-render.ps1
+
+param(
+    [string]$ServiceName = "gautex-web",
+    [string]$Repo = "https://github.com/alcachofo21/Gautex",
+    [string]$Branch = "main",
+    [string]$SiteUrl = "https://gautex-web.onrender.com"
+)
 
 $RENDER_API_KEY = $env:RENDER_API_KEY
 if (-not $RENDER_API_KEY) {
@@ -10,37 +17,58 @@ if (-not $RENDER_API_KEY) {
 $headers = @{
     "Authorization" = "Bearer $RENDER_API_KEY"
     "Content-Type"  = "application/json"
+    "Accept"        = "application/json"
 }
 
-# Get owner ID
 $owners = Invoke-RestMethod -Uri "https://api.render.com/v1/owners" -Headers $headers
 $ownerId = $owners[0].owner.id
-Write-Host "Owner ID: $ownerId"
+Write-Host "Owner: $($owners[0].owner.name) ($ownerId)"
+
+$existing = Invoke-RestMethod -Uri "https://api.render.com/v1/services?limit=50" -Headers $headers
+$match = $existing | Where-Object { $_.service.name -eq $ServiceName } | Select-Object -First 1
+
+if ($match) {
+    $serviceId = $match.service.id
+    Write-Host "Service exists: $serviceId"
+    $deploy = Invoke-RestMethod -Method POST -Uri "https://api.render.com/v1/services/$serviceId/deploys" -Headers $headers -Body (@{ clearCache = "do_not_clear" } | ConvertTo-Json)
+    Write-Host "Deploy triggered: $($deploy.id)"
+    Write-Host "URL: $($match.service.serviceDetails.url)"
+    exit 0
+}
 
 $body = @{
-    type         = "web_service"
-    name         = "gautex-web"
-    repo         = "https://github.com/alcachofo21/Gautex"
-    branch       = "main"
-    runtime      = "node"
-    buildCommand = "npm install && npm run build"
-    startCommand = "npm start"
-    plan         = "free"
-    envVars      = @(
-        @{ key = "NODE_ENV"; value = "production" }
-        @{ key = "NEXT_PUBLIC_SITE_URL"; value = "https://gautex-web.onrender.com" }
-    )
-} | ConvertTo-Json -Depth 5
+    type       = "web_service"
+    name       = $ServiceName
+    ownerId    = $ownerId
+    repo       = $Repo
+    autoDeploy = "yes"
+    branch     = $Branch
+    serviceDetails = @{
+        env              = "node"
+        plan             = "free"
+        region           = "frankfurt"
+        buildCommand     = "npm install && npm run build"
+        startCommand     = "npm start"
+        healthCheckPath  = "/"
+        envVars          = @(
+            @{ key = "NODE_ENV"; value = "production" }
+            @{ key = "NEXT_PUBLIC_SITE_URL"; value = $SiteUrl }
+        )
+    }
+} | ConvertTo-Json -Depth 6
 
 try {
-    $service = Invoke-RestMethod -Method POST -Uri "https://api.render.com/v1/services" -Headers $headers -Body (@{
-        ownerId = $ownerId
-        repo    = "https://github.com/alcachofo21/Gautex"
-        name    = "gautex-web"
-        type    = "web_service"
-    } | ConvertTo-Json)
-    Write-Host "Service created: $($service.service.serviceDetails.url)"
+    $result = Invoke-RestMethod -Method POST -Uri "https://api.render.com/v1/services" -Headers $headers -Body $body
+    Write-Host "Service created!"
+    Write-Host "URL: $($result.service.serviceDetails.url)"
 } catch {
-    Write-Host "Service may already exist. Check https://dashboard.render.com"
-    Write-Host $_.Exception.Message
+    Write-Host "ERROR: $($_.Exception.Message)"
+    if ($_.ErrorDetails.Message) { Write-Host $_.ErrorDetails.Message }
+    Write-Host ""
+    Write-Host "If repo is private, connect GitHub first:"
+    Write-Host "  1. https://dashboard.render.com/web/new"
+    Write-Host "  2. Sign in with GitHub"
+    Write-Host "  3. https://github.com/apps/render/installations/new -> grant access to alcachofo21/Gautex"
+    Write-Host "  4. Re-run this script"
+    exit 1
 }
