@@ -1,0 +1,71 @@
+{
+  "company": {
+    "name": "GAUTEX MÉDICA, S.L.",
+    "slogan": "Repartiendo salud",
+    "founded": 2002,
+    "city": "Barcelona",
+    "address": "Plaza Dr. Letamendi, N.º 37, Ático 3º, 08007 Barcelona",
+    "email": "info@gautex.com",
+    "phone": "933-492-596",
+    "fax": "931-878-722",
+    "schedule": {
+      "es": "Lunes a Viernes, 9:00–14:00",
+      "en": "Monday to Friday, 9:00 AM–2:00 PM"
+    }
+  },
+  "about": {
+    "title": "¿Quiénes somos?",
+    "paragraphs": [
+      "GAUTEX MÉDICA, S.L., nace en el año 2002. Dedicada a la distribución, comercialización y fabricación de productos sanitarios para los sectores farmacéutico y sanitario, cuenta con una presencia importante en el mercado europeo.",
+      "La compañía cumple con todas las normas internacionales de calidad, siendo certificada y auditada por el Organismo notificador nº 0120 SGS, obteniendo las certificaciones ISO 13485:2013 e ISO 9001:2008.",
+      "Estamos trabajando para disponer del Certificado CE de acuerdo con la Directiva 93/42/CEE, emitido por el mismo Organismo Notificador nº 0120 SGS.",
+      "La filosofía de nuestra compañía es ofrecer los mejores productos sanitarios y farmacéuticos con las máximas garantías para los pacientes y usuarios, garantizando unos controles de calidad exhaustivos en cada uno de los productos que fabricamos o comercializamos en EUROPA.",
+      "GAUTEX MÉDICA, S.L. está compuesta por un equipo joven, emprendedor y preocupado por ofrecer un servicio profesional a sus clientes."
+    ],
+    "values": ["Calidad", "Confianza", "Profesionalidad", "Innovación"]
+  },
+  "quality": {
+    "title": "Calidad y certificaciones",
+    "subtitle": "¿Por qué confiar en nosotros?",
+    "certifications": [
+      {
+        "name": "ISO 9001:2008",
+        "description": "Distribución de equipos médicos: productos de ginecología, gel lubricante íntimo, cubre sondas, tests de embarazo y tests de drogas."
+      },
+      {
+        "name": "ISO 13485:2013",
+        "description": "Distribución de equipos médicos: productos de ginecología y productos dedicados a la prevención."
+      },
+      {
+        "name": "EN ISO 13485:2012",
+        "description": "Sistema de gestión de la calidad para productos sanitarios."
+      },
+      {
+        "name": "CE 0120 SGS",
+        "description": "Organismo notificador nº 0120 SGS. Certificación europea de productos sanitarios."
+      }
+    ]
+  },
+  "partners": {
+    "title": "¿Con quién trabajamos?",
+    "description": "Entidades públicas y privadas con las cuales trabajamos para promover avances en materia de prevención y salud pública.",
+    "items": [
+      {
+        "name": "Unión Europea",
+        "description": "Gautex Médica, S.L. ha sido beneficiaria del Fondo Europeo de Desarrollo Regional cuyo objetivo es mejorar la competitividad de las Pymes. Plan de Internacionalización 2018 con apoyo del Programa XPANDE de la Cámara de Comercio de Barcelona."
+      },
+      {
+        "name": "XPANDE",
+        "description": "Programa de internacionalización de la Cámara de Comercio de Barcelona."
+      },
+      {
+        "name": "Entidades sanitarias",
+        "description": "Hospitales, farmacias y entidades públicas de prevención en toda Europa."
+      }
+    ]
+  },
+  "legal": {
+    "privacy": "GAUTEX MÉDICA, S.L. utiliza medidas de seguridad para proteger los datos personales. Los usuarios pueden ejercitar los derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición contactando en info@gautex.com o en Plaza Dr. Letamendi nº37 3-2, 08007 Barcelona, acompañando copia de DNI o documento válido.",
+    "cookies": "Este sitio utiliza cookies técnicas y de preferencias para mejorar la experiencia de navegación. Puede gestionar sus preferencias desde el banner de cookies o contactarnos para más información."
+  }
+}

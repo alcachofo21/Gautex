@@ -1,0 +1,216 @@
+[
+  {
+    "id": "matrix-condoms",
+    "slug": "matrix-condoms",
+    "name": "Matrix Condoms",
+    "category": "preventivo",
+    "featured": true,
+    "shortDescription": "Preservativo masculino de látex 100% natural, liso, lubricado con depósito.",
+    "description": "Preservativo masculino de látex 100% de caucho natural, liso, simétrico, transparente, lubricado, con depósito transparente y envasado individualmente con envase de aluminio y plástico.",
+    "price": null,
+    "priceLabel": "Consultar precio",
+    "specs": {
+      "Ancho": "54 mm",
+      "Largo": "196-200 mm",
+      "Espesor": "72 micras",
+      "Lubricante": "500-550 mg"
+    },
+    "certifications": ["CEE 120", "ISO 9001/2008", "ISO 13485/2003", "ISO 4074/2002", "NF062 France", "WHO American Standard", "ISO 10993 Biocompatibilidad"],
+    "color": "#0D6B4F"
+  },
+  {
+    "id": "viva-condoms",
+    "slug": "viva-condoms",
+    "name": "Viva Condoms",
+    "category": "preventivo",
+    "featured": true,
+    "shortDescription": "Preservativo masculino certificado CEE 120 con test ISO 10993 de biocompatibilidad.",
+    "description": "Preservativo masculino de látex 100% de caucho natural, liso, simétrico, transparente, lubricado, con depósito transparente y envasado individualmente.",
+    "price": null,
+    "priceLabel": "Consultar precio",
+    "specs": {
+      "Ancho": "54 mm",
+      "Largo": "195-205 mm",
+      "Espesor": "73 micras",
+      "Lubricante": "475-550 mg"
+    },
+    "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003", "ISO 10993 Biocompatibilidad"],
+    "color": "#1A5F7A"
+  },
+  {
+    "id": "sexydam",
+    "slug": "sexydam",
+    "name": "Sexydam",
+    "category": "preventivo",
+    "featured": true,
+    "shortDescription": "Dique o lámina de látex / Oral Dam en varios aromas y colores.",
+    "description": "Dique o lámina de látex/Oral Dam disponible en varios aromas y colores, 100% de látex natural, lisa y transparente. Envase individual mono uso.",
+    "price": null,
+    "priceLabel": "Consultar precio",
+    "specs": {
+      "Dimensiones": "2540 x 1524 mm",
+      "Grosor": "80 micras",
+      "Envase": "85 x 120 mm opaco"
+    },
+    "certifications": ["CEE 120", "ISO 9001/2008", "ISO 13485/2003"],
+    "color": "#E85D75"
+  },
+  {
+    "id": "max-gel",
+    "slug": "max-gel",
+    "name": "Max Gel",
+    "category": "preventivo",
+    "featured": true,
+    "shortDescription": "Gel lubricante base acuosa, inodoro, soluble en agua. Sobres monodosis 6 ml.",
+    "description": "Gel lubricante apto para uso humano, transparente, inodoro, sin sabores y soluble en agua, no irritante y de fácil eliminación. Formulado a base de glicerina y agua.",
+    "price": null,
+    "priceLabel": "Consultar precio",
+    "specs": {
+      "Capacidad": "6 ml",
+      "Sobre": "80 x 60 mm",
+      "Base": "Glicerina y agua"
+    },
+    "certifications": ["CE 0120 SGS", "CE0035 TüV"],
+    "color": "#4ECDC4"
+  },
+  {
+    "id": "preservativo-femenino",
+    "slug": "preservativo-femenino",
+    "name": "Preservativo Femenino",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Preservativo femenino para distribución gross y campañas de prevención.",
+    "description": "Preservativo femenino disponible para comercialización a granel y campañas personalizadas de salud pública.",
+    "price": null,
+    "priceLabel": "Consultar precio",
+    "specs": {
+      "Material": "Nitrilo / Látex natural",
+      "Uso": "Prevención"
+    },
+    "certifications": ["CE 0120 SGS"],
+    "color": "#9B59B6"
+  },
+  {
+    "id": "gecofun",
+    "slug": "gecofun",
+    "name": "Gecofun",
+    "category": "ginecologia",
+    "featured": true,
+    "shortDescription": "Cubresonda lumbar-abdominal de látex natural para transductor ecográfico.",
+    "description": "Cubresonda lumbar-abdominal de látex natural para transductor ecográfico, destinado a favorecer las condiciones higiénicas de la sonda transductora y permitir una fácil limpieza.",
+    "price": null,
+    "priceLabel": "Consultar precio",
+    "specs": {
+      "Material": "Látex natural",
+      "Uso": "Transductor ecográfico lumbar-abdominal"
+    },
+    "certifications": ["ISO 13485:2013", "ISO 9001:2008", "CE 0120 SGS"],
+    "color": "#1A5F7A"
+  },
+  {
+    "id": "ultra-gecogel-250",
+    "slug": "ultra-gecogel-250",
+    "name": "Ultra Gecogel 250 ml",
+    "category": "ginecologia",
+    "featured": true,
+    "shortDescription": "Gel conductor de densidad media para ecografías externas. Formato 250 ml.",
+    "description": "GEL de densidad media para transductor de ultrasonidos en uso externo, para aplicar sobre la piel.",
+    "price": null,
+    "priceLabel": "Consultar precio",
+    "specs": {
+      "Volumen": "250 ml",
+      "Densidad": "Media",
+      "Uso": "Externo"
+    },
+    "certifications": ["ISO 13485:2013", "ISO 9001:2008"],
+    "color": "#3498DB"
+  },
+  {
+    "id": "ultra-gecogel-1000",
+    "slug": "ultra-gecogel-1000",
+    "name": "Ultra Gecogel 1000 ml",
+    "category": "ginecologia",
+    "featured": true,
+    "shortDescription": "Gel conductor de densidad media para ecografías externas. Formato 1000 ml.",
+    "description": "GEL de densidad media para transductor de ultrasonidos en uso externo, para aplicar sobre la piel. Formato hospitalario.",
+    "price": null,
+    "priceLabel": "Consultar precio",
+    "specs": {
+      "Volumen": "1000 ml",
+      "Densidad": "Media",
+      "Uso": "Externo"
+    },
+    "certifications": ["ISO 13485:2013", "ISO 9001:2008"],
+    "color": "#2980B9"
+  },
+  {
+    "id": "nadal-covid-ag",
+    "slug": "nadal-covid-ag",
+    "name": "NADAL COVID-19 Ag",
+    "category": "covid-19",
+    "featured": true,
+    "shortDescription": "Test de antígenos COVID-19. Inmunoensayo cromatográfico. Kit 20 tests.",
+    "description": "El test NADAL COVID-19 Ag es un inmunoensayo cromatográfico de flujo lateral para la detección cualitativa de antígenos de nucleoproteínas virales del SARS-CoV-2 en muestras nasofaríngeas y orofaríngeas humanas.",
+    "price": null,
+    "priceLabel": "Consultar precio",
+    "specs": {
+      "Contenido": "20 tests",
+      "Muestra": "Nasofaríngea / orofaríngea",
+      "Tipo": "Antígenos"
+    },
+    "certifications": ["Marcado CE", "Directiva 98/79/CE IVD"],
+    "color": "#E74C3C"
+  },
+  {
+    "id": "nadal-covid-igg-igm",
+    "slug": "nadal-covid-igg-igm",
+    "name": "NADAL COVID-19 IgG/IgM",
+    "category": "covid-19",
+    "featured": true,
+    "shortDescription": "Test inmunológico COVID-19. Detección IgG e IgM. Kit 10 tests.",
+    "description": "El test NADAL COVID-19 IgG/IgM es un inmunoensayo cromatográfico de flujo lateral para la detección cualitativa de IgG e IgM anti-SARS-CoV-2 en muestras humanas de sangre completa, suero o plasma.",
+    "price": null,
+    "priceLabel": "Consultar precio",
+    "specs": {
+      "Contenido": "10 tests en casete",
+      "Muestra": "Sangre, suero o plasma",
+      "Tipo": "IgG / IgM"
+    },
+    "certifications": ["Marcado CE", "Directiva 98/79/CE IVD"],
+    "color": "#C0392B"
+  },
+  {
+    "id": "mascarilla-quirurgica",
+    "slug": "mascarilla-quirurgica",
+    "name": "Mascarilla Quirúrgica",
+    "category": "covid-19",
+    "featured": false,
+    "shortDescription": "Mascarillas quirúrgicas para protección sanitaria.",
+    "description": "Mascarillas quirúrgicas disponibles para compra y distribución hospitalaria.",
+    "price": null,
+    "priceLabel": "Consultar precio",
+    "specs": {
+      "Tipo": "Quirúrgica",
+      "Uso": "Protección sanitaria"
+    },
+    "certifications": ["CE"],
+    "color": "#95A5A6"
+  },
+  {
+    "id": "mascarilla-ffp2",
+    "slug": "mascarilla-ffp2",
+    "name": "Mascarilla FFP-2",
+    "category": "covid-19",
+    "featured": false,
+    "shortDescription": "Mascarillas FFP-2 de alta filtración.",
+    "description": "Mascarillas FFP-2 disponibles para compra y distribución.",
+    "price": null,
+    "priceLabel": "Consultar precio",
+    "specs": {
+      "Tipo": "FFP-2",
+      "Filtración": "Alta"
+    },
+    "certifications": ["CE"],
+    "color": "#7F8C8D"
+  }
+]
