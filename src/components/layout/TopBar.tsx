@@ -1,8 +1,16 @@
+"use client";
+
 import { Phone, Truck } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { Badge } from "@/components/ui/Badge";
-import { corporate } from "@/lib/products";
+import { getCorporate, getLocaleFromPath, getUi } from "@/lib/locale";
 
 export function TopBar() {
+  const pathname = usePathname();
+  const locale = getLocaleFromPath(pathname);
+  const corporate = getCorporate(locale);
+  const ui = getUi(locale);
+
   return (
     <div className="hidden border-b border-primary/10 bg-primary text-white sm:block">
       <div className="container-page flex items-center justify-between py-2 text-sm">
@@ -13,7 +21,7 @@ export function TopBar() {
           </a>
           <span className="flex items-center gap-2 opacity-90">
             <Truck className="h-4 w-4" />
-            Envío a toda Europa
+            {ui.topbar.shipping}
           </span>
         </div>
         <div className="flex gap-2">

@@ -10,6 +10,7 @@ export function ContactForm() {
     email: "",
     phone: "",
     message: "",
+    website: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -24,7 +25,7 @@ export function ContactForm() {
       });
       if (res.ok) {
         setStatus("success");
-        setForm({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+        setForm({ firstName: "", lastName: "", email: "", phone: "", message: "", website: "" });
       } else {
         setStatus("error");
       }
@@ -93,6 +94,16 @@ export function ContactForm() {
           />
         </div>
       </div>
+      <input
+        type="text"
+        name="website"
+        value={form.website}
+        onChange={(e) => setForm({ ...form, website: e.target.value })}
+        className="hidden"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden
+      />
       {status === "error" && (
         <p className="mt-4 text-sm text-red-500">Error al enviar. Inténtalo de nuevo.</p>
       )}

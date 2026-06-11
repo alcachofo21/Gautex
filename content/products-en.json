@@ -1,0 +1,20 @@
+{
+  "mascarilla-quirurgica": {
+    "shortDescription": "Surgical face masks for healthcare protection. CE marked.",
+    "description": "Type II surgical masks for healthcare and pharmacy distribution. Individually packed boxes available for B2B orders.",
+    "priceLabel": "Request quote"
+  },
+  "mascarilla-ffp2": {
+    "shortDescription": "FFP-2 respirator masks with high filtration efficiency. CE marked.",
+    "description": "FFP-2 filtering facepiece respirators for professional use. Available for hospital and wholesale distribution.",
+    "priceLabel": "Request quote"
+  },
+  "nadal-covid-ag": {
+    "shortDescription": "COVID-19 antigen test. Lateral flow immunoassay. Kit of 20 tests.",
+    "description": "NADAL COVID-19 Ag is a lateral flow chromatographic immunoassay for qualitative detection of SARS-CoV-2 nucleoprotein antigens in human nasopharyngeal and oropharyngeal samples."
+  },
+  "nadal-covid-igg-igm": {
+    "shortDescription": "COVID-19 serology test. IgG and IgM detection. Kit of 10 tests.",
+    "description": "NADAL COVID-19 IgG/IgM is a lateral flow immunoassay for qualitative detection of anti-SARS-CoV-2 IgG and IgM in whole blood, serum or plasma."
+  }
+}

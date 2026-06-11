@@ -1,0 +1,29 @@
+[
+  {
+    "id": "preventivo",
+    "name": "Prevention & sexual health",
+    "description": "Male and female condoms, water-based lubricants, oral dams and prevention products.",
+    "href": "/en/productos/preventivo",
+    "icon": "shield",
+    "color": "#0D6B4F",
+    "image": "/images/categories/preventivo.jpg"
+  },
+  {
+    "id": "ginecologia",
+    "name": "Hospital gynaecology",
+    "description": "Probe covers and conductive gels for ultrasounds and hospital distribution.",
+    "href": "/en/productos/ginecologia",
+    "icon": "heart-pulse",
+    "color": "#1A5F7A",
+    "image": "/images/categories/ginecologia.jpg"
+  },
+  {
+    "id": "covid-19",
+    "name": "COVID-19 tests & PPE",
+    "description": "NADAL antigen and serology tests, surgical masks and FFP-2 respirators.",
+    "href": "/en/productos/covid-19",
+    "icon": "microscope",
+    "color": "#2D6A4F",
+    "image": "/images/products/nadal-covid.jpg"
+  }
+]

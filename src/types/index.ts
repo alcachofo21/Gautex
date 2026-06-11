@@ -11,6 +11,7 @@ export interface Product {
   specs: Record<string, string>;
   certifications: string[];
   color: string;
+  image?: string;
 }
 
 export interface Category {
@@ -20,6 +21,7 @@ export interface Category {
   href: string;
   icon: string;
   color: string;
+  image?: string;
 }
 
 export interface CartItem {
@@ -38,4 +40,5 @@ export interface CampaignFormat {
   description: string;
   details: string[];
   icon: string;
+  image?: string;
 }

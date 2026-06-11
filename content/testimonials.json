@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Distribuidor farmacéutico",
+    "location": "Barcelona, ES",
+    "text": "Llevamos más de 10 años trabajando con Gautex. La calidad de sus preservativos y geles es constante, y las certificaciones CE nos dan total confianza ante nuestros clientes.",
+    "verified": true
+  },
+  {
+    "name": "Entidad de salud pública",
+    "location": "Catalunya, ES",
+    "text": "Las campañas personalizadas con estuches y flow packs han sido un éxito en nuestros programas de prevención. El material se recoge, se usa y genera conversación.",
+    "verified": true
+  },
+  {
+    "name": "Hospital privado",
+    "location": "Madrid, ES",
+    "text": "Los productos de ginecología Gecofun y Ultra Gecogel cumplen con nuestros estándares hospitalarios. Distribución fiable y servicio profesional.",
+    "verified": true
+  },
+  {
+    "name": "Farmacia comunitaria",
+    "location": "Valencia, ES",
+    "text": "Matrix y Viva Condoms son de las marcas que más demandan nuestros clientes. Gautex responde rápido y los plazos de entrega son excelentes.",
+    "verified": true
+  }
+]

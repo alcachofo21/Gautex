@@ -1,33 +1,33 @@
 import { NextResponse } from "next/server";
+import { quoteSchema } from "@/lib/validation";
+import { sendEmail, quoteEmailHtml } from "@/lib/email";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    const parsed = quoteSchema.safeParse(body);
+
+    if (!parsed.success) {
+      return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
+    }
+
+    if (parsed.data.website) {
+      return NextResponse.json({ success: true });
+    }
 
     const payload = {
-      ...body,
+      ...parsed.data,
       timestamp: new Date().toISOString(),
     };
 
-    console.log("[GAUTEX QUOTE]", JSON.stringify(payload, null, 2));
+    const result = await sendEmail({
+      subject: `[Gautex] Presupuesto - ${parsed.data.firstName} ${parsed.data.lastName || ""}`,
+      html: quoteEmailHtml(payload),
+      text: JSON.stringify(payload, null, 2),
+    });
 
-    const resendKey = process.env.RESEND_API_KEY;
-    const contactEmail = process.env.CONTACT_EMAIL || "info@gautex.com";
-
-    if (resendKey) {
-      await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${resendKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: "Gautex Web <onboarding@resend.dev>",
-          to: contactEmail,
-          subject: `[Gautex] Presupuesto - ${body.firstName || "Cliente"} ${body.lastName || ""}`,
-          text: JSON.stringify(payload, null, 2),
-        }),
-      });
+    if (!result.ok) {
+      return NextResponse.json({ error: "Error al enviar email" }, { status: 502 });
     }
 
     return NextResponse.json({ success: true });

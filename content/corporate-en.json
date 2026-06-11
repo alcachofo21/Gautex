@@ -1,0 +1,108 @@
+{
+  "company": {
+    "name": "GAUTEX MÉDICA, S.L.",
+    "slogan": "Spreading health",
+    "founded": 2002,
+    "city": "Barcelona",
+    "address": "Plaza Dr. Letamendi, N.º 37, 3rd Floor, 08007 Barcelona, Spain",
+    "email": "info@gautex.com",
+    "phone": "933-492-596",
+    "fax": "931-878-722",
+    "schedule": {
+      "es": "Monday to Friday, 9:00 AM–2:00 PM",
+      "en": "Monday to Friday, 9:00 AM–2:00 PM"
+    }
+  },
+  "about": {
+    "title": "Who we are",
+    "paragraphs": [
+      "GAUTEX MÉDICA, S.L. was founded in 2002. Dedicated to the distribution, marketing and manufacturing of medical products for the pharmaceutical and healthcare sectors, we have a strong presence across the European market.",
+      "The company complies with all international quality standards, certified and audited by Notified Body No. 0120 SGS, holding ISO 13485:2013 and ISO 9001:2008 certifications.",
+      "We are working to obtain the CE Certificate in accordance with Directive 93/42/EEC, issued by the same Notified Body No. 0120 SGS.",
+      "Our philosophy is to offer the best medical and pharmaceutical products with maximum guarantees for patients and users, ensuring exhaustive quality controls on every product we manufacture or distribute in EUROPE.",
+      "GAUTEX MÉDICA, S.L. is made up of a young, entrepreneurial team committed to providing professional service to our clients."
+    ],
+    "values": ["Quality", "Trust", "Professionalism", "Innovation"]
+  },
+  "quality": {
+    "title": "Quality & certifications",
+    "subtitle": "Why trust us?",
+    "certifications": [
+      {
+        "name": "ISO 9001:2008",
+        "description": "Distribution of medical devices: gynaecology products, intimate lubricant gel, probe covers, pregnancy tests and drug tests."
+      },
+      {
+        "name": "ISO 13485:2013",
+        "description": "Distribution of medical devices: gynaecology products and prevention products."
+      },
+      {
+        "name": "EN ISO 13485:2012",
+        "description": "Quality management system for medical devices."
+      },
+      {
+        "name": "CE 0120 SGS",
+        "description": "Notified Body No. 0120 SGS. European certification for medical devices."
+      }
+    ]
+  },
+  "partners": {
+    "title": "Who we work with",
+    "description": "Public and private entities we collaborate with to promote advances in prevention and public health.",
+    "items": [
+      {
+        "name": "European Union",
+        "description": "Gautex Médica, S.L. has been a beneficiary of the European Regional Development Fund to improve SME competitiveness. 2018 Internationalisation Plan with support from the XPANDE programme of the Barcelona Chamber of Commerce."
+      },
+      {
+        "name": "XPANDE",
+        "description": "Internationalisation programme of the Barcelona Chamber of Commerce."
+      },
+      {
+        "name": "Healthcare entities",
+        "description": "Hospitals, pharmacies and public prevention entities across Europe."
+      }
+    ]
+  },
+  "legal": {
+    "privacy": "GAUTEX MÉDICA, S.L. (Tax ID B-63245678), located at Plaza Dr. Letamendi No. 37, 3rd Floor, 08007 Barcelona, is responsible for processing personal data submitted through this website and contact, quote and order forms.",
+    "privacySections": [
+      {
+        "title": "Purpose of processing",
+        "text": "Data is processed to manage enquiries, quotes, orders, B2B commercial relationships and compliance with legal obligations in healthcare and tax matters."
+      },
+      {
+        "title": "Legal basis",
+        "text": "The legal basis is the execution of pre-contractual and contractual measures, legitimate interest in handling commercial requests, and compliance with legal obligations."
+      },
+      {
+        "title": "Retention",
+        "text": "Data will be retained while the commercial relationship is maintained and thereafter for the periods required by applicable law."
+      },
+      {
+        "title": "Recipients",
+        "text": "Data will not be transferred to third parties except where legally required or to processors necessary for service provision (hosting, email, payment gateway)."
+      },
+      {
+        "title": "Rights",
+        "text": "You may exercise your rights of access, rectification, erasure, restriction, portability and objection at info@gautex.com, attaching a copy of your ID or valid document. You may also lodge a complaint with the Spanish Data Protection Agency (AEPD)."
+      }
+    ],
+    "cookies": "This site uses technical cookies necessary for operation and preference cookies to remember your consent. We do not use third-party advertising cookies.",
+    "cookiesSections": [
+      {
+        "title": "Technical cookies",
+        "text": "Enable navigation, shopping cart and session security. They are essential for the site to function."
+      },
+      {
+        "title": "Preference cookies",
+        "text": "Store your cookie banner choice so it is not shown again on subsequent visits."
+      },
+      {
+        "title": "Management",
+        "text": "You can accept or reject non-essential cookies from the banner. You can also configure your browser to block them. For more information: info@gautex.com."
+      }
+    ],
+    "terms": "Medical products marketed by GAUTEX MÉDICA, S.L. are intended for pharmaceutical and healthcare professionals. Prices shown are indicative; the final quote is confirmed in writing. Sales are subject to availability and applicable distribution regulations in each country."
+  }
+}

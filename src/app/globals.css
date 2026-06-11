@@ -40,6 +40,14 @@
   .text-fluid-title {
     font-size: clamp(1.5rem, 2vw + 1rem, 2.25rem);
   }
+
+  .section-cta {
+    @apply rounded-3xl bg-primary px-8 py-12 text-center text-white sm:px-12 sm:py-16;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

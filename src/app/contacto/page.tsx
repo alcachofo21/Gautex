@@ -7,6 +7,8 @@ export const metadata = {
   description: "Contacta con Gautex Medica. Formulario, teléfono y horario de atención.",
 };
 
+const mapQuery = encodeURIComponent("Plaza Dr. Letamendi 37, 08007 Barcelona");
+
 export default function ContactoPage() {
   return (
     <div className="py-12 sm:py-16">
@@ -20,6 +22,16 @@ export default function ContactoPage() {
           <ContactForm />
 
           <div className="space-y-6">
+            <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
+              <iframe
+                title="Ubicación Gautex Medica"
+                src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+                className="h-56 w-full border-0 sm:h-64"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+
             <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
               <h2 className="font-display text-lg font-bold">Datos de contacto</h2>
               <ul className="mt-6 space-y-4">
@@ -28,6 +40,10 @@ export default function ContactoPage() {
                   <a href={`tel:${corporate.company.phone.replace(/-/g, "")}`} className="hover:text-primary">
                     {corporate.company.phone}
                   </a>
+                </li>
+                <li className="flex items-start gap-3 text-text-muted">
+                  <span className="mt-0.5 w-5 text-center text-sm font-bold">F</span>
+                  <span>Fax: {corporate.company.fax}</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail className="mt-0.5 h-5 w-5 text-primary" />

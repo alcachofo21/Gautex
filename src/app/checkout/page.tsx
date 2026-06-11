@@ -1,11 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/Button";
+
 const stripeEnabled = Boolean(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
-export default function CheckoutPage() {
+function CheckoutContent() {
+  const searchParams = useSearchParams();
+  const paymentSuccess = searchParams.get("success") === "true";
   const { items, clearCart } = useCart();
   const [mode, setMode] = useState<"checkout" | "quote">("quote");
   const [form, setForm] = useState({
@@ -16,8 +20,16 @@ export default function CheckoutPage() {
     cif: "",
     sector: "",
     message: "",
+    website: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  useEffect(() => {
+    if (paymentSuccess) {
+      setStatus("success");
+      clearCart();
+    }
+  }, [paymentSuccess, clearCart]);
 
   const handleQuote = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,6 +56,7 @@ export default function CheckoutPage() {
   };
 
   const handleStripe = async () => {
+    if (!stripeEnabled) return;
     setStatus("loading");
     try {
       const res = await fetch("/api/checkout", {
@@ -75,8 +88,14 @@ export default function CheckoutPage() {
   if (status === "success") {
     return (
       <div className="container-page max-w-xl py-20 text-center">
-        <h1 className="font-display text-3xl font-bold text-primary">¡Solicitud enviada!</h1>
-        <p className="mt-4 text-text-muted">Hemos recibido tu solicitud de presupuesto. Te contactaremos pronto.</p>
+        <h1 className="font-display text-3xl font-bold text-primary">
+          {paymentSuccess ? "¡Pago completado!" : "¡Solicitud enviada!"}
+        </h1>
+        <p className="mt-4 text-text-muted">
+          {paymentSuccess
+            ? "Gracias por tu pedido. Recibirás confirmación por email."
+            : "Hemos recibido tu solicitud de presupuesto. Te contactaremos pronto."}
+        </p>
         <Button href="/productos" className="mt-8">Seguir comprando</Button>
       </div>
     );
@@ -110,7 +129,7 @@ export default function CheckoutPage() {
             </Button>
           )}
           <Button
-            variant={mode === "quote" ? "primary" : "outline"}
+            variant="primary"
             onClick={() => setMode("quote")}
           >
             Solicitar presupuesto B2B
@@ -148,6 +167,16 @@ export default function CheckoutPage() {
                 className="w-full rounded-xl border border-gray-300 px-4 py-3"
               />
             </div>
+            <input
+              type="text"
+              name="website"
+              value={form.website}
+              onChange={(e) => setForm({ ...form, website: e.target.value })}
+              className="hidden"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden
+            />
             {status === "error" && <p className="text-sm text-red-500">Error al enviar.</p>}
             <Button type="submit" fullWidth disabled={status === "loading"}>
               {status === "loading" ? "Enviando..." : "Enviar solicitud de presupuesto"}
@@ -156,5 +185,13 @@ export default function CheckoutPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<div className="container-page py-20 text-center">Cargando...</div>}>
+      <CheckoutContent />
+    </Suspense>
   );
 }

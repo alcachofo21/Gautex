@@ -5,8 +5,10 @@ import { CampaignsBlock } from "@/components/home/CampaignsBlock";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { TrustBadges } from "@/components/home/TrustBadges";
 import { PartnersBlock } from "@/components/home/PartnersBlock";
+import { Testimonials } from "@/components/home/Testimonials";
 import { AboutSnippet } from "@/components/home/AboutSnippet";
 import { NewsletterContact } from "@/components/home/NewsletterContact";
+import { StoreCta } from "@/components/home/StoreCta";
 import { getFeaturedProducts } from "@/lib/products";
 
 export default function HomePage() {
@@ -21,14 +23,16 @@ export default function HomePage() {
           <h2 className="text-fluid-title mb-8 font-display font-bold">
             Productos destacados
           </h2>
-          <ProductGrid products={featured} />
+          <ProductGrid products={featured} locale="es" />
         </div>
       </section>
       <CampaignsBlock />
       <ProcessSteps />
+      <Testimonials />
       <TrustBadges />
       <PartnersBlock />
       <AboutSnippet />
+      <StoreCta />
       <NewsletterContact />
     </>
   );

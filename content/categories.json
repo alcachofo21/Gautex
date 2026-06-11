@@ -5,7 +5,8 @@
     "description": "Preservativos masculinos y femeninos, lubricantes de base acuosa, oral dam y productos de prevención.",
     "href": "/productos/preventivo",
     "icon": "shield",
-    "color": "#0D6B4F"
+    "color": "#0D6B4F",
+    "image": "/images/categories/preventivo.jpg"
   },
   {
     "id": "ginecologia",
@@ -13,7 +14,8 @@
     "description": "Cubresondas y geles conductores para ecografías y distribución hospitalaria.",
     "href": "/productos/ginecologia",
     "icon": "heart-pulse",
-    "color": "#1A5F7A"
+    "color": "#1A5F7A",
+    "image": "/images/categories/ginecologia.jpg"
   },
   {
     "id": "covid-19",
@@ -21,6 +23,7 @@
     "description": "Tests de antígenos e inmunológicos NADAL, mascarillas quirúrgicas y FFP-2.",
     "href": "/productos/covid-19",
     "icon": "microscope",
-    "color": "#2D6A4F"
+    "color": "#2D6A4F",
+    "image": "/images/products/nadal-covid.jpg"
   }
 ]

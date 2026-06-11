@@ -16,7 +16,8 @@
       "Lubricante": "500-550 mg"
     },
     "certifications": ["CEE 120", "ISO 9001/2008", "ISO 13485/2003", "ISO 4074/2002", "NF062 France", "WHO American Standard", "ISO 10993 Biocompatibilidad"],
-    "color": "#0D6B4F"
+    "color": "#0D6B4F",
+    "image": "/images/products/matrix-condoms.jpg"
   },
   {
     "id": "viva-condoms",
@@ -35,7 +36,8 @@
       "Lubricante": "475-550 mg"
     },
     "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003", "ISO 10993 Biocompatibilidad"],
-    "color": "#1A5F7A"
+    "color": "#1A5F7A",
+    "image": "/images/products/viva-condoms.jpg"
   },
   {
     "id": "sexydam",
@@ -53,7 +55,8 @@
       "Envase": "85 x 120 mm opaco"
     },
     "certifications": ["CEE 120", "ISO 9001/2008", "ISO 13485/2003"],
-    "color": "#E85D75"
+    "color": "#E85D75",
+    "image": "/images/products/sexydam.jpg"
   },
   {
     "id": "max-gel",
@@ -71,7 +74,8 @@
       "Base": "Glicerina y agua"
     },
     "certifications": ["CE 0120 SGS", "CE0035 TüV"],
-    "color": "#4ECDC4"
+    "color": "#4ECDC4",
+    "image": "/images/products/max-gel.jpg"
   },
   {
     "id": "preservativo-femenino",
@@ -88,7 +92,8 @@
       "Uso": "Prevención"
     },
     "certifications": ["CE 0120 SGS"],
-    "color": "#9B59B6"
+    "color": "#9B59B6",
+    "image": "/images/campaigns/condoms-custom.jpg"
   },
   {
     "id": "gecofun",
@@ -105,7 +110,8 @@
       "Uso": "Transductor ecográfico lumbar-abdominal"
     },
     "certifications": ["ISO 13485:2013", "ISO 9001:2008", "CE 0120 SGS"],
-    "color": "#1A5F7A"
+    "color": "#1A5F7A",
+    "image": "/images/products/gecofun.jpg"
   },
   {
     "id": "ultra-gecogel-250",
@@ -123,7 +129,8 @@
       "Uso": "Externo"
     },
     "certifications": ["ISO 13485:2013", "ISO 9001:2008"],
-    "color": "#3498DB"
+    "color": "#3498DB",
+    "image": "/images/products/ultra-gecogel.jpg"
   },
   {
     "id": "ultra-gecogel-1000",
@@ -141,7 +148,8 @@
       "Uso": "Externo"
     },
     "certifications": ["ISO 13485:2013", "ISO 9001:2008"],
-    "color": "#2980B9"
+    "color": "#2980B9",
+    "image": "/images/products/ultra-gecogel.jpg"
   },
   {
     "id": "nadal-covid-ag",
@@ -154,12 +162,14 @@
     "price": null,
     "priceLabel": "Consultar precio",
     "specs": {
-      "Contenido": "20 tests",
+      "Contenido del kit": "20 tests + 20 hisopos + 20 tubos + 2 búferes + soporte + manual",
       "Muestra": "Nasofaríngea / orofaríngea",
-      "Tipo": "Antígenos"
+      "Tipo": "Antígenos",
+      "Autodiagnóstico": "Sí"
     },
     "certifications": ["Marcado CE", "Directiva 98/79/CE IVD"],
-    "color": "#E74C3C"
+    "color": "#E74C3C",
+    "image": "/images/products/nadal-covid.jpg"
   },
   {
     "id": "nadal-covid-igg-igm",
@@ -172,12 +182,14 @@
     "price": null,
     "priceLabel": "Consultar precio",
     "specs": {
-      "Contenido": "10 tests en casete",
+      "Contenido del kit": "10 tests en casete + 10 pipetas + búfer 3ml + manual",
       "Muestra": "Sangre, suero o plasma",
-      "Tipo": "IgG / IgM"
+      "Tipo": "IgG / IgM",
+      "Autodiagnóstico": "Sí"
     },
     "certifications": ["Marcado CE", "Directiva 98/79/CE IVD"],
-    "color": "#C0392B"
+    "color": "#C0392B",
+    "image": "/images/products/nadal-covid.jpg"
   },
   {
     "id": "mascarilla-quirurgica",
@@ -185,8 +197,8 @@
     "name": "Mascarilla Quirúrgica",
     "category": "covid-19",
     "featured": false,
-    "shortDescription": "Mascarillas quirúrgicas para protección sanitaria.",
-    "description": "Mascarillas quirúrgicas disponibles para compra y distribución hospitalaria.",
+    "shortDescription": "Mascarillas quirúrgicas tipo II para protección sanitaria. Marcado CE.",
+    "description": "Mascarillas quirúrgicas de triple capa para uso sanitario y farmacéutico. Disponibles para distribución hospitalaria y pedidos B2B por cajas.",
     "price": null,
     "priceLabel": "Consultar precio",
     "specs": {
@@ -194,7 +206,8 @@
       "Uso": "Protección sanitaria"
     },
     "certifications": ["CE"],
-    "color": "#95A5A6"
+    "color": "#95A5A6",
+    "image": "/images/categories/preventivo.jpg"
   },
   {
     "id": "mascarilla-ffp2",
@@ -202,8 +215,8 @@
     "name": "Mascarilla FFP-2",
     "category": "covid-19",
     "featured": false,
-    "shortDescription": "Mascarillas FFP-2 de alta filtración.",
-    "description": "Mascarillas FFP-2 disponibles para compra y distribución.",
+    "shortDescription": "Mascarillas FFP-2 de alta filtración. Marcado CE.",
+    "description": "Mascarillas autofiltrantes FFP-2 NR para uso profesional. Alta eficiencia de filtración. Disponibles para hospitales y distribución mayorista.",
     "price": null,
     "priceLabel": "Consultar precio",
     "specs": {
@@ -211,6 +224,7 @@
       "Filtración": "Alta"
     },
     "certifications": ["CE"],
-    "color": "#7F8C8D"
+    "color": "#7F8C8D",
+    "image": "/images/categories/ginecologia.jpg"
   }
 ]

@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "shop": "Tienda",
+    "campaigns": "Campañas",
+    "quality": "Calidad",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "quote": "Presupuesto",
+    "cart": "Carrito"
+  },
+  "topbar": {
+    "shipping": "Envío a toda Europa"
+  },
+  "home": {
+    "featured": "Productos destacados",
+    "testimonialsTitle": "Confían en nosotros",
+    "testimonialsSubtitle": "Distribuidores, farmacias y entidades de salud pública en toda España",
+    "testimonialsNote": "Opiniones representativas de clientes del sector sanitario.",
+    "categories": "Explora nuestras categorías",
+    "ctaTitle": "¿Listo para pedir o personalizar?",
+    "ctaDesc": "Añade productos al carrito, solicita presupuesto B2B o diseña una campaña con tu marca. Respuesta en 24–48h laborables.",
+    "ctaShop": "Ir a la tienda",
+    "ctaQuote": "Solicitar presupuesto"
+  },
+  "footer": {
+    "products": "Productos",
+    "company": "Empresa",
+    "legal": "Legal",
+    "privacy": "Privacidad",
+    "cookies": "Cookies",
+    "terms": "Aviso legal",
+    "rights": "Todos los derechos reservados",
+    "since": "Desde"
+  },
+  "lang": {
+    "switch": "English",
+    "current": "ES"
+  }
+}

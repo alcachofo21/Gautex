@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "shop": "Shop",
+    "campaigns": "Campaigns",
+    "quality": "Quality",
+    "about": "About us",
+    "contact": "Contact",
+    "quote": "Get a quote",
+    "cart": "Cart"
+  },
+  "topbar": {
+    "shipping": "Shipping across Europe"
+  },
+  "home": {
+    "featured": "Featured products",
+    "testimonialsTitle": "Trusted by professionals",
+    "testimonialsSubtitle": "Distributors, pharmacies and public health entities across Spain",
+    "testimonialsNote": "Representative feedback from healthcare sector clients.",
+    "categories": "Browse our categories",
+    "ctaTitle": "Ready to order or customise?",
+    "ctaDesc": "Add products to cart, request a B2B quote or design a branded campaign. Response within 24–48 business hours.",
+    "ctaShop": "Go to shop",
+    "ctaQuote": "Request a quote"
+  },
+  "footer": {
+    "products": "Products",
+    "company": "Company",
+    "legal": "Legal",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "terms": "Legal notice",
+    "rights": "All rights reserved",
+    "since": "Since"
+  },
+  "lang": {
+    "switch": "Español",
+    "current": "EN"
+  }
+}

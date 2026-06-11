@@ -4,14 +4,17 @@ import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
 import type { Product } from "@/types";
 import { useCart } from "@/lib/cart";
+import { localizedPath, type Locale } from "@/lib/locale";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { ProductImage } from "./ProductImage";
 
 interface ProductCardProps {
   product: Product;
+  locale?: Locale;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, locale = "es" }: ProductCardProps) {
   const { addItem } = useCart();
 
   const handleAdd = (e: React.MouseEvent) => {
@@ -28,20 +31,15 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Link
-      href={`/productos/${product.category}/${product.slug}`}
+      href={localizedPath(`/productos/${product.category}/${product.slug}`, locale)}
       className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
     >
-      <div
-        className="flex aspect-square items-center justify-center p-6"
-        style={{ backgroundColor: `${product.color}15` }}
-      >
-        <div
-          className="flex h-20 w-20 items-center justify-center rounded-2xl text-2xl font-bold text-white shadow-lg sm:h-24 sm:w-24"
-          style={{ backgroundColor: product.color }}
-        >
-          {product.name.charAt(0)}
-        </div>
-      </div>
+      <ProductImage
+        src={product.image}
+        alt={product.name}
+        color={product.color}
+        className="aspect-square w-full"
+      />
       <div className="flex flex-1 flex-col p-4">
         <Badge variant="outline" className="mb-2 w-fit text-[10px]">
           {product.category}

@@ -1,43 +1,31 @@
 import { NextResponse } from "next/server";
+import { contactSchema } from "@/lib/validation";
+import { sendEmail, contactEmailHtml } from "@/lib/email";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { firstName, lastName, email, phone, message, type } = body;
+    const parsed = contactSchema.safeParse(body);
 
-    if (!email || !message) {
-      return NextResponse.json({ error: "Campos requeridos" }, { status: 400 });
+    if (!parsed.success) {
+      return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
     }
 
-    const payload = {
-      type: type || "contact",
-      firstName,
-      lastName,
-      email,
-      phone,
-      message,
-      timestamp: new Date().toISOString(),
-    };
+    if (parsed.data.website) {
+      return NextResponse.json({ success: true });
+    }
 
-    console.log("[GAUTEX CONTACT]", JSON.stringify(payload, null, 2));
+    const { firstName, lastName, email, phone, message, type } = parsed.data;
+    const text = JSON.stringify({ firstName, lastName, email, phone, message, type }, null, 2);
 
-    const resendKey = process.env.RESEND_API_KEY;
-    const contactEmail = process.env.CONTACT_EMAIL || "info@gautex.com";
+    const result = await sendEmail({
+      subject: `[Gautex] ${type === "newsletter" ? "Newsletter" : "Contacto"} - ${firstName} ${lastName}`,
+      html: contactEmailHtml({ firstName, lastName, email, phone, message, type: type || "contact" }),
+      text,
+    });
 
-    if (resendKey) {
-      await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${resendKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: "Gautex Web <onboarding@resend.dev>",
-          to: contactEmail,
-          subject: `[Gautex] ${type === "newsletter" ? "Newsletter" : "Contacto"} - ${firstName} ${lastName}`,
-          text: JSON.stringify(payload, null, 2),
-        }),
-      });
+    if (!result.ok) {
+      return NextResponse.json({ error: "Error al enviar email" }, { status: 502 });
     }
 
     return NextResponse.json({ success: true });

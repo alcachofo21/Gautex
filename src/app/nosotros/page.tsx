@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { corporate } from "@/lib/products";
 
 export const metadata = {
@@ -8,11 +9,32 @@ export const metadata = {
 export default function NosotrosPage() {
   return (
     <div className="py-12 sm:py-16">
-      <div className="container-page max-w-4xl">
+      <div className="container-page max-w-5xl">
         <h1 className="text-fluid-title font-display font-bold">{corporate.about.title}</h1>
         <p className="mt-2 text-xl font-semibold text-primary">{corporate.company.slogan}</p>
 
-        <div className="mt-8 space-y-6 text-text-muted">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+            <Image
+              src="/images/about/equipo.jpg"
+              alt="Equipo Gautex Medica"
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, 50vw"
+            />
+          </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+            <Image
+              src="/images/about/historia-condones.jpg"
+              alt="Historia de preservativos Gautex"
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, 50vw"
+            />
+          </div>
+        </div>
+
+        <div className="mt-10 space-y-6 text-text-muted">
           {corporate.about.paragraphs.map((p, i) => (
             <p key={i} className="leading-relaxed">{p}</p>
           ))}
@@ -22,10 +44,7 @@ export default function NosotrosPage() {
           <h2 className="font-display text-xl font-bold">Nuestros valores</h2>
           <div className="mt-6 flex flex-wrap gap-4">
             {corporate.about.values.map((v) => (
-              <span
-                key={v}
-                className="rounded-xl bg-primary px-6 py-3 font-display font-bold text-white"
-              >
+              <span key={v} className="rounded-xl bg-primary px-6 py-3 font-display font-bold text-white">
                 {v}
               </span>
             ))}

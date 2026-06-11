@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Shield, HeartPulse, Microscope, ChevronRight } from "lucide-react";
 import { categories } from "@/lib/products";
 
@@ -28,19 +29,27 @@ export default function ProductosPage() {
               <Link
                 key={cat.id}
                 href={cat.href}
-                className="group rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl"
+                className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl"
               >
-                <div
-                  className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl text-white"
-                  style={{ backgroundColor: cat.color }}
-                >
-                  <Icon className="h-7 w-7" />
-                </div>
+                {cat.image ? (
+                  <div className="relative h-44 w-full">
+                    <Image src={cat.image} alt={cat.name} fill className="object-cover" sizes="33vw" />
+                  </div>
+                ) : (
+                  <div
+                    className="m-8 mb-0 flex h-14 w-14 items-center justify-center rounded-xl text-white"
+                    style={{ backgroundColor: cat.color }}
+                  >
+                    <Icon className="h-7 w-7" />
+                  </div>
+                )}
+                <div className="p-8 pt-6">
                 <h2 className="font-display text-xl font-bold group-hover:text-primary">{cat.name}</h2>
                 <p className="mt-2 text-sm text-text-muted">{cat.description}</p>
                 <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">
                   Ver productos <ChevronRight className="h-4 w-4" />
                 </span>
+                </div>
               </Link>
             );
           })}

@@ -3,23 +3,26 @@
 import Link from "next/link";
 import { X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { corporate } from "@/lib/products";
-
-const navLinks = [
-  { href: "/productos", label: "Tienda" },
-  { href: "/campanas", label: "Campañas" },
-  { href: "/productos", label: "Productos" },
-  { href: "/calidad", label: "Calidad" },
-  { href: "/nosotros", label: "Nosotros" },
-  { href: "/contacto", label: "Contacto" },
-];
+import { getCorporate, getUi, localizedPath, type Locale } from "@/lib/locale";
 
 interface MobileNavProps {
   open: boolean;
   onClose: () => void;
+  locale: Locale;
 }
 
-export function MobileNav({ open, onClose }: MobileNavProps) {
+export function MobileNav({ open, onClose, locale }: MobileNavProps) {
+  const corporate = getCorporate(locale);
+  const ui = getUi(locale);
+
+  const navLinks = [
+    { href: localizedPath("/productos", locale), label: ui.nav.shop },
+    { href: localizedPath("/campanas", locale), label: ui.nav.campaigns },
+    { href: localizedPath("/calidad", locale), label: ui.nav.quality },
+    { href: localizedPath("/nosotros", locale), label: ui.nav.about },
+    { href: localizedPath("/contacto", locale), label: ui.nav.contact },
+  ];
+
   if (!open) return null;
 
   return (
@@ -28,14 +31,14 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
       <nav className="absolute right-0 top-0 flex h-full w-[min(320px,85vw)] flex-col bg-white shadow-2xl">
         <div className="flex items-center justify-between border-b p-4">
           <span className="font-display text-lg font-bold text-primary">GAUTEX MEDICA</span>
-          <button type="button" onClick={onClose} className="flex h-11 w-11 items-center justify-center rounded-lg hover:bg-gray-100" aria-label="Cerrar menú">
+          <button type="button" onClick={onClose} className="flex h-11 w-11 items-center justify-center rounded-lg hover:bg-gray-100" aria-label="Close">
             <X className="h-6 w-6" />
           </button>
         </div>
         <div className="flex flex-1 flex-col gap-1 p-4">
           {navLinks.map((link) => (
             <Link
-              key={link.href + link.label}
+              key={link.href}
               href={link.href}
               onClick={onClose}
               className="min-h-[48px] rounded-lg px-4 py-3 text-lg font-medium hover:bg-surface"
@@ -52,7 +55,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
             onClick={onClose}
           >
             <Phone className="h-5 w-5" />
-            Llamar {corporate.company.phone}
+            {corporate.company.phone}
           </Button>
         </div>
       </nav>

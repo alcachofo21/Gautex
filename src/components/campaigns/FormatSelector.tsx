@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { CampaignFormat } from "@/types";
 import { Package, Wallet, Box, Layers, Droplets, Sparkles, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -29,15 +30,23 @@ export function FormatSelector({ formats, selected, onSelect }: FormatSelectorPr
             type="button"
             onClick={() => onSelect(format.id)}
             className={cn(
-              "rounded-2xl border-2 p-6 text-left transition-all hover:shadow-md",
+              "overflow-hidden rounded-2xl border-2 text-left transition-all hover:shadow-md",
               selected === format.id
                 ? "border-primary bg-primary/5 shadow-md"
                 : "border-gray-200 bg-white"
             )}
           >
-            <Icon className="mb-3 h-8 w-8 text-primary" />
+            {format.image ? (
+              <div className="relative h-32 w-full">
+                <Image src={format.image} alt={format.name} fill className="object-cover" sizes="50vw" />
+              </div>
+            ) : (
+              <Icon className="m-6 mb-0 h-8 w-8 text-primary" />
+            )}
+            <div className="p-4">
             <h3 className="font-display font-bold">{format.name}</h3>
             <p className="mt-2 text-sm text-text-muted line-clamp-2">{format.description}</p>
+            </div>
           </button>
         );
       })}

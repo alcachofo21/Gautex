@@ -13,6 +13,7 @@ export function CampaignConfigurator() {
   const [step, setStep] = useState(1);
   const [formatId, setFormatId] = useState<string | null>(null);
   const [productId, setProductId] = useState<string | null>(null);
+  const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoName, setLogoName] = useState("");
   const [form, setForm] = useState({
     firstName: "",
@@ -22,6 +23,7 @@ export function CampaignConfigurator() {
     company: "",
     quantity: "",
     message: "",
+    website: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -29,12 +31,28 @@ export function CampaignConfigurator() {
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) setLogoName(file.name);
+    if (file) {
+      setLogoFile(file);
+      setLogoName(file.name);
+    }
   };
 
   const submit = async () => {
     setStatus("loading");
     try {
+      let logoUrl: string | undefined;
+      let logoPath: string | undefined;
+
+      if (logoFile) {
+        const fd = new FormData();
+        fd.append("file", logoFile);
+        const uploadRes = await fetch("/api/upload", { method: "POST", body: fd });
+        if (!uploadRes.ok) throw new Error("upload failed");
+        const uploadData = await uploadRes.json();
+        logoUrl = uploadData.url;
+        logoPath = uploadData.path;
+      }
+
       const res = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -44,6 +62,7 @@ export function CampaignConfigurator() {
           formatName: selectedFormat?.name,
           productId,
           logoFileName: logoName,
+          logoUrl: logoUrl || logoPath,
           ...form,
         }),
       });
@@ -119,7 +138,7 @@ export function CampaignConfigurator() {
       {step === 3 && (
         <div>
           <h3 className="mb-4 font-display text-xl font-bold">Paso 3: Sube tu logo</h3>
-          <p className="mb-4 text-sm text-text-muted">PNG o PDF. En producción se enviará por email.</p>
+          <p className="mb-4 text-sm text-text-muted">PNG, JPG o PDF. Máximo 5 MB.</p>
           <label className="flex min-h-[120px] cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 p-8 hover:border-primary">
             <input type="file" accept=".png,.pdf,.jpg,.jpeg" onChange={handleFile} className="hidden" />
             <span className="font-semibold text-primary">Seleccionar archivo</span>
@@ -164,6 +183,16 @@ export function CampaignConfigurator() {
                 className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
               />
             </div>
+            <input
+              type="text"
+              name="website"
+              value={form.website}
+              onChange={(e) => setForm({ ...form, website: e.target.value })}
+              className="hidden"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden
+            />
           </div>
           {selectedFormat && (
             <div className="mt-4 rounded-xl bg-surface p-4 text-sm">

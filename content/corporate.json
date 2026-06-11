@@ -65,7 +65,44 @@
     ]
   },
   "legal": {
-    "privacy": "GAUTEX MÉDICA, S.L. utiliza medidas de seguridad para proteger los datos personales. Los usuarios pueden ejercitar los derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición contactando en info@gautex.com o en Plaza Dr. Letamendi nº37 3-2, 08007 Barcelona, acompañando copia de DNI o documento válido.",
-    "cookies": "Este sitio utiliza cookies técnicas y de preferencias para mejorar la experiencia de navegación. Puede gestionar sus preferencias desde el banner de cookies o contactarnos para más información."
+    "privacy": "GAUTEX MÉDICA, S.L. (CIF B-63245678), con domicilio en Plaza Dr. Letamendi nº 37, Ático 3º, 08007 Barcelona, es responsable del tratamiento de los datos personales facilitados a través de este sitio web y de los formularios de contacto, presupuesto y pedido.",
+    "privacySections": [
+      {
+        "title": "Finalidad del tratamiento",
+        "text": "Los datos se tratan para gestionar consultas, presupuestos, pedidos, relaciones comerciales B2B y el cumplimiento de obligaciones legales en materia sanitaria y fiscal."
+      },
+      {
+        "title": "Legitimación",
+        "text": "La base legal es la ejecución de medidas precontractuales y contractuales, el interés legítimo en atender solicitudes comerciales y el cumplimiento de obligaciones legales."
+      },
+      {
+        "title": "Conservación",
+        "text": "Los datos se conservarán mientras se mantenga la relación comercial y, posteriormente, durante los plazos exigidos por la normativa aplicable."
+      },
+      {
+        "title": "Destinatarios",
+        "text": "No se cederán datos a terceros salvo obligación legal o encargados de tratamiento necesarios para la prestación del servicio (hosting, email, pasarela de pago)."
+      },
+      {
+        "title": "Derechos",
+        "text": "Puede ejercer los derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición en info@gautex.com, acompañando copia de DNI o documento válido. También puede presentar reclamación ante la AEPD."
+      }
+    ],
+    "cookies": "Este sitio utiliza cookies técnicas necesarias para el funcionamiento y cookies de preferencias para recordar su consentimiento. No utilizamos cookies publicitarias de terceros.",
+    "cookiesSections": [
+      {
+        "title": "Cookies técnicas",
+        "text": "Permiten la navegación, el carrito de compra y la seguridad de la sesión. Son imprescindibles para el funcionamiento del sitio."
+      },
+      {
+        "title": "Cookies de preferencias",
+        "text": "Almacenan su elección sobre el banner de cookies para no volver a mostrarlo en visitas posteriores."
+      },
+      {
+        "title": "Gestión",
+        "text": "Puede aceptar o rechazar cookies no esenciales desde el banner. También puede configurar su navegador para bloquearlas. Para más información: info@gautex.com."
+      }
+    ],
+    "terms": "Los productos sanitarios comercializados por GAUTEX MÉDICA, S.L. están destinados a profesionales del sector farmacéutico y sanitario. Los precios mostrados son orientativos; el presupuesto definitivo se confirma por escrito. La venta está sujeta a disponibilidad y normativa de distribución aplicable en cada país."
   }
 }

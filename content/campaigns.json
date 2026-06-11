@@ -10,7 +10,8 @@
         "Preservativo látex natural transparente, lubricado, 55 mm",
         "Lengüetas interiores con instrucciones y sellos"
       ],
-      "icon": "package"
+      "icon": "package",
+      "image": "/images/campaigns/estuche.jpg"
     },
     {
       "id": "funda-pvc",
@@ -22,7 +23,8 @@
         "Impresión cuatricromía",
         "Bolsas interiores transparentes 5,50 x 6,0 cm"
       ],
-      "icon": "wallet"
+      "icon": "wallet",
+      "image": "/images/campaigns/funda-pvc.jpg"
     },
     {
       "id": "preservativos-personalizados",
@@ -33,35 +35,40 @@
         "Caja de 144 unidades personalizable",
         "Látex natural, transparente, lubricado"
       ],
-      "icon": "box"
+      "icon": "box",
+      "image": "/images/campaigns/condoms-custom.jpg"
     },
     {
       "id": "flow-pack-preservativo",
       "name": "Flow Pack — Preservativo",
       "description": "Bolsita polipropileno transparente con sellado térmico + preservativo + folleto de campaña.",
       "details": ["Preservativo látex natural", "Folleto con logotipo", "Cierre termosellado personalizable"],
-      "icon": "layers"
+      "icon": "layers",
+      "image": "/images/campaigns/flow-pack.jpg"
     },
     {
       "id": "flow-pack-gel",
       "name": "Flow Pack — Preservativo + Gel",
       "description": "Flow pack con preservativo + gel lubricante monodosis base acuosa + folleto.",
       "details": ["Preservativo + Max Gel 6ml", "Gel base acuosa sin aceites", "Folleto personalizado"],
-      "icon": "droplets"
+      "icon": "droplets",
+      "image": "/images/campaigns/flow-pack.jpg"
     },
     {
       "id": "flow-pack-sexydam",
       "name": "Flow Pack — Sexydam",
       "description": "Flow pack con oral dam Sexydam + gel lubricante + folleto de campaña.",
       "details": ["Sexydam mono uso", "Colores y aromas disponibles", "Gel lubricante incluido"],
-      "icon": "sparkles"
+      "icon": "sparkles",
+      "image": "/images/campaigns/flow-pack.jpg"
     },
     {
       "id": "flow-pack-femenino",
       "name": "Flow Pack — Preservativo Femenino",
       "description": "Flow pack con preservativo femenino FC2 nitrilo + folleto personalizado.",
       "details": ["Preservativo femenino FC2", "Látex natural transparente", "Folleto de campaña"],
-      "icon": "heart"
+      "icon": "heart",
+      "image": "/images/campaigns/flow-pack.jpg"
     }
   ],
   "baseProducts": [

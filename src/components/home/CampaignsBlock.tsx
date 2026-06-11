@@ -1,11 +1,12 @@
+import Image from "next/image";
 import { Package, Wallet, Layers, Box } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 const highlights = [
-  { icon: Package, title: "Estuche personalizado", desc: "350gr mate, frontal a todo color" },
-  { icon: Wallet, title: "Funda PVC", desc: "9,5×6,5 cm, cuatricromía" },
-  { icon: Layers, title: "Flow Pack", desc: "4 variantes de packaging" },
-  { icon: Box, title: "Preservativos custom", desc: "Tiras de 3 uds o cajas 144 uds" },
+  { icon: Package, title: "Estuche personalizado", desc: "350gr mate, frontal a todo color", image: "/images/campaigns/estuche.jpg" },
+  { icon: Wallet, title: "Funda PVC", desc: "9,5×6,5 cm, cuatricromía", image: "/images/campaigns/funda-pvc.jpg" },
+  { icon: Layers, title: "Flow Pack", desc: "4 variantes de packaging", image: "/images/campaigns/flow-pack.jpg" },
+  { icon: Box, title: "Preservativos custom", desc: "Tiras de 3 uds o cajas 144 uds", image: "/images/campaigns/condoms-custom.jpg" },
 ];
 
 export function CampaignsBlock() {
@@ -26,10 +27,15 @@ export function CampaignsBlock() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {highlights.map((item) => (
-              <div key={item.title} className="rounded-xl bg-white/10 p-4 backdrop-blur">
-                <item.icon className="mb-2 h-8 w-8 text-accent" />
-                <h3 className="font-semibold">{item.title}</h3>
-                <p className="mt-1 text-sm text-white/70">{item.desc}</p>
+              <div key={item.title} className="overflow-hidden rounded-xl bg-white/10 backdrop-blur">
+                <div className="relative h-28 w-full">
+                  <Image src={item.image} alt={item.title} fill className="object-cover opacity-80" sizes="200px" />
+                </div>
+                <div className="p-4">
+                  <item.icon className="mb-2 h-6 w-6 text-accent" />
+                  <h3 className="font-semibold">{item.title}</h3>
+                  <p className="mt-1 text-sm text-white/70">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>

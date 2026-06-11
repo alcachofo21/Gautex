@@ -18,12 +18,28 @@ export const metadata: Metadata = {
   },
   description:
     "Distribución y fabricación de productos sanitarios certificados CE. Preservativos, geles, tests COVID-19 y campañas personalizadas.",
+  icons: {
+    icon: "/images/logo/gautex.png",
+    apple: "/images/logo/gautex.png",
+  },
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://gautex.onrender.com"),
   openGraph: {
     title: "Gautex Medica — Repartiendo salud",
     description: "Productos sanitarios certificados para farmacia y sector hospitalario.",
     locale: "es_ES",
     type: "website",
+    images: [
+      {
+        url: "/images/hero/condones-seguro.jpg",
+        width: 1280,
+        height: 720,
+        alt: "Gautex Medica — Productos sanitarios certificados",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/hero/condones-seguro.jpg"],
   },
 };
 

@@ -6,6 +6,7 @@ import { StickyAddToCart } from "@/components/shop/StickyAddToCart";
 import { ProductActions } from "./ProductActions";
 import { Badge } from "@/components/ui/Badge";
 import { AccordionItem } from "@/components/ui/Accordion";
+import { ProductImage } from "@/components/shop/ProductImage";
 
 interface Props {
   params: Promise<{ category: string; slug: string }>;
@@ -58,17 +59,14 @@ export default async function ProductPage({ params }: Props) {
           </nav>
 
           <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-            <div
-              className="flex aspect-square items-center justify-center rounded-2xl"
-              style={{ backgroundColor: `${product.color}15` }}
-            >
-              <div
-                className="flex h-32 w-32 items-center justify-center rounded-3xl text-5xl font-bold text-white shadow-xl"
-                style={{ backgroundColor: product.color }}
-              >
-                {product.name.charAt(0)}
-              </div>
-            </div>
+            <ProductImage
+              src={product.image}
+              alt={product.name}
+              color={product.color}
+              className="aspect-square w-full rounded-2xl"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
 
             <div>
               <Badge className="mb-3">{product.category}</Badge>
