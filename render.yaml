@@ -3,6 +3,7 @@ services:
     name: gautex-web
     runtime: node
     plan: free
+    branch: main
     buildCommand: NODE_ENV=development npm ci && npm run build
     startCommand: npm start
     envVars:
@@ -12,3 +13,18 @@ services:
         value: "false"
       - key: NEXT_PUBLIC_SITE_URL
         value: https://gautex-web.onrender.com
+
+  - type: web
+    name: gautex-web-staging
+    runtime: node
+    plan: free
+    branch: staging
+    buildCommand: NODE_ENV=development npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NPM_CONFIG_PRODUCTION
+        value: "false"
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://gautex-web-staging.onrender.com
