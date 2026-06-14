@@ -48,10 +48,10 @@ export function Hero({ locale = "es" }: HeroProps) {
   }, [t.words.length]);
 
   const gridItems = [
-    { src: "/images/products/matrix-condoms.jpg", label: t.labels[0] },
-    { src: "/images/products/viva-condoms.jpg", label: t.labels[1] },
+    { src: "/images/products/matrix-condoms.png", label: t.labels[0] },
+    { src: "/images/products/viva-condoms.png", label: t.labels[1] },
     { src: "/images/campaigns/estuche.jpg", label: t.labels[2] },
-    { src: "/images/products/gecofun.jpg", label: t.labels[3] },
+    { src: "/images/products/gecofun.png", label: t.labels[3] },
   ];
 
   return (

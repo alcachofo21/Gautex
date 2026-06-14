@@ -22,12 +22,12 @@ export function ProductImage({
 }: ProductImageProps) {
   if (src) {
     return (
-      <div className={cn("relative overflow-hidden bg-white", className)}>
+      <div className={cn("relative overflow-hidden bg-[#fafafa]", className)}>
         <Image
           src={src}
           alt={alt}
           fill
-          className="object-contain p-2"
+          className="object-contain p-4 sm:p-6"
           sizes={sizes}
           priority={priority}
         />

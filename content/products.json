@@ -17,7 +17,7 @@
     },
     "certifications": ["CEE 120", "ISO 9001/2008", "ISO 13485/2003", "ISO 4074/2002", "NF062 France", "WHO American Standard", "ISO 10993 Biocompatibilidad"],
     "color": "#0D6B4F",
-    "image": "/images/products/matrix-condoms.jpg"
+    "image": "/images/products/matrix-condoms.png"
   },
   {
     "id": "viva-condoms",
@@ -37,7 +37,7 @@
     },
     "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003", "ISO 10993 Biocompatibilidad"],
     "color": "#1A5F7A",
-    "image": "/images/products/viva-condoms.jpg"
+    "image": "/images/products/viva-condoms.png"
   },
   {
     "id": "sexydam",
@@ -56,7 +56,7 @@
     },
     "certifications": ["CEE 120", "ISO 9001/2008", "ISO 13485/2003"],
     "color": "#E85D75",
-    "image": "/images/products/sexydam.jpg"
+    "image": "/images/products/sexydam.png"
   },
   {
     "id": "max-gel",
@@ -75,7 +75,7 @@
     },
     "certifications": ["CE 0120 SGS", "CE0035 TüV"],
     "color": "#4ECDC4",
-    "image": "/images/products/max-gel.jpg"
+    "image": "/images/products/max-gel.png"
   },
   {
     "id": "preservativo-femenino",
@@ -111,7 +111,7 @@
     },
     "certifications": ["ISO 13485:2013", "ISO 9001:2008", "CE 0120 SGS"],
     "color": "#1A5F7A",
-    "image": "/images/products/gecofun.jpg"
+    "image": "/images/products/gecofun.png"
   },
   {
     "id": "ultra-gecogel-250",
@@ -130,7 +130,7 @@
     },
     "certifications": ["ISO 13485:2013", "ISO 9001:2008"],
     "color": "#3498DB",
-    "image": "/images/products/ultra-gecogel.jpg"
+    "image": "/images/products/ultra-gecogel.png"
   },
   {
     "id": "ultra-gecogel-1000",
@@ -149,7 +149,7 @@
     },
     "certifications": ["ISO 13485:2013", "ISO 9001:2008"],
     "color": "#2980B9",
-    "image": "/images/products/ultra-gecogel.jpg"
+    "image": "/images/products/ultra-gecogel.png"
   },
   {
     "id": "nadal-covid-ag",
@@ -169,7 +169,7 @@
     },
     "certifications": ["Marcado CE", "Directiva 98/79/CE IVD"],
     "color": "#E74C3C",
-    "image": "/images/products/nadal-covid.jpg"
+    "image": "/images/products/nadal-covid.png"
   },
   {
     "id": "nadal-covid-igg-igm",
@@ -189,7 +189,7 @@
     },
     "certifications": ["Marcado CE", "Directiva 98/79/CE IVD"],
     "color": "#C0392B",
-    "image": "/images/products/nadal-covid.jpg"
+    "image": "/images/products/nadal-covid.png"
   },
   {
     "id": "mascarilla-quirurgica",
