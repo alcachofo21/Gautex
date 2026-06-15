@@ -100,7 +100,16 @@
     "viewAll": "Ver todos los colaboradores →"
   },
   "about": {
-    "cta": "Conoce nuestra historia"
+    "cta": "Conoce nuestra historia",
+    "historyTitle": "Nuestra trayectoria",
+    "teamTitle": "Nuestro equipo",
+    "valuesTitle": "Nuestros valores",
+    "activitiesTitle": "Ámbito de actividad",
+    "qualityTitle": "Calidad certificada",
+    "qualityDesc": "Sistema de gestión auditado por el Organismo Notificador nº 0120 (SGS) con certificaciones ISO 13485 e ISO 9001.",
+    "qualityCta": "Ver certificaciones",
+    "contactCta": "Contactar con nosotros",
+    "productsTitle": "Nuestras líneas de producto"
   },
   "newsletter": {
     "title": "Mantente informado",

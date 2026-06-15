@@ -100,7 +100,16 @@
     "viewAll": "View all partners →"
   },
   "about": {
-    "cta": "Our story"
+    "cta": "Our story",
+    "historyTitle": "Our journey",
+    "teamTitle": "Our team",
+    "valuesTitle": "Our values",
+    "activitiesTitle": "Scope of activity",
+    "qualityTitle": "Certified quality",
+    "qualityDesc": "Management system audited by Notified Body No. 0120 (SGS) with ISO 13485 and ISO 9001 certifications.",
+    "qualityCta": "View certifications",
+    "contactCta": "Contact us",
+    "productsTitle": "Our product lines"
   },
   "newsletter": {
     "title": "Stay informed",
