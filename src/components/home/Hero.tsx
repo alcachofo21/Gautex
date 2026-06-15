@@ -82,25 +82,25 @@ export function Hero({ locale = "es" }: HeroProps) {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.97] via-primary/75 to-primary/10" />
-        <div className="absolute inset-y-0 left-0 w-full max-w-3xl bg-gradient-to-r from-black/35 to-transparent lg:max-w-[58%]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.96] via-primary/60 to-transparent" />
+        <div className="absolute inset-y-0 left-0 w-full max-w-3xl bg-gradient-to-r from-black/30 to-transparent lg:max-w-[52%]" />
       </div>
 
-      <div className="container-page relative py-16 sm:py-24 lg:py-32">
-        <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div>
-            <div className="mb-4 flex flex-wrap gap-2">
-              <Badge className="bg-white/20 text-white backdrop-blur">CE 0120 SGS</Badge>
-              <Badge className="bg-accent/90 text-white">ISO 13485</Badge>
-              <Badge className="bg-white/20 text-white backdrop-blur">{t.since}</Badge>
+      <div className="container-page relative py-10 sm:py-12 lg:py-11 xl:py-12">
+        <div className="grid items-center gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 xl:gap-10">
+          <div className="max-w-xl lg:max-w-none">
+            <div className="mb-3 flex flex-wrap gap-1.5">
+              <Badge className="bg-white/20 px-2.5 py-0.5 text-xs text-white backdrop-blur">CE 0120 SGS</Badge>
+              <Badge className="bg-accent/90 px-2.5 py-0.5 text-xs text-white">ISO 13485</Badge>
+              <Badge className="bg-white/20 px-2.5 py-0.5 text-xs text-white backdrop-blur">{t.since}</Badge>
             </div>
 
-            <h1 className="text-fluid-hero font-display font-bold leading-tight text-white">
+            <h1 className="text-fluid-hero font-display font-bold text-white">
               {t.title}{" "}
               <span className="text-accent">{t.accent}</span>
             </h1>
 
-            <div className="mt-4 flex h-10 items-center gap-2 text-lg text-white/80 sm:text-xl">
+            <div className="mt-3 flex h-8 items-center gap-2 text-base text-white/80 sm:text-lg">
               <span>{t.with}</span>
               <AnimatePresence mode="wait">
                 <motion.span
@@ -115,16 +115,16 @@ export function Hero({ locale = "es" }: HeroProps) {
               </AnimatePresence>
             </div>
 
-            <p className="mt-6 max-w-xl text-base text-white/75 sm:text-lg">{t.desc}</p>
+            <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/75 sm:text-base">{t.desc}</p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href={localizedPath("/productos", locale)} size="lg" fullWidth className="sm:w-auto">
+            <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:gap-3">
+              <Button href={localizedPath("/productos", locale)} size="md" fullWidth className="sm:w-auto">
                 {t.shop}
               </Button>
               <Button
                 href={localizedPath("/campanas", locale)}
                 variant="outline"
-                size="lg"
+                size="md"
                 fullWidth
                 className="border-white/40 bg-white/10 text-white hover:bg-white/20 sm:w-auto"
               >
@@ -134,23 +134,25 @@ export function Hero({ locale = "es" }: HeroProps) {
           </div>
 
           <div className="hidden lg:block">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="ml-auto grid w-full max-w-[22rem] grid-cols-2 gap-3 xl:max-w-[24rem] xl:gap-3.5">
               {gridItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="group overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-3 backdrop-blur transition hover:border-accent/60 hover:bg-white/20 hover:shadow-lg"
+                  className="group overflow-hidden rounded-2xl border border-white/25 bg-white/10 p-2.5 backdrop-blur-md transition hover:border-accent/60 hover:bg-white/15 hover:shadow-lg"
                 >
-                  <div className="relative aspect-square overflow-hidden rounded-xl">
+                  <div className="relative aspect-[5/4] overflow-hidden rounded-xl bg-white/5">
                     <Image
                       src={item.src}
                       alt={item.label}
                       fill
                       className="object-cover transition duration-300 group-hover:scale-105"
-                      sizes="200px"
+                      sizes="180px"
                     />
                   </div>
-                  <p className="mt-2 text-center text-sm font-semibold text-white group-hover:text-accent">{item.label}</p>
+                  <p className="mt-1.5 text-center text-xs font-semibold text-white group-hover:text-accent xl:text-sm">
+                    {item.label}
+                  </p>
                 </Link>
               ))}
             </div>
