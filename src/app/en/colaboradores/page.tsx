@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { getCorporate } from "@/lib/locale";
-import { partners } from "@/lib/products";
+import { getCorporate, getPartners } from "@/lib/locale";
 
 export const metadata = {
   title: "Partners",
@@ -9,6 +8,7 @@ export const metadata = {
 
 export default function EnColaboradoresPage() {
   const corporate = getCorporate("en");
+  const partners = getPartners("en");
 
   return (
     <div className="py-12 sm:py-16">
@@ -28,6 +28,18 @@ export default function EnColaboradoresPage() {
             </div>
           ))}
         </div>
+        <div className="mt-12 space-y-8">
+          {corporate.partners.items.map((partner) => (
+            <div key={partner.name} className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+              <h2 className="font-display text-2xl font-bold text-primary">{partner.name}</h2>
+              <p className="mt-4 leading-relaxed text-text-muted">{partner.description}</p>
+            </div>
+          ))}
+        </div>
+        <h2 className="mt-16 text-fluid-title font-display font-bold">Collaboration network</h2>
+        <p className="mt-2 text-text-muted">
+          Regional governments, healthcare entities and prevention organisations across Spain.
+        </p>
         <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
           {partners.logos.map((logo) => (
             <div key={logo.name} className="flex aspect-square items-center justify-center rounded-xl border border-gray-100 bg-white p-4 shadow-sm" title={logo.name}>

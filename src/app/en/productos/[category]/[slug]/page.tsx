@@ -101,7 +101,7 @@ export default async function EnProductPage({ params }: Props) {
           </section>
         )}
       </div>
-      <StickyAddToCart product={product} />
+      <StickyAddToCart product={product} locale="en" />
     </div>
   );
 }

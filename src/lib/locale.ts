@@ -4,6 +4,12 @@ import categoriesEs from "../../content/categories.json";
 import categoriesEn from "../../content/categories-en.json";
 import uiEs from "../../content/i18n/es.json";
 import uiEn from "../../content/i18n/en.json";
+import campaignsEs from "../../content/campaigns.json";
+import campaignsEn from "../../content/campaigns-en.json";
+import testimonialsEs from "../../content/testimonials.json";
+import testimonialsEn from "../../content/testimonials-en.json";
+import partnersEs from "../../content/partners.json";
+import partnersEn from "../../content/partners-en.json";
 import type { Category } from "@/types";
 
 export type Locale = "es" | "en";
@@ -36,6 +42,18 @@ export function getCategories(locale: Locale): Category[] {
 
 export function getUi(locale: Locale) {
   return locale === "en" ? uiEn : uiEs;
+}
+
+export function getCampaigns(locale: Locale) {
+  return locale === "en" ? campaignsEn : campaignsEs;
+}
+
+export function getTestimonials(locale: Locale) {
+  return locale === "en" ? testimonialsEn : testimonialsEs;
+}
+
+export function getPartners(locale: Locale) {
+  return locale === "en" ? partnersEn : partnersEs;
 }
 
 export function getProductText(

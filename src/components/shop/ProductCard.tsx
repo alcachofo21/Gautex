@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
 import type { Product } from "@/types";
 import { useCart } from "@/lib/cart";
-import { localizedPath, type Locale } from "@/lib/locale";
+import { localizedPath, getUi, getCategories, type Locale } from "@/lib/locale";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { ProductImage } from "./ProductImage";
@@ -16,6 +16,8 @@ interface ProductCardProps {
 
 export function ProductCard({ product, locale = "es" }: ProductCardProps) {
   const { addItem } = useCart();
+  const ui = getUi(locale);
+  const categoryName = getCategories(locale).find((c) => c.id === product.category)?.name ?? product.category;
 
   const handleAdd = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -42,7 +44,7 @@ export function ProductCard({ product, locale = "es" }: ProductCardProps) {
       />
       <div className="flex flex-1 flex-col p-4">
         <Badge variant="outline" className="mb-2 w-fit text-[10px]">
-          {product.category}
+          {categoryName}
         </Badge>
         <h3 className="font-display font-bold text-text group-hover:text-primary">
           {product.name}
@@ -59,7 +61,7 @@ export function ProductCard({ product, locale = "es" }: ProductCardProps) {
             className="shrink-0"
           >
             <ShoppingCart className="h-4 w-4" />
-            <span className="hidden sm:inline">Añadir</span>
+            <span className="hidden sm:inline">{ui.product.addToCart}</span>
           </Button>
         </div>
       </div>

@@ -2,8 +2,7 @@
 
 import useEmblaCarousel from "embla-carousel-react";
 import { Star, CheckCircle } from "lucide-react";
-import { testimonials } from "@/lib/products";
-import { getUi, type Locale } from "@/lib/locale";
+import { getTestimonials, getUi, type Locale } from "@/lib/locale";
 
 interface TestimonialsProps {
   locale?: Locale;
@@ -11,6 +10,7 @@ interface TestimonialsProps {
 
 export function Testimonials({ locale = "es" }: TestimonialsProps) {
   const ui = getUi(locale);
+  const testimonials = getTestimonials(locale);
   const [emblaRef] = useEmblaCarousel({ align: "start", loop: true });
 
   return (

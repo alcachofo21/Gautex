@@ -33,14 +33,14 @@ export default function EnHomePage() {
           <ProductGrid products={featured} locale="en" />
         </div>
       </section>
-      <CampaignsBlock />
-      <ProcessSteps />
+      <CampaignsBlock locale="en" />
+      <ProcessSteps locale="en" />
       <Testimonials locale="en" />
-      <TrustBadges />
-      <PartnersBlock />
-      <AboutSnippet />
+      <TrustBadges locale="en" />
+      <PartnersBlock locale="en" />
+      <AboutSnippet locale="en" />
       <StoreCta locale="en" />
-      <NewsletterContact />
+      <NewsletterContact locale="en" />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CampaignFormat } from "@/types";
+import { getUi, type Locale } from "@/lib/locale";
 import { Package, Wallet, Box, Layers, Droplets, Sparkles, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -17,9 +18,11 @@ interface FormatSelectorProps {
   formats: CampaignFormat[];
   selected: string | null;
   onSelect: (id: string) => void;
+  locale?: Locale;
 }
 
-export function FormatSelector({ formats, selected, onSelect }: FormatSelectorProps) {
+export function FormatSelector({ formats, selected, onSelect, locale = "es" }: FormatSelectorProps) {
+  const ui = getUi(locale);
   const active = formats.find((f) => f.id === selected);
 
   return (
@@ -67,7 +70,7 @@ export function FormatSelector({ formats, selected, onSelect }: FormatSelectorPr
           {active.variants && active.variants.length > 0 && (
             <div className="mt-4 border-t border-gray-200 pt-4">
               <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-                Variantes disponibles
+                {ui.campaigns.variantsLabel}
               </p>
               <ul className="mt-2 space-y-2">
                 {active.variants.map((variant) => (

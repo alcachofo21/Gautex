@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Pharmaceutical distributor",
+    "location": "Barcelona, ES",
+    "text": "We have worked with Gautex for over 10 years. The quality of their condoms and gels is consistent, and CE certifications give our clients full confidence.",
+    "verified": true
+  },
+  {
+    "name": "Public health entity",
+    "location": "Catalonia, ES",
+    "text": "Custom campaigns with cases and flow packs have been a success in our prevention programmes. The material is collected, used and sparks conversation.",
+    "verified": true
+  },
+  {
+    "name": "Private hospital",
+    "location": "Madrid, ES",
+    "text": "Gecofun and Ultra Gecogel gynaecology products meet our hospital standards. Reliable distribution and professional service.",
+    "verified": true
+  },
+  {
+    "name": "Community pharmacy",
+    "location": "Valencia, ES",
+    "text": "Matrix and Viva Condoms are among the brands our customers request most. Gautex responds quickly and delivery times are excellent.",
+    "verified": true
+  }
+]

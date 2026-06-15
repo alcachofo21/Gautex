@@ -4,13 +4,16 @@ import { ShoppingCart } from "lucide-react";
 import type { Product } from "@/types";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/Button";
+import { getUi, type Locale } from "@/lib/locale";
 
 interface StickyAddToCartProps {
   product: Product;
+  locale?: Locale;
 }
 
-export function StickyAddToCart({ product }: StickyAddToCartProps) {
+export function StickyAddToCart({ product, locale = "es" }: StickyAddToCartProps) {
   const { addItem } = useCart();
+  const ui = getUi(locale);
 
   return (
     <div
@@ -35,7 +38,7 @@ export function StickyAddToCart({ product }: StickyAddToCartProps) {
           }
         >
           <ShoppingCart className="h-5 w-5" />
-          Añadir
+          {ui.product.addToCart}
         </Button>
       </div>
     </div>

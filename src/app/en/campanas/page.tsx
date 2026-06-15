@@ -15,7 +15,7 @@ export default function EnCampanasPage() {
         </p>
         <section className="mt-12">
           <h2 className="mb-6 font-display text-2xl font-bold">Configure your campaign</h2>
-          <CampaignConfigurator />
+          <CampaignConfigurator locale="en" />
         </section>
       </div>
     </div>

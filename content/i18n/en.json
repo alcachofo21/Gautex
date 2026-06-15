@@ -35,5 +35,113 @@
   "lang": {
     "switch": "Español",
     "current": "EN"
+  },
+  "campaigns": {
+    "step1Title": "Step 1: Choose a format",
+    "step1Desc": "Select a format and review its features before continuing.",
+    "step2Default": "Step 2: Configure your offer",
+    "step2FlowPack": "Step 2: Flow Pack type",
+    "step2Presentation": "Step 2: Presentation and brand",
+    "step2Estuche": "Step 2: Condom for the case",
+    "step2Funda": "Step 2: Condom for the sleeve",
+    "step2Product": "Step 2: Base product",
+    "step3Title": "Step 3: Upload your logo",
+    "step3Desc": "PNG, JPG or PDF. Max 5 MB.",
+    "step4Title": "Step 4: Details and quantity",
+    "selectFile": "Choose file",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Request a quote",
+    "submitting": "Sending...",
+    "successTitle": "Request sent!",
+    "successDesc": "We have received your custom campaign request. We will contact you shortly.",
+    "error": "Error sending. Please try again.",
+    "variantsLabel": "Available variants",
+    "presentationLabel": "Presentation",
+    "condomLabel": "Condom",
+    "condomBrandLabel": "Condom brand",
+    "includedProduct": "Product included:",
+    "summaryFormat": "Format:",
+    "summaryProduct": "Product:",
+    "summaryFile": "File:",
+    "fields": {
+      "firstName": "First name *",
+      "lastName": "Last name *",
+      "email": "Email *",
+      "phone": "Phone",
+      "company": "Company / VAT ID",
+      "quantity": "Estimated quantity *",
+      "message": "Additional message"
+    }
+  },
+  "campaignsBlock": {
+    "title": "Campaigns that make an impact",
+    "desc": "Customise condoms, cases, PVC sleeves and flow packs for events, public health and prevention. Material people collect, use and remember.",
+    "cta": "Design your campaign",
+    "estuche": { "title": "Custom case", "desc": "350 gr matte, full colour front" },
+    "funda": { "title": "PVC sleeve", "desc": "9.5×6.5 cm, four-colour print" },
+    "flowPack": { "title": "Flow Pack", "desc": "Choose type: condom, gel, Sexydam or female" },
+    "custom": { "title": "Custom condoms", "desc": "3-strip packs or 144-unit boxes" }
+  },
+  "process": {
+    "title": "From idea to impact in 3 steps",
+    "subtitle": "A simple process for standard products or custom prevention campaigns.",
+    "steps": [
+      { "title": "Choose product", "desc": "Select the product or campaign format that best fits your needs." },
+      { "title": "Customise design", "desc": "Upload your logo and artwork to create unique branded packaging." },
+      { "title": "Receive or distribute", "desc": "Get a quote or confirm your order. Distribution across Europe." }
+    ]
+  },
+  "trust": {
+    "title": "Certified trust",
+    "badges": ["ISO 13485:2013", "ISO 9001:2008", "CE 0120 SGS", "Since 2002", "Barcelona"]
+  },
+  "partners": {
+    "viewAll": "View all partners →"
+  },
+  "about": {
+    "cta": "Our story"
+  },
+  "newsletter": {
+    "title": "Stay informed",
+    "desc": "Receive catalogue updates and medical product news.",
+    "placeholder": "you@email.com",
+    "submit": "Subscribe",
+    "success": "Thank you for subscribing!",
+    "error": "Error sending. Please try again.",
+    "quickContact": "Quick contact",
+    "contactForm": "Contact form"
+  },
+  "product": {
+    "addToCart": "Add"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "close": "Close cart",
+    "decrease": "Decrease quantity",
+    "increase": "Increase quantity",
+    "remove": "Remove",
+    "checkout": "Go to checkout",
+    "viewFull": "View full cart"
+  },
+  "cookies": {
+    "message": "We use technical cookies to improve your experience.",
+    "more": "More information",
+    "accept": "Accept"
+  },
+  "contact": {
+    "successTitle": "Message sent",
+    "successDesc": "Thank you for contacting us. We will reply shortly.",
+    "error": "Error sending. Please try again.",
+    "submit": "Send message",
+    "submitting": "Sending...",
+    "fields": {
+      "firstName": "First name *",
+      "lastName": "Last name *",
+      "email": "Email *",
+      "phone": "Phone",
+      "message": "Message *"
+    }
   }
 }

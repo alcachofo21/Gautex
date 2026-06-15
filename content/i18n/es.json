@@ -35,5 +35,113 @@
   "lang": {
     "switch": "English",
     "current": "ES"
+  },
+  "campaigns": {
+    "step1Title": "Paso 1: Elige el formato",
+    "step1Desc": "Selecciona un formato y revisa sus características antes de continuar.",
+    "step2Default": "Paso 2: Configura tu oferta",
+    "step2FlowPack": "Paso 2: Tipo de Flow Pack",
+    "step2Presentation": "Paso 2: Presentación y marca",
+    "step2Estuche": "Paso 2: Preservativo del estuche",
+    "step2Funda": "Paso 2: Preservativo de la funda",
+    "step2Product": "Paso 2: Producto base",
+    "step3Title": "Paso 3: Sube tu logo",
+    "step3Desc": "PNG, JPG o PDF. Máximo 5 MB.",
+    "step4Title": "Paso 4: Datos y cantidad",
+    "selectFile": "Seleccionar archivo",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "submit": "Solicitar presupuesto",
+    "submitting": "Enviando...",
+    "successTitle": "¡Solicitud enviada!",
+    "successDesc": "Hemos recibido tu solicitud de campaña personalizada. Nos pondremos en contacto contigo pronto.",
+    "error": "Error al enviar. Inténtalo de nuevo.",
+    "variantsLabel": "Variantes disponibles",
+    "presentationLabel": "Presentación",
+    "condomLabel": "Preservativo",
+    "condomBrandLabel": "Preservativo base",
+    "includedProduct": "Producto incluido:",
+    "summaryFormat": "Formato:",
+    "summaryProduct": "Producto:",
+    "summaryFile": "Archivo:",
+    "fields": {
+      "firstName": "Nombre *",
+      "lastName": "Apellidos *",
+      "email": "Email *",
+      "phone": "Teléfono",
+      "company": "Empresa / CIF",
+      "quantity": "Cantidad estimada *",
+      "message": "Mensaje adicional"
+    }
+  },
+  "campaignsBlock": {
+    "title": "Campañas que generan impacto",
+    "desc": "Personaliza preservativos, estuches, fundas PVC y flow packs para eventos, salud pública y prevención. Material que la gente recoge, usa y recuerda.",
+    "cta": "Diseña tu campaña",
+    "estuche": { "title": "Estuche personalizado", "desc": "350gr mate, frontal a todo color" },
+    "funda": { "title": "Funda PVC", "desc": "9,5×6,5 cm, cuatricromía" },
+    "flowPack": { "title": "Flow Pack", "desc": "Elige tipo: preservativo, gel, Sexydam o femenino" },
+    "custom": { "title": "Preservativos custom", "desc": "Tiras de 3 uds o cajas 144 uds" }
+  },
+  "process": {
+    "title": "De la idea al impacto en 3 pasos",
+    "subtitle": "Un proceso sencillo para productos estándar o campañas personalizadas de prevención.",
+    "steps": [
+      { "title": "Elige producto", "desc": "Selecciona el producto o formato de campaña que mejor se adapte a tus necesidades." },
+      { "title": "Personaliza diseño", "desc": "Sube tu logo y diseño para crear packaging único con tu marca." },
+      { "title": "Recibe o distribuye", "desc": "Recibe presupuesto o confirma pedido. Distribución a toda Europa." }
+    ]
+  },
+  "trust": {
+    "title": "Confianza certificada",
+    "badges": ["ISO 13485:2013", "ISO 9001:2008", "CE 0120 SGS", "Desde 2002", "Barcelona"]
+  },
+  "partners": {
+    "viewAll": "Ver todos los colaboradores →"
+  },
+  "about": {
+    "cta": "Conoce nuestra historia"
+  },
+  "newsletter": {
+    "title": "Mantente informado",
+    "desc": "Recibe novedades de catálogo y productos sanitarios.",
+    "placeholder": "tu@email.com",
+    "submit": "Suscribirse",
+    "success": "¡Gracias por suscribirte!",
+    "error": "Error al enviar. Inténtalo de nuevo.",
+    "quickContact": "Contacto rápido",
+    "contactForm": "Formulario de contacto"
+  },
+  "product": {
+    "addToCart": "Añadir"
+  },
+  "cart": {
+    "title": "Carrito",
+    "empty": "Tu carrito está vacío",
+    "close": "Cerrar carrito",
+    "decrease": "Reducir cantidad",
+    "increase": "Aumentar cantidad",
+    "remove": "Eliminar",
+    "checkout": "Ir a checkout",
+    "viewFull": "Ver carrito completo"
+  },
+  "cookies": {
+    "message": "Utilizamos cookies técnicas para mejorar su experiencia.",
+    "more": "Más información",
+    "accept": "Aceptar"
+  },
+  "contact": {
+    "successTitle": "Mensaje enviado",
+    "successDesc": "Gracias por contactarnos. Te responderemos pronto.",
+    "error": "Error al enviar. Inténtalo de nuevo.",
+    "submit": "Enviar mensaje",
+    "submitting": "Enviando...",
+    "fields": {
+      "firstName": "Nombre *",
+      "lastName": "Apellidos *",
+      "email": "Email *",
+      "phone": "Teléfono",
+      "message": "Mensaje *"
+    }
   }
 }

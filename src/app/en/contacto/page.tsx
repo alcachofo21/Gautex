@@ -20,7 +20,7 @@ export default function EnContactoPage() {
           The easiest way to reach us. Please fill in all required fields.
         </p>
         <div className="mt-12 grid gap-12 lg:grid-cols-2">
-          <ContactForm />
+          <ContactForm locale="en" />
           <div className="space-y-6">
             <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
               <iframe

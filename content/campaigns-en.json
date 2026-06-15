@@ -1,0 +1,113 @@
+{
+  "formats": [
+    {
+      "id": "estuche",
+      "name": "Case Model",
+      "description": "350 gr matte coated square case, full colour. Includes condom in original packaging. Fully customisable front panel.",
+      "details": [
+        "Square and rectangular fold",
+        "Full colour printing",
+        "Natural latex condom, transparent, lubricated, 55 mm",
+        "Inner flaps with instructions and seals"
+      ],
+      "icon": "package",
+      "image": "/images/campaigns/estuche.png",
+      "productIds": ["matrix", "viva"]
+    },
+    {
+      "id": "funda-pvc",
+      "name": "PVC Sleeve",
+      "description": "Fully customisable PVC wallet. Includes 1 or 2 condoms, optional lubricant and promotional card.",
+      "details": [
+        "Size: 9.5 x 6.5 cm",
+        "White PVC, 0.35 mm thick",
+        "Four-colour printing",
+        "Transparent inner bags 5.50 x 6.0 cm"
+      ],
+      "icon": "wallet",
+      "image": "/images/campaigns/funda-pvc.png",
+      "productIds": ["matrix", "viva"]
+    },
+    {
+      "id": "preservativos-personalizados",
+      "name": "Custom Condoms",
+      "description": "Matrix Condoms and Viva Condoms in custom campaign packaging.",
+      "details": [
+        "Customisable 3-condom strip boxes",
+        "Customisable 144-unit box",
+        "Natural latex, transparent, lubricated"
+      ],
+      "icon": "box",
+      "image": "/images/campaigns/condoms-custom.png",
+      "productIds": ["matrix", "viva"],
+      "presentationOptions": [
+        { "id": "tira-3", "name": "3-condom strip" },
+        { "id": "caja-144", "name": "144-unit box" }
+      ]
+    },
+    {
+      "id": "flow-pack",
+      "name": "Flow Pack",
+      "description": "Transparent polypropylene sachet with heat seal, inner product and customisable campaign leaflet.",
+      "details": [
+        "Customisable heat-sealed closure",
+        "Campaign leaflet with your logo",
+        "Choose content type for your campaign"
+      ],
+      "icon": "layers",
+      "image": "/images/campaigns/flow-pack.png",
+      "variants": [
+        {
+          "id": "preservativo",
+          "name": "Condom",
+          "description": "Flow pack with male condom + campaign leaflet.",
+          "details": [
+            "Natural latex condom",
+            "Leaflet with logo",
+            "Matrix Condoms or Viva Condoms"
+          ],
+          "productIds": ["matrix", "viva"]
+        },
+        {
+          "id": "gel",
+          "name": "Condom + Gel",
+          "description": "Flow pack with condom + water-based lubricant monodose + leaflet.",
+          "details": [
+            "Condom + Max Gel 6 ml",
+            "Water-based gel, oil-free",
+            "Matrix Condoms or Viva Condoms"
+          ],
+          "productIds": ["matrix", "viva"]
+        },
+        {
+          "id": "sexydam",
+          "name": "Sexydam",
+          "description": "Flow pack with Sexydam oral dam + lubricant + campaign leaflet.",
+          "details": [
+            "Single-use Sexydam",
+            "Colours and scents available",
+            "Lubricant included"
+          ],
+          "productIds": ["sexydam"]
+        },
+        {
+          "id": "femenino",
+          "name": "Female Condom",
+          "description": "Flow pack with FC2 female condom + custom leaflet.",
+          "details": [
+            "FC2 female condom",
+            "Custom campaign leaflet"
+          ],
+          "productIds": ["fc2"]
+        }
+      ]
+    }
+  ],
+  "baseProducts": [
+    { "id": "matrix", "name": "Matrix Condoms" },
+    { "id": "viva", "name": "Viva Condoms" },
+    { "id": "sexydam", "name": "Sexydam" },
+    { "id": "max-gel", "name": "Max Gel" },
+    { "id": "fc2", "name": "Female Condom FC2" }
+  ]
+}
