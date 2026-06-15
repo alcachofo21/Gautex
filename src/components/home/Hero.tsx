@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -48,10 +49,26 @@ export function Hero({ locale = "es" }: HeroProps) {
   }, [t.words.length]);
 
   const gridItems = [
-    { src: "/images/products/matrix-condoms.png", label: t.labels[0] },
-    { src: "/images/products/viva-condoms.png", label: t.labels[1] },
-    { src: "/images/products/max-gel.png", label: t.labels[2] },
-    { src: "/images/campaigns/estuche.png", label: t.labels[3] },
+    {
+      src: "/images/products/matrix-condoms.png",
+      label: t.labels[0],
+      href: localizedPath("/productos/preventivo/matrix-condoms", locale),
+    },
+    {
+      src: "/images/products/viva-condoms.png",
+      label: t.labels[1],
+      href: localizedPath("/productos/preventivo/viva-condoms", locale),
+    },
+    {
+      src: "/images/products/max-gel.png",
+      label: t.labels[2],
+      href: localizedPath("/productos/preventivo/max-gel", locale),
+    },
+    {
+      src: "/images/campaigns/estuche.png",
+      label: t.labels[3],
+      href: localizedPath("/campanas", locale),
+    },
   ];
 
   return (
@@ -65,7 +82,8 @@ export function Hero({ locale = "es" }: HeroProps) {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-text/90 via-text/75 to-text/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/25" />
+        <div className="absolute inset-y-0 left-0 w-full max-w-3xl bg-gradient-to-r from-primary/40 to-transparent lg:max-w-[55%]" />
       </div>
 
       <div className="container-page relative py-16 sm:py-24 lg:py-32">
@@ -118,12 +136,22 @@ export function Hero({ locale = "es" }: HeroProps) {
           <div className="hidden lg:block">
             <div className="grid grid-cols-2 gap-4">
               {gridItems.map((item) => (
-                <div key={item.label} className="overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-3 backdrop-blur">
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="group overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-3 backdrop-blur transition hover:border-accent/60 hover:bg-white/20 hover:shadow-lg"
+                >
                   <div className="relative aspect-square overflow-hidden rounded-xl">
-                    <Image src={item.src} alt={item.label} fill className="object-cover" sizes="200px" />
+                    <Image
+                      src={item.src}
+                      alt={item.label}
+                      fill
+                      className="object-cover transition duration-300 group-hover:scale-105"
+                      sizes="200px"
+                    />
                   </div>
-                  <p className="mt-2 text-center text-sm font-semibold text-white">{item.label}</p>
-                </div>
+                  <p className="mt-2 text-center text-sm font-semibold text-white group-hover:text-accent">{item.label}</p>
+                </Link>
               ))}
             </div>
           </div>
