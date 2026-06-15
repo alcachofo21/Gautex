@@ -1,11 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { FormatSelector } from "./FormatSelector";
-import { FoilPreview, type FoilSideState } from "./FoilPreview";
 import { Button } from "@/components/ui/Button";
 import { getCampaigns, getUi, type Locale } from "@/lib/locale";
 import type { CampaignFormat, ConfigOption, FlowPackVariant, FoilProductSpec } from "@/types";
+import type { FoilSideState } from "./FoilPreview";
+
+const FoilPreview = dynamic(
+  () => import("./FoilPreview").then((m) => m.FoilPreview),
+  { ssr: false, loading: () => <div className="h-64 animate-pulse rounded-2xl bg-surface" /> }
+);
 
 const emptyFoilSide = (): FoilSideState => ({
   file: null,
@@ -274,11 +280,12 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
       </div>
 
       {step === 1 && (
-        <div>
+        <div className="relative z-0">
           <h3 className="mb-2 font-display text-xl font-bold">{t.step1Title}</h3>
-          <p className="mb-4 text-sm text-text-muted">{t.step1Desc}</p>
+          <p className="mb-2 text-sm text-text-muted">{t.step1Desc}</p>
+          <p className="mb-4 text-sm font-medium text-primary">{t.step1Hint}</p>
           <FormatSelector formats={formats} selected={formatId} onSelect={handleFormatSelect} locale={locale} />
-          <div className="mt-6 flex justify-end">
+          <div className="sticky bottom-0 z-20 -mx-6 mt-6 flex justify-end border-t border-gray-100 bg-white/95 px-6 py-4 backdrop-blur-sm sm:-mx-8 sm:px-8">
             <Button disabled={!formatId} onClick={() => setStep(2)}>{t.next}</Button>
           </div>
         </div>

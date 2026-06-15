@@ -39,6 +39,7 @@
   "campaigns": {
     "step1Title": "Step 1: Choose a format",
     "step1Desc": "Select a format and review its features before continuing.",
+    "step1Hint": "Tap a card to select it. A blue check appears when active.",
     "step2Default": "Step 2: Configure your offer",
     "step2FlowPack": "Step 2: Flow Pack type",
     "step2Presentation": "Step 2: Presentation and brand",

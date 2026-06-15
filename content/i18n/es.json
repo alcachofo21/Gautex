@@ -39,6 +39,7 @@
   "campaigns": {
     "step1Title": "Paso 1: Elige el formato",
     "step1Desc": "Selecciona un formato y revisa sus características antes de continuar.",
+    "step1Hint": "Toca una tarjeta para seleccionarla. Verás un check azul cuando esté activa.",
     "step2Default": "Paso 2: Configura tu oferta",
     "step2FlowPack": "Paso 2: Tipo de Flow Pack",
     "step2Presentation": "Paso 2: Presentación y marca",
