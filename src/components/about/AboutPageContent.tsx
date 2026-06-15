@@ -25,12 +25,12 @@ const activityIcons = [Truck, Building2, Factory];
 
 const productLines = [
   {
-    image: "/images/categories/ginecologia.jpg",
+    image: "/images/categories/ginecologia.png",
     labelEs: "Ginecología",
     labelEn: "Gynaecology",
   },
   {
-    image: "/images/categories/preventivo.jpg",
+    image: "/images/categories/preventivo.png",
     labelEs: "Prevención",
     labelEn: "Prevention",
   },
