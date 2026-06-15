@@ -70,6 +70,11 @@ export function NewsletterContact({ locale = "es" }: NewsletterContactProps) {
                 {corporate.company.email}
               </a>
             </p>
+            <p className="mt-2 text-sm text-text-muted">
+              {corporate.company.street}, {corporate.company.floor}, {corporate.company.office}
+              <br />
+              {corporate.company.postalCode} {corporate.company.city}
+            </p>
             <Button href={localizedPath("/contacto", locale)} variant="secondary" className="mt-6 w-fit">
               {n.contactForm}
             </Button>

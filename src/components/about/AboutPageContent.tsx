@@ -80,9 +80,9 @@ export function AboutPageContent({ locale = "es" }: AboutPageContentProps) {
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
               {about.paragraphs[0]}
             </p>
-            <div className="mt-6 flex items-center gap-2 text-sm text-white/70">
+            <div className="mt-6 flex items-start gap-2 text-sm text-white/70">
               <MapPin className="h-4 w-4 shrink-0 text-accent" />
-              <span>{company.city}</span>
+              <span>{company.street}, {company.floor}, {company.office} — {company.postalCode} {company.city}</span>
             </div>
           </div>
 

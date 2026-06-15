@@ -4,7 +4,12 @@
     "slogan": "Spreading health",
     "founded": 2002,
     "city": "Barcelona",
-    "address": "Plaza Dr. Letamendi, N.º 37, 3rd Floor, 08007 Barcelona, Spain",
+    "street": "Calle Mallorca 1",
+    "floor": "2nd floor",
+    "office": "office 9",
+    "postalCode": "08014",
+    "address": "Calle Mallorca 1, 2nd floor, office 9, 08014 Barcelona, Spain",
+    "mapQuery": "Calle Mallorca 1, floor 2 office 9, 08014 Barcelona, Spain",
     "email": "info@gautex.com",
     "phone": "933-492-596",
     "fax": "931-878-722",
@@ -127,7 +132,7 @@
     ]
   },
   "legal": {
-    "privacy": "GAUTEX MÉDICA, S.L. (Tax ID B-63245678), located at Plaza Dr. Letamendi No. 37, 3rd Floor, 08007 Barcelona, is responsible for processing personal data submitted through this website and contact, quote and order forms.",
+    "privacy": "GAUTEX MÉDICA, S.L. (Tax ID B-63245678), located at Calle Mallorca 1, 2nd floor, office 9, 08014 Barcelona, is responsible for processing personal data submitted through this website and contact, quote and order forms.",
     "privacySections": [
       {
         "title": "Purpose of processing",

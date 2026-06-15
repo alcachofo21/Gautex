@@ -7,7 +7,7 @@ export const metadata = {
   description: "Contacta con Gautex Medica. Formulario, teléfono y horario de atención.",
 };
 
-const mapQuery = encodeURIComponent("Plaza Dr. Letamendi 37, 08007 Barcelona");
+const mapQuery = encodeURIComponent(corporate.company.mapQuery);
 
 export default function ContactoPage() {
   return (
@@ -52,8 +52,16 @@ export default function ContactoPage() {
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 h-5 w-5 text-primary" />
-                  <span>{corporate.company.address}</span>
+                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                  <div>
+                    <p className="font-medium text-text">{corporate.company.street}</p>
+                    <p className="text-text-muted">
+                      {corporate.company.floor}, {corporate.company.office}
+                    </p>
+                    <p className="text-text-muted">
+                      {corporate.company.postalCode} {corporate.company.city}
+                    </p>
+                  </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <Clock className="mt-0.5 h-5 w-5 text-primary" />

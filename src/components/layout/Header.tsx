@@ -33,13 +33,15 @@ export function Header() {
     <>
       <header className="sticky top-0 z-40 border-b border-gray-200 bg-white/95 backdrop-blur-md">
         <div className="container-page flex h-16 items-center justify-between gap-4 lg:h-20">
-          <Link href={localizedPath("/", locale)} className="flex items-center gap-2">
+          <Link href={localizedPath("/", locale)} className="flex shrink-0 items-center">
             <Image
               src="/images/logo/gautex.png"
               alt="Gautex Medica"
-              width={140}
-              height={40}
-              className="h-8 w-auto sm:h-10"
+              width={180}
+              height={180}
+              className="h-10 w-auto sm:h-12"
+              sizes="(max-width: 640px) 120px, 144px"
+              quality={95}
               priority
             />
           </Link>

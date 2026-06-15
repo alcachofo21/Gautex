@@ -52,9 +52,9 @@ const organizationSchema = {
   email: corporate.company.email,
   address: {
     "@type": "PostalAddress",
-    streetAddress: corporate.company.address,
-    addressLocality: "Barcelona",
-    postalCode: "08007",
+    streetAddress: `${corporate.company.street}, ${corporate.company.floor}, ${corporate.company.office}`,
+    addressLocality: corporate.company.city,
+    postalCode: corporate.company.postalCode,
     addressCountry: "ES",
   },
   foundingDate: "2002",
