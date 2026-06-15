@@ -42,6 +42,21 @@ export default function CampanasPage() {
                     <li key={d} className="text-xs text-text-muted">• {d}</li>
                   ))}
                 </ul>
+                {format.variants && format.variants.length > 0 && (
+                  <div className="mt-4 border-t border-gray-100 pt-4">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-primary">
+                      Variantes disponibles
+                    </p>
+                    <ul className="mt-2 space-y-2">
+                      {format.variants.map((variant) => (
+                        <li key={variant.id} className="text-sm">
+                          <span className="font-semibold text-text">{variant.name}</span>
+                          <span className="text-text-muted"> — {variant.description}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 </div>
               </div>
             ))}

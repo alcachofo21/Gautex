@@ -34,6 +34,14 @@ export interface CartItem {
   color: string;
 }
 
+export interface FlowPackVariant {
+  id: string;
+  name: string;
+  description: string;
+  details: string[];
+  productIds: string[];
+}
+
 export interface CampaignFormat {
   id: string;
   name: string;
@@ -41,4 +49,5 @@ export interface CampaignFormat {
   details: string[];
   icon: string;
   image?: string;
+  variants?: FlowPackVariant[];
 }

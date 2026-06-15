@@ -11,7 +11,7 @@
         "Lengüetas interiores con instrucciones y sellos"
       ],
       "icon": "package",
-      "image": "/images/campaigns/estuche.jpg"
+      "image": "/images/campaigns/estuche.png"
     },
     {
       "id": "funda-pvc",
@@ -24,7 +24,7 @@
         "Bolsas interiores transparentes 5,50 x 6,0 cm"
       ],
       "icon": "wallet",
-      "image": "/images/campaigns/funda-pvc.jpg"
+      "image": "/images/campaigns/funda-pvc.png"
     },
     {
       "id": "preservativos-personalizados",
@@ -36,39 +36,64 @@
         "Látex natural, transparente, lubricado"
       ],
       "icon": "box",
-      "image": "/images/campaigns/condoms-custom.jpg"
+      "image": "/images/campaigns/condoms-custom.png"
     },
     {
-      "id": "flow-pack-preservativo",
-      "name": "Flow Pack — Preservativo",
-      "description": "Bolsita polipropileno transparente con sellado térmico + preservativo + folleto de campaña.",
-      "details": ["Preservativo látex natural", "Folleto con logotipo", "Cierre termosellado personalizable"],
+      "id": "flow-pack",
+      "name": "Flow Pack",
+      "description": "Bolsita de polipropileno transparente con sellado térmico, producto interior y folleto de campaña personalizable.",
+      "details": [
+        "Cierre termosellado personalizable",
+        "Folleto con logotipo de campaña",
+        "Elige el tipo de contenido según tu campaña"
+      ],
       "icon": "layers",
-      "image": "/images/campaigns/flow-pack.jpg"
-    },
-    {
-      "id": "flow-pack-gel",
-      "name": "Flow Pack — Preservativo + Gel",
-      "description": "Flow pack con preservativo + gel lubricante monodosis base acuosa + folleto.",
-      "details": ["Preservativo + Max Gel 6ml", "Gel base acuosa sin aceites", "Folleto personalizado"],
-      "icon": "droplets",
-      "image": "/images/campaigns/flow-pack.jpg"
-    },
-    {
-      "id": "flow-pack-sexydam",
-      "name": "Flow Pack — Sexydam",
-      "description": "Flow pack con oral dam Sexydam + gel lubricante + folleto de campaña.",
-      "details": ["Sexydam mono uso", "Colores y aromas disponibles", "Gel lubricante incluido"],
-      "icon": "sparkles",
-      "image": "/images/campaigns/flow-pack.jpg"
-    },
-    {
-      "id": "flow-pack-femenino",
-      "name": "Flow Pack — Preservativo Femenino",
-      "description": "Flow pack con preservativo femenino FC2 nitrilo + folleto personalizado.",
-      "details": ["Preservativo femenino FC2", "Látex natural transparente", "Folleto de campaña"],
-      "icon": "heart",
-      "image": "/images/campaigns/flow-pack.jpg"
+      "image": "/images/campaigns/flow-pack.png",
+      "variants": [
+        {
+          "id": "preservativo",
+          "name": "Preservativo",
+          "description": "Flow pack con preservativo masculino + folleto de campaña.",
+          "details": [
+            "Preservativo látex natural",
+            "Folleto con logotipo",
+            "Matrix Condoms o Viva Condoms"
+          ],
+          "productIds": ["matrix", "viva"]
+        },
+        {
+          "id": "gel",
+          "name": "Preservativo + Gel",
+          "description": "Flow pack con preservativo + gel lubricante monodosis base acuosa + folleto.",
+          "details": [
+            "Preservativo + Max Gel 6 ml",
+            "Gel base acuosa sin aceites",
+            "Matrix Condoms o Viva Condoms"
+          ],
+          "productIds": ["matrix", "viva"]
+        },
+        {
+          "id": "sexydam",
+          "name": "Sexydam",
+          "description": "Flow pack con oral dam Sexydam + gel lubricante + folleto de campaña.",
+          "details": [
+            "Sexydam mono uso",
+            "Colores y aromas disponibles",
+            "Gel lubricante incluido"
+          ],
+          "productIds": ["sexydam"]
+        },
+        {
+          "id": "femenino",
+          "name": "Preservativo Femenino",
+          "description": "Flow pack con preservativo femenino FC2 + folleto personalizado.",
+          "details": [
+            "Preservativo femenino FC2",
+            "Folleto de campaña personalizado"
+          ],
+          "productIds": ["fc2"]
+        }
+      ]
     }
   ],
   "baseProducts": [
