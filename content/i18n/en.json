@@ -43,7 +43,7 @@
     "step2FlowPack": "Step 2: Flow Pack type",
     "step2Presentation": "Step 2: Presentation and brand",
     "step2Estuche": "Step 2: Condom for the case",
-    "step2Funda": "Step 2: Condom for the sleeve",
+    "step2Funda": "Step 2: Configure the PVC sleeve",
     "step2Product": "Step 2: Base product",
     "step3Title": "Step 3: Upload your logo",
     "step3Desc": "PNG, JPG or PDF. Max 5 MB.",
@@ -63,6 +63,7 @@
     "includedProduct": "Product included:",
     "summaryFormat": "Format:",
     "summaryProduct": "Product:",
+    "summaryOptions": "Options:",
     "summaryFile": "File:",
     "fields": {
       "firstName": "First name *",

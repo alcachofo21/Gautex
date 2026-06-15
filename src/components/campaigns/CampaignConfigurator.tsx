@@ -4,7 +4,44 @@ import { useState } from "react";
 import { FormatSelector } from "./FormatSelector";
 import { Button } from "@/components/ui/Button";
 import { getCampaigns, getUi, type Locale } from "@/lib/locale";
-import type { CampaignFormat, FlowPackVariant } from "@/types";
+import type { CampaignFormat, ConfigOption, FlowPackVariant } from "@/types";
+
+function buildConfigSummary(
+  options: ConfigOption[] | undefined,
+  selections: Record<string, string | string[]>
+): string {
+  if (!options?.length) return "";
+  return options
+    .map((opt) => {
+      const sel = selections[opt.id];
+      if (opt.type === "single" && typeof sel === "string") {
+        const choice = opt.choices.find((c) => c.id === sel);
+        return choice ? `${opt.label}: ${choice.name}` : "";
+      }
+      if (opt.type === "multiple" && Array.isArray(sel) && sel.length) {
+        const names = sel
+          .map((id) => opt.choices.find((c) => c.id === id)?.name)
+          .filter(Boolean);
+        return names.length ? `${opt.label}: ${names.join(", ")}` : "";
+      }
+      return "";
+    })
+    .filter(Boolean)
+    .join(" · ");
+}
+
+function isConfigValid(
+  options: ConfigOption[] | undefined,
+  selections: Record<string, string | string[]>
+): boolean {
+  if (!options?.length) return true;
+  return options.every((opt) => {
+    if (!opt.required) return true;
+    const sel = selections[opt.id];
+    if (opt.type === "single") return typeof sel === "string" && sel.length > 0;
+    return Array.isArray(sel) && sel.length > 0;
+  });
+}
 
 interface CampaignConfiguratorProps {
   locale?: Locale;
@@ -22,6 +59,7 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
   const [variantId, setVariantId] = useState<string | null>(null);
   const [presentationId, setPresentationId] = useState<string | null>(null);
   const [productId, setProductId] = useState<string | null>(null);
+  const [configSelections, setConfigSelections] = useState<Record<string, string | string[]>>({});
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoName, setLogoName] = useState("");
   const [form, setForm] = useState({
@@ -42,6 +80,8 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
   const hasVariants = Boolean(selectedFormat?.variants?.length);
   const hasPresentations = Boolean(selectedFormat?.presentationOptions?.length);
 
+  const hasConfigOptions = Boolean(selectedFormat?.configOptions?.length);
+
   const availableProducts = hasVariants && selectedVariant
     ? baseProducts.filter((p) => selectedVariant.productIds.includes(p.id))
     : baseProducts.filter((p) => selectedFormat?.productIds?.includes(p.id) ?? false);
@@ -51,6 +91,7 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
     setVariantId(null);
     setPresentationId(null);
     setProductId(null);
+    setConfigSelections({});
   };
 
   const handleVariantSelect = (variant: FlowPackVariant) => {
@@ -58,11 +99,27 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
     setProductId(variant.productIds.length === 1 ? variant.productIds[0] : null);
   };
 
-  const canProceedStep2 = hasVariants
+  const setSingleConfig = (optionId: string, choiceId: string) => {
+    setConfigSelections((prev) => ({ ...prev, [optionId]: choiceId }));
+  };
+
+  const toggleMultipleConfig = (optionId: string, choiceId: string) => {
+    setConfigSelections((prev) => {
+      const current = Array.isArray(prev[optionId]) ? (prev[optionId] as string[]) : [];
+      const next = current.includes(choiceId)
+        ? current.filter((id) => id !== choiceId)
+        : [...current, choiceId];
+      return { ...prev, [optionId]: next };
+    });
+  };
+
+  const canProceedStep2 = (hasVariants
     ? Boolean(variantId && productId)
     : hasPresentations
       ? Boolean(presentationId && productId)
-      : Boolean(productId);
+      : Boolean(productId)) && isConfigValid(selectedFormat?.configOptions, configSelections);
+
+  const configSummary = buildConfigSummary(selectedFormat?.configOptions, configSelections);
 
   const formatLabel = selectedFormat
     ? [selectedFormat.name, selectedVariant?.name, selectedPresentation?.name].filter(Boolean).join(" — ")
@@ -119,6 +176,7 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
           presentationId: presentationId || undefined,
           presentationName: selectedPresentation?.name,
           productId,
+          configOptionsSummary: configSummary || undefined,
           logoFileName: logoName,
           logoUrl,
           ...form,
@@ -210,6 +268,54 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
               </div>
             </div>
           )}
+
+          {hasConfigOptions && selectedFormat.configOptions?.map((opt) => (
+            <div key={opt.id} className="mb-6">
+              <h4 className="mb-3 font-semibold text-text">
+                {opt.label}
+                {opt.required ? " *" : ""}
+              </h4>
+              {opt.type === "single" ? (
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {opt.choices.map((choice) => (
+                    <button
+                      key={choice.id}
+                      type="button"
+                      onClick={() => setSingleConfig(opt.id, choice.id)}
+                      className={`rounded-xl border-2 p-4 text-left font-semibold transition-all ${
+                        configSelections[opt.id] === choice.id
+                          ? "border-primary bg-primary/5 shadow-sm"
+                          : "border-gray-200 hover:border-primary/40"
+                      }`}
+                    >
+                      {choice.name}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {opt.choices.map((choice) => {
+                    const selected = Array.isArray(configSelections[opt.id])
+                      && (configSelections[opt.id] as string[]).includes(choice.id);
+                    return (
+                      <button
+                        key={choice.id}
+                        type="button"
+                        onClick={() => toggleMultipleConfig(opt.id, choice.id)}
+                        className={`rounded-xl border-2 p-4 text-left transition-all ${
+                          selected
+                            ? "border-primary bg-primary/5 shadow-sm"
+                            : "border-gray-200 hover:border-primary/40"
+                        }`}
+                      >
+                        <span className="font-semibold">{choice.name}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          ))}
 
           {!hasVariants && availableProducts.length > 0 && (
             <div>
@@ -313,6 +419,7 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
             <div className="mt-4 rounded-xl bg-surface p-4 text-sm">
               <p><strong>{t.summaryFormat}</strong> {formatLabel}</p>
               <p><strong>{t.summaryProduct}</strong> {baseProducts.find((p) => p.id === productId)?.name}</p>
+              {configSummary && <p><strong>{t.summaryOptions}</strong> {configSummary}</p>}
               {logoName && <p><strong>{t.summaryFile}</strong> {logoName}</p>}
             </div>
           )}

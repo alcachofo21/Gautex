@@ -26,7 +26,29 @@
       ],
       "icon": "wallet",
       "image": "/images/campaigns/funda-pvc.png",
-      "productIds": ["matrix", "viva"]
+      "productIds": ["matrix", "viva"],
+      "configOptions": [
+        {
+          "id": "condom-qty",
+          "label": "Number of condoms",
+          "type": "single",
+          "required": true,
+          "choices": [
+            { "id": "qty-1", "name": "1 condom" },
+            { "id": "qty-2", "name": "2 condoms" }
+          ]
+        },
+        {
+          "id": "optional-addons",
+          "label": "Optional add-ons",
+          "type": "multiple",
+          "required": false,
+          "choices": [
+            { "id": "lubricant", "name": "Lubricant gel (Max Gel)" },
+            { "id": "promo-card", "name": "Promotional card" }
+          ]
+        }
+      ]
     },
     {
       "id": "preservativos-personalizados",

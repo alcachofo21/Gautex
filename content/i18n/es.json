@@ -43,7 +43,7 @@
     "step2FlowPack": "Paso 2: Tipo de Flow Pack",
     "step2Presentation": "Paso 2: Presentación y marca",
     "step2Estuche": "Paso 2: Preservativo del estuche",
-    "step2Funda": "Paso 2: Preservativo de la funda",
+    "step2Funda": "Paso 2: Configura la cartera PVC",
     "step2Product": "Paso 2: Producto base",
     "step3Title": "Paso 3: Sube tu logo",
     "step3Desc": "PNG, JPG o PDF. Máximo 5 MB.",
@@ -63,6 +63,7 @@
     "includedProduct": "Producto incluido:",
     "summaryFormat": "Formato:",
     "summaryProduct": "Producto:",
+    "summaryOptions": "Opciones:",
     "summaryFile": "Archivo:",
     "fields": {
       "firstName": "Nombre *",

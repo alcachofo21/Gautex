@@ -74,6 +74,7 @@ export function quoteEmailHtml(data: Record<string, unknown>): string {
     <p><strong>CIF:</strong> ${data.cif || "—"}</p>
     <p><strong>Sector:</strong> ${data.sector || "—"}</p>
     ${data.formatName ? `<p><strong>Formato campaña:</strong> ${data.formatName}</p>` : ""}
+    ${data.configOptionsSummary ? `<p><strong>Opciones:</strong> ${data.configOptionsSummary}</p>` : ""}
     ${data.quantity ? `<p><strong>Cantidad:</strong> ${data.quantity}</p>` : ""}
     ${data.logoUrl ? `<p><strong>Logo:</strong> <a href="${data.logoUrl}">${data.logoFileName || data.logoUrl}</a></p>` : ""}
     ${items ? `<p><strong>Productos:</strong></p><ul>${items}</ul>` : ""}

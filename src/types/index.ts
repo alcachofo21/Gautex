@@ -47,6 +47,19 @@ export interface FlowPackVariant {
   productIds: string[];
 }
 
+export interface ConfigOptionChoice {
+  id: string;
+  name: string;
+}
+
+export interface ConfigOption {
+  id: string;
+  label: string;
+  type: "single" | "multiple";
+  required?: boolean;
+  choices: ConfigOptionChoice[];
+}
+
 export interface CampaignFormat {
   id: string;
   name: string;
@@ -57,4 +70,5 @@ export interface CampaignFormat {
   productIds?: string[];
   presentationOptions?: PresentationOption[];
   variants?: FlowPackVariant[];
+  configOptions?: ConfigOption[];
 }

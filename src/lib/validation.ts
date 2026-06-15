@@ -30,6 +30,7 @@ export const quoteSchema = z.object({
   presentationId: z.string().max(50).optional(),
   presentationName: z.string().max(200).optional(),
   productId: z.string().max(50).optional(),
+  configOptionsSummary: z.string().max(500).optional(),
   logoFileName: z.string().max(300).optional(),
   logoUrl: z.string().max(500).optional(),
   items: z
