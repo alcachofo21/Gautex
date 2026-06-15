@@ -65,6 +65,28 @@
       "presentationOptions": [
         { "id": "tira-3", "name": "Tira de 3 preservativos" },
         { "id": "caja-144", "name": "Caja de 144 unidades" }
+      ],
+      "configOptions": [
+        {
+          "id": "foil-sides",
+          "label": "Caras del foil a personalizar",
+          "type": "single",
+          "required": true,
+          "choices": [
+            { "id": "front-only", "name": "Solo frontal" },
+            { "id": "front-back", "name": "Frontal y reverso" }
+          ]
+        },
+        {
+          "id": "foil-finish",
+          "label": "Acabado del envase",
+          "type": "single",
+          "required": true,
+          "choices": [
+            { "id": "matte", "name": "Mate metalizado" },
+            { "id": "gloss", "name": "Brillante" }
+          ]
+        }
       ]
     },
     {
@@ -131,5 +153,25 @@
     { "id": "sexydam", "name": "Sexydam" },
     { "id": "max-gel", "name": "Max Gel" },
     { "id": "fc2", "name": "Preservativo Femenino FC2" }
-  ]
+  ],
+  "foilSpecs": {
+    "matrix": {
+      "widthMm": 54,
+      "lengthMm": "196-200",
+      "thicknessMicron": 72,
+      "lubricantMg": "500-550 mg",
+      "wrapper": "Aluminio y plástico",
+      "deposit": true,
+      "material": "Látex natural transparente, lubricado"
+    },
+    "viva": {
+      "widthMm": 54,
+      "lengthMm": "195-205",
+      "thicknessMicron": 73,
+      "lubricantMg": "475-550 mg",
+      "wrapper": "Aluminio y plástico",
+      "deposit": true,
+      "material": "Látex natural transparente, lubricado"
+    }
+  }
 }

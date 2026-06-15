@@ -77,6 +77,8 @@ export function quoteEmailHtml(data: Record<string, unknown>): string {
     ${data.configOptionsSummary ? `<p><strong>Opciones:</strong> ${data.configOptionsSummary}</p>` : ""}
     ${data.quantity ? `<p><strong>Cantidad:</strong> ${data.quantity}</p>` : ""}
     ${data.logoUrl ? `<p><strong>Logo:</strong> <a href="${data.logoUrl}">${data.logoFileName || data.logoUrl}</a></p>` : ""}
+    ${data.foilFrontUrl ? `<p><strong>Foil frontal:</strong> <a href="${data.foilFrontUrl}">${data.foilFrontFileName || data.foilFrontUrl}</a></p>` : ""}
+    ${data.foilBackUrl ? `<p><strong>Foil reverso:</strong> <a href="${data.foilBackUrl}">${data.foilBackFileName || data.foilBackUrl}</a></p>` : ""}
     ${items ? `<p><strong>Productos:</strong></p><ul>${items}</ul>` : ""}
     <p><strong>Mensaje:</strong></p>
     <p>${String(data.message || "—").replace(/\n/g, "<br>")}</p>

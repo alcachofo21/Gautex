@@ -72,3 +72,19 @@ export interface CampaignFormat {
   variants?: FlowPackVariant[];
   configOptions?: ConfigOption[];
 }
+
+export interface FoilProductSpec {
+  widthMm: number;
+  lengthMm: string;
+  thicknessMicron: number;
+  lubricantMg: string;
+  wrapper: string;
+  deposit: boolean;
+  material: string;
+}
+
+export interface CampaignData {
+  formats: CampaignFormat[];
+  baseProducts: { id: string; name: string }[];
+  foilSpecs?: Record<string, FoilProductSpec>;
+}

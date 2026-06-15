@@ -2,9 +2,17 @@
 
 import { useState } from "react";
 import { FormatSelector } from "./FormatSelector";
+import { FoilPreview, type FoilSideState } from "./FoilPreview";
 import { Button } from "@/components/ui/Button";
 import { getCampaigns, getUi, type Locale } from "@/lib/locale";
-import type { CampaignFormat, ConfigOption, FlowPackVariant } from "@/types";
+import type { CampaignFormat, ConfigOption, FlowPackVariant, FoilProductSpec } from "@/types";
+
+const emptyFoilSide = (): FoilSideState => ({
+  file: null,
+  fileName: "",
+  previewUrl: null,
+  scale: 1,
+});
 
 function buildConfigSummary(
   options: ConfigOption[] | undefined,
@@ -53,6 +61,7 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
   const campaignData = getCampaigns(locale);
   const formats = campaignData.formats as CampaignFormat[];
   const baseProducts = campaignData.baseProducts;
+  const foilSpecs = (campaignData as { foilSpecs?: Record<string, FoilProductSpec> }).foilSpecs;
 
   const [step, setStep] = useState(1);
   const [formatId, setFormatId] = useState<string | null>(null);
@@ -62,6 +71,9 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
   const [configSelections, setConfigSelections] = useState<Record<string, string | string[]>>({});
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoName, setLogoName] = useState("");
+  const [foilFront, setFoilFront] = useState<FoilSideState>(emptyFoilSide);
+  const [foilBack, setFoilBack] = useState<FoilSideState>(emptyFoilSide);
+  const [activeFoilSide, setActiveFoilSide] = useState<"front" | "back">("front");
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -81,6 +93,13 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
   const hasPresentations = Boolean(selectedFormat?.presentationOptions?.length);
 
   const hasConfigOptions = Boolean(selectedFormat?.configOptions?.length);
+  const isCustomCondoms = selectedFormat?.id === "preservativos-personalizados";
+  const foilSidesMode =
+    configSelections["foil-sides"] === "front-back" ? "front-back" : "front-only";
+  const foilFinish =
+    configSelections["foil-finish"] === "gloss" ? "gloss" : "matte";
+  const selectedProduct = baseProducts.find((p) => p.id === productId);
+  const productFoilSpec = productId && foilSpecs ? foilSpecs[productId] : null;
 
   const availableProducts = hasVariants && selectedVariant
     ? baseProducts.filter((p) => selectedVariant.productIds.includes(p.id))
@@ -92,6 +111,9 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
     setPresentationId(null);
     setProductId(null);
     setConfigSelections({});
+    setFoilFront(emptyFoilSide());
+    setFoilBack(emptyFoilSide());
+    setActiveFoilSide("front");
   };
 
   const handleVariantSelect = (variant: FlowPackVariant) => {
@@ -119,6 +141,13 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
       ? Boolean(presentationId && productId)
       : Boolean(productId)) && isConfigValid(selectedFormat?.configOptions, configSelections);
 
+  const canProceedStep3 = isCustomCondoms
+    ? Boolean(
+        foilFront.file &&
+          (foilSidesMode === "front-only" || foilBack.file)
+      )
+    : true;
+
   const configSummary = buildConfigSummary(selectedFormat?.configOptions, configSelections);
 
   const formatLabel = selectedFormat
@@ -128,7 +157,7 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
   const step2Title = (() => {
     if (!selectedFormat) return t.step2Default;
     if (hasVariants) return t.step2FlowPack;
-    if (selectedFormat.id === "preservativos-personalizados") return t.step2Presentation;
+    if (selectedFormat.id === "preservativos-personalizados") return t.step2Foil;
     if (selectedFormat.id === "estuche") return t.step2Estuche;
     if (selectedFormat.id === "funda-pvc") return t.step2Funda;
     return t.step2Product;
@@ -151,17 +180,29 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
     }
   };
 
+  const uploadFile = async (file: File): Promise<string | undefined> => {
+    const fd = new FormData();
+    fd.append("file", file);
+    const uploadRes = await fetch("/api/upload", { method: "POST", body: fd });
+    if (!uploadRes.ok) throw new Error("upload failed");
+    const uploadData = await uploadRes.json();
+    return uploadData.url || uploadData.path;
+  };
+
   const submit = async () => {
     setStatus("loading");
     try {
       let logoUrl: string | undefined;
-      if (logoFile) {
-        const fd = new FormData();
-        fd.append("file", logoFile);
-        const uploadRes = await fetch("/api/upload", { method: "POST", body: fd });
-        if (!uploadRes.ok) throw new Error("upload failed");
-        const uploadData = await uploadRes.json();
-        logoUrl = uploadData.url || uploadData.path;
+      let foilFrontUrl: string | undefined;
+      let foilBackUrl: string | undefined;
+
+      if (isCustomCondoms) {
+        if (foilFront.file) foilFrontUrl = await uploadFile(foilFront.file);
+        if (foilSidesMode === "front-back" && foilBack.file) {
+          foilBackUrl = await uploadFile(foilBack.file);
+        }
+      } else if (logoFile) {
+        logoUrl = await uploadFile(logoFile);
       }
 
       const res = await fetch("/api/quote", {
@@ -177,8 +218,12 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
           presentationName: selectedPresentation?.name,
           productId,
           configOptionsSummary: configSummary || undefined,
-          logoFileName: logoName,
+          logoFileName: logoName || undefined,
           logoUrl,
+          foilFrontFileName: foilFront.fileName || undefined,
+          foilFrontUrl,
+          foilBackFileName: foilBack.fileName || undefined,
+          foilBackUrl,
           ...form,
         }),
       });
@@ -374,16 +419,39 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
 
       {step === 3 && (
         <div>
-          <h3 className="mb-4 font-display text-xl font-bold">{t.step3Title}</h3>
-          <p className="mb-4 text-sm text-text-muted">{t.step3Desc}</p>
-          <label className="flex min-h-[120px] cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 p-8 hover:border-primary">
-            <input type="file" accept=".png,.pdf,.jpg,.jpeg" onChange={handleFile} className="hidden" />
-            <span className="font-semibold text-primary">{t.selectFile}</span>
-            {logoName && <span className="mt-2 text-sm text-text-muted">{logoName}</span>}
-          </label>
+          <h3 className="mb-4 font-display text-xl font-bold">
+            {isCustomCondoms ? t.step3FoilTitle : t.step3Title}
+          </h3>
+          <p className="mb-4 text-sm text-text-muted">
+            {isCustomCondoms ? t.step3FoilDesc : t.step3Desc}
+          </p>
+
+          {isCustomCondoms && productId ? (
+            <FoilPreview
+              productSpec={productFoilSpec}
+              productName={selectedProduct?.name ?? ""}
+              finish={foilFinish}
+              sidesMode={foilSidesMode}
+              activeSide={activeFoilSide}
+              front={foilFront}
+              back={foilBack}
+              locale={locale}
+              labels={t.foil}
+              onActiveSideChange={setActiveFoilSide}
+              onFrontChange={(patch) => setFoilFront((prev) => ({ ...prev, ...patch }))}
+              onBackChange={(patch) => setFoilBack((prev) => ({ ...prev, ...patch }))}
+            />
+          ) : (
+            <label className="flex min-h-[120px] cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 p-8 hover:border-primary">
+              <input type="file" accept=".png,.pdf,.jpg,.jpeg" onChange={handleFile} className="hidden" />
+              <span className="font-semibold text-primary">{t.selectFile}</span>
+              {logoName && <span className="mt-2 text-sm text-text-muted">{logoName}</span>}
+            </label>
+          )}
+
           <div className="mt-6 flex justify-between">
             <Button variant="ghost" onClick={() => setStep(2)}>{t.back}</Button>
-            <Button onClick={() => setStep(4)}>{t.next}</Button>
+            <Button disabled={!canProceedStep3} onClick={() => setStep(4)}>{t.next}</Button>
           </div>
         </div>
       )}
@@ -421,6 +489,8 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
               <p><strong>{t.summaryProduct}</strong> {baseProducts.find((p) => p.id === productId)?.name}</p>
               {configSummary && <p><strong>{t.summaryOptions}</strong> {configSummary}</p>}
               {logoName && <p><strong>{t.summaryFile}</strong> {logoName}</p>}
+              {foilFront.fileName && <p><strong>{t.summaryFoilFront}</strong> {foilFront.fileName}</p>}
+              {foilBack.fileName && <p><strong>{t.summaryFoilBack}</strong> {foilBack.fileName}</p>}
             </div>
           )}
           {status === "error" && <p className="mt-4 text-sm text-red-500">{t.error}</p>}

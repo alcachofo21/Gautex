@@ -33,6 +33,10 @@ export const quoteSchema = z.object({
   configOptionsSummary: z.string().max(500).optional(),
   logoFileName: z.string().max(300).optional(),
   logoUrl: z.string().max(500).optional(),
+  foilFrontFileName: z.string().max(300).optional(),
+  foilFrontUrl: z.string().max(500).optional(),
+  foilBackFileName: z.string().max(300).optional(),
+  foilBackUrl: z.string().max(500).optional(),
   items: z
     .array(
       z.object({
