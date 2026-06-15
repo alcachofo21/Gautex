@@ -32,15 +32,15 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-gray-200 bg-white/95 backdrop-blur-md">
-        <div className="container-page flex h-16 items-center justify-between gap-4 lg:h-20">
+        <div className="container-page flex h-20 items-center justify-between gap-4 lg:h-24">
           <Link href={localizedPath("/", locale)} className="flex shrink-0 items-center">
             <Image
               src="/images/logo/gautex.png"
               alt="Gautex Medica"
-              width={180}
-              height={180}
-              className="h-10 w-auto sm:h-12"
-              sizes="(max-width: 640px) 120px, 144px"
+              width={256}
+              height={256}
+              className="h-14 w-auto sm:h-16 lg:h-[4.5rem]"
+              sizes="(max-width: 640px) 160px, 200px"
               quality={95}
               priority
             />

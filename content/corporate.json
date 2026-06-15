@@ -4,12 +4,12 @@
     "slogan": "Repartiendo salud",
     "founded": 2002,
     "city": "Barcelona",
-    "street": "Calle Mallorca 1",
-    "floor": "planta 2",
-    "office": "despacho 9",
+    "street": "Calle Mallorca 1-23",
+    "floor": "Planta 2",
+    "office": "Despacho 9",
     "postalCode": "08014",
-    "address": "Calle Mallorca 1, planta 2, despacho 9, 08014 Barcelona",
-    "mapQuery": "Calle Mallorca 1, planta 2 despacho 9, 08014 Barcelona",
+    "address": "Calle Mallorca 1-23, Planta 2, Despacho 9, 08014 Barcelona",
+    "mapQuery": "Edificio IMSA Inmobiliaria Motormovil, Calle Mallorca 1, 08014 Barcelona",
     "email": "info@gautex.com",
     "phone": "933-492-596",
     "fax": "931-878-722",
@@ -132,7 +132,7 @@
     ]
   },
   "legal": {
-    "privacy": "GAUTEX MÉDICA, S.L. (CIF B-63245678), con domicilio en Calle Mallorca 1, planta 2, despacho 9, 08014 Barcelona, es responsable del tratamiento de los datos personales facilitados a través de este sitio web y de los formularios de contacto, presupuesto y pedido.",
+    "privacy": "GAUTEX MÉDICA, S.L. (CIF B-63245678), con domicilio en Calle Mallorca 1-23, Planta 2, Despacho 9, 08014 Barcelona, es responsable del tratamiento de los datos personales facilitados a través de este sitio web y de los formularios de contacto, presupuesto y pedido.",
     "privacySections": [
       {
         "title": "Finalidad del tratamiento",

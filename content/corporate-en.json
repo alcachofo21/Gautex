@@ -4,12 +4,12 @@
     "slogan": "Spreading health",
     "founded": 2002,
     "city": "Barcelona",
-    "street": "Calle Mallorca 1",
-    "floor": "2nd floor",
-    "office": "office 9",
+    "street": "Calle Mallorca 1-23",
+    "floor": "2nd Floor",
+    "office": "Office 9",
     "postalCode": "08014",
-    "address": "Calle Mallorca 1, 2nd floor, office 9, 08014 Barcelona, Spain",
-    "mapQuery": "Calle Mallorca 1, floor 2 office 9, 08014 Barcelona, Spain",
+    "address": "Calle Mallorca 1-23, 2nd Floor, Office 9, 08014 Barcelona, Spain",
+    "mapQuery": "Edificio IMSA Inmobiliaria Motormovil, Calle Mallorca 1, 08014 Barcelona, Spain",
     "email": "info@gautex.com",
     "phone": "933-492-596",
     "fax": "931-878-722",
@@ -132,7 +132,7 @@
     ]
   },
   "legal": {
-    "privacy": "GAUTEX MÉDICA, S.L. (Tax ID B-63245678), located at Calle Mallorca 1, 2nd floor, office 9, 08014 Barcelona, is responsible for processing personal data submitted through this website and contact, quote and order forms.",
+    "privacy": "GAUTEX MÉDICA, S.L. (Tax ID B-63245678), located at Calle Mallorca 1-23, 2nd Floor, Office 9, 08014 Barcelona, is responsible for processing personal data submitted through this website and contact, quote and order forms.",
     "privacySections": [
       {
         "title": "Purpose of processing",
