@@ -44,12 +44,14 @@ $body = @{
     autoDeploy = "yes"
     branch     = $Branch
     serviceDetails = @{
-        env              = "node"
+        runtime          = "node"
         plan             = "free"
         region           = "frankfurt"
-        buildCommand     = "npm ci && npm run build"
-        startCommand     = "npm start"
         healthCheckPath  = "/"
+        envSpecificDetails = @{
+            buildCommand = "NODE_ENV=development npm ci && npm run build"
+            startCommand = "npm start"
+        }
         envVars          = @(
             @{ key = "NODE_ENV"; value = "production" }
             @{ key = "NPM_CONFIG_PRODUCTION"; value = "false" }
