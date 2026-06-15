@@ -22,27 +22,89 @@
       "La filosofía de nuestra compañía es ofrecer los mejores productos sanitarios y farmacéuticos con las máximas garantías para los pacientes y usuarios, garantizando unos controles de calidad exhaustivos en cada uno de los productos que fabricamos o comercializamos en EUROPA.",
       "GAUTEX MÉDICA, S.L. está compuesta por un equipo joven, emprendedor y preocupado por ofrecer un servicio profesional a sus clientes."
     ],
-    "values": ["Calidad", "Confianza", "Profesionalidad", "Innovación"]
+    "teamParagraph": "Nuestro equipo tiene el objetivo de que nuestras actuaciones estén motivadas por la ambición de conseguir que las personas con las que tratamos confíen en lo que hacemos, para crear así la base para una colaboración duradera.",
+    "missionQuote": "Por ese motivo podemos afirmar, como indica nuestro eslogan, que nuestro trabajo consiste en «repartir salud».",
+    "values": ["Calidad", "Confianza", "Profesionalidad", "Innovación"],
+    "stats": [
+      { "value": "2002", "label": "Fundación en Barcelona" },
+      { "value": "0120", "label": "Organismo notificador SGS" },
+      { "value": "ISO", "label": "13485 · 9001 certificados" },
+      { "value": "EU", "label": "Mercado europeo" }
+    ],
+    "activities": [
+      {
+        "title": "Distribución",
+        "description": "Productos sanitarios para farmacia, hospital y distribución profesional en toda Europa."
+      },
+      {
+        "title": "Comercialización",
+        "description": "Líneas de ginecología, prevención y material sanitario para el sector farmacéutico y hospitalario."
+      },
+      {
+        "title": "Fabricación",
+        "description": "Desarrollo y fabricación de productos sanitarios bajo sistemas de gestión certificados."
+      }
+    ]
   },
   "quality": {
     "title": "Calidad y certificaciones",
     "subtitle": "¿Por qué confiar en nosotros?",
+    "intro": "Contamos con certificaciones que acreditan unos estándares de calidad ejemplares en la distribución de equipos médicos. Nuestro sistema de gestión está certificado y auditado por el Organismo Notificador nº 0120 (SGS).",
+    "badges": ["ISO 9001:2008", "ISO 13485:2013", "EN ISO 13485:2012", "ON 0120 · SGS"],
     "certifications": [
       {
         "name": "ISO 9001:2008",
-        "description": "Distribución de equipos médicos: productos de ginecología, gel lubricante íntimo, cubre sondas, tests de embarazo y tests de drogas."
+        "scope": "Sistema de gestión de la calidad",
+        "description": "Distribución de equipos médicos: productos de ginecología, gel lubricante íntimo, cubre sondas de ultrasonidos, tests de embarazo y tests de drogas."
       },
       {
         "name": "ISO 13485:2013",
+        "scope": "Productos sanitarios",
         "description": "Distribución de equipos médicos: productos de ginecología y productos dedicados a la prevención."
       },
       {
         "name": "EN ISO 13485:2012",
-        "description": "Sistema de gestión de la calidad para productos sanitarios."
+        "scope": "Productos sanitarios",
+        "description": "Sistema de gestión de la calidad para productos sanitarios en el marco de la normativa europea."
+      }
+    ],
+    "notifiedBody": {
+      "title": "Organismo Notificador nº 0120 (SGS)",
+      "description": "La compañía cumple con las normas internacionales de calidad, siendo certificada y auditada por el Organismo Notificador nº 0120 SGS. Garantizamos controles de calidad exhaustivos en cada producto que fabricamos o comercializamos en Europa."
+    },
+    "ceNote": "Estamos trabajando para disponer del Certificado CE de acuerdo con la Directiva 93/42/CEE, emitido por el mismo Organismo Notificador nº 0120 SGS.",
+    "pillarsTitle": "Compromiso regulatorio",
+    "pillars": [
+      {
+        "title": "Sistema de gestión certificado",
+        "description": "Procesos de distribución de productos sanitarios bajo normas ISO 9001 e ISO 13485, auditados periódicamente."
       },
       {
-        "name": "CE 0120 SGS",
-        "description": "Organismo notificador nº 0120 SGS. Certificación europea de productos sanitarios."
+        "title": "Normativa europea",
+        "description": "Distribución conforme al marco regulatorio de productos sanitarios e IVD aplicable en la Unión Europea."
+      },
+      {
+        "title": "Trazabilidad y control",
+        "description": "Controles de calidad exhaustivos en cada producto que fabricamos o comercializamos, con trazabilidad de lote y proveedor."
+      }
+    ],
+    "processTitle": "Nuestro proceso de calidad",
+    "processSteps": [
+      {
+        "title": "Homologación de proveedores",
+        "description": "Selección y evaluación de fabricantes conforme a requisitos del sistema de gestión de la calidad."
+      },
+      {
+        "title": "Control en recepción",
+        "description": "Verificación documental y de conformidad de cada lote antes de su almacenamiento y distribución."
+      },
+      {
+        "title": "Distribución certificada",
+        "description": "Comercialización de productos sanitarios bajo un sistema de gestión auditado por el Organismo Notificador 0120."
+      },
+      {
+        "title": "Mejora continua",
+        "description": "Auditorías periódicas y revisión de procesos para mantener los más altos estándares de calidad."
       }
     ]
   },

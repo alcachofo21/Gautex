@@ -22,27 +22,89 @@
       "Our philosophy is to offer the best medical and pharmaceutical products with maximum guarantees for patients and users, ensuring exhaustive quality controls on every product we manufacture or distribute in EUROPE.",
       "GAUTEX MÉDICA, S.L. is made up of a young, entrepreneurial team committed to providing professional service to our clients."
     ],
-    "values": ["Quality", "Trust", "Professionalism", "Innovation"]
+    "teamParagraph": "Our team is driven by the ambition to earn the trust of everyone we work with, building the foundation for lasting partnerships.",
+    "missionQuote": "That is why we can say, as our slogan states, that our work is about spreading health.",
+    "values": ["Quality", "Trust", "Professionalism", "Innovation"],
+    "stats": [
+      { "value": "2002", "label": "Founded in Barcelona" },
+      { "value": "0120", "label": "SGS Notified Body" },
+      { "value": "ISO", "label": "13485 · 9001 certified" },
+      { "value": "EU", "label": "European market" }
+    ],
+    "activities": [
+      {
+        "title": "Distribution",
+        "description": "Medical products for pharmacy, hospital and professional distribution across Europe."
+      },
+      {
+        "title": "Marketing",
+        "description": "Gynaecology, prevention and healthcare product lines for the pharmaceutical and hospital sectors."
+      },
+      {
+        "title": "Manufacturing",
+        "description": "Development and manufacturing of medical products under certified management systems."
+      }
+    ]
   },
   "quality": {
     "title": "Quality & certifications",
     "subtitle": "Why trust us?",
+    "intro": "We hold certifications that attest to exemplary quality standards in medical device distribution. Our management system is certified and audited by Notified Body No. 0120 (SGS).",
+    "badges": ["ISO 9001:2008", "ISO 13485:2013", "EN ISO 13485:2012", "NB 0120 · SGS"],
     "certifications": [
       {
         "name": "ISO 9001:2008",
-        "description": "Distribution of medical devices: gynaecology products, intimate lubricant gel, probe covers, pregnancy tests and drug tests."
+        "scope": "Quality management system",
+        "description": "Distribution of medical devices: gynaecology products, intimate lubricant gel, ultrasound probe covers, pregnancy tests and drug tests."
       },
       {
         "name": "ISO 13485:2013",
+        "scope": "Medical devices",
         "description": "Distribution of medical devices: gynaecology products and prevention products."
       },
       {
         "name": "EN ISO 13485:2012",
-        "description": "Quality management system for medical devices."
+        "scope": "Medical devices",
+        "description": "Quality management system for medical devices under the European regulatory framework."
+      }
+    ],
+    "notifiedBody": {
+      "title": "Notified Body No. 0120 (SGS)",
+      "description": "The company complies with international quality standards, certified and audited by Notified Body No. 0120 SGS. We ensure exhaustive quality controls on every product we manufacture or distribute across Europe."
+    },
+    "ceNote": "We are working to obtain the CE Certificate in accordance with Directive 93/42/EEC, issued by the same Notified Body No. 0120 SGS.",
+    "pillarsTitle": "Regulatory commitment",
+    "pillars": [
+      {
+        "title": "Certified management system",
+        "description": "Medical device distribution processes under ISO 9001 and ISO 13485, subject to periodic audits."
       },
       {
-        "name": "CE 0120 SGS",
-        "description": "Notified Body No. 0120 SGS. European certification for medical devices."
+        "title": "European regulation",
+        "description": "Distribution in compliance with the applicable EU medical device and IVD regulatory framework."
+      },
+      {
+        "title": "Traceability & control",
+        "description": "Exhaustive quality controls on every product we manufacture or distribute, with batch and supplier traceability."
+      }
+    ],
+    "processTitle": "Our quality process",
+    "processSteps": [
+      {
+        "title": "Supplier qualification",
+        "description": "Selection and evaluation of manufacturers in accordance with quality management system requirements."
+      },
+      {
+        "title": "Incoming inspection",
+        "description": "Documentary and conformity verification of each batch before storage and distribution."
+      },
+      {
+        "title": "Certified distribution",
+        "description": "Marketing of medical devices under a management system audited by Notified Body 0120."
+      },
+      {
+        "title": "Continuous improvement",
+        "description": "Periodic audits and process reviews to maintain the highest quality standards."
       }
     ]
   },
