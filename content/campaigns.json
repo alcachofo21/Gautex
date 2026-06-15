@@ -11,7 +11,8 @@
         "Lengüetas interiores con instrucciones y sellos"
       ],
       "icon": "package",
-      "image": "/images/campaigns/estuche.png"
+      "image": "/images/campaigns/estuche.png",
+      "productIds": ["matrix", "viva"]
     },
     {
       "id": "funda-pvc",
@@ -24,7 +25,8 @@
         "Bolsas interiores transparentes 5,50 x 6,0 cm"
       ],
       "icon": "wallet",
-      "image": "/images/campaigns/funda-pvc.png"
+      "image": "/images/campaigns/funda-pvc.png",
+      "productIds": ["matrix", "viva"]
     },
     {
       "id": "preservativos-personalizados",
@@ -36,7 +38,12 @@
         "Látex natural, transparente, lubricado"
       ],
       "icon": "box",
-      "image": "/images/campaigns/condoms-custom.png"
+      "image": "/images/campaigns/condoms-custom.png",
+      "productIds": ["matrix", "viva"],
+      "presentationOptions": [
+        { "id": "tira-3", "name": "Tira de 3 preservativos" },
+        { "id": "caja-144", "name": "Caja de 144 unidades" }
+      ]
     },
     {
       "id": "flow-pack",

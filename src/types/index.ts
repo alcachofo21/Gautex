@@ -34,6 +34,11 @@ export interface CartItem {
   color: string;
 }
 
+export interface PresentationOption {
+  id: string;
+  name: string;
+}
+
 export interface FlowPackVariant {
   id: string;
   name: string;
@@ -49,5 +54,7 @@ export interface CampaignFormat {
   details: string[];
   icon: string;
   image?: string;
+  productIds?: string[];
+  presentationOptions?: PresentationOption[];
   variants?: FlowPackVariant[];
 }

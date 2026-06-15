@@ -9,10 +9,16 @@ import type { CampaignFormat, FlowPackVariant } from "@/types";
 const formats = campaigns.formats as CampaignFormat[];
 const baseProducts = campaigns.baseProducts;
 
+function getFormatProducts(format: CampaignFormat | undefined) {
+  if (!format?.productIds?.length) return [];
+  return baseProducts.filter((p) => format.productIds!.includes(p.id));
+}
+
 export function CampaignConfigurator() {
   const [step, setStep] = useState(1);
   const [formatId, setFormatId] = useState<string | null>(null);
   const [variantId, setVariantId] = useState<string | null>(null);
+  const [presentationId, setPresentationId] = useState<string | null>(null);
   const [productId, setProductId] = useState<string | null>(null);
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoName, setLogoName] = useState("");
@@ -30,15 +36,18 @@ export function CampaignConfigurator() {
 
   const selectedFormat = formats.find((f) => f.id === formatId);
   const selectedVariant = selectedFormat?.variants?.find((v) => v.id === variantId);
+  const selectedPresentation = selectedFormat?.presentationOptions?.find((p) => p.id === presentationId);
   const hasVariants = Boolean(selectedFormat?.variants?.length);
+  const hasPresentations = Boolean(selectedFormat?.presentationOptions?.length);
 
   const availableProducts = hasVariants && selectedVariant
     ? baseProducts.filter((p) => selectedVariant.productIds.includes(p.id))
-    : baseProducts;
+    : getFormatProducts(selectedFormat);
 
   const handleFormatSelect = (id: string) => {
     setFormatId(id);
     setVariantId(null);
+    setPresentationId(null);
     setProductId(null);
   };
 
@@ -51,16 +60,30 @@ export function CampaignConfigurator() {
     }
   };
 
-  const canProceedStep2 =
-    hasVariants
-      ? Boolean(variantId && productId)
+  const canProceedStep2 = hasVariants
+    ? Boolean(variantId && productId)
+    : hasPresentations
+      ? Boolean(presentationId && productId)
       : Boolean(productId);
 
   const formatLabel = selectedFormat
-    ? hasVariants && selectedVariant
-      ? `${selectedFormat.name} — ${selectedVariant.name}`
-      : selectedFormat.name
+    ? [
+        selectedFormat.name,
+        selectedVariant?.name,
+        selectedPresentation?.name,
+      ]
+        .filter(Boolean)
+        .join(" — ")
     : "";
+
+  const step2Title = (() => {
+    if (!selectedFormat) return "Paso 2: Configura tu oferta";
+    if (hasVariants) return "Paso 2: Tipo de Flow Pack";
+    if (selectedFormat.id === "preservativos-personalizados") return "Paso 2: Presentación y marca";
+    if (selectedFormat.id === "estuche") return "Paso 2: Preservativo del estuche";
+    if (selectedFormat.id === "funda-pvc") return "Paso 2: Preservativo de la funda";
+    return "Paso 2: Producto base";
+  })();
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -95,6 +118,8 @@ export function CampaignConfigurator() {
           formatName: formatLabel,
           variantId: variantId || undefined,
           variantName: selectedVariant?.name,
+          presentationId: presentationId || undefined,
+          presentationName: selectedPresentation?.name,
           productId,
           logoFileName: logoName,
           logoUrl: logoUrl || logoPath,
@@ -136,7 +161,10 @@ export function CampaignConfigurator() {
 
       {step === 1 && (
         <div>
-          <h3 className="mb-4 font-display text-xl font-bold">Paso 1: Elige el formato</h3>
+          <h3 className="mb-2 font-display text-xl font-bold">Paso 1: Elige el formato</h3>
+          <p className="mb-4 text-sm text-text-muted">
+            Selecciona un formato y revisa sus características antes de continuar.
+          </p>
           <FormatSelector formats={formats} selected={formatId} onSelect={handleFormatSelect} />
           <div className="mt-6 flex justify-end">
             <Button disabled={!formatId} onClick={() => setStep(2)}>
@@ -146,63 +174,63 @@ export function CampaignConfigurator() {
         </div>
       )}
 
-      {step === 2 && (
+      {step === 2 && selectedFormat && (
         <div>
-          {hasVariants ? (
-            <>
-              <h3 className="mb-2 font-display text-xl font-bold">Paso 2: Tipo de Flow Pack</h3>
-              <p className="mb-4 text-sm text-text-muted">
-                Elige la variante según el contenido de tu campaña.
-              </p>
+          <h3 className="mb-2 font-display text-xl font-bold">{step2Title}</h3>
+          <p className="mb-4 text-sm text-text-muted">{selectedFormat.description}</p>
+
+          {hasVariants && (
+            <div className="grid gap-3 sm:grid-cols-2">
+              {selectedFormat.variants?.map((variant) => (
+                <button
+                  key={variant.id}
+                  type="button"
+                  onClick={() => handleVariantSelect(variant)}
+                  className={`rounded-xl border-2 p-4 text-left transition-all ${
+                    variantId === variant.id
+                      ? "border-primary bg-primary/5 shadow-sm"
+                      : "border-gray-200 hover:border-primary/40"
+                  }`}
+                >
+                  <span className="font-display font-bold">{variant.name}</span>
+                  <p className="mt-1 text-sm text-text-muted">{variant.description}</p>
+                  <ul className="mt-2 space-y-0.5">
+                    {variant.details.map((d) => (
+                      <li key={d} className="text-xs text-text-muted">• {d}</li>
+                    ))}
+                  </ul>
+                </button>
+              ))}
+            </div>
+          )}
+
+          {hasPresentations && (
+            <div className="mb-6">
+              <h4 className="mb-3 font-semibold text-text">Presentación</h4>
               <div className="grid gap-3 sm:grid-cols-2">
-                {selectedFormat?.variants?.map((variant) => (
+                {selectedFormat.presentationOptions?.map((opt) => (
                   <button
-                    key={variant.id}
+                    key={opt.id}
                     type="button"
-                    onClick={() => handleVariantSelect(variant)}
-                    className={`rounded-xl border-2 p-4 text-left transition-all ${
-                      variantId === variant.id
-                        ? "border-primary bg-primary/5 shadow-sm"
-                        : "border-gray-200 hover:border-primary/40"
+                    onClick={() => setPresentationId(opt.id)}
+                    className={`rounded-xl border-2 p-4 text-left font-semibold ${
+                      presentationId === opt.id ? "border-primary bg-primary/5" : "border-gray-200"
                     }`}
                   >
-                    <span className="font-display font-bold">{variant.name}</span>
-                    <p className="mt-1 text-sm text-text-muted">{variant.description}</p>
+                    {opt.name}
                   </button>
                 ))}
               </div>
+            </div>
+          )}
 
-              {selectedVariant && availableProducts.length > 1 && (
-                <div className="mt-6">
-                  <h4 className="mb-3 font-semibold text-text">Preservativo base</h4>
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    {availableProducts.map((p) => (
-                      <button
-                        key={p.id}
-                        type="button"
-                        onClick={() => setProductId(p.id)}
-                        className={`rounded-xl border-2 p-4 text-left font-semibold ${
-                          productId === p.id ? "border-primary bg-primary/5" : "border-gray-200"
-                        }`}
-                      >
-                        {p.name}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {selectedVariant && availableProducts.length === 1 && (
-                <p className="mt-4 rounded-xl bg-surface px-4 py-3 text-sm text-text-muted">
-                  Producto incluido: <strong className="text-text">{availableProducts[0].name}</strong>
-                </p>
-              )}
-            </>
-          ) : (
-            <>
-              <h3 className="mb-4 font-display text-xl font-bold">Paso 2: Producto base</h3>
+          {!hasVariants && availableProducts.length > 0 && (
+            <div>
+              <h4 className="mb-3 font-semibold text-text">
+                {hasPresentations ? "Marca de preservativo" : "Preservativo"}
+              </h4>
               <div className="grid gap-3 sm:grid-cols-2">
-                {baseProducts.map((p) => (
+                {availableProducts.map((p) => (
                   <button
                     key={p.id}
                     type="button"
@@ -215,8 +243,35 @@ export function CampaignConfigurator() {
                   </button>
                 ))}
               </div>
-            </>
+            </div>
           )}
+
+          {hasVariants && selectedVariant && availableProducts.length > 1 && (
+            <div className="mt-6">
+              <h4 className="mb-3 font-semibold text-text">Preservativo base</h4>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {availableProducts.map((p) => (
+                  <button
+                    key={p.id}
+                    type="button"
+                    onClick={() => setProductId(p.id)}
+                    className={`rounded-xl border-2 p-4 text-left font-semibold ${
+                      productId === p.id ? "border-primary bg-primary/5" : "border-gray-200"
+                    }`}
+                  >
+                    {p.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {hasVariants && selectedVariant && availableProducts.length === 1 && (
+            <p className="mt-4 rounded-xl bg-surface px-4 py-3 text-sm text-text-muted">
+              Producto incluido: <strong className="text-text">{availableProducts[0].name}</strong>
+            </p>
+          )}
+
           <div className="mt-6 flex justify-between">
             <Button variant="ghost" onClick={() => setStep(1)}>Atrás</Button>
             <Button disabled={!canProceedStep2} onClick={() => setStep(3)}>Siguiente</Button>
