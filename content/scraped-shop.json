@@ -1,0 +1,134 @@
+[
+  {
+    "legacyProductId": "160495",
+    "name": "Barrera de Látex Sexy Dam para sexo oral",
+    "slug": "barrera-de-latex-sexy-dam-para-sexo-oral",
+    "category": "preventivo",
+    "price": 16.5,
+    "priceLabel": "16,50 €",
+    "imagePath": "/.cm4all/uproc.php/0/oral%20dam%2Bbackground.jpg?_=17a5c06b92f/downsize_400_1000/",
+    "id": "sexydam",
+    "imageFile": "/images/products/sexydam-shop.jpg"
+  },
+  {
+    "legacyProductId": "166200",
+    "name": "Preservativo Natural MATRIX CONDOMS",
+    "slug": "preservativo-natural-matrix-condoms",
+    "category": "preventivo",
+    "price": 20.9,
+    "priceLabel": "20,90 €",
+    "imagePath": "/.cm4all/uproc.php/0/MATRIX%2BBACKGROUND.jpg?_=175acaa7f32/downsize_400_1000/",
+    "id": "matrix-condoms",
+    "imageFile": "/images/products/matrix-condoms-shop.jpg"
+  },
+  {
+    "legacyProductId": "160228",
+    "name": "Preservativo Natural VIVA CONDOMS",
+    "slug": "preservativo-natural-viva-condoms",
+    "category": "preventivo",
+    "price": 18.2,
+    "priceLabel": "18,20 €",
+    "imagePath": "/.cm4all/uproc.php/0/VIVA%2BBACKGROUND.jpg?_=175acb101b2/downsize_400_1000/",
+    "id": "viva-condoms",
+    "imageFile": "/images/products/viva-condoms-shop.jpg"
+  },
+  {
+    "legacyProductId": "148560",
+    "name": "Preservativo XL VIVA CONDOMS",
+    "slug": "preservativo-xl-viva-condoms",
+    "category": "preventivo",
+    "price": 21.6,
+    "priceLabel": "21,60 €",
+    "imagePath": "/.cm4all/uproc.php/0/XL%2BBACKGROUND.jpg?_=175acca4272/downsize_400_1000/",
+    "id": "viva-condoms-xl",
+    "imageFile": "/images/products/viva-condoms-xl.jpg"
+  },
+  {
+    "legacyProductId": "148561",
+    "name": "Preservativo Extra Fuerte VIVA CONDOMS",
+    "slug": "preservativo-extra-fuerte-viva-condoms",
+    "category": "preventivo",
+    "price": 21.2,
+    "priceLabel": "21,20 €",
+    "imagePath": "/.cm4all/uproc.php/0/XF%2BBACKGROUND_1.jpg?_=175acf338cd/downsize_400_1000/",
+    "id": "viva-condoms-extra-fuerte",
+    "imageFile": "/images/products/viva-condoms-extra-fuerte.jpg"
+  },
+  {
+    "legacyProductId": "173165",
+    "name": "Lubricante Monodosis MAX GEL 6 ml",
+    "slug": "lubricante-monodosis-max-gel-6-ml",
+    "category": "preventivo",
+    "price": 23.6,
+    "priceLabel": "23,60 €",
+    "imagePath": "/.cm4all/uproc.php/0/LUBE6ML%2BBACKGROUND.jpg?_=175d56dc4aa/downsize_400_1000/",
+    "id": "max-gel",
+    "imageFile": "/images/products/max-gel-shop.jpg"
+  },
+  {
+    "legacyProductId": "173166",
+    "name": "Lubricante Monodosis MAX GEL 3.5 ml",
+    "slug": "lubricante-monodosis-max-gel-3-5-ml",
+    "category": "preventivo",
+    "price": 22.26,
+    "priceLabel": "22,26 €",
+    "imagePath": "/.cm4all/uproc.php/0/MAXGEL3%2C5%2BBACKGROUND.jpg?_=175b1a20118/downsize_400_1000/",
+    "id": "max-gel-35",
+    "imageFile": "/images/products/max-gel-35.jpg"
+  },
+  {
+    "legacyProductId": "160462",
+    "name": "Lubricante Monodosis BODY ARS 4 ml",
+    "slug": "lubricante-monodosis-body-ars-4-ml",
+    "category": "preventivo",
+    "price": 14.3,
+    "priceLabel": "14,30 €",
+    "imagePath": "/.cm4all/uproc.php/0/body%20ars%204ml%20%2B%20background.jpg?_=17a51f1a484/downsize_400_1000/",
+    "id": "body-ars",
+    "imageFile": "/images/products/body-ars.jpg"
+  },
+  {
+    "legacyProductId": "148562",
+    "name": "Preservativo Sabor/Color Manzana VIVA CONDOMS",
+    "slug": "preservativo-sabor-color-manzana-viva-condoms",
+    "category": "preventivo",
+    "price": 20.3,
+    "priceLabel": "20,30 €",
+    "imagePath": "/.cm4all/uproc.php/0/APPLE%2BBACKGROUND.jpg?_=175acea80f8/downsize_400_1000/",
+    "id": "viva-condoms-manzana",
+    "imageFile": "/images/products/viva-condoms-manzana.jpg"
+  },
+  {
+    "legacyProductId": "148563",
+    "name": "Preservativo Sabor/Color Banana VIVA CONDOMS",
+    "slug": "preservativo-sabor-color-banana-viva-condoms",
+    "category": "preventivo",
+    "price": 20.3,
+    "priceLabel": "20,30 €",
+    "imagePath": "/.cm4all/uproc.php/0/BANANA%2BBACKGROUND.jpg?_=175acea88c8/downsize_400_1000/",
+    "id": "viva-condoms-banana",
+    "imageFile": "/images/products/viva-condoms-banana.jpg"
+  },
+  {
+    "legacyProductId": "166202",
+    "name": "Preservativo Sabor/Color Fresa VIVA CONDOMS",
+    "slug": "preservativo-sabor-color-fresa-viva-condoms",
+    "category": "preventivo",
+    "price": 20.3,
+    "priceLabel": "20,30 €",
+    "imagePath": "/.cm4all/uproc.php/0/FRESA%2BBACKGROUND.jpg?_=175acea84e0/downsize_400_1000/",
+    "id": "viva-condoms-fresa",
+    "imageFile": "/images/products/viva-condoms-fresa.jpg"
+  },
+  {
+    "legacyProductId": "160463",
+    "name": "Cubresonda para sonda ecográfica GECOFUN",
+    "slug": "cubresonda-para-sonda-ecografica-gecofun",
+    "category": "ginecologia",
+    "price": 13.75,
+    "priceLabel": "13,75 €",
+    "imagePath": "/.cm4all/uproc.php/0/gecofun%2Bbackground.jpg?_=17a524a2681/downsize_400_1000/",
+    "id": "gecofun",
+    "imageFile": "/images/products/gecofun-shop.jpg"
+  }
+]

@@ -7,9 +7,10 @@
     "featured": true,
     "shortDescription": "Preservativo masculino de látex 100% natural, liso, lubricado con depósito.",
     "description": "Preservativo masculino de látex 100% de caucho natural, liso, simétrico, transparente, lubricado, con depósito transparente y envasado individualmente con envase de aluminio y plástico.",
-    "price": null,
-    "priceLabel": "Consultar precio",
+    "price": 20.9,
+    "priceLabel": "20,90 €",
     "specs": {
+      "Presentación": "Caja de 144 unidades",
       "Ancho": "54 mm",
       "Largo": "196-200 mm",
       "Espesor": "72 micras",
@@ -25,11 +26,13 @@
     "name": "Viva Condoms",
     "category": "preventivo",
     "featured": true,
-    "shortDescription": "Preservativo masculino certificado CEE 120 con test ISO 10993 de biocompatibilidad.",
+    "shortDescription": "Preservativo natural rectangular, liso y lubricado. Caja de 144 unidades.",
     "description": "Preservativo masculino de látex 100% de caucho natural, liso, simétrico, transparente, lubricado, con depósito transparente y envasado individualmente.",
-    "price": null,
-    "priceLabel": "Consultar precio",
+    "price": 18.2,
+    "priceLabel": "18,20 €",
     "specs": {
+      "Presentación": "Caja de 144 unidades",
+      "Formato": "Preservativo rectangular",
       "Ancho": "54 mm",
       "Largo": "195-205 mm",
       "Espesor": "73 micras",
@@ -40,16 +43,114 @@
     "image": "/images/products/viva-condoms.png"
   },
   {
+    "id": "viva-condoms-xl",
+    "slug": "viva-condoms-xl",
+    "name": "Viva Condoms XL",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Preservativo XL VIVA CONDOMS® de mayor ancho. Caja de 144 unidades.",
+    "description": "Preservativo masculino XL de látex natural, lubricado y con depósito. Formato de mayor ancho para mayor comodidad.",
+    "price": 21.6,
+    "priceLabel": "21,60 €",
+    "specs": {
+      "Presentación": "Caja de 144 unidades",
+      "Variante": "XL",
+      "Ancho": "58 mm",
+      "Largo": "195-205 mm"
+    },
+    "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003"],
+    "color": "#1a56db",
+    "image": "/images/products/viva-condoms-xl.png"
+  },
+  {
+    "id": "viva-condoms-extra-fuerte",
+    "slug": "viva-condoms-extra-fuerte",
+    "name": "Viva Condoms Extra Fuerte",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Preservativo extra fuerte VIVA CONDOMS®. Caja de 144 unidades.",
+    "description": "Preservativo masculino de látex natural con mayor espesor para mayor resistencia, lubricado y con depósito.",
+    "price": 21.2,
+    "priceLabel": "21,20 €",
+    "specs": {
+      "Presentación": "Caja de 144 unidades",
+      "Variante": "Extra Fuerte",
+      "Ancho": "54 mm",
+      "Largo": "195-205 mm"
+    },
+    "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003"],
+    "color": "#1d4ed8",
+    "image": "/images/products/viva-condoms-extra-fuerte.png"
+  },
+  {
+    "id": "viva-condoms-manzana",
+    "slug": "viva-condoms-manzana",
+    "name": "Viva Condoms Sabor Manzana",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Preservativo con sabor y color manzana. Caja de 144 unidades.",
+    "description": "Preservativo masculino de látex natural lubricado, con sabor y color manzana. Envasado individualmente.",
+    "price": 20.3,
+    "priceLabel": "20,30 €",
+    "specs": {
+      "Presentación": "Caja de 144 unidades",
+      "Sabor/Color": "Manzana",
+      "Ancho": "54 mm"
+    },
+    "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003"],
+    "color": "#22c55e",
+    "image": "/images/products/viva-condoms-manzana.png"
+  },
+  {
+    "id": "viva-condoms-banana",
+    "slug": "viva-condoms-banana",
+    "name": "Viva Condoms Sabor Banana",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Preservativo con sabor y color banana. Caja de 144 unidades.",
+    "description": "Preservativo masculino de látex natural lubricado, con sabor y color banana. Envasado individualmente.",
+    "price": 20.3,
+    "priceLabel": "20,30 €",
+    "specs": {
+      "Presentación": "Caja de 144 unidades",
+      "Sabor/Color": "Banana",
+      "Ancho": "54 mm"
+    },
+    "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003"],
+    "color": "#eab308",
+    "image": "/images/products/viva-condoms-banana.png"
+  },
+  {
+    "id": "viva-condoms-fresa",
+    "slug": "viva-condoms-fresa",
+    "name": "Viva Condoms Sabor Fresa",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Preservativo con sabor y color fresa. Caja de 144 unidades.",
+    "description": "Preservativo masculino de látex natural lubricado, con sabor y color fresa. Envasado individualmente.",
+    "price": 20.3,
+    "priceLabel": "20,30 €",
+    "specs": {
+      "Presentación": "Caja de 144 unidades",
+      "Sabor/Color": "Fresa",
+      "Ancho": "54 mm"
+    },
+    "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003"],
+    "color": "#ef4444",
+    "image": "/images/products/viva-condoms-fresa.png"
+  },
+  {
     "id": "sexydam",
     "slug": "sexydam",
     "name": "Sexydam",
     "category": "preventivo",
     "featured": true,
-    "shortDescription": "Dique o lámina de látex / Oral Dam en varios aromas y colores.",
+    "shortDescription": "Barrera de látex / Oral Dam para sexo oral. Pack de 10 unidades.",
     "description": "Dique o lámina de látex/Oral Dam disponible en varios aromas y colores, 100% de látex natural, lisa y transparente. Envase individual mono uso.",
-    "price": null,
-    "priceLabel": "Consultar precio",
+    "price": 16.5,
+    "priceLabel": "16,50 €",
     "specs": {
+      "Presentación": "Pack 10 unidades",
       "Dimensiones": "2540 x 1524 mm",
       "Grosor": "80 micras",
       "Envase": "85 x 120 mm opaco"
@@ -61,14 +162,15 @@
   {
     "id": "max-gel",
     "slug": "max-gel",
-    "name": "Max Gel",
+    "name": "Max Gel 6 ml",
     "category": "preventivo",
     "featured": true,
-    "shortDescription": "Gel lubricante base acuosa, inodoro, soluble en agua. Sobres monodosis 6 ml.",
+    "shortDescription": "Gel lubricante base acuosa monodosis 6 ml. Caja de 100 unidades.",
     "description": "Gel lubricante apto para uso humano, transparente, inodoro, sin sabores y soluble en agua, no irritante y de fácil eliminación. Formulado a base de glicerina y agua.",
-    "price": null,
-    "priceLabel": "Consultar precio",
+    "price": 23.6,
+    "priceLabel": "23,60 €",
     "specs": {
+      "Presentación": "Caja de 100 unidades",
       "Capacidad": "6 ml",
       "Sobre": "80 x 60 mm",
       "Base": "Glicerina y agua"
@@ -76,6 +178,43 @@
     "certifications": ["CE 0120 SGS", "CE0035 TüV"],
     "color": "#5b7fd4",
     "image": "/images/products/max-gel.png"
+  },
+  {
+    "id": "max-gel-3-5ml",
+    "slug": "max-gel-3-5ml",
+    "name": "Max Gel 3,5 ml",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Gel lubricante base acuosa monodosis 3,5 ml. Caja de 100 unidades.",
+    "description": "Gel lubricante apto para uso humano, transparente, inodoro, sin sabores y soluble en agua. Formato monodosis de 3,5 ml.",
+    "price": 22.26,
+    "priceLabel": "22,26 €",
+    "specs": {
+      "Presentación": "Caja de 100 unidades",
+      "Capacidad": "3,5 ml",
+      "Base": "Glicerina y agua"
+    },
+    "certifications": ["CE 0120 SGS", "CE0035 TüV"],
+    "color": "#4f7ad4",
+    "image": "/images/products/max-gel-3-5ml.png"
+  },
+  {
+    "id": "body-ars-4ml",
+    "slug": "body-ars-4ml",
+    "name": "Body ARS 4 ml",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Lubricante monodosis BODY ARS® 4 ml. Bolsa de 100 unidades.",
+    "description": "Gel lubricante monodosis de 4 ml para uso humano, base acuosa, transparente e inodoro.",
+    "price": 14.3,
+    "priceLabel": "14,30 €",
+    "specs": {
+      "Presentación": "Bolsa 100 unidades",
+      "Capacidad": "4 ml"
+    },
+    "certifications": ["CE 0120 SGS"],
+    "color": "#64748b",
+    "image": "/images/products/body-ars-4ml.png"
   },
   {
     "id": "preservativo-femenino",
@@ -101,11 +240,12 @@
     "name": "Gecofun",
     "category": "ginecologia",
     "featured": true,
-    "shortDescription": "Cubresonda lumbar-abdominal de látex natural para transductor ecográfico.",
+    "shortDescription": "Cubresonda para sonda ecográfica. Caja de 100 unidades.",
     "description": "Cubresonda lumbar-abdominal de látex natural para transductor ecográfico, destinado a favorecer las condiciones higiénicas de la sonda transductora y permitir una fácil limpieza.",
-    "price": null,
-    "priceLabel": "Consultar precio",
+    "price": 13.75,
+    "priceLabel": "13,75 €",
     "specs": {
+      "Presentación": "Caja de 100 unidades",
       "Material": "Látex natural",
       "Uso": "Transductor ecográfico lumbar-abdominal"
     },

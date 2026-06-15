@@ -1,4 +1,58 @@
 {
+  "matrix-condoms": {
+    "priceLabel": "€20.90"
+  },
+  "viva-condoms": {
+    "shortDescription": "Natural rectangular condom, smooth and lubricated. Box of 144 units.",
+    "priceLabel": "€18.20"
+  },
+  "viva-condoms-xl": {
+    "shortDescription": "VIVA CONDOMS® XL condom with wider fit. Box of 144 units.",
+    "description": "XL natural latex condom, lubricated with reservoir. Wider format for greater comfort.",
+    "priceLabel": "€21.60"
+  },
+  "viva-condoms-extra-fuerte": {
+    "shortDescription": "VIVA CONDOMS® extra strong condom. Box of 144 units.",
+    "description": "Natural latex condom with increased thickness for greater strength, lubricated with reservoir.",
+    "priceLabel": "€21.20"
+  },
+  "viva-condoms-manzana": {
+    "shortDescription": "Flavoured and coloured apple condom. Box of 144 units.",
+    "description": "Natural latex lubricated condom with apple flavour and colour. Individually wrapped.",
+    "priceLabel": "€20.30"
+  },
+  "viva-condoms-banana": {
+    "shortDescription": "Flavoured and coloured banana condom. Box of 144 units.",
+    "description": "Natural latex lubricated condom with banana flavour and colour. Individually wrapped.",
+    "priceLabel": "€20.30"
+  },
+  "viva-condoms-fresa": {
+    "shortDescription": "Flavoured and coloured strawberry condom. Box of 144 units.",
+    "description": "Natural latex lubricated condom with strawberry flavour and colour. Individually wrapped.",
+    "priceLabel": "€20.30"
+  },
+  "sexydam": {
+    "shortDescription": "Latex barrier / oral dam for oral sex. Pack of 10 units.",
+    "priceLabel": "€16.50"
+  },
+  "max-gel": {
+    "shortDescription": "Water-based lubricant gel single-dose 6 ml. Box of 100 units.",
+    "priceLabel": "€23.60"
+  },
+  "max-gel-3-5ml": {
+    "shortDescription": "Water-based lubricant gel single-dose 3.5 ml. Box of 100 units.",
+    "description": "Human-use lubricant gel, transparent, odourless, water-soluble. 3.5 ml single-dose format.",
+    "priceLabel": "€22.26"
+  },
+  "body-ars-4ml": {
+    "shortDescription": "BODY ARS® lubricant single-dose 4 ml. Bag of 100 units.",
+    "description": "4 ml single-dose lubricant gel for human use, water-based, transparent and odourless.",
+    "priceLabel": "€14.30"
+  },
+  "gecofun": {
+    "shortDescription": "Probe cover for ultrasound transducer. Box of 100 units.",
+    "priceLabel": "€13.75"
+  },
   "mascarilla-quirurgica": {
     "shortDescription": "Surgical face masks for healthcare protection. CE marked.",
     "description": "Type II surgical masks for healthcare and pharmacy distribution. Individually packed boxes available for B2B orders.",
