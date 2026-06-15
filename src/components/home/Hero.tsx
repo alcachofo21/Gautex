@@ -82,8 +82,8 @@ export function Hero({ locale = "es" }: HeroProps) {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/25" />
-        <div className="absolute inset-y-0 left-0 w-full max-w-3xl bg-gradient-to-r from-primary/40 to-transparent lg:max-w-[55%]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.97] via-primary/75 to-primary/10" />
+        <div className="absolute inset-y-0 left-0 w-full max-w-3xl bg-gradient-to-r from-black/35 to-transparent lg:max-w-[58%]" />
       </div>
 
       <div className="container-page relative py-16 sm:py-24 lg:py-32">

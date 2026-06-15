@@ -1,6 +1,8 @@
 /**
- * Recolors the hero condom photo to Gautex brand blues (#1e4f7a, #3b8cc4).
- * Usage: node scripts/process-hero-condones.mjs [inputPath]
+ * Prepare hero condom photo for the site.
+ * Default: resize original full-color image (no recolor).
+ * Pass --blue to map condoms to brand blues (#1e4f7a, #3b8cc4).
+ * Usage: node scripts/process-hero-condones.mjs [--blue] [inputPath]
  */
 import { mkdir } from "node:fs/promises";
 import { dirname, join } from "node:path";
@@ -10,11 +12,25 @@ import sharp from "sharp";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
 
+const useBlue = process.argv.includes("--blue");
+const inputArg = process.argv.find((a) => !a.startsWith("-") && a.endsWith(".png"));
+
 const defaultInput =
   "C:/Users/victo/.cursor/projects/c-Users-victo-OneDrive-Documentos-GitHub-Gautex/assets/c__Users_victo_AppData_Roaming_Cursor_User_workspaceStorage_empty-window_images_condones-seguro-d6549217-123f-4082-8fe3-4776c8b2955d.png";
 
-const input = process.argv[2] || defaultInput;
+const input = inputArg || defaultInput;
 const output = join(root, "public", "images", "hero", "condones-seguro.png");
+
+if (!useBlue) {
+  await mkdir(dirname(output), { recursive: true });
+  await sharp(input)
+    .resize(1920, 1080, { fit: "cover", position: "centre" })
+    .sharpen({ sigma: 0.3 })
+    .png({ compressionLevel: 9 })
+    .toFile(output);
+  console.log(`✓ Hero image saved (original colors): ${output}`);
+  process.exit(0);
+}
 
 const PRIMARY = [0x1e, 0x4f, 0x7a];
 const ACCENT = [0x3b, 0x8c, 0xc4];
