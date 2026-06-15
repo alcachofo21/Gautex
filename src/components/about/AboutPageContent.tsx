@@ -86,14 +86,19 @@ export function AboutPageContent({ locale = "es" }: AboutPageContentProps) {
             </div>
           </div>
 
-          <div className="flex shrink-0 items-center justify-center rounded-2xl bg-white/10 p-6 backdrop-blur sm:p-8">
-            <div className="relative h-24 w-48 sm:h-28 sm:w-56">
+          <div className="relative flex shrink-0 items-center justify-center lg:justify-end">
+            <div
+              className="pointer-events-none absolute h-40 w-40 rounded-full bg-white/10 blur-3xl"
+              aria-hidden
+            />
+            <div className="relative h-28 w-52 sm:h-32 sm:w-60">
               <Image
                 src="/images/logo/gautex.png"
                 alt={company.name}
                 fill
-                className="object-contain"
-                sizes="224px"
+                className="object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.45)]"
+                sizes="(max-width: 640px) 208px, 240px"
+                quality={95}
               />
             </div>
           </div>
