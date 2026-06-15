@@ -57,7 +57,7 @@ export default async function EnProductPage({ params }: Props) {
             <h1 className="font-display text-3xl font-bold sm:text-4xl">{product.name}</h1>
             <p className="mt-2 text-2xl font-bold text-primary">{product.priceLabel}</p>
             <p className="mt-4 text-text-muted">{product.description}</p>
-            <ProductActions product={product} />
+            <ProductActions product={product} locale="en" />
             <div className="mt-8 hidden lg:block">
               <h2 className="mb-4 font-display text-lg font-bold">Specifications</h2>
               <table className="w-full text-sm">

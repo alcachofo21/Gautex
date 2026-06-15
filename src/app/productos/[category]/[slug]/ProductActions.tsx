@@ -5,19 +5,23 @@ import { ShoppingCart } from "lucide-react";
 import type { Product } from "@/types";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/Button";
+import { getUi, localizedPath, type Locale } from "@/lib/locale";
 
 interface ProductActionsProps {
   product: Product;
+  locale?: Locale;
 }
 
-export function ProductActions({ product }: ProductActionsProps) {
+export function ProductActions({ product, locale = "es" }: ProductActionsProps) {
+  const ui = getUi(locale);
+  const p = ui.product;
   const { addItem } = useCart();
   const [quantity, setQuantity] = useState(1);
 
   return (
     <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
       <div className="flex items-center gap-3">
-        <label className="text-sm font-medium">Cantidad:</label>
+        <label className="text-sm font-medium">{ui.cart.quantity}</label>
         <input
           type="number"
           min={1}
@@ -43,10 +47,10 @@ export function ProductActions({ product }: ProductActionsProps) {
         className="sm:flex-1"
       >
         <ShoppingCart className="h-5 w-5" />
-        Añadir al carrito
+        {p.addToCartFull}
       </Button>
-      <Button href="/contacto" variant="outline">
-        Solicitar presupuesto B2B
+      <Button href={localizedPath("/contacto", locale)} variant="outline">
+        {p.requestQuote}
       </Button>
     </div>
   );

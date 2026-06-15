@@ -112,9 +112,6 @@
     "quickContact": "Quick contact",
     "contactForm": "Contact form"
   },
-  "product": {
-    "addToCart": "Add"
-  },
   "cart": {
     "title": "Cart",
     "empty": "Your cart is empty",
@@ -123,7 +120,45 @@
     "increase": "Increase quantity",
     "remove": "Remove",
     "checkout": "Go to checkout",
-    "viewFull": "View full cart"
+    "viewFull": "View full cart",
+    "emptyTitle": "Your cart is empty",
+    "emptyDesc": "Browse our catalogue of medical products.",
+    "viewProducts": "View products",
+    "goCheckout": "Go to checkout",
+    "clearCart": "Clear cart",
+    "quantity": "Quantity:"
+  },
+  "checkout": {
+    "loading": "Loading...",
+    "emptyTitle": "No products in cart",
+    "paymentSuccessTitle": "Payment complete!",
+    "quoteSuccessTitle": "Request sent!",
+    "paymentSuccessDesc": "Thank you for your order. You will receive confirmation by email.",
+    "quoteSuccessDesc": "We have received your quote request. We will contact you shortly.",
+    "continueShopping": "Continue shopping",
+    "title": "Checkout",
+    "summary": "Summary",
+    "items": "items",
+    "payStripe": "Pay with Stripe",
+    "requestQuote": "Request B2B quote",
+    "quoteFormTitle": "Quote details",
+    "error": "Error sending. Please try again.",
+    "submit": "Send quote request",
+    "submitting": "Sending...",
+    "fields": {
+      "firstName": "First name *",
+      "lastName": "Last name *",
+      "email": "Email *",
+      "company": "Company",
+      "cif": "VAT ID",
+      "sector": "Sector (pharmacy, hospital, distributor...)",
+      "message": "Message"
+    }
+  },
+  "product": {
+    "addToCart": "Add",
+    "addToCartFull": "Add to cart",
+    "requestQuote": "Request B2B quote"
   },
   "cookies": {
     "message": "We use technical cookies to improve your experience.",

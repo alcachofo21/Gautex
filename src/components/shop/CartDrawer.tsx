@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { X, Minus, Plus, Trash2 } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/Button";
-import { getLocaleFromPath, getUi } from "@/lib/locale";
+import { getLocaleFromPath, getUi, localizedPath } from "@/lib/locale";
 
 export function CartDrawer() {
   const pathname = usePathname();
@@ -98,11 +98,11 @@ export function CartDrawer() {
 
         {items.length > 0 && (
           <div className="border-t p-4" style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}>
-            <Button href="/checkout" fullWidth onClick={closeCart}>
+            <Button href={localizedPath("/checkout", locale)} fullWidth onClick={closeCart}>
               {c.checkout}
             </Button>
             <Link
-              href="/carrito"
+              href={localizedPath("/carrito", locale)}
               onClick={closeCart}
               className="mt-2 block text-center text-sm text-primary hover:underline"
             >

@@ -4,15 +4,15 @@ import { getUi } from "@/lib/locale";
 
 export const metadata = {
   title: "Checkout",
-  description: "Finaliza tu pedido o solicita presupuesto B2B en Gautex Medica.",
+  description: "Complete your Gautex Medica order or request a B2B quote.",
 };
 
-export default function CheckoutPage() {
-  const t = getUi("es").checkout;
+export default function EnCheckoutPage() {
+  const t = getUi("en").checkout;
 
   return (
     <Suspense fallback={<div className="container-page py-20 text-center">{t.loading}</div>}>
-      <CheckoutPageContent locale="es" />
+      <CheckoutPageContent locale="en" />
     </Suspense>
   );
 }

@@ -112,9 +112,6 @@
     "quickContact": "Contacto rápido",
     "contactForm": "Formulario de contacto"
   },
-  "product": {
-    "addToCart": "Añadir"
-  },
   "cart": {
     "title": "Carrito",
     "empty": "Tu carrito está vacío",
@@ -123,7 +120,45 @@
     "increase": "Aumentar cantidad",
     "remove": "Eliminar",
     "checkout": "Ir a checkout",
-    "viewFull": "Ver carrito completo"
+    "viewFull": "Ver carrito completo",
+    "emptyTitle": "Tu carrito está vacío",
+    "emptyDesc": "Explora nuestro catálogo de productos sanitarios.",
+    "viewProducts": "Ver productos",
+    "goCheckout": "Ir a checkout",
+    "clearCart": "Vaciar carrito",
+    "quantity": "Cantidad:"
+  },
+  "checkout": {
+    "loading": "Cargando...",
+    "emptyTitle": "No hay productos en el carrito",
+    "paymentSuccessTitle": "¡Pago completado!",
+    "quoteSuccessTitle": "¡Solicitud enviada!",
+    "paymentSuccessDesc": "Gracias por tu pedido. Recibirás confirmación por email.",
+    "quoteSuccessDesc": "Hemos recibido tu solicitud de presupuesto. Te contactaremos pronto.",
+    "continueShopping": "Seguir comprando",
+    "title": "Checkout",
+    "summary": "Resumen",
+    "items": "productos",
+    "payStripe": "Pagar con Stripe",
+    "requestQuote": "Solicitar presupuesto B2B",
+    "quoteFormTitle": "Datos para presupuesto",
+    "error": "Error al enviar.",
+    "submit": "Enviar solicitud de presupuesto",
+    "submitting": "Enviando...",
+    "fields": {
+      "firstName": "Nombre *",
+      "lastName": "Apellidos *",
+      "email": "Email *",
+      "company": "Empresa",
+      "cif": "CIF",
+      "sector": "Sector (farmacia, hospital, distribuidor...)",
+      "message": "Mensaje"
+    }
+  },
+  "product": {
+    "addToCart": "Añadir",
+    "addToCartFull": "Añadir al carrito",
+    "requestQuote": "Solicitar presupuesto B2B"
   },
   "cookies": {
     "message": "Utilizamos cookies técnicas para mejorar su experiencia.",
