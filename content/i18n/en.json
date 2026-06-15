@@ -70,6 +70,8 @@
     "summaryFile": "File:",
     "summaryFoilFront": "Foil front:",
     "summaryFoilBack": "Foil back:",
+    "step2Hint": "Complete the required fields (*) to continue.",
+    "step2Missing": "Still required:",
     "foil": {
       "front": "Front",
       "back": "Back",

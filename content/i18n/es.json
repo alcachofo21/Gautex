@@ -70,6 +70,8 @@
     "summaryFile": "Archivo:",
     "summaryFoilFront": "Foil frontal:",
     "summaryFoilBack": "Foil reverso:",
+    "step2Hint": "Completa los campos obligatorios (*) para continuar.",
+    "step2Missing": "Falta seleccionar:",
     "foil": {
       "front": "Frontal",
       "back": "Reverso",

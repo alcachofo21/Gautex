@@ -141,6 +141,24 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
       ? Boolean(presentationId && productId)
       : Boolean(productId)) && isConfigValid(selectedFormat?.configOptions, configSelections);
 
+  const step2Missing: string[] = [];
+  if (hasPresentations && !presentationId) step2Missing.push(t.presentationLabel);
+  if (!hasVariants && availableProducts.length > 0 && !productId) {
+    step2Missing.push(hasPresentations ? t.condomBrandLabel : t.condomLabel);
+  }
+  if (selectedFormat?.configOptions) {
+    for (const opt of selectedFormat.configOptions) {
+      if (!opt.required) continue;
+      const sel = configSelections[opt.id];
+      const filled =
+        opt.type === "single"
+          ? typeof sel === "string" && sel.length > 0
+          : Array.isArray(sel) && sel.length > 0;
+      if (!filled) step2Missing.push(opt.label.replace(/\s*\*$/, ""));
+    }
+  }
+  if (hasVariants && !variantId) step2Missing.push(t.step2FlowPack.replace(/^Paso 2: |^Step 2: /, ""));
+
   const canProceedStep3 = isCustomCondoms
     ? Boolean(
         foilFront.file &&
@@ -248,7 +266,7 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
   }
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+    <div className="rounded-2xl border border-gray-200 bg-white p-6 pb-28 shadow-sm sm:p-8">
       <div className="mb-8 flex gap-2">
         {[1, 2, 3, 4].map((s) => (
           <div key={s} className={`h-2 flex-1 rounded-full ${step >= s ? "bg-primary" : "bg-gray-200"}`} />
@@ -295,16 +313,19 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
           )}
 
           {hasPresentations && (
-            <div className="mb-6">
+            <div className="mb-6 scroll-mt-32">
               <h4 className="mb-3 font-semibold text-text">{t.presentationLabel}</h4>
               <div className="grid gap-3 sm:grid-cols-2">
                 {selectedFormat.presentationOptions?.map((opt) => (
                   <button
                     key={opt.id}
                     type="button"
+                    aria-pressed={presentationId === opt.id}
                     onClick={() => setPresentationId(opt.id)}
-                    className={`rounded-xl border-2 p-4 text-left font-semibold ${
-                      presentationId === opt.id ? "border-primary bg-primary/5" : "border-gray-200"
+                    className={`relative z-10 min-h-[48px] rounded-xl border-2 p-4 text-left font-semibold transition-all ${
+                      presentationId === opt.id
+                        ? "border-primary bg-primary/5 ring-2 ring-primary/20"
+                        : "border-gray-200 hover:border-primary/40"
                     }`}
                   >
                     {opt.name}
@@ -314,8 +335,33 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
             </div>
           )}
 
+          {!hasVariants && availableProducts.length > 0 && (
+            <div className="mb-6 scroll-mt-32">
+              <h4 className="mb-3 font-semibold text-text">
+                {hasPresentations ? t.condomBrandLabel : t.condomLabel} *
+              </h4>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {availableProducts.map((p) => (
+                  <button
+                    key={p.id}
+                    type="button"
+                    aria-pressed={productId === p.id}
+                    onClick={() => setProductId(p.id)}
+                    className={`relative z-10 min-h-[48px] rounded-xl border-2 p-4 text-left font-semibold transition-all ${
+                      productId === p.id
+                        ? "border-primary bg-primary/5 ring-2 ring-primary/20"
+                        : "border-gray-200 hover:border-primary/40"
+                    }`}
+                  >
+                    {p.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {hasConfigOptions && selectedFormat.configOptions?.map((opt) => (
-            <div key={opt.id} className="mb-6">
+            <div key={opt.id} className="mb-6 scroll-mt-32">
               <h4 className="mb-3 font-semibold text-text">
                 {opt.label}
                 {opt.required ? " *" : ""}
@@ -326,10 +372,11 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
                     <button
                       key={choice.id}
                       type="button"
+                      aria-pressed={configSelections[opt.id] === choice.id}
                       onClick={() => setSingleConfig(opt.id, choice.id)}
-                      className={`rounded-xl border-2 p-4 text-left font-semibold transition-all ${
+                      className={`relative z-10 min-h-[48px] rounded-xl border-2 p-4 text-left font-semibold transition-all ${
                         configSelections[opt.id] === choice.id
-                          ? "border-primary bg-primary/5 shadow-sm"
+                          ? "border-primary bg-primary/5 ring-2 ring-primary/20"
                           : "border-gray-200 hover:border-primary/40"
                       }`}
                     >
@@ -346,10 +393,11 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
                       <button
                         key={choice.id}
                         type="button"
+                        aria-pressed={selected}
                         onClick={() => toggleMultipleConfig(opt.id, choice.id)}
-                        className={`rounded-xl border-2 p-4 text-left transition-all ${
+                        className={`relative z-10 min-h-[48px] rounded-xl border-2 p-4 text-left transition-all ${
                           selected
-                            ? "border-primary bg-primary/5 shadow-sm"
+                            ? "border-primary bg-primary/5 ring-2 ring-primary/20"
                             : "border-gray-200 hover:border-primary/40"
                         }`}
                       >
@@ -362,39 +410,20 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
             </div>
           ))}
 
-          {!hasVariants && availableProducts.length > 0 && (
-            <div>
-              <h4 className="mb-3 font-semibold text-text">
-                {hasPresentations ? t.condomBrandLabel : t.condomLabel}
-              </h4>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {availableProducts.map((p) => (
-                  <button
-                    key={p.id}
-                    type="button"
-                    onClick={() => setProductId(p.id)}
-                    className={`rounded-xl border-2 p-4 text-left font-semibold ${
-                      productId === p.id ? "border-primary bg-primary/5" : "border-gray-200"
-                    }`}
-                  >
-                    {p.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
           {hasVariants && selectedVariant && availableProducts.length > 1 && (
-            <div className="mt-6">
-              <h4 className="mb-3 font-semibold text-text">{t.condomBrandLabel}</h4>
+            <div className="mt-6 scroll-mt-32">
+              <h4 className="mb-3 font-semibold text-text">{t.condomBrandLabel} *</h4>
               <div className="grid gap-3 sm:grid-cols-2">
                 {availableProducts.map((p) => (
                   <button
                     key={p.id}
                     type="button"
+                    aria-pressed={productId === p.id}
                     onClick={() => setProductId(p.id)}
-                    className={`rounded-xl border-2 p-4 text-left font-semibold ${
-                      productId === p.id ? "border-primary bg-primary/5" : "border-gray-200"
+                    className={`relative z-10 min-h-[48px] rounded-xl border-2 p-4 text-left font-semibold transition-all ${
+                      productId === p.id
+                        ? "border-primary bg-primary/5 ring-2 ring-primary/20"
+                        : "border-gray-200 hover:border-primary/40"
                     }`}
                   >
                     {p.name}
@@ -407,6 +436,13 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
           {hasVariants && selectedVariant && availableProducts.length === 1 && (
             <p className="mt-4 rounded-xl bg-surface px-4 py-3 text-sm text-text-muted">
               {t.includedProduct} <strong className="text-text">{availableProducts[0].name}</strong>
+            </p>
+          )}
+
+          {!canProceedStep2 && step2Missing.length > 0 && (
+            <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+              <span className="font-semibold">{t.step2Missing}</span>{" "}
+              {step2Missing.join(" · ")}
             </p>
           )}
 
