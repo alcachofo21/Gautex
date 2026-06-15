@@ -3,10 +3,10 @@ import { Package, Wallet, Layers, Box } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 const highlights = [
-  { icon: Package, title: "Estuche personalizado", desc: "350gr mate, frontal a todo color", image: "/images/campaigns/estuche.jpg" },
-  { icon: Wallet, title: "Funda PVC", desc: "9,5×6,5 cm, cuatricromía", image: "/images/campaigns/funda-pvc.jpg" },
-  { icon: Layers, title: "Flow Pack", desc: "4 variantes de packaging", image: "/images/campaigns/flow-pack.jpg" },
-  { icon: Box, title: "Preservativos custom", desc: "Tiras de 3 uds o cajas 144 uds", image: "/images/campaigns/condoms-custom.jpg" },
+  { icon: Package, title: "Estuche personalizado", desc: "350gr mate, frontal a todo color", image: "/images/campaigns/estuche.png" },
+  { icon: Wallet, title: "Funda PVC", desc: "9,5×6,5 cm, cuatricromía", image: "/images/campaigns/funda-pvc.png" },
+  { icon: Layers, title: "Flow Pack", desc: "4 variantes de packaging", image: "/images/campaigns/flow-pack.png" },
+  { icon: Box, title: "Preservativos custom", desc: "Tiras de 3 uds o cajas 144 uds", image: "/images/campaigns/condoms-custom.png" },
 ];
 
 export function CampaignsBlock() {

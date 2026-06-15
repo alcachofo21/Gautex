@@ -1,0 +1,72 @@
+{
+  "sections": [
+    {
+      "title": "Anuncios promocionales HD",
+      "description": "Imágenes originales de campaña — estilo premium 3D, listas para redes y material B2B.",
+      "folder": "/images/marketing",
+      "items": [
+        { "file": "ad-matrix-condoms.png", "label": "Matrix Condoms" },
+        { "file": "ad-viva-condoms-cyan.png", "label": "Viva Condoms (cyan)" },
+        { "file": "ad-viva-condoms-silver.png", "label": "Viva Condoms (silver)" },
+        { "file": "ad-sexydam.png", "label": "Sexydam" },
+        { "file": "ad-maxgel-lubricante.png", "label": "Max Gel" },
+        { "file": "ad-gecofun-cubresonda.png", "label": "Gecofun" },
+        { "file": "ad-ultra-gecogel.png", "label": "Ultra Gecogel" },
+        { "file": "ad-covid-test-nadal.png", "label": "NADAL COVID-19" },
+        { "file": "ad-mascarilla-quirurgica.png", "label": "Mascarilla quirúrgica" },
+        { "file": "ad-mascarilla-ffp2.png", "label": "Mascarilla FFP-2" },
+        { "file": "ad-preservativo-femenino.png", "label": "Preservativo femenino" },
+        { "file": "ad-campaign-estuche.png", "label": "Campaña estuche" },
+        { "file": "ad-campaign-funda-pvc.png", "label": "Campaña funda PVC" },
+        { "file": "ad-hero-gautex.png", "label": "Hero banner" }
+      ]
+    },
+    {
+      "title": "Productos (tienda)",
+      "description": "Versiones optimizadas 1000×1000 px para fichas y catálogo web.",
+      "folder": "/images/products",
+      "items": [
+        { "file": "matrix-condoms.png", "label": "Matrix Condoms" },
+        { "file": "viva-condoms.png", "label": "Viva Condoms" },
+        { "file": "viva-condoms-2.png", "label": "Viva Condoms (variante)" },
+        { "file": "sexydam.png", "label": "Sexydam" },
+        { "file": "max-gel.png", "label": "Max Gel" },
+        { "file": "gecofun.png", "label": "Gecofun" },
+        { "file": "ultra-gecogel.png", "label": "Ultra Gecogel" },
+        { "file": "nadal-covid.png", "label": "NADAL COVID-19" },
+        { "file": "mascarilla-quirurgica.png", "label": "Mascarilla quirúrgica" },
+        { "file": "mascarilla-ffp2.png", "label": "Mascarilla FFP-2" },
+        { "file": "preservativo-femenino.png", "label": "Preservativo femenino" }
+      ]
+    },
+    {
+      "title": "Categorías y campañas",
+      "description": "Banners 1200×900 px para home, categorías y formatos de campaña.",
+      "folder": "/images/categories",
+      "items": [
+        { "file": "preventivo.png", "label": "Categoría preventivo" },
+        { "file": "ginecologia.png", "label": "Categoría ginecología" },
+        { "file": "covid-19.png", "label": "Categoría COVID-19" }
+      ]
+    },
+    {
+      "title": "Formatos campaña",
+      "description": "Imágenes de formatos personalizables.",
+      "folder": "/images/campaigns",
+      "items": [
+        { "file": "estuche.png", "label": "Estuche" },
+        { "file": "funda-pvc.png", "label": "Funda PVC" },
+        { "file": "condoms-custom.png", "label": "Preservativos custom" },
+        { "file": "flow-pack.png", "label": "Flow pack" }
+      ]
+    },
+    {
+      "title": "Hero",
+      "description": "Banner principal 1920×1080 px.",
+      "folder": "/images/hero",
+      "items": [
+        { "file": "condones-seguro.png", "label": "Hero Gautex" }
+      ]
+    }
+  ]
+}

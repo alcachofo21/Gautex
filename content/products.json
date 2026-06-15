@@ -16,7 +16,7 @@
       "Lubricante": "500-550 mg"
     },
     "certifications": ["CEE 120", "ISO 9001/2008", "ISO 13485/2003", "ISO 4074/2002", "NF062 France", "WHO American Standard", "ISO 10993 Biocompatibilidad"],
-    "color": "#0D6B4F",
+    "color": "#1e4f7a",
     "image": "/images/products/matrix-condoms.png"
   },
   {
@@ -36,7 +36,7 @@
       "Lubricante": "475-550 mg"
     },
     "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003", "ISO 10993 Biocompatibilidad"],
-    "color": "#1A5F7A",
+    "color": "#2563eb",
     "image": "/images/products/viva-condoms.png"
   },
   {
@@ -74,7 +74,7 @@
       "Base": "Glicerina y agua"
     },
     "certifications": ["CE 0120 SGS", "CE0035 TüV"],
-    "color": "#4ECDC4",
+    "color": "#5b7fd4",
     "image": "/images/products/max-gel.png"
   },
   {
@@ -93,7 +93,7 @@
     },
     "certifications": ["CE 0120 SGS"],
     "color": "#9B59B6",
-    "image": "/images/campaigns/condoms-custom.jpg"
+    "image": "/images/products/preservativo-femenino.png"
   },
   {
     "id": "gecofun",
@@ -110,7 +110,7 @@
       "Uso": "Transductor ecográfico lumbar-abdominal"
     },
     "certifications": ["ISO 13485:2013", "ISO 9001:2008", "CE 0120 SGS"],
-    "color": "#1A5F7A",
+    "color": "#2563eb",
     "image": "/images/products/gecofun.png"
   },
   {
@@ -207,7 +207,7 @@
     },
     "certifications": ["CE"],
     "color": "#95A5A6",
-    "image": "/images/categories/preventivo.jpg"
+    "image": "/images/products/mascarilla-quirurgica.png"
   },
   {
     "id": "mascarilla-ffp2",
@@ -225,6 +225,6 @@
     },
     "certifications": ["CE"],
     "color": "#7F8C8D",
-    "image": "/images/categories/ginecologia.jpg"
+    "image": "/images/products/mascarilla-ffp2.png"
   }
 ]
