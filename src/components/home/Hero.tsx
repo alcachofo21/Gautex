@@ -17,7 +17,7 @@ const copy = {
     shop: "Ver tienda",
     campaign: "Personalizar campaña",
     since: "Desde 2002",
-    labels: ["Matrix Condoms", "Viva Condoms", "Campañas", "Ginecología"],
+    labels: ["Matrix Condoms", "Viva Condoms", "Max Gel", "Campañas"],
   },
   en: {
     words: ["Quality", "Trust", "Professionalism", "Innovation"],
@@ -28,7 +28,7 @@ const copy = {
     shop: "View shop",
     campaign: "Customise campaign",
     since: "Since 2002",
-    labels: ["Matrix Condoms", "Viva Condoms", "Campaigns", "Gynaecology"],
+    labels: ["Matrix Condoms", "Viva Condoms", "Max Gel", "Campaigns"],
   },
 };
 
@@ -48,17 +48,17 @@ export function Hero({ locale = "es" }: HeroProps) {
   }, [t.words.length]);
 
   const gridItems = [
-    { src: "/images/products/matrix-condoms.jpg", label: t.labels[0] },
-    { src: "/images/products/viva-condoms.jpg", label: t.labels[1] },
-    { src: "/images/campaigns/estuche.jpg", label: t.labels[2] },
-    { src: "/images/products/gecofun.jpg", label: t.labels[3] },
+    { src: "/images/products/matrix-condoms.png", label: t.labels[0] },
+    { src: "/images/products/viva-condoms.png", label: t.labels[1] },
+    { src: "/images/products/max-gel.png", label: t.labels[2] },
+    { src: "/images/campaigns/estuche.png", label: t.labels[3] },
   ];
 
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="/images/hero/condones-seguro.jpg"
+          src="/images/hero/condones-seguro.png"
           alt=""
           fill
           className="object-cover"

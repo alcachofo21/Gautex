@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/hero/condones-seguro.jpg",
+        url: "/images/hero/condones-seguro.png",
         width: 1280,
         height: 720,
         alt: "Gautex Medica — Productos sanitarios certificados",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/images/hero/condones-seguro.jpg"],
+    images: ["/images/hero/condones-seguro.png"],
   },
 };
 

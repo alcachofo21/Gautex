@@ -9,10 +9,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "images:improve": "node scripts/improve-all-images.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
+    "@tailwindcss/postcss": "^4.0.9",
     "embla-carousel-react": "^8.5.2",
     "framer-motion": "^12.4.7",
     "lucide-react": "^0.475.0",
@@ -21,11 +23,10 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
     "stripe": "^17.7.0",
-    "zod": "^3.24.2",
-    "zustand": "^5.0.3",
-    "@tailwindcss/postcss": "^4.0.9",
     "tailwindcss": "^4.0.9",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "zod": "^3.24.2",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
@@ -33,6 +34,7 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "eslint": "^9.21.0",
-    "eslint-config-next": "^15.2.0"
+    "eslint-config-next": "^15.2.0",
+    "sharp": "^0.35.1"
   }
 }
