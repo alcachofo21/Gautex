@@ -15,7 +15,7 @@ export const partners = partnersData;
 export const testimonials = testimonialsData;
 export const productsEn = productsEnData as Record<
   string,
-  { shortDescription?: string; description?: string; priceLabel?: string }
+  { name?: string; shortDescription?: string; description?: string; priceLabel?: string }
 >;
 
 export function getProductBySlug(category: string, slug: string): Product | undefined {
@@ -45,6 +45,7 @@ export function localizeProduct(product: Product, locale: "es" | "en"): Product 
     const en = productsEn[product.id];
     return {
       ...product,
+      name: en.name ?? product.name,
       shortDescription: en.shortDescription ?? product.shortDescription,
       description: en.description ?? product.description,
       priceLabel: en.priceLabel ?? "Request quote",

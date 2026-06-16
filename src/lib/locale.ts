@@ -123,7 +123,7 @@ export function getProductText(
 ) {
   if (locale === "en" && en) {
     return {
-      name: product.name,
+      name: en.name ?? product.name,
       shortDescription: en.shortDescription || product.shortDescription,
       description: en.description || product.description,
       priceLabel: en.priceLabel || "Request quote",

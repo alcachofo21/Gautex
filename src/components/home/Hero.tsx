@@ -18,7 +18,7 @@ const copy = {
     shop: "Ver tienda",
     campaign: "Personalizar campaña",
     since: "Desde 2002",
-    labels: ["Matrix Condoms", "Viva Condoms", "Max Gel", "Campañas"],
+    labels: ["Preservativos Matrix", "Preservativos Viva", "Max Gel", "Campañas"],
   },
   en: {
     words: ["Quality", "Trust", "Professionalism", "Innovation"],

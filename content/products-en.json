@@ -1,74 +1,116 @@
 {
   "matrix-condoms": {
+    "name": "Matrix Condoms",
+    "shortDescription": "Natural latex male condom, smooth, lubricated with reservoir.",
+    "description": "100% natural rubber latex male condom, smooth, symmetrical, transparent, lubricated, with transparent reservoir and individually wrapped in aluminium and plastic packaging.",
     "priceLabel": "€20.90"
   },
   "viva-condoms": {
+    "name": "Viva Condoms",
     "shortDescription": "Natural rectangular condom, smooth and lubricated. Box of 144 units.",
+    "description": "100% natural rubber latex male condom, smooth, symmetrical, transparent, lubricated, with transparent reservoir and individually wrapped.",
     "priceLabel": "€18.20"
   },
   "viva-condoms-xl": {
+    "name": "Viva Condoms XL",
     "shortDescription": "VIVA CONDOMS® XL condom with wider fit. Box of 144 units.",
     "description": "XL natural latex condom, lubricated with reservoir. Wider format for greater comfort.",
     "priceLabel": "€21.60"
   },
   "viva-condoms-extra-fuerte": {
+    "name": "Viva Condoms Extra Strong",
     "shortDescription": "VIVA CONDOMS® extra strong condom. Box of 144 units.",
     "description": "Natural latex condom with increased thickness for greater strength, lubricated with reservoir.",
     "priceLabel": "€21.20"
   },
   "viva-condoms-manzana": {
+    "name": "Viva Condoms Apple Flavour",
     "shortDescription": "Flavoured and coloured apple condom. Box of 144 units.",
     "description": "Natural latex lubricated condom with apple flavour and colour. Individually wrapped.",
     "priceLabel": "€20.30"
   },
   "viva-condoms-banana": {
+    "name": "Viva Condoms Banana Flavour",
     "shortDescription": "Flavoured and coloured banana condom. Box of 144 units.",
     "description": "Natural latex lubricated condom with banana flavour and colour. Individually wrapped.",
     "priceLabel": "€20.30"
   },
   "viva-condoms-fresa": {
+    "name": "Viva Condoms Strawberry Flavour",
     "shortDescription": "Flavoured and coloured strawberry condom. Box of 144 units.",
     "description": "Natural latex lubricated condom with strawberry flavour and colour. Individually wrapped.",
     "priceLabel": "€20.30"
   },
   "sexydam": {
-    "shortDescription": "Latex barrier / oral dam for oral sex. Pack of 10 units.",
+    "name": "Sexydam",
+    "shortDescription": "Latex barrier for oral sex. Pack of 10 units.",
+    "description": "Latex sheet for oral sex, available in several scents and colours. 100% natural latex, smooth and transparent. Single-use individual packaging.",
     "priceLabel": "€16.50"
   },
   "max-gel": {
+    "name": "Max Gel 6 ml",
     "shortDescription": "Water-based lubricant gel single-dose 6 ml. Box of 100 units.",
+    "description": "Human-use lubricant gel, transparent, odourless, tasteless and water-soluble, non-irritating and easy to remove. Glycerine and water based.",
     "priceLabel": "€23.60"
   },
   "max-gel-3-5ml": {
+    "name": "Max Gel 3.5 ml",
     "shortDescription": "Water-based lubricant gel single-dose 3.5 ml. Box of 100 units.",
-    "description": "Human-use lubricant gel, transparent, odourless, water-soluble. 3.5 ml single-dose format.",
+    "description": "Human-use lubricant gel, transparent, odourless, tasteless and water-soluble. 3.5 ml single-dose format.",
     "priceLabel": "€22.26"
   },
   "body-ars-4ml": {
+    "name": "Body ARS 4 ml",
     "shortDescription": "BODY ARS® lubricant single-dose 4 ml. Bag of 100 units.",
     "description": "4 ml single-dose lubricant gel for human use, water-based, transparent and odourless.",
     "priceLabel": "€14.30"
   },
-  "gecofun": {
-    "shortDescription": "Probe cover for ultrasound transducer. Box of 100 units.",
-    "priceLabel": "€13.75"
-  },
-  "mascarilla-quirurgica": {
-    "shortDescription": "Surgical face masks for healthcare protection. CE marked.",
-    "description": "Type II surgical masks for healthcare and pharmacy distribution. Individually packed boxes available for B2B orders.",
+  "preservativo-femenino": {
+    "name": "Female Condom",
+    "shortDescription": "Female condom for wholesale distribution and prevention campaigns.",
+    "description": "Female condom available for bulk distribution and customised public health campaigns.",
     "priceLabel": "Request quote"
   },
-  "mascarilla-ffp2": {
-    "shortDescription": "FFP-2 respirator masks with high filtration efficiency. CE marked.",
-    "description": "FFP-2 filtering facepiece respirators for professional use. Available for hospital and wholesale distribution.",
+  "gecofun": {
+    "name": "Gecofun",
+    "shortDescription": "Probe cover for ultrasound transducer. Box of 100 units.",
+    "description": "Natural latex lumbar-abdominal probe cover for ultrasound transducers, designed to improve hygiene and allow easy cleaning.",
+    "priceLabel": "€13.75"
+  },
+  "ultra-gecogel-250": {
+    "name": "Ultra Gecogel 250 ml",
+    "shortDescription": "Medium-density conductive gel for external ultrasounds. 250 ml format.",
+    "description": "Medium-density gel for external ultrasound transducers, applied to the skin.",
+    "priceLabel": "Request quote"
+  },
+  "ultra-gecogel-1000": {
+    "name": "Ultra Gecogel 1000 ml",
+    "shortDescription": "Medium-density conductive gel for external ultrasounds. 1000 ml format.",
+    "description": "Medium-density gel for external ultrasound transducers, applied to the skin. Hospital format.",
     "priceLabel": "Request quote"
   },
   "nadal-covid-ag": {
+    "name": "NADAL COVID-19 Ag",
     "shortDescription": "COVID-19 antigen test. Lateral flow immunoassay. Kit of 20 tests.",
-    "description": "NADAL COVID-19 Ag is a lateral flow chromatographic immunoassay for qualitative detection of SARS-CoV-2 nucleoprotein antigens in human nasopharyngeal and oropharyngeal samples."
+    "description": "NADAL COVID-19 Ag is a lateral flow chromatographic immunoassay for qualitative detection of SARS-CoV-2 nucleoprotein antigens in human nasopharyngeal and oropharyngeal samples.",
+    "priceLabel": "Request quote"
   },
   "nadal-covid-igg-igm": {
+    "name": "NADAL COVID-19 IgG/IgM",
     "shortDescription": "COVID-19 serology test. IgG and IgM detection. Kit of 10 tests.",
-    "description": "NADAL COVID-19 IgG/IgM is a lateral flow immunoassay for qualitative detection of anti-SARS-CoV-2 IgG and IgM in whole blood, serum or plasma."
+    "description": "NADAL COVID-19 IgG/IgM is a lateral flow immunoassay for qualitative detection of anti-SARS-CoV-2 IgG and IgM in whole blood, serum or plasma.",
+    "priceLabel": "Request quote"
+  },
+  "mascarilla-quirurgica": {
+    "name": "Surgical Face Mask",
+    "shortDescription": "Type II surgical face masks for healthcare protection. CE marked.",
+    "description": "Triple-layer surgical masks for healthcare and pharmacy use. Available for hospital distribution and B2B box orders.",
+    "priceLabel": "Request quote"
+  },
+  "mascarilla-ffp2": {
+    "name": "FFP-2 Face Mask",
+    "shortDescription": "FFP-2 respirator masks with high filtration efficiency. CE marked.",
+    "description": "FFP-2 filtering facepiece respirators for professional use. High filtration efficiency. Available for hospitals and wholesale distribution.",
+    "priceLabel": "Request quote"
   }
 }
