@@ -1,5 +1,4 @@
 import { Hero } from "@/components/home/Hero";
-import { CategoryCards } from "@/components/home/CategoryCards";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { CampaignsBlock } from "@/components/home/CampaignsBlock";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
@@ -24,7 +23,6 @@ export default function EnHomePage() {
   return (
     <>
       <Hero locale="en" />
-      <CategoryCards locale="en" title={ui.home.categories} />
       <section className="py-12 sm:py-16">
         <div className="container-page">
           <h2 className="text-fluid-title mb-8 font-display font-bold">
