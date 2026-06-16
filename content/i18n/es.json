@@ -195,6 +195,14 @@
       "message": "Mensaje"
     }
   },
+  "payments": {
+    "instantTitle": "Pago instantáneo",
+    "instantSubtitle": "Visa, Mastercard, Amex, Apple Pay, Google Pay y PayPal (vía Stripe).",
+    "payNow": "Pagar ahora",
+    "notPayable": "Hay productos sin precio online en el carrito. Solicita presupuesto B2B o elimina esos artículos.",
+    "secure": "Pagos seguros con Stripe. No almacenamos datos de tarjeta.",
+    "orQuote": "o solicita presupuesto B2B"
+  },
   "product": {
     "addToCart": "Añadir",
     "addToCartFull": "Añadir al carrito",

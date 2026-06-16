@@ -4,10 +4,11 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/Button";
+import { InstantPaymentPanel } from "@/components/shop/InstantPaymentPanel";
 import { getUi, localizedPath, type Locale } from "@/lib/locale";
 import { trackEvent } from "@/lib/analytics";
-
-const stripeEnabled = Boolean(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+import { formatEur } from "@/lib/payments/config";
+import type { EnabledPaymentMethod } from "@/lib/payments/types";
 
 interface CheckoutPageContentProps {
   locale?: Locale;
@@ -18,8 +19,11 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
   const paymentSuccess = searchParams.get("success") === "true";
   const ui = getUi(locale);
   const t = ui.checkout;
+  const p = ui.payments;
   const { items, clearCart } = useCart();
-  const [mode, setMode] = useState<"checkout" | "quote">("quote");
+  const [methods, setMethods] = useState<EnabledPaymentMethod[]>([]);
+  const [payable, setPayable] = useState(false);
+  const [totalCents, setTotalCents] = useState(0);
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -39,6 +43,19 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
     }
   }, [paymentSuccess, clearCart]);
 
+  useEffect(() => {
+    if (items.length === 0) return;
+    const q = encodeURIComponent(JSON.stringify(items));
+    fetch(`/api/checkout?locale=${locale}&items=${q}`)
+      .then((r) => r.json())
+      .then((data) => {
+        setMethods(data.methods || []);
+        setPayable(Boolean(data.pricing?.payable));
+        setTotalCents(data.pricing?.totalCents || 0);
+      })
+      .catch(() => {});
+  }, [items, locale]);
+
   const handleQuote = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
@@ -46,12 +63,7 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
       const res = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: "cart",
-          items,
-          locale,
-          ...form,
-        }),
+        body: JSON.stringify({ type: "cart", items, locale, ...form }),
       });
       if (res.ok) {
         trackEvent("quote_request", { items: items.length });
@@ -66,21 +78,24 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
   };
 
   const handleStripe = async () => {
-    if (!stripeEnabled) return;
     setStatus("loading");
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items, locale }),
+        body: JSON.stringify({
+          items,
+          locale,
+          provider: "stripe",
+          customerEmail: form.email || undefined,
+        }),
       });
       const data = await res.json();
       if (data.url) {
         trackEvent("begin_checkout", { items: items.length });
         window.location.href = data.url;
       } else {
-        setMode("quote");
-        setStatus("idle");
+        setStatus("error");
       }
     } catch {
       setStatus("error");
@@ -99,13 +114,14 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
   }
 
   if (status === "success") {
+    const isPayment = paymentSuccess;
     return (
       <div className="container-page max-w-xl py-20 text-center">
         <h1 className="font-display text-3xl font-bold text-primary">
-          {paymentSuccess ? t.paymentSuccessTitle : t.quoteSuccessTitle}
+          {isPayment ? t.paymentSuccessTitle : t.quoteSuccessTitle}
         </h1>
         <p className="mt-4 text-text-muted">
-          {paymentSuccess ? t.paymentSuccessDesc : t.quoteSuccessDesc}
+          {isPayment ? t.paymentSuccessDesc : t.quoteSuccessDesc}
         </p>
         <Button href={localizedPath("/productos", locale)} className="mt-8">
           {t.continueShopping}
@@ -135,68 +151,73 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
           <ul className="mt-4 space-y-2">
             {items.map((item) => (
               <li key={item.productId} className="flex justify-between text-sm">
-                <span>{item.name} × {item.quantity}</span>
+                <span>
+                  {item.name} × {item.quantity}
+                </span>
                 <span className="text-text-muted">{item.priceLabel}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="mt-6 flex gap-3">
-          {stripeEnabled && (
-            <Button
-              variant={mode === "checkout" ? "primary" : "outline"}
-              onClick={() => { setMode("checkout"); handleStripe(); }}
-              disabled={status === "loading"}
-            >
-              {t.payStripe}
-            </Button>
-          )}
-          <Button variant="primary" onClick={() => setMode("quote")}>
-            {t.requestQuote}
-          </Button>
+        <InstantPaymentPanel
+          methods={methods}
+          totalLabel={formatEur(totalCents, locale)}
+          loading={status === "loading"}
+          onPay={handleStripe}
+          payable={payable}
+          labels={{
+            title: p.instantTitle,
+            subtitle: p.instantSubtitle,
+            payNow: p.payNow,
+            notPayable: p.notPayable,
+            secure: p.secure,
+          }}
+        />
+
+        <div className="relative my-8 text-center">
+          <span className="bg-surface px-4 text-sm font-medium text-text-muted">{p.orQuote}</span>
+          <div className="absolute inset-x-0 top-1/2 -z-10 border-t border-gray-200" />
         </div>
 
-        {mode === "quote" && (
-          <form onSubmit={handleQuote} className="mt-8 space-y-4 rounded-2xl border border-gray-200 bg-white p-6">
-            <h2 className="font-semibold">{t.quoteFormTitle}</h2>
-            {formFields.map((field) => (
-              <div key={field.key}>
-                <label className="mb-1 block text-sm font-medium">{field.label}</label>
-                <input
-                  type={field.type || "text"}
-                  required={field.label.includes("*")}
-                  value={form[field.key]}
-                  onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
-                  className="w-full min-h-[48px] rounded-xl border border-gray-300 px-4 focus:border-primary focus:outline-none"
-                />
-              </div>
-            ))}
-            <div>
-              <label className="mb-1 block text-sm font-medium">{t.fields.message}</label>
-              <textarea
-                rows={3}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full rounded-xl border border-gray-300 px-4 py-3"
+        <form onSubmit={handleQuote} className="space-y-4 rounded-2xl border border-gray-200 bg-white p-6">
+          <h2 className="font-semibold">{t.quoteFormTitle}</h2>
+          {formFields.map((field) => (
+            <div key={field.key}>
+              <label className="mb-1 block text-sm font-medium">{field.label}</label>
+              <input
+                type={field.type || "text"}
+                required={field.label.includes("*")}
+                value={form[field.key]}
+                onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
+                className="w-full min-h-[48px] rounded-xl border border-gray-300 px-4 focus:border-primary focus:outline-none"
               />
             </div>
-            <input
-              type="text"
-              name="website"
-              value={form.website}
-              onChange={(e) => setForm({ ...form, website: e.target.value })}
-              className="hidden"
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden
+          ))}
+          <div>
+            <label className="mb-1 block text-sm font-medium">{t.fields.message}</label>
+            <textarea
+              rows={3}
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              className="w-full rounded-xl border border-gray-300 px-4 py-3"
             />
-            {status === "error" && <p className="text-sm text-red-500">{t.error}</p>}
-            <Button type="submit" fullWidth disabled={status === "loading"}>
-              {status === "loading" ? t.submitting : t.submit}
-            </Button>
-          </form>
-        )}
+          </div>
+          <input
+            type="text"
+            name="website"
+            value={form.website}
+            onChange={(e) => setForm({ ...form, website: e.target.value })}
+            className="hidden"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden
+          />
+          {status === "error" && <p className="text-sm text-red-500">{t.error}</p>}
+          <Button type="submit" fullWidth disabled={status === "loading"} variant="outline">
+            {status === "loading" ? t.submitting : t.requestQuote}
+          </Button>
+        </form>
       </div>
     </div>
   );

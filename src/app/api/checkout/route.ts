@@ -1,8 +1,13 @@
 import { NextResponse } from "next/server";
-import { products } from "@/lib/products";
-import { getStripe } from "@/lib/stripe";
+import type { CartItem } from "@/types";
+import {
+  createStripeCheckoutSession,
+  getEnabledPaymentMethods,
+  hasInstantCheckout,
+  getStripePaymentMethodTypes,
+  priceCart,
+} from "@/lib/payments";
 import { rateLimit, clientIp } from "@/lib/rate-limit";
-import { absoluteUrl } from "@/lib/site";
 
 export async function POST(request: Request) {
   try {
@@ -12,40 +17,24 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Demasiadas solicitudes" }, { status: 429 });
     }
 
-    const stripe = getStripe();
-    if (!stripe) {
+    const { items, locale, customerEmail, provider = "stripe" } = await request.json();
+
+    if (provider !== "stripe") {
+      return NextResponse.json({ error: "Proveedor no soportado" }, { status: 400 });
+    }
+
+    const pricing = priceCart(items as CartItem[]);
+    if (!pricing.payable) {
       return NextResponse.json(
-        { error: "Stripe no configurado. Use solicitud de presupuesto." },
+        { error: "Algunos productos no tienen precio online. Use presupuesto B2B." },
         { status: 400 }
       );
     }
 
-    const { items, locale } = await request.json();
-    const prefix = locale === "en" ? "/en" : "";
-
-    const lineItems = items.map((item: { productId: string; name: string; quantity: number; priceLabel: string }) => {
-      const product = products.find((p) => p.id === item.productId);
-      if (!product?.price) {
-        throw new Error(`Producto sin precio: ${item.name}`);
-      }
-      return {
-        price_data: {
-          currency: "eur",
-          product_data: {
-            name: item.name,
-            description: item.priceLabel,
-          },
-          unit_amount: Math.round(product.price * 100),
-        },
-        quantity: item.quantity,
-      };
-    });
-
-    const session = await stripe.checkout.sessions.create({
-      mode: "payment",
-      line_items: lineItems,
-      success_url: absoluteUrl(`${prefix}/checkout?success=true`),
-      cancel_url: absoluteUrl(`${prefix}/carrito`),
+    const session = await createStripeCheckoutSession({
+      pricing,
+      locale: locale === "en" ? "en" : "es",
+      customerEmail,
     });
 
     return NextResponse.json({ url: session.url });
@@ -54,4 +43,27 @@ export async function POST(request: Request) {
     const msg = error instanceof Error ? error.message : "Error al crear sesión";
     return NextResponse.json({ error: msg }, { status: 500 });
   }
+}
+
+export async function GET(request: Request) {
+  const locale = new URL(request.url).searchParams.get("locale") === "en" ? "en" : "es";
+  const itemsParam = new URL(request.url).searchParams.get("items");
+
+  let pricing = { payable: false, unpublishable: [] as string[], totalCents: 0 };
+  if (itemsParam) {
+    try {
+      const items = JSON.parse(itemsParam) as CartItem[];
+      const p = priceCart(items);
+      pricing = { payable: p.payable, unpublishable: p.unpublishable, totalCents: p.totalCents };
+    } catch {
+      /* ignore */
+    }
+  }
+
+  return NextResponse.json({
+    instantCheckoutEnabled: hasInstantCheckout(),
+    methods: getEnabledPaymentMethods(locale),
+    paymentMethodTypes: getStripePaymentMethodTypes(),
+    pricing,
+  });
 }
