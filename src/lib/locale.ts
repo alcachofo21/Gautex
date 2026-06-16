@@ -119,7 +119,7 @@ export function getSectorAlternatePaths(id: string): { es: string; en: string } 
 export function getProductText(
   product: { name: string; shortDescription: string; description: string; priceLabel: string },
   locale: Locale,
-  en?: { shortDescription?: string; description?: string; priceLabel?: string }
+  en?: { name?: string; shortDescription?: string; description?: string; priceLabel?: string }
 ) {
   if (locale === "en" && en) {
     return {
