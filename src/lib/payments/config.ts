@@ -72,8 +72,6 @@ export function getStripePaymentMethodTypes(): ("card" | "paypal")[] {
 }
 
 export function getEnabledPaymentMethods(locale: "es" | "en"): EnabledPaymentMethod[] {
-  if (!isStripeConfigured()) return [];
-
   const brands = [...PAYMENT_BRANDS];
   if (!isStripePayPalEnabled()) {
     brands.pop();

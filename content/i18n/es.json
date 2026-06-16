@@ -200,6 +200,7 @@
     "instantSubtitle": "Visa, Mastercard, Amex, Apple Pay, Google Pay y PayPal (vía Stripe).",
     "payNow": "Pagar ahora",
     "notPayable": "Hay productos sin precio online en el carrito. Solicita presupuesto B2B o elimina esos artículos.",
+    "pendingSetup": "El pago online se activará en breve. Mientras tanto, solicita presupuesto B2B abajo.",
     "secure": "Pagos seguros con Stripe. No almacenamos datos de tarjeta.",
     "orQuote": "o solicita presupuesto B2B"
   },

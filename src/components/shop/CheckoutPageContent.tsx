@@ -23,6 +23,7 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
   const { items, clearCart } = useCart();
   const [methods, setMethods] = useState<EnabledPaymentMethod[]>([]);
   const [payable, setPayable] = useState(false);
+  const [checkoutReady, setCheckoutReady] = useState(false);
   const [totalCents, setTotalCents] = useState(0);
   const [form, setForm] = useState({
     firstName: "",
@@ -51,6 +52,7 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
       .then((data) => {
         setMethods(data.methods || []);
         setPayable(Boolean(data.pricing?.payable));
+        setCheckoutReady(Boolean(data.instantCheckoutEnabled));
         setTotalCents(data.pricing?.totalCents || 0);
       })
       .catch(() => {});
@@ -166,11 +168,13 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
           loading={status === "loading"}
           onPay={handleStripe}
           payable={payable}
+          checkoutReady={checkoutReady}
           labels={{
             title: p.instantTitle,
             subtitle: p.instantSubtitle,
             payNow: p.payNow,
             notPayable: p.notPayable,
+            pendingSetup: p.pendingSetup,
             secure: p.secure,
           }}
         />

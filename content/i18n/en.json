@@ -200,6 +200,7 @@
     "instantSubtitle": "Visa, Mastercard, Amex, Apple Pay, Google Pay and PayPal (via Stripe).",
     "payNow": "Pay now",
     "notPayable": "Some cart items have no online price. Request a B2B quote or remove them.",
+    "pendingSetup": "Online payment will be enabled shortly. Request a B2B quote below in the meantime.",
     "secure": "Secure payments powered by Stripe. We never store card details.",
     "orQuote": "or request a B2B quote"
   },

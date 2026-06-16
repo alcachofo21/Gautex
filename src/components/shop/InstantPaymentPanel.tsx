@@ -14,9 +14,11 @@ interface InstantPaymentPanelProps {
     subtitle: string;
     payNow: string;
     notPayable: string;
+    pendingSetup: string;
     secure: string;
   };
   payable: boolean;
+  checkoutReady: boolean;
 }
 
 export function InstantPaymentPanel({
@@ -26,6 +28,7 @@ export function InstantPaymentPanel({
   onPay,
   labels,
   payable,
+  checkoutReady,
 }: InstantPaymentPanelProps) {
   if (methods.length === 0) return null;
 
@@ -42,10 +45,14 @@ export function InstantPaymentPanel({
         <>
           <p className="mt-4 text-2xl font-bold text-text">{totalLabel}</p>
 
-          <Button fullWidth onClick={onPay} disabled={loading} className="mt-4">
-            <CreditCard className="h-5 w-5" />
-            {labels.payNow}
-          </Button>
+          {checkoutReady ? (
+            <Button fullWidth onClick={onPay} disabled={loading} className="mt-4">
+              <CreditCard className="h-5 w-5" />
+              {labels.payNow}
+            </Button>
+          ) : (
+            <p className="mt-4 rounded-xl bg-blue-50 px-4 py-3 text-sm text-blue-900">{labels.pendingSetup}</p>
+          )}
 
           <ul className="mt-5 flex flex-wrap gap-2">
             {(method.brands || []).map((brand) => (
@@ -59,7 +66,7 @@ export function InstantPaymentPanel({
           </ul>
 
           <p className="mt-3 text-xs text-text-muted">{method.description}</p>
-          <p className="mt-2 text-xs text-text-muted">{labels.secure}</p>
+          {checkoutReady ? <p className="mt-2 text-xs text-text-muted">{labels.secure}</p> : null}
         </>
       )}
     </section>
