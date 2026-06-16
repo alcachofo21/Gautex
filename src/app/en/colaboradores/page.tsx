@@ -19,7 +19,7 @@ export default function EnColaboradoresPage() {
           {partners.featured.map((p) => (
             <div key={p.name} className="flex gap-6 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
               <div className="relative h-20 w-28 shrink-0">
-                <Image src={p.image} alt={p.name} fill className="object-contain" sizes="112px" />
+                <Image src={p.image} alt={p.name} fill className="object-contain" sizes="112px" quality={75} loading="lazy" />
               </div>
               <div>
                 <h2 className="font-display text-xl font-bold text-primary">{p.name}</h2>
@@ -44,7 +44,7 @@ export default function EnColaboradoresPage() {
           {partners.logos.map((logo) => (
             <div key={logo.name} className="flex aspect-square items-center justify-center rounded-xl border border-gray-100 bg-white p-4 shadow-sm" title={logo.name}>
               <div className="relative h-full w-full">
-                <Image src={logo.image} alt={logo.name} fill className="object-contain" sizes="100px" />
+                <Image src={logo.image} alt={logo.name} fill className="object-contain" sizes="100px" quality={75} loading="lazy" />
               </div>
             </div>
           ))}

@@ -13,7 +13,7 @@ export function CartItemThumb({ item, className }: CartItemThumbProps) {
   if (item.image) {
     return (
       <div className={cn("relative shrink-0 overflow-hidden rounded-xl bg-[#fafafa]", className)}>
-        <Image src={item.image} alt={item.name} fill className="object-contain p-1" sizes="64px" />
+        <Image src={item.image} alt={item.name} fill className="object-contain p-1" sizes="64px" quality={75} loading="lazy" />
       </div>
     );
   }

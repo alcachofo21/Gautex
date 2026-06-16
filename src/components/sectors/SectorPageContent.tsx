@@ -44,7 +44,7 @@ export function SectorPageContent({ sectorId, locale = "es" }: SectorPageContent
             </div>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-            <Image src={sector.image} alt={sector.title} fill className="object-cover" sizes="50vw" />
+            <Image src={sector.image} alt={sector.title} fill className="object-cover" sizes="50vw" quality={80} loading="lazy" />
           </div>
         </div>
 

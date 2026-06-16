@@ -93,7 +93,7 @@ export function AboutPageContent({ locale = "es" }: AboutPageContentProps) {
             />
             <div className="relative h-28 w-52 sm:h-32 sm:w-60">
               <Image
-                src="/images/logo/gautex.png"
+                src="/images/logo/gautex.webp"
                 alt={company.name}
                 fill
                 className="object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.45)]"
@@ -139,6 +139,8 @@ export function AboutPageContent({ locale = "es" }: AboutPageContentProps) {
                   fill
                   className="object-cover"
                   sizes="340px"
+                  quality={75}
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -231,6 +233,8 @@ export function AboutPageContent({ locale = "es" }: AboutPageContentProps) {
                   fill
                   className="object-cover"
                   sizes="33vw"
+                  quality={75}
+                  loading="lazy"
                 />
               </div>
               <p className="p-4 text-center text-sm font-semibold text-text">

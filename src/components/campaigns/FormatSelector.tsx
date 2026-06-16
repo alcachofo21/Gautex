@@ -69,6 +69,8 @@ export function FormatSelector({ formats, selected, onSelect, locale = "es" }: F
                       className="object-cover"
                       sizes="(max-width: 640px) 100vw, 50vw"
                       draggable={false}
+                      quality={75}
+                      loading="lazy"
                     />
                   </div>
                 ) : (

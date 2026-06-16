@@ -5,20 +5,20 @@
       "description": "Imágenes originales de campaña — estilo premium 3D, listas para redes y material B2B.",
       "folder": "/images/marketing",
       "items": [
-        { "file": "ad-matrix-condoms.png", "label": "Matrix Condoms" },
-        { "file": "ad-viva-condoms-cyan.png", "label": "Viva Condoms (cyan)" },
-        { "file": "ad-viva-condoms-silver.png", "label": "Viva Condoms (silver)" },
-        { "file": "ad-sexydam.png", "label": "Sexydam" },
-        { "file": "ad-maxgel-lubricante.png", "label": "Max Gel" },
-        { "file": "ad-gecofun-cubresonda.png", "label": "Gecofun" },
-        { "file": "ad-ultra-gecogel.png", "label": "Ultra Gecogel" },
-        { "file": "ad-covid-test-nadal.png", "label": "NADAL COVID-19" },
-        { "file": "ad-mascarilla-quirurgica.png", "label": "Mascarilla quirúrgica" },
-        { "file": "ad-mascarilla-ffp2.png", "label": "Mascarilla FFP-2" },
-        { "file": "ad-preservativo-femenino.png", "label": "Preservativo femenino" },
-        { "file": "ad-campaign-estuche.png", "label": "Campaña estuche" },
-        { "file": "ad-campaign-funda-pvc.png", "label": "Campaña funda PVC" },
-        { "file": "ad-hero-gautex.png", "label": "Hero banner" }
+        { "file": "ad-matrix-condoms.webp", "label": "Matrix Condoms" },
+        { "file": "ad-viva-condoms-cyan.webp", "label": "Viva Condoms (cyan)" },
+        { "file": "ad-viva-condoms-silver.webp", "label": "Viva Condoms (silver)" },
+        { "file": "ad-sexydam.webp", "label": "Sexydam" },
+        { "file": "ad-maxgel-lubricante.webp", "label": "Max Gel" },
+        { "file": "ad-gecofun-cubresonda.webp", "label": "Gecofun" },
+        { "file": "ad-ultra-gecogel.webp", "label": "Ultra Gecogel" },
+        { "file": "ad-covid-test-nadal.webp", "label": "NADAL COVID-19" },
+        { "file": "ad-mascarilla-quirurgica.webp", "label": "Mascarilla quirúrgica" },
+        { "file": "ad-mascarilla-ffp2.webp", "label": "Mascarilla FFP-2" },
+        { "file": "ad-preservativo-femenino.webp", "label": "Preservativo femenino" },
+        { "file": "ad-campaign-estuche.webp", "label": "Campaña estuche" },
+        { "file": "ad-campaign-funda-pvc.webp", "label": "Campaña funda PVC" },
+        { "file": "ad-hero-gautex.webp", "label": "Hero banner" }
       ]
     },
     {
@@ -26,29 +26,29 @@
       "description": "Versiones optimizadas 1000×1000 px para fichas y catálogo web.",
       "folder": "/images/products",
       "items": [
-        { "file": "matrix-condoms.png", "label": "Matrix Condoms" },
-        { "file": "viva-condoms.png", "label": "Viva Condoms" },
-        { "file": "viva-condoms-2.png", "label": "Viva Condoms (variante)" },
-        { "file": "viva-condoms-xl.jpg", "label": "Viva Condoms XL" },
-        { "file": "viva-condoms-extra-fuerte.jpg", "label": "Viva Condoms Extra Fuerte" },
-        { "file": "viva-condoms-manzana.jpg", "label": "Viva Condoms Manzana" },
-        { "file": "viva-condoms-banana.jpg", "label": "Viva Condoms Banana" },
-        { "file": "viva-condoms-fresa.jpg", "label": "Viva Condoms Fresa" },
-        { "file": "sexydam.png", "label": "Sexydam" },
-        { "file": "sexydam-shop.jpg", "label": "Sexydam (tienda)" },
-        { "file": "max-gel.png", "label": "Max Gel" },
-        { "file": "max-gel-35.jpg", "label": "Max Gel 3,5 ml" },
-        { "file": "body-ars.jpg", "label": "Body ARS 4 ml" },
-        { "file": "matrix-condoms-shop.jpg", "label": "Matrix Condoms (tienda)" },
-        { "file": "viva-condoms-shop.jpg", "label": "Viva Condoms (tienda)" },
-        { "file": "max-gel-shop.jpg", "label": "Max Gel (tienda)" },
-        { "file": "gecofun-shop.jpg", "label": "Gecofun (tienda)" },
-        { "file": "gecofun.png", "label": "Gecofun" },
-        { "file": "ultra-gecogel.png", "label": "Ultra Gecogel" },
-        { "file": "nadal-covid.png", "label": "NADAL COVID-19" },
-        { "file": "mascarilla-quirurgica.png", "label": "Mascarilla quirúrgica" },
-        { "file": "mascarilla-ffp2.png", "label": "Mascarilla FFP-2" },
-        { "file": "preservativo-femenino.png", "label": "Preservativo femenino" }
+        { "file": "matrix-condoms.webp", "label": "Matrix Condoms" },
+        { "file": "viva-condoms.webp", "label": "Viva Condoms" },
+        { "file": "viva-condoms-2.webp", "label": "Viva Condoms (variante)" },
+        { "file": "viva-condoms-xl.webp", "label": "Viva Condoms XL" },
+        { "file": "viva-condoms-extra-fuerte.webp", "label": "Viva Condoms Extra Fuerte" },
+        { "file": "viva-condoms-manzana.webp", "label": "Viva Condoms Manzana" },
+        { "file": "viva-condoms-banana.webp", "label": "Viva Condoms Banana" },
+        { "file": "viva-condoms-fresa.webp", "label": "Viva Condoms Fresa" },
+        { "file": "sexydam.webp", "label": "Sexydam" },
+        { "file": "sexydam-shop.webp", "label": "Sexydam (tienda)" },
+        { "file": "max-gel.webp", "label": "Max Gel" },
+        { "file": "max-gel-35.webp", "label": "Max Gel 3,5 ml" },
+        { "file": "body-ars.webp", "label": "Body ARS 4 ml" },
+        { "file": "matrix-condoms-shop.webp", "label": "Matrix Condoms (tienda)" },
+        { "file": "viva-condoms-shop.webp", "label": "Viva Condoms (tienda)" },
+        { "file": "max-gel-shop.webp", "label": "Max Gel (tienda)" },
+        { "file": "gecofun-shop.webp", "label": "Gecofun (tienda)" },
+        { "file": "gecofun.webp", "label": "Gecofun" },
+        { "file": "ultra-gecogel.webp", "label": "Ultra Gecogel" },
+        { "file": "nadal-covid.webp", "label": "NADAL COVID-19" },
+        { "file": "mascarilla-quirurgica.webp", "label": "Mascarilla quirúrgica" },
+        { "file": "mascarilla-ffp2.webp", "label": "Mascarilla FFP-2" },
+        { "file": "preservativo-femenino.webp", "label": "Preservativo femenino" }
       ]
     },
     {
@@ -56,9 +56,9 @@
       "description": "Banners 1200×900 px para home, categorías y formatos de campaña.",
       "folder": "/images/categories",
       "items": [
-        { "file": "preventivo.png", "label": "Categoría preventivo" },
-        { "file": "ginecologia.png", "label": "Categoría ginecología" },
-        { "file": "covid-19.png", "label": "Categoría COVID-19" }
+        { "file": "preventivo.webp", "label": "Categoría preventivo" },
+        { "file": "ginecologia.webp", "label": "Categoría ginecología" },
+        { "file": "covid-19.webp", "label": "Categoría COVID-19" }
       ]
     },
     {
@@ -66,10 +66,10 @@
       "description": "Imágenes de formatos personalizables.",
       "folder": "/images/campaigns",
       "items": [
-        { "file": "estuche.png", "label": "Estuche" },
-        { "file": "funda-pvc.png", "label": "Funda PVC" },
-        { "file": "condoms-custom.png", "label": "Preservativos custom" },
-        { "file": "flow-pack.png", "label": "Flow pack" }
+        { "file": "estuche.webp", "label": "Estuche" },
+        { "file": "funda-pvc.webp", "label": "Funda PVC" },
+        { "file": "condoms-custom.webp", "label": "Preservativos custom" },
+        { "file": "flow-pack.webp", "label": "Flow pack" }
       ]
     },
     {
@@ -77,7 +77,7 @@
       "description": "Banner principal 1920×1080 px.",
       "folder": "/images/hero",
       "items": [
-        { "file": "condones-seguro.png", "label": "Hero Gautex" }
+        { "file": "condones-seguro.webp", "label": "Hero Gautex" }
       ]
     }
   ]

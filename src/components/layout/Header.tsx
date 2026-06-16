@@ -35,7 +35,7 @@ export function Header() {
         <div className="container-page flex h-24 items-center justify-between gap-3 lg:h-[7.5rem]">
           <Link href={localizedPath("/", locale)} className="flex shrink-0 items-center">
             <Image
-              src="/images/logo/gautex.png"
+              src="/images/logo/gautex.webp"
               alt="Gautex Medica"
               width={440}
               height={440}

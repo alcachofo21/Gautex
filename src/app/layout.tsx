@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   description:
     "Distribución y fabricación de productos sanitarios certificados CE. Preservativos, geles, tests COVID-19 y campañas personalizadas.",
   icons: {
-    icon: "/images/logo/gautex.png",
-    apple: "/images/logo/gautex.png",
+    icon: "/images/logo/gautex.webp",
+    apple: "/images/logo/gautex.webp",
   },
   metadataBase: new URL(absoluteUrl("/")),
   alternates: {
