@@ -23,7 +23,6 @@ export function Header() {
 
   const navLinks = [
     { href: localizedPath("/productos", locale), label: ui.nav.shop },
-    { href: localizedPath("/distribuidores", locale), label: ui.nav.distributors, highlight: true },
     { href: localizedPath("/campanas", locale), label: ui.nav.campaigns },
     { href: localizedPath("/calidad", locale), label: ui.nav.quality },
     { href: localizedPath("/nosotros", locale), label: ui.nav.about },
@@ -55,11 +54,7 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   className={`text-sm font-medium transition-colors ${
-                    active
-                      ? "text-primary"
-                      : link.highlight
-                        ? "font-semibold text-accent hover:text-accent-hover"
-                        : "text-text-muted hover:text-primary"
+                    active ? "text-primary" : "text-text-muted hover:text-primary"
                   }`}
                   aria-current={active ? "page" : undefined}
                 >

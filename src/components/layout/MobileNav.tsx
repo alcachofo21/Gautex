@@ -17,7 +17,6 @@ export function MobileNav({ open, onClose, locale }: MobileNavProps) {
 
   const navLinks = [
     { href: localizedPath("/productos", locale), label: ui.nav.shop },
-    { href: localizedPath("/distribuidores", locale), label: ui.nav.distributors, highlight: true },
     { href: localizedPath("/campanas", locale), label: ui.nav.campaigns },
     { href: localizedPath("/calidad", locale), label: ui.nav.quality },
     { href: localizedPath("/nosotros", locale), label: ui.nav.about },
@@ -42,9 +41,7 @@ export function MobileNav({ open, onClose, locale }: MobileNavProps) {
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className={`min-h-[48px] rounded-lg px-4 py-3 text-lg font-medium hover:bg-surface ${
-                link.highlight ? "bg-primary/5 font-semibold text-primary" : ""
-              }`}
+              className="min-h-[48px] rounded-lg px-4 py-3 text-lg font-medium hover:bg-surface"
             >
               {link.label}
             </Link>

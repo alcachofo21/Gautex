@@ -1,6 +1,6 @@
 {
   "nav": {
-    "shop": "Tienda",
+    "shop": "Tienda online",
     "campaigns": "Campañas",
     "distributors": "Distribuidores",
     "quality": "Calidad",
@@ -21,7 +21,7 @@
     "categories": "Explora nuestras categorías",
     "ctaTitle": "¿Listo para pedir o personalizar?",
     "ctaDesc": "Añade productos al carrito, solicita presupuesto B2B o diseña una campaña con tu marca. Respuesta en 24–48h laborables.",
-    "ctaShop": "Ir a la tienda",
+    "ctaShop": "Ir a tienda online",
     "ctaQuote": "Solicitar presupuesto",
     "ctaDistributors": "Área de distribuidores"
   },
@@ -206,6 +206,17 @@
     "pendingSetup": "El pago online se activará en breve. Mientras tanto, solicita presupuesto B2B abajo.",
     "secure": "Pagos seguros con Stripe. No almacenamos datos de tarjeta.",
     "orQuote": "o solicita presupuesto B2B"
+  },
+  "shopPage": {
+    "title": "Nuestros productos",
+    "subtitle": "Catálogo completo de productos sanitarios certificados. Filtra por categoría o explora todo el catálogo.",
+    "filterAll": "Todos",
+    "results": "{count} productos",
+    "categoryFilters": {
+      "preventivo": "Preventivo",
+      "ginecologia": "Ginecología",
+      "covid-19": "COVID-19"
+    }
   },
   "product": {
     "addToCart": "Añadir",

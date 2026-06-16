@@ -1,6 +1,6 @@
 {
   "nav": {
-    "shop": "Shop",
+    "shop": "Online shop",
     "campaigns": "Campaigns",
     "distributors": "Distributors",
     "quality": "Quality",
@@ -21,7 +21,7 @@
     "categories": "Browse our categories",
     "ctaTitle": "Ready to order or customise?",
     "ctaDesc": "Add products to cart, request a B2B quote or design a branded campaign. Response within 24–48 business hours.",
-    "ctaShop": "Go to shop",
+    "ctaShop": "Go to online shop",
     "ctaQuote": "Request a quote",
     "ctaDistributors": "Distributor area"
   },
@@ -206,6 +206,17 @@
     "pendingSetup": "Online payment will be enabled shortly. Request a B2B quote below in the meantime.",
     "secure": "Secure payments powered by Stripe. We never store card details.",
     "orQuote": "or request a B2B quote"
+  },
+  "shopPage": {
+    "title": "Our products",
+    "subtitle": "Full catalogue of CE-certified medical products. Filter by category or browse everything.",
+    "filterAll": "All",
+    "results": "{count} products",
+    "categoryFilters": {
+      "preventivo": "Prevention",
+      "ginecologia": "Gynaecology",
+      "covid-19": "COVID-19"
+    }
   },
   "product": {
     "addToCart": "Add",
