@@ -113,8 +113,8 @@
     "cta": "Diseña tu campaña",
     "estuche": { "title": "Estuche personalizado", "desc": "350gr mate, frontal a todo color" },
     "funda": { "title": "Funda PVC", "desc": "9,5×6,5 cm, cuatricromía" },
-    "flowPack": { "title": "Flow Pack", "desc": "Elige tipo: preservativo, gel, Sexydam o femenino" },
-    "custom": { "title": "Preservativos custom", "desc": "Tiras de 3 uds o cajas 144 uds" }
+    "flowPack": { "title": "Flow pack", "desc": "Elige tipo: preservativo, gel, Sexydam o femenino" },
+    "custom": { "title": "Preservativos personalizados", "desc": "Tiras de 3 uds o cajas de 144 uds" }
   },
   "process": {
     "title": "De la idea al impacto en 3 pasos",
