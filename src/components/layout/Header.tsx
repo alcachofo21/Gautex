@@ -41,7 +41,7 @@ export function Header() {
               height={440}
               className="h-[5.5rem] w-auto sm:h-24 lg:h-[6.5rem]"
               sizes="(max-width: 640px) 264px, 312px"
-              quality={95}
+              quality={75}
               priority
             />
           </Link>

@@ -12,10 +12,10 @@ export function CampaignsBlock({ locale = "es" }: CampaignsBlockProps) {
   const b = ui.campaignsBlock;
 
   const highlights = [
-    { icon: Package, title: b.estuche.title, desc: b.estuche.desc, image: "/images/campaigns/estuche.png" },
-    { icon: Wallet, title: b.funda.title, desc: b.funda.desc, image: "/images/campaigns/funda-pvc.png" },
-    { icon: Layers, title: b.flowPack.title, desc: b.flowPack.desc, image: "/images/campaigns/flow-pack.png" },
-    { icon: Box, title: b.custom.title, desc: b.custom.desc, image: "/images/campaigns/condoms-custom.png" },
+    { icon: Package, title: b.estuche.title, desc: b.estuche.desc, image: "/images/campaigns/estuche.webp" },
+    { icon: Wallet, title: b.funda.title, desc: b.funda.desc, image: "/images/campaigns/funda-pvc.webp" },
+    { icon: Layers, title: b.flowPack.title, desc: b.flowPack.desc, image: "/images/campaigns/flow-pack.webp" },
+    { icon: Box, title: b.custom.title, desc: b.custom.desc, image: "/images/campaigns/condoms-custom.webp" },
   ];
 
   return (
@@ -33,7 +33,7 @@ export function CampaignsBlock({ locale = "es" }: CampaignsBlockProps) {
             {highlights.map((item) => (
               <div key={item.title} className="overflow-hidden rounded-xl bg-white/10 backdrop-blur">
                 <div className="relative h-28 w-full">
-                  <Image src={item.image} alt={item.title} fill className="object-cover opacity-80" sizes="200px" />
+                  <Image src={item.image} alt={item.title} fill className="object-cover opacity-80" sizes="200px" quality={75} loading="lazy" />
                 </div>
                 <div className="p-4">
                   <item.icon className="mb-2 h-6 w-6 text-accent" />

@@ -50,22 +50,22 @@ export function Hero({ locale = "es" }: HeroProps) {
 
   const gridItems = [
     {
-      src: "/images/products/matrix-condoms.png",
+      src: "/images/products/matrix-condoms.webp",
       label: t.labels[0],
       href: localizedPath("/productos/preventivo/matrix-condoms", locale),
     },
     {
-      src: "/images/products/viva-condoms.png",
+      src: "/images/products/viva-condoms.webp",
       label: t.labels[1],
       href: localizedPath("/productos/preventivo/viva-condoms", locale),
     },
     {
-      src: "/images/products/max-gel.png",
+      src: "/images/products/max-gel.webp",
       label: t.labels[2],
       href: localizedPath("/productos/preventivo/max-gel", locale),
     },
     {
-      src: "/images/campaigns/estuche.png",
+      src: "/images/campaigns/estuche.webp",
       label: t.labels[3],
       href: localizedPath("/campanas", locale),
     },
@@ -75,12 +75,13 @@ export function Hero({ locale = "es" }: HeroProps) {
     <section className="relative overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="/images/hero/condones-seguro.png"
+          src="/images/hero/condones-seguro.webp"
           alt=""
           fill
           className="object-cover"
           priority
           sizes="100vw"
+          quality={75}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.96] via-primary/60 to-transparent" />
         <div className="absolute inset-y-0 left-0 w-full max-w-3xl bg-gradient-to-r from-black/30 to-transparent lg:max-w-[52%]" />
@@ -148,6 +149,8 @@ export function Hero({ locale = "es" }: HeroProps) {
                       fill
                       className="object-cover transition duration-300 group-hover:scale-105"
                       sizes="180px"
+                      quality={75}
+                      loading="lazy"
                     />
                   </div>
                   <p className="mt-1.5 text-center text-xs font-semibold text-white group-hover:text-accent xl:text-sm">

@@ -39,7 +39,7 @@ export function CategoryCards({ locale = "es", title }: CategoryCardsProps) {
               >
                 {cat.image ? (
                   <div className="relative h-40 w-full">
-                    <Image src={cat.image} alt={cat.name} fill className="object-cover" sizes="33vw" />
+                    <Image src={cat.image} alt={cat.name} fill className="object-cover" sizes="33vw" quality={75} loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>
                 ) : (
@@ -74,7 +74,7 @@ export function CategoryCards({ locale = "es", title }: CategoryCardsProps) {
                 >
                   {cat.image ? (
                     <div className="relative h-32 w-full">
-                      <Image src={cat.image} alt={cat.name} fill className="object-cover" sizes="85vw" />
+                      <Image src={cat.image} alt={cat.name} fill className="object-cover" sizes="85vw" quality={75} loading="lazy" />
                     </div>
                   ) : (
                     <div

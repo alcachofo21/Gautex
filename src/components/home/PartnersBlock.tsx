@@ -22,7 +22,7 @@ export function PartnersBlock({ locale = "es" }: PartnersBlockProps) {
           {partners.featured.map((p) => (
             <div key={p.name} className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
               <div className="relative h-16 w-24 shrink-0">
-                <Image src={p.image} alt={p.name} fill className="object-contain" sizes="96px" />
+                <Image src={p.image} alt={p.name} fill className="object-contain" sizes="96px" quality={75} loading="lazy" />
               </div>
               <div>
                 <h3 className="font-display font-bold text-primary">{p.name}</h3>
@@ -35,7 +35,7 @@ export function PartnersBlock({ locale = "es" }: PartnersBlockProps) {
           {partners.logos.map((logo) => (
             <div key={logo.name} className="flex aspect-square items-center justify-center rounded-xl border border-gray-100 bg-white p-3 shadow-sm" title={logo.name}>
               <div className="relative h-full w-full">
-                <Image src={logo.image} alt={logo.name} fill className="object-contain" sizes="80px" />
+                <Image src={logo.image} alt={logo.name} fill className="object-contain" sizes="80px" quality={75} loading="lazy" />
               </div>
             </div>
           ))}

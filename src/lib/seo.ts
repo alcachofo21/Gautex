@@ -32,7 +32,7 @@ export function buildPageMetadata({
   description,
   path,
   locale = "es",
-  image = "/images/hero/condones-seguro.png",
+  image = "/images/hero/condones-seguro.webp",
   noIndex = false,
   alternatePaths,
 }: PageMetaInput): Metadata {

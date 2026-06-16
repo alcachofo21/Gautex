@@ -25,17 +25,17 @@ const activityIcons = [Truck, Building2, Factory];
 
 const productLines = [
   {
-    image: "/images/categories/ginecologia.png",
+    image: "/images/categories/ginecologia.webp",
     labelEs: "Ginecología",
     labelEn: "Gynaecology",
   },
   {
-    image: "/images/categories/preventivo.png",
+    image: "/images/categories/preventivo.webp",
     labelEs: "Prevención",
     labelEn: "Prevention",
   },
   {
-    image: "/images/marketing/ad-matrix-condoms.png",
+    image: "/images/marketing/ad-matrix-condoms.webp",
     labelEs: "Matrix Condoms",
     labelEn: "Matrix Condoms",
   },
@@ -57,7 +57,7 @@ export function AboutPageContent({ locale = "es" }: AboutPageContentProps) {
       <section className="relative mt-10 overflow-hidden rounded-3xl bg-primary text-white">
         <div className="absolute inset-0">
           <Image
-            src="/images/marketing/ad-hero-gautex.png"
+            src="/images/marketing/ad-hero-gautex.webp"
             alt=""
             fill
             className="object-cover opacity-20"
@@ -98,7 +98,7 @@ export function AboutPageContent({ locale = "es" }: AboutPageContentProps) {
                 fill
                 className="object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.45)]"
                 sizes="(max-width: 640px) 208px, 240px"
-                quality={95}
+                quality={80}
               />
             </div>
           </div>
@@ -130,7 +130,7 @@ export function AboutPageContent({ locale = "es" }: AboutPageContentProps) {
             <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/images/quality/certificaciones.jpg"
+                  src="/images/quality/certificaciones.webp"
                   alt={
                     locale === "es"
                       ? "Certificaciones de calidad Gautex Medica"

@@ -18,7 +18,7 @@
     },
     "certifications": ["CEE 120", "ISO 9001/2008", "ISO 13485/2003", "ISO 4074/2002", "NF062 France", "WHO American Standard", "ISO 10993 Biocompatibilidad"],
     "color": "#1e4f7a",
-    "image": "/images/products/matrix-condoms.png"
+    "image": "/images/products/matrix-condoms.webp"
   },
   {
     "id": "viva-condoms",
@@ -40,7 +40,7 @@
     },
     "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003", "ISO 10993 Biocompatibilidad"],
     "color": "#2563eb",
-    "image": "/images/products/viva-condoms.png"
+    "image": "/images/products/viva-condoms.webp"
   },
   {
     "id": "viva-condoms-xl",
@@ -60,7 +60,7 @@
     },
     "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003"],
     "color": "#1a56db",
-    "image": "/images/products/viva-condoms-xl.png"
+    "image": "/images/products/viva-condoms-xl.webp"
   },
   {
     "id": "viva-condoms-extra-fuerte",
@@ -80,7 +80,7 @@
     },
     "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003"],
     "color": "#1d4ed8",
-    "image": "/images/products/viva-condoms-extra-fuerte.png"
+    "image": "/images/products/viva-condoms-extra-fuerte.webp"
   },
   {
     "id": "viva-condoms-manzana",
@@ -99,7 +99,7 @@
     },
     "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003"],
     "color": "#22c55e",
-    "image": "/images/products/viva-condoms-manzana.png"
+    "image": "/images/products/viva-condoms-manzana.webp"
   },
   {
     "id": "viva-condoms-banana",
@@ -118,7 +118,7 @@
     },
     "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003"],
     "color": "#eab308",
-    "image": "/images/products/viva-condoms-banana.png"
+    "image": "/images/products/viva-condoms-banana.webp"
   },
   {
     "id": "viva-condoms-fresa",
@@ -137,7 +137,7 @@
     },
     "certifications": ["CEE 120", "ISO 4074/2002", "ISO 9001/2008", "ISO 13485/2003"],
     "color": "#ef4444",
-    "image": "/images/products/viva-condoms-fresa.png"
+    "image": "/images/products/viva-condoms-fresa.webp"
   },
   {
     "id": "sexydam",
@@ -157,7 +157,7 @@
     },
     "certifications": ["CEE 120", "ISO 9001/2008", "ISO 13485/2003"],
     "color": "#E85D75",
-    "image": "/images/products/sexydam.png"
+    "image": "/images/products/sexydam.webp"
   },
   {
     "id": "max-gel",
@@ -177,7 +177,7 @@
     },
     "certifications": ["CE 0120 SGS", "CE0035 TüV"],
     "color": "#5b7fd4",
-    "image": "/images/products/max-gel.png"
+    "image": "/images/products/max-gel.webp"
   },
   {
     "id": "max-gel-3-5ml",
@@ -196,7 +196,7 @@
     },
     "certifications": ["CE 0120 SGS", "CE0035 TüV"],
     "color": "#4f7ad4",
-    "image": "/images/products/max-gel-3-5ml.png"
+    "image": "/images/products/max-gel-3-5ml.webp"
   },
   {
     "id": "body-ars-4ml",
@@ -214,7 +214,7 @@
     },
     "certifications": ["CE 0120 SGS"],
     "color": "#64748b",
-    "image": "/images/products/body-ars-4ml.png"
+    "image": "/images/products/body-ars-4ml.webp"
   },
   {
     "id": "preservativo-femenino",
@@ -232,7 +232,7 @@
     },
     "certifications": ["CE 0120 SGS"],
     "color": "#9B59B6",
-    "image": "/images/products/preservativo-femenino.png"
+    "image": "/images/products/preservativo-femenino.webp"
   },
   {
     "id": "gecofun",
@@ -251,7 +251,7 @@
     },
     "certifications": ["ISO 13485:2013", "ISO 9001:2008", "CE 0120 SGS"],
     "color": "#2563eb",
-    "image": "/images/products/gecofun.png"
+    "image": "/images/products/gecofun.webp"
   },
   {
     "id": "ultra-gecogel-250",
@@ -270,7 +270,7 @@
     },
     "certifications": ["ISO 13485:2013", "ISO 9001:2008"],
     "color": "#3498DB",
-    "image": "/images/products/ultra-gecogel.png"
+    "image": "/images/products/ultra-gecogel.webp"
   },
   {
     "id": "ultra-gecogel-1000",
@@ -289,7 +289,7 @@
     },
     "certifications": ["ISO 13485:2013", "ISO 9001:2008"],
     "color": "#2980B9",
-    "image": "/images/products/ultra-gecogel.png"
+    "image": "/images/products/ultra-gecogel.webp"
   },
   {
     "id": "nadal-covid-ag",
@@ -309,7 +309,7 @@
     },
     "certifications": ["Marcado CE", "Directiva 98/79/CE IVD"],
     "color": "#E74C3C",
-    "image": "/images/products/nadal-covid.png"
+    "image": "/images/products/nadal-covid.webp"
   },
   {
     "id": "nadal-covid-igg-igm",
@@ -329,7 +329,7 @@
     },
     "certifications": ["Marcado CE", "Directiva 98/79/CE IVD"],
     "color": "#C0392B",
-    "image": "/images/products/nadal-covid.png"
+    "image": "/images/products/nadal-covid.webp"
   },
   {
     "id": "mascarilla-quirurgica",
@@ -347,7 +347,7 @@
     },
     "certifications": ["CE"],
     "color": "#95A5A6",
-    "image": "/images/products/mascarilla-quirurgica.png"
+    "image": "/images/products/mascarilla-quirurgica.webp"
   },
   {
     "id": "mascarilla-ffp2",
@@ -365,6 +365,6 @@
     },
     "certifications": ["CE"],
     "color": "#7F8C8D",
-    "image": "/images/products/mascarilla-ffp2.png"
+    "image": "/images/products/mascarilla-ffp2.webp"
   }
 ]

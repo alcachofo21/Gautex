@@ -66,6 +66,7 @@ export default async function ProductPage({ params }: Props) {
               className="aspect-square w-full rounded-2xl"
               sizes="(max-width: 1024px) 100vw, 50vw"
               priority
+              quality={85}
             />
 
             <div>

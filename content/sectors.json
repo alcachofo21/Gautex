@@ -11,7 +11,7 @@
       "Soporte comercial y material POS"
     ],
     "products": ["matrix-condoms", "viva-condoms", "max-gel", "sexydam"],
-    "image": "/images/categories/preventivo.png"
+    "image": "/images/categories/preventivo.webp"
   },
   {
     "id": "hospital",
@@ -25,7 +25,7 @@
       "Pedidos recurrentes y presupuesto personalizado"
     ],
     "products": ["gecofun", "ultra-gecogel-250", "ultra-gecogel-1000", "mascarilla-quirurgica"],
-    "image": "/images/categories/ginecologia.png"
+    "image": "/images/categories/ginecologia.webp"
   },
   {
     "id": "distribuidor",
@@ -39,6 +39,6 @@
       "Exportación a toda Europa"
     ],
     "products": ["matrix-condoms", "viva-condoms", "nadal-covid-ag", "preservativo-femenino"],
-    "image": "/images/categories/covid-19.png"
+    "image": "/images/categories/covid-19.webp"
   }
 ]

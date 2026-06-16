@@ -9,6 +9,7 @@ interface ProductImageProps {
   className?: string;
   sizes?: string;
   priority?: boolean;
+  quality?: number;
 }
 
 export function ProductImage({
@@ -19,6 +20,7 @@ export function ProductImage({
   className,
   sizes = "(max-width: 640px) 50vw, 25vw",
   priority = false,
+  quality = 80,
 }: ProductImageProps) {
   if (src) {
     return (
@@ -30,6 +32,8 @@ export function ProductImage({
           className="object-contain p-4 sm:p-6"
           sizes={sizes}
           priority={priority}
+          quality={quality}
+          loading={priority ? undefined : "lazy"}
         />
       </div>
     );

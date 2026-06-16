@@ -2,12 +2,12 @@ import Image from "next/image";
 import { getUi, type Locale } from "@/lib/locale";
 
 const galleryItems = [
-  { src: "/images/marketing/ad-campaign-estuche.png", key: "estuche" as const },
-  { src: "/images/marketing/ad-campaign-funda-pvc.png", key: "funda" as const },
-  { src: "/images/marketing/ad-viva-condoms-cyan.png", key: "condoms" as const },
-  { src: "/images/marketing/ad-maxgel-lubricante.png", key: "gel" as const },
-  { src: "/images/marketing/ad-ultra-gecogel.png", key: "gecogel" as const },
-  { src: "/images/marketing/ad-covid-test-nadal.png", key: "covid" as const },
+  { src: "/images/marketing/ad-campaign-estuche.webp", key: "estuche" as const },
+  { src: "/images/marketing/ad-campaign-funda-pvc.webp", key: "funda" as const },
+  { src: "/images/marketing/ad-viva-condoms-cyan.webp", key: "condoms" as const },
+  { src: "/images/marketing/ad-maxgel-lubricante.webp", key: "gel" as const },
+  { src: "/images/marketing/ad-ultra-gecogel.webp", key: "gecogel" as const },
+  { src: "/images/marketing/ad-covid-test-nadal.webp", key: "covid" as const },
 ];
 
 interface CampaignGalleryProps {
@@ -29,7 +29,7 @@ export function CampaignGallery({ locale = "es" }: CampaignGalleryProps) {
             className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
           >
             <div className="relative aspect-[4/3] bg-surface">
-              <Image src={item.src} alt={g.items[item.key]} fill className="object-contain p-4" sizes="33vw" />
+              <Image src={item.src} alt={g.items[item.key]} fill className="object-contain p-4" sizes="33vw" quality={75} loading="lazy" />
             </div>
             <figcaption className="border-t px-4 py-3 text-sm font-medium text-text-muted">
               {g.items[item.key]}

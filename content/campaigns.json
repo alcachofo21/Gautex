@@ -11,7 +11,7 @@
         "Lengüetas interiores con instrucciones y sellos"
       ],
       "icon": "package",
-      "image": "/images/campaigns/estuche.png",
+      "image": "/images/campaigns/estuche.webp",
       "productIds": ["matrix", "viva"]
     },
     {
@@ -25,7 +25,7 @@
         "Bolsas interiores transparentes 5,50 x 6,0 cm"
       ],
       "icon": "wallet",
-      "image": "/images/campaigns/funda-pvc.png",
+      "image": "/images/campaigns/funda-pvc.webp",
       "productIds": ["matrix", "viva"],
       "configOptions": [
         {
@@ -60,7 +60,7 @@
         "Látex natural, transparente, lubricado"
       ],
       "icon": "box",
-      "image": "/images/campaigns/condoms-custom.png",
+      "image": "/images/campaigns/condoms-custom.webp",
       "productIds": ["matrix", "viva"],
       "presentationOptions": [
         { "id": "tira-3", "name": "Tira de 3 preservativos" },
@@ -99,7 +99,7 @@
         "Elige el tipo de contenido según tu campaña"
       ],
       "icon": "layers",
-      "image": "/images/campaigns/flow-pack.png",
+      "image": "/images/campaigns/flow-pack.webp",
       "variants": [
         {
           "id": "preservativo",

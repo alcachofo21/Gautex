@@ -13,9 +13,10 @@ import { ProductImage } from "./ProductImage";
 interface ProductCardProps {
   product: Product;
   locale?: Locale;
+  priority?: boolean;
 }
 
-export function ProductCard({ product, locale = "es" }: ProductCardProps) {
+export function ProductCard({ product, locale = "es", priority = false }: ProductCardProps) {
   const { addItem } = useCart();
   const ui = getUi(locale);
   const categoryName = getCategories(locale).find((c) => c.id === product.category)?.name ?? product.category;
@@ -44,6 +45,8 @@ export function ProductCard({ product, locale = "es" }: ProductCardProps) {
         alt={product.name}
         color={product.color}
         className="aspect-square w-full"
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        priority={priority}
       />
       <div className="flex flex-1 flex-col p-4">
         <Badge variant="outline" className="mb-2 w-fit text-[10px]">

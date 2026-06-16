@@ -51,6 +51,7 @@ export default async function EnProductPage({ params }: Props) {
             className="aspect-square w-full rounded-2xl"
             sizes="(max-width: 1024px) 100vw, 50vw"
             priority
+            quality={85}
           />
           <div>
             <Badge className="mb-3">{product.category}</Badge>
