@@ -5,6 +5,7 @@ import { ShoppingCart } from "lucide-react";
 import type { Product } from "@/types";
 import { useCart } from "@/lib/cart";
 import { localizedPath, getUi, getCategories, type Locale } from "@/lib/locale";
+import { trackEvent } from "@/lib/analytics";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { ProductImage } from "./ProductImage";
@@ -28,7 +29,9 @@ export function ProductCard({ product, locale = "es" }: ProductCardProps) {
       category: product.category,
       priceLabel: product.priceLabel,
       color: product.color,
+      image: product.image,
     });
+    trackEvent("add_to_cart", { product: product.id });
   };
 
   return (

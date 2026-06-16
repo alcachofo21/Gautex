@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { getCorporate, getUi, localizedPath, type Locale } from "@/lib/locale";
+import { trackEvent } from "@/lib/analytics";
 
 interface NewsletterContactProps {
   locale?: Locale;
@@ -27,10 +28,14 @@ export function NewsletterContact({ locale = "es" }: NewsletterContactProps) {
           email,
           message: locale === "en" ? "Newsletter subscription" : "Suscripción al newsletter",
           type: "newsletter",
+          locale,
         }),
       });
       setStatus(res.ok ? "success" : "error");
-      if (res.ok) setEmail("");
+      if (res.ok) {
+        trackEvent("newsletter_signup");
+        setEmail("");
+      }
     } catch {
       setStatus("error");
     }

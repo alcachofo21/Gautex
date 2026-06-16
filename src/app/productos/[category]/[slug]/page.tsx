@@ -76,6 +76,15 @@ export default async function ProductPage({ params }: Props) {
 
               <ProductActions product={product} />
 
+              <p className="mt-4">
+                <Link
+                  href={`/productos/${category}/${slug}/ficha`}
+                  className="text-sm font-semibold text-primary hover:underline"
+                >
+                  Descargar / imprimir ficha técnica →
+                </Link>
+              </p>
+
               <div className="mt-8 hidden lg:block">
                 <h2 className="mb-4 font-display text-lg font-bold">Especificaciones</h2>
                 <table className="w-full text-sm">

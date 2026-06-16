@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { getUi, type Locale } from "@/lib/locale";
+import { trackEvent } from "@/lib/analytics";
 
 interface ContactFormProps {
   locale?: Locale;
@@ -21,11 +22,12 @@ export function ContactForm({ locale = "es" }: ContactFormProps) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, type: "contact" }),
+        body: JSON.stringify({ ...form, type: "contact", locale }),
       });
       if (res.ok) {
         setStatus("success");
         setForm({ firstName: "", lastName: "", email: "", phone: "", message: "", website: "" });
+        trackEvent("contact_submit");
       } else {
         setStatus("error");
       }

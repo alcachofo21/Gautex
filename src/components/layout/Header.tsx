@@ -47,15 +47,21 @@ export function Header() {
           </Link>
 
           <nav className="hidden items-center gap-5 lg:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-text-muted transition-colors hover:text-primary"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors ${
+                    active ? "text-primary" : "text-text-muted hover:text-primary"
+                  }`}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-1 sm:gap-2">
@@ -88,7 +94,7 @@ export function Header() {
               type="button"
               onClick={() => setMobileOpen(true)}
               className="flex h-11 w-11 items-center justify-center rounded-xl hover:bg-surface lg:hidden"
-              aria-label="Menu"
+              aria-label={getUi(locale).a11y.menu}
             >
               <Menu className="h-6 w-6" />
             </button>

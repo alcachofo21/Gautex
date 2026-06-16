@@ -6,6 +6,7 @@ import type { Product } from "@/types";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/Button";
 import { getUi, localizedPath, type Locale } from "@/lib/locale";
+import { trackEvent } from "@/lib/analytics";
 
 interface ProductActionsProps {
   product: Product;
@@ -31,7 +32,7 @@ export function ProductActions({ product, locale = "es" }: ProductActionsProps) 
         />
       </div>
       <Button
-        onClick={() =>
+        onClick={() => {
           addItem(
             {
               productId: product.id,
@@ -40,10 +41,12 @@ export function ProductActions({ product, locale = "es" }: ProductActionsProps) 
               category: product.category,
               priceLabel: product.priceLabel,
               color: product.color,
+              image: product.image,
             },
             quantity
-          )
-        }
+          );
+          trackEvent("add_to_cart", { product: product.id, quantity });
+        }}
         className="sm:flex-1"
       >
         <ShoppingCart className="h-5 w-5" />

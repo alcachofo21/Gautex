@@ -30,7 +30,10 @@
     "cookies": "Cookies",
     "terms": "Aviso legal",
     "rights": "Todos los derechos reservados",
-    "since": "Desde"
+    "since": "Desde",
+    "blog": "Blog",
+    "sectors": "Sectores",
+    "distributors": "Distribuidores"
   },
   "lang": {
     "switch": "English",
@@ -200,7 +203,8 @@
   "cookies": {
     "message": "Utilizamos cookies técnicas para mejorar su experiencia.",
     "more": "Más información",
-    "accept": "Aceptar"
+    "accept": "Aceptar",
+    "reject": "Rechazar"
   },
   "contact": {
     "successTitle": "Mensaje enviado",
@@ -215,5 +219,67 @@
       "phone": "Teléfono",
       "message": "Mensaje *"
     }
+  },
+  "search": {
+    "label": "Buscar productos",
+    "placeholder": "Buscar productos...",
+    "close": "Cerrar",
+    "noResults": "Sin resultados"
+  },
+  "a11y": {
+    "skipToContent": "Saltar al contenido",
+    "menu": "Menú"
+  },
+  "datasheet": {
+    "title": "Ficha técnica",
+    "download": "Descargar / imprimir ficha",
+    "print": "Imprimir ficha",
+    "specs": "Especificaciones",
+    "certifications": "Certificaciones",
+    "back": "Volver al producto"
+  },
+  "campaignGallery": {
+    "title": "Casos y creatividades",
+    "desc": "Ejemplos reales de campañas, packaging personalizado y material promocional.",
+    "items": {
+      "estuche": "Estuche personalizado",
+      "funda": "Funda PVC",
+      "condoms": "Preservativos Viva",
+      "gel": "Max Gel lubricante",
+      "gecogel": "Ultra Gecogel",
+      "covid": "Test NADAL COVID-19"
+    }
+  },
+  "blog": {
+    "title": "Noticias y novedades",
+    "subtitle": "Actualidad del catálogo, normativa sanitaria y campañas de prevención.",
+    "readMore": "Leer más",
+    "back": "Volver al blog"
+  },
+  "sectors": {
+    "title": "Soluciones por sector",
+    "cta": "Solicitar presupuesto",
+    "ctaShop": "Ver catálogo"
+  },
+  "distributors": {
+    "title": "Área de distribuidores",
+    "subtitle": "Acceso a tarifas, catálogo PDF y canal comercial prioritario.",
+    "loginTitle": "Acceso distribuidor",
+    "codeLabel": "Código de acceso",
+    "login": "Entrar",
+    "logout": "Cerrar sesión",
+    "invalidCode": "Código incorrecto",
+    "resourcesTitle": "Recursos exclusivos",
+    "catalogPdf": "Descargar catálogo PDF",
+    "priceList": "Solicitar lista de precios",
+    "contactSales": "Contactar comercial",
+    "portalDesc": "Si eres distribuidor autorizado, introduce el código que te ha facilitado Gautex."
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "desc": "La página que buscas no existe o ha sido movida.",
+    "home": "Ir al inicio",
+    "shop": "Ver productos",
+    "enLink": "English homepage"
   }
 }

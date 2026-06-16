@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { FormatSelector } from "./FormatSelector";
 import { Button } from "@/components/ui/Button";
 import { getCampaigns, getUi, type Locale } from "@/lib/locale";
+import { trackEvent } from "@/lib/analytics";
 import type { CampaignFormat, ConfigOption, FlowPackVariant, FoilProductSpec } from "@/types";
 import type { FoilSideState } from "./FoilPreview";
 
@@ -248,10 +249,12 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
           foilFrontUrl,
           foilBackFileName: foilBack.fileName || undefined,
           foilBackUrl,
+          locale,
           ...form,
         }),
       });
       if (res.ok) {
+        trackEvent("campaign_submit");
         setStatus("success");
         setStep(5);
       } else {

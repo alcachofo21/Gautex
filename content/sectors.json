@@ -1,0 +1,44 @@
+[
+  {
+    "id": "farmacia",
+    "title": "Farmacia y parafarmacia",
+    "headline": "Material preventivo certificado para mostrador y distribución",
+    "description": "Preservativos Matrix y Viva, geles lubricantes Max Gel y referencias de alta rotación con marcado CE y trazabilidad completa.",
+    "benefits": [
+      "Cajas de 144 uds y formatos monodosis",
+      "Certificaciones CE 0120 e ISO 13485",
+      "Plazos de entrega ágiles en península",
+      "Soporte comercial y material POS"
+    ],
+    "products": ["matrix-condoms", "viva-condoms", "max-gel", "sexydam"],
+    "image": "/images/categories/preventivo.png"
+  },
+  {
+    "id": "hospital",
+    "title": "Hospital y clínica",
+    "headline": "Ginecología hospitalaria y EPI certificados",
+    "description": "Cubresondas Gecofun, geles conductores Ultra Gecogel en formatos 250 ml y 1000 ml, y material de protección para uso sanitario.",
+    "benefits": [
+      "Productos para ecografía y uso hospitalario",
+      "Formatos bulk para departamentos clínicos",
+      "Cumplimiento normativo IVD y dispositivos médicos",
+      "Pedidos recurrentes y presupuesto personalizado"
+    ],
+    "products": ["gecofun", "ultra-gecogel-250", "ultra-gecogel-1000", "mascarilla-quirurgica"],
+    "image": "/images/categories/ginecologia.png"
+  },
+  {
+    "id": "distribuidor",
+    "title": "Distribuidor mayorista",
+    "headline": "Catálogo completo para gross y exportación",
+    "description": "Acceso a líneas preventivas, ginecología y COVID-19 con condiciones B2B, campañas personalizadas y logística europea.",
+    "benefits": [
+      "Tarifas por volumen y acuerdos anuales",
+      "Campañas white-label para clientes institucionales",
+      "Área de distribuidores con recursos exclusivos",
+      "Exportación a toda Europa"
+    ],
+    "products": ["matrix-condoms", "viva-condoms", "nadal-covid-ag", "preservativo-femenino"],
+    "image": "/images/categories/covid-19.png"
+  }
+]

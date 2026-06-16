@@ -1,10 +1,33 @@
 import type { Redirect } from "next/dist/lib/load-custom-routes";
 
+const productLegacyMap: Record<string, string> = {
+  "/ES/Productos/Material-preventivo-y-uso-sexual/Matrix-Condoms": "/productos/preventivo/matrix-condoms",
+  "/ES/Productos/Material-preventivo-y-uso-sexual/Viva-Condoms": "/productos/preventivo/viva-condoms",
+  "/ES/Productos/Material-preventivo-y-uso-sexual/Sexydam": "/productos/preventivo/sexydam",
+  "/ES/Productos/Material-preventivo-y-uso-sexual/Max-Gel": "/productos/preventivo/max-gel",
+  "/ES/Productos/Ginecolog-a/Gecofun": "/productos/ginecologia/gecofun",
+  "/ES/Productos/Ginecolog-a/Ultra-Gecogel": "/productos/ginecologia/ultra-gecogel-250",
+  "/ES/Productos/Tests-COVID-19/NADAL-COVID-19-Ag": "/productos/covid-19/nadal-covid-ag",
+  "/ES/Productos/Tests-COVID-19/NADAL-COVID-19-IgG-IgM": "/productos/covid-19/nadal-covid-igg-igm",
+};
+
+const productRedirects: Redirect[] = Object.entries(productLegacyMap).flatMap(([source, destination]) => [
+  { source, destination, permanent: true },
+  { source: `${source}/`, destination, permanent: true },
+]);
+
 export const legacyRedirects: Redirect[] = [
+  ...productRedirects,
   { source: "/ES/Inicio", destination: "/", permanent: true },
   { source: "/ES/Inicio/", destination: "/", permanent: true },
   { source: "/ES/Productos", destination: "/productos", permanent: true },
   { source: "/ES/Productos/", destination: "/productos", permanent: true },
+  { source: "/ES/Productos/Material-preventivo-y-uso-sexual", destination: "/productos/preventivo", permanent: true },
+  { source: "/ES/Productos/Material-preventivo-y-uso-sexual/", destination: "/productos/preventivo", permanent: true },
+  { source: "/ES/Productos/Ginecolog-a", destination: "/productos/ginecologia", permanent: true },
+  { source: "/ES/Productos/Ginecolog-a/", destination: "/productos/ginecologia", permanent: true },
+  { source: "/ES/Productos/Tests-COVID-19", destination: "/productos/covid-19", permanent: true },
+  { source: "/ES/Productos/Tests-COVID-19/", destination: "/productos/covid-19", permanent: true },
   { source: "/ES/Productos/:path*", destination: "/productos", permanent: true },
   { source: "/ES/Campanyas", destination: "/campanas", permanent: true },
   { source: "/ES/Campanyas/", destination: "/campanas", permanent: true },

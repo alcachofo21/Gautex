@@ -1,9 +1,13 @@
 import { CampaignConfigurator } from "@/components/campaigns/CampaignConfigurator";
+import { CampaignGallery } from "@/components/campaigns/CampaignGallery";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "Campañas personalizadas",
   description: "Personaliza preservativos, estuches, fundas PVC y flow packs para campañas de prevención y salud pública.",
-};
+  path: "/campanas",
+  locale: "es",
+});
 
 export default function CampanasPage() {
   return (
@@ -18,8 +22,10 @@ export default function CampanasPage() {
 
         <section className="mt-12">
           <h2 className="mb-6 font-display text-2xl font-bold">Configura tu campaña</h2>
-          <CampaignConfigurator />
+          <CampaignConfigurator locale="es" />
         </section>
+
+        <CampaignGallery locale="es" />
       </div>
     </div>
   );

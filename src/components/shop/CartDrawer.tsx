@@ -7,6 +7,7 @@ import { X, Minus, Plus, Trash2 } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/Button";
 import { getLocaleFromPath, getUi, localizedPath } from "@/lib/locale";
+import { CartItemThumb } from "@/components/shop/CartItemThumb";
 
 export function CartDrawer() {
   const pathname = usePathname();
@@ -31,7 +32,12 @@ export function CartDrawer() {
   return (
     <div className="fixed inset-0 z-50">
       <div className="absolute inset-0 bg-black/50" onClick={closeCart} aria-hidden />
-      <div className="absolute bottom-0 left-0 right-0 flex max-h-[90vh] flex-col rounded-t-2xl bg-white shadow-2xl lg:bottom-auto lg:left-auto lg:right-0 lg:top-0 lg:h-full lg:max-h-none lg:w-[420px] lg:rounded-none">
+      <div
+        className="absolute bottom-0 left-0 right-0 flex max-h-[90vh] flex-col rounded-t-2xl bg-white shadow-2xl lg:bottom-auto lg:left-auto lg:right-0 lg:top-0 lg:h-full lg:max-h-none lg:w-[420px] lg:rounded-none"
+        role="dialog"
+        aria-modal="true"
+        aria-label={c.title}
+      >
         <div className="flex items-center justify-between border-b p-4">
           <h2 className="font-display text-xl font-bold">
             {c.title} ({totalItems()})
@@ -53,12 +59,7 @@ export function CartDrawer() {
             <ul className="space-y-4">
               {items.map((item) => (
                 <li key={item.productId} className="flex gap-3 rounded-xl border p-3">
-                  <div
-                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg font-bold text-white"
-                    style={{ backgroundColor: item.color }}
-                  >
-                    {item.name.charAt(0)}
-                  </div>
+                  <CartItemThumb item={item} className="h-14 w-14" />
                   <div className="flex-1">
                     <p className="font-semibold">{item.name}</p>
                     <p className="text-sm text-text-muted">{item.priceLabel}</p>

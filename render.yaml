@@ -12,7 +12,7 @@ services:
       - key: NPM_CONFIG_PRODUCTION
         value: "false"
       - key: NEXT_PUBLIC_SITE_URL
-        value: https://gautex-web.onrender.com
+        value: https://www.gautex.com
 
   - type: web
     name: gautex-web-staging

@@ -5,7 +5,11 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/shop/CartDrawer";
 import { CookieBanner } from "@/components/ui/CookieBanner";
+import { LocaleSync } from "@/components/layout/LocaleSync";
+import { SkipLink } from "@/components/layout/SkipLink";
+import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
 import { corporate } from "@/lib/products";
+import { absoluteUrl } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -22,7 +26,15 @@ export const metadata: Metadata = {
     icon: "/images/logo/gautex.png",
     apple: "/images/logo/gautex.png",
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://gautex.onrender.com"),
+  metadataBase: new URL(absoluteUrl("/")),
+  alternates: {
+    canonical: absoluteUrl("/"),
+    languages: {
+      es: absoluteUrl("/"),
+      en: absoluteUrl("/en"),
+      "x-default": absoluteUrl("/"),
+    },
+  },
   openGraph: {
     title: "Gautex Medica — Repartiendo salud",
     description: "Productos sanitarios certificados para farmacia y sector hospitalario.",
@@ -70,12 +82,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <LocaleSync />
+        <SkipLink />
         <TopBar />
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main id="main-content" className="min-h-screen">
+          {children}
+        </main>
         <Footer />
         <CartDrawer />
         <CookieBanner />
+        <AnalyticsScripts />
       </body>
     </html>
   );

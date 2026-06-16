@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/Button";
 import { getUi, localizedPath, type Locale } from "@/lib/locale";
+import { trackEvent } from "@/lib/analytics";
 
 const stripeEnabled = Boolean(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
@@ -48,10 +49,12 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
         body: JSON.stringify({
           type: "cart",
           items,
+          locale,
           ...form,
         }),
       });
       if (res.ok) {
+        trackEvent("quote_request", { items: items.length });
         setStatus("success");
         clearCart();
       } else {
@@ -69,10 +72,11 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items }),
+        body: JSON.stringify({ items, locale }),
       });
       const data = await res.json();
       if (data.url) {
+        trackEvent("begin_checkout", { items: items.length });
         window.location.href = data.url;
       } else {
         setMode("quote");

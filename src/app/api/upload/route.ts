@@ -1,13 +1,18 @@
 import { NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
-import { randomUUID } from "crypto";
+import { uploadFile } from "@/lib/storage";
+import { rateLimit, clientIp } from "@/lib/rate-limit";
 
 const MAX_SIZE = 5 * 1024 * 1024;
 const ALLOWED = ["image/png", "image/jpeg", "image/jpg", "application/pdf"];
 
 export async function POST(request: Request) {
   try {
+    const ip = clientIp(request);
+    const limited = rateLimit(`upload:${ip}`, 5);
+    if (!limited.ok) {
+      return NextResponse.json({ error: "Demasiadas subidas" }, { status: 429 });
+    }
+
     const formData = await request.formData();
     const file = formData.get("file");
 
@@ -23,22 +28,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Archivo demasiado grande (máx. 5 MB)" }, { status: 400 });
     }
 
-    const ext = path.extname(file.name) || (file.type === "application/pdf" ? ".pdf" : ".png");
-    const safeName = `${randomUUID()}${ext}`;
-    const uploadDir = path.join(process.cwd(), "public", "uploads", "campaigns");
-    await mkdir(uploadDir, { recursive: true });
-
-    const buffer = Buffer.from(await file.arrayBuffer());
-    await writeFile(path.join(uploadDir, safeName), buffer);
-
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "";
-    const url = `${siteUrl}/uploads/campaigns/${safeName}`;
+    const result = await uploadFile(file, "campaigns");
 
     return NextResponse.json({
       success: true,
-      fileName: file.name,
-      url,
-      path: `/uploads/campaigns/${safeName}`,
+      fileName: result.fileName,
+      url: result.url,
+      path: result.path,
     });
   } catch (e) {
     console.error("[GAUTEX UPLOAD]", e);

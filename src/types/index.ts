@@ -32,6 +32,7 @@ export interface CartItem {
   quantity: number;
   priceLabel: string;
   color: string;
+  image?: string;
 }
 
 export interface PresentationOption {

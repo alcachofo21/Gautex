@@ -1,9 +1,13 @@
 import { CampaignConfigurator } from "@/components/campaigns/CampaignConfigurator";
+import { CampaignGallery } from "@/components/campaigns/CampaignGallery";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "Custom campaigns",
   description: "Customise condoms, cases, PVC sleeves and flow packs for prevention and public health campaigns.",
-};
+  path: "/campanas",
+  locale: "en",
+});
 
 export default function EnCampanasPage() {
   return (
@@ -17,6 +21,7 @@ export default function EnCampanasPage() {
           <h2 className="mb-6 font-display text-2xl font-bold">Configure your campaign</h2>
           <CampaignConfigurator locale="en" />
         </section>
+        <CampaignGallery locale="en" />
       </div>
     </div>
   );

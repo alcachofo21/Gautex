@@ -1,8 +1,10 @@
 import { MetadataRoute } from "next";
 import { products, categories } from "@/lib/products";
+import { getBlogPosts, getSectors } from "@/lib/locale";
+import { getSiteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.NEXT_PUBLIC_SITE_URL || "https://gautex.onrender.com";
+  const base = getSiteUrl();
 
   const staticPages = [
     "",
@@ -12,7 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/calidad",
     "/colaboradores",
     "/contacto",
-    "/carrito",
+    "/blog",
+    "/distribuidores",
     "/legal/privacidad",
     "/legal/cookies",
     "/legal/terminos",
@@ -23,6 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/calidad",
     "/en/colaboradores",
     "/en/contacto",
+    "/en/blog",
+    "/en/distributors",
     "/en/legal/privacidad",
     "/en/legal/cookies",
     "/en/legal/terminos",
@@ -31,6 +36,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: path === "" ? 1 : 0.8,
+  }));
+
+  const sectorPages = [
+    ...getSectors("es").map((s) => `/sectores/${s.id}`),
+    ...getSectors("en").map((s) => `/en/sectors/${s.id}`),
+  ].map((path) => ({
+    url: `${base}${path}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const blogPages = [
+    ...getBlogPosts("es").map((p) => `/blog/${p.slug}`),
+    ...getBlogPosts("en").map((p) => `/en/blog/${p.slug}`),
+  ].map((path) => ({
+    url: `${base}${path}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
   }));
 
   const categoryPages = categories.map((c) => ({
@@ -62,5 +87,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...categoryPages, ...enCategoryPages, ...productPages];
+  return [...staticPages, ...sectorPages, ...blogPages, ...categoryPages, ...enCategoryPages, ...productPages];
 }

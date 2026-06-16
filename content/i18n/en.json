@@ -30,7 +30,10 @@
     "cookies": "Cookies",
     "terms": "Legal notice",
     "rights": "All rights reserved",
-    "since": "Since"
+    "since": "Since",
+    "blog": "Blog",
+    "sectors": "Sectors",
+    "distributors": "Distributors"
   },
   "lang": {
     "switch": "Español",
@@ -200,7 +203,8 @@
   "cookies": {
     "message": "We use technical cookies to improve your experience.",
     "more": "More information",
-    "accept": "Accept"
+    "accept": "Accept",
+    "reject": "Reject"
   },
   "contact": {
     "successTitle": "Message sent",
@@ -215,5 +219,67 @@
       "phone": "Phone",
       "message": "Message *"
     }
+  },
+  "search": {
+    "label": "Search products",
+    "placeholder": "Search products...",
+    "close": "Close",
+    "noResults": "No results"
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "menu": "Menu"
+  },
+  "datasheet": {
+    "title": "Technical datasheet",
+    "download": "Download / print datasheet",
+    "print": "Print datasheet",
+    "specs": "Specifications",
+    "certifications": "Certifications",
+    "back": "Back to product"
+  },
+  "campaignGallery": {
+    "title": "Cases and creatives",
+    "desc": "Real examples of campaigns, custom packaging and promotional material.",
+    "items": {
+      "estuche": "Custom case",
+      "funda": "PVC sleeve",
+      "condoms": "Viva condoms",
+      "gel": "Max Gel lubricant",
+      "gecogel": "Ultra Gecogel",
+      "covid": "NADAL COVID-19 test"
+    }
+  },
+  "blog": {
+    "title": "News and updates",
+    "subtitle": "Catalogue updates, medical regulations and prevention campaigns.",
+    "readMore": "Read more",
+    "back": "Back to blog"
+  },
+  "sectors": {
+    "title": "Solutions by sector",
+    "cta": "Request a quote",
+    "ctaShop": "View catalogue"
+  },
+  "distributors": {
+    "title": "Distributor area",
+    "subtitle": "Access to pricing, PDF catalogue and priority sales channel.",
+    "loginTitle": "Distributor login",
+    "codeLabel": "Access code",
+    "login": "Sign in",
+    "logout": "Sign out",
+    "invalidCode": "Invalid code",
+    "resourcesTitle": "Exclusive resources",
+    "catalogPdf": "Download PDF catalogue",
+    "priceList": "Request price list",
+    "contactSales": "Contact sales",
+    "portalDesc": "If you are an authorised distributor, enter the code provided by Gautex."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "desc": "The page you are looking for does not exist or has been moved.",
+    "home": "Go to homepage",
+    "shop": "View products",
+    "enLink": "Página de inicio en español"
   }
 }
