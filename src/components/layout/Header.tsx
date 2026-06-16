@@ -23,6 +23,7 @@ export function Header() {
 
   const navLinks = [
     { href: localizedPath("/productos", locale), label: ui.nav.shop },
+    { href: localizedPath("/distribuidores", locale), label: ui.nav.distributors, highlight: true },
     { href: localizedPath("/campanas", locale), label: ui.nav.campaigns },
     { href: localizedPath("/calidad", locale), label: ui.nav.quality },
     { href: localizedPath("/nosotros", locale), label: ui.nav.about },
@@ -54,7 +55,11 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   className={`text-sm font-medium transition-colors ${
-                    active ? "text-primary" : "text-text-muted hover:text-primary"
+                    active
+                      ? "text-primary"
+                      : link.highlight
+                        ? "font-semibold text-accent hover:text-accent-hover"
+                        : "text-text-muted hover:text-primary"
                   }`}
                   aria-current={active ? "page" : undefined}
                 >
@@ -74,6 +79,9 @@ export function Header() {
               <Phone className="h-4 w-4" />
               {corporate.company.phone}
             </a>
+            <Button href={localizedPath("/distribuidores", locale)} variant="secondary" size="sm" className="hidden md:inline-flex">
+              {ui.nav.distributors}
+            </Button>
             <Button href={localizedPath("/contacto", locale)} variant="outline" size="sm" className="hidden sm:inline-flex">
               {ui.nav.quote}
             </Button>

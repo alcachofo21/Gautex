@@ -2,6 +2,7 @@
   "nav": {
     "shop": "Tienda",
     "campaigns": "Campañas",
+    "distributors": "Distribuidores",
     "quality": "Calidad",
     "about": "Nosotros",
     "contact": "Contacto",
@@ -9,7 +10,8 @@
     "cart": "Carrito"
   },
   "topbar": {
-    "shipping": "Envío a toda Europa"
+    "shipping": "Envío a toda Europa",
+    "distributors": "Área de distribuidores"
   },
   "home": {
     "featured": "Productos destacados",
@@ -20,7 +22,8 @@
     "ctaTitle": "¿Listo para pedir o personalizar?",
     "ctaDesc": "Añade productos al carrito, solicita presupuesto B2B o diseña una campaña con tu marca. Respuesta en 24–48h laborables.",
     "ctaShop": "Ir a la tienda",
-    "ctaQuote": "Solicitar presupuesto"
+    "ctaQuote": "Solicitar presupuesto",
+    "ctaDistributors": "Área de distribuidores"
   },
   "footer": {
     "products": "Productos",

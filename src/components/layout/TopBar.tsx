@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { Phone, Truck } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Badge } from "@/components/ui/Badge";
-import { getCorporate, getLocaleFromPath, getUi } from "@/lib/locale";
+import { getCorporate, getLocaleFromPath, getUi, localizedPath } from "@/lib/locale";
 
 export function TopBar() {
   const pathname = usePathname();
@@ -24,7 +25,10 @@ export function TopBar() {
             {ui.topbar.shipping}
           </span>
         </div>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-4">
+          <Link href={localizedPath("/distribuidores", locale)} className="font-semibold hover:underline">
+            {ui.topbar.distributors} →
+          </Link>
           <Badge className="bg-white/20 text-white">CE 0120</Badge>
           <Badge className="bg-white/20 text-white">ISO 13485</Badge>
         </div>

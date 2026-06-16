@@ -17,9 +17,12 @@ export function StoreCta({ locale = "es" }: StoreCtaProps) {
           <p className="mx-auto mt-4 max-w-xl text-white/80">
             {ui.home.ctaDesc}
           </p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
             <Button href={localizedPath("/productos", locale)} size="lg" className="bg-accent hover:bg-accent-hover">
               {ui.home.ctaShop}
+            </Button>
+            <Button href={localizedPath("/distribuidores", locale)} variant="outline" size="lg" className="border-white/40 bg-white/10 text-white hover:bg-white/20">
+              {ui.home.ctaDistributors}
             </Button>
             <Button href={localizedPath("/contacto", locale)} variant="outline" size="lg" className="border-white/40 bg-white/10 text-white hover:bg-white/20">
               {ui.home.ctaQuote}

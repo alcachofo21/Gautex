@@ -2,6 +2,7 @@
   "nav": {
     "shop": "Shop",
     "campaigns": "Campaigns",
+    "distributors": "Distributors",
     "quality": "Quality",
     "about": "About us",
     "contact": "Contact",
@@ -9,7 +10,8 @@
     "cart": "Cart"
   },
   "topbar": {
-    "shipping": "Shipping across Europe"
+    "shipping": "Shipping across Europe",
+    "distributors": "Distributor area"
   },
   "home": {
     "featured": "Featured products",
@@ -20,7 +22,8 @@
     "ctaTitle": "Ready to order or customise?",
     "ctaDesc": "Add products to cart, request a B2B quote or design a branded campaign. Response within 24–48 business hours.",
     "ctaShop": "Go to shop",
-    "ctaQuote": "Request a quote"
+    "ctaQuote": "Request a quote",
+    "ctaDistributors": "Distributor area"
   },
   "footer": {
     "products": "Products",
