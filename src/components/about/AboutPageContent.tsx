@@ -36,7 +36,7 @@ const productLines = [
   },
   {
     image: "/images/marketing/ad-matrix-condoms.webp",
-    labelEs: "Matrix Condoms",
+    labelEs: "Preservativos Matrix",
     labelEn: "Matrix Condoms",
   },
 ];

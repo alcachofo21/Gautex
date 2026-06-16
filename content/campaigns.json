@@ -53,7 +53,7 @@
     {
       "id": "preservativos-personalizados",
       "name": "Preservativos Personalizados",
-      "description": "Matrix Condoms y Viva Condoms en presentaciones personalizadas para campañas.",
+      "description": "Preservativos Matrix y Preservativos Viva en presentaciones personalizadas para campañas.",
       "details": [
         "Cajitas con tira de 3 preservativos personalizables",
         "Caja de 144 unidades personalizable",
@@ -108,7 +108,7 @@
           "details": [
             "Preservativo látex natural",
             "Folleto con logotipo",
-            "Matrix Condoms o Viva Condoms"
+            "Preservativos Matrix o Preservativos Viva"
           ],
           "productIds": ["matrix", "viva"]
         },
@@ -119,14 +119,14 @@
           "details": [
             "Preservativo + Max Gel 6 ml",
             "Gel base acuosa sin aceites",
-            "Matrix Condoms o Viva Condoms"
+            "Preservativos Matrix o Preservativos Viva"
           ],
           "productIds": ["matrix", "viva"]
         },
         {
           "id": "sexydam",
           "name": "Sexydam",
-          "description": "Flow pack con oral dam Sexydam + gel lubricante + folleto de campaña.",
+          "description": "Flow pack con barrera oral Sexydam + gel lubricante + folleto de campaña.",
           "details": [
             "Sexydam mono uso",
             "Colores y aromas disponibles",
@@ -148,8 +148,8 @@
     }
   ],
   "baseProducts": [
-    { "id": "matrix", "name": "Matrix Condoms" },
-    { "id": "viva", "name": "Viva Condoms" },
+    { "id": "matrix", "name": "Preservativos Matrix" },
+    { "id": "viva", "name": "Preservativos Viva" },
     { "id": "sexydam", "name": "Sexydam" },
     { "id": "max-gel", "name": "Max Gel" },
     { "id": "fc2", "name": "Preservativo Femenino FC2" }
