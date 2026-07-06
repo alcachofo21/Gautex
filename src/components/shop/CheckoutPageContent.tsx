@@ -7,7 +7,7 @@ import { InstantPaymentPanel } from "@/components/shop/InstantPaymentPanel";
 import { getUi, localizedPath, type Locale } from "@/lib/locale";
 import { trackEvent } from "@/lib/analytics";
 import { formatEur } from "@/lib/payments/config";
-import type { EnabledPaymentMethod } from "@/lib/payments/types";
+import type { EnabledPaymentMethod, PaymentProvider } from "@/lib/payments/types";
 
 interface CheckoutPageContentProps {
   locale?: Locale;
@@ -23,6 +23,7 @@ export function CheckoutPageContent({
   const p = ui.payments;
   const { items, clearCart } = useCart();
   const [methods, setMethods] = useState<EnabledPaymentMethod[]>([]);
+  const [provider, setProvider] = useState<PaymentProvider | null>(null);
   const [payable, setPayable] = useState(false);
   const [checkoutReady, setCheckoutReady] = useState(false);
   const [totalCents, setTotalCents] = useState(0);
@@ -52,7 +53,11 @@ export function CheckoutPageContent({
     fetch(`/api/checkout?locale=${locale}&items=${q}`)
       .then((r) => r.json())
       .then((data) => {
-        setMethods(data.methods || []);
+        const enabled: EnabledPaymentMethod[] = data.methods || [];
+        setMethods(enabled);
+        setProvider((prev) =>
+          prev && enabled.some((m) => m.id === prev) ? prev : enabled[0]?.id ?? null
+        );
         setPayable(Boolean(data.pricing?.payable));
         setCheckoutReady(Boolean(data.instantCheckoutEnabled));
         setTotalCents(data.pricing?.totalCents || 0);
@@ -82,7 +87,8 @@ export function CheckoutPageContent({
     }
   };
 
-  const handlePayPal = async () => {
+  const handlePay = async () => {
+    if (!provider) return;
     setStatus("loading");
     setPayError(null);
     try {
@@ -92,13 +98,13 @@ export function CheckoutPageContent({
         body: JSON.stringify({
           items,
           locale,
-          provider: "paypal",
+          provider,
           customerEmail: form.email || undefined,
         }),
       });
       const data = await res.json();
       if (data.url) {
-        trackEvent("begin_checkout", { items: items.length, provider: "paypal" });
+        trackEvent("begin_checkout", { items: items.length, provider });
         window.location.href = data.url;
       } else {
         setStatus("error");
@@ -172,12 +178,15 @@ export function CheckoutPageContent({
           methods={methods}
           totalLabel={formatEur(totalCents, locale)}
           loading={status === "loading"}
-          onPay={handlePayPal}
+          selectedProvider={provider}
+          onSelectProvider={setProvider}
+          onPay={handlePay}
           payable={payable}
           checkoutReady={checkoutReady}
           labels={{
             title: p.instantTitle,
             subtitle: p.instantSubtitle,
+            chooseMethod: p.chooseMethod,
             payNow: p.payNow,
             notPayable: p.notPayable,
             pendingSetup: p.pendingSetup,
@@ -185,9 +194,9 @@ export function CheckoutPageContent({
           }}
         />
 
-          {payError && status === "error" && (
-            <p className="mt-4 text-sm text-red-500">{payError}</p>
-          )}
+        {payError && status === "error" && (
+          <p className="mt-3 text-sm text-red-500">{payError}</p>
+        )}
 
         <div className="relative my-8 text-center">
           <span className="bg-surface px-4 text-sm font-medium text-text-muted">{p.orQuote}</span>

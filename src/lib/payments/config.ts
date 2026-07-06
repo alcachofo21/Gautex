@@ -3,15 +3,39 @@ import { isInStock, maxOrderQuantity } from "@/lib/inventory";
 import type { CartItem } from "@/types";
 import type { CartPricing, EnabledPaymentMethod, PricedCartLine } from "./types";
 
-export const PAYMENT_BRANDS = ["PayPal"] as const;
+export const PAYMENT_BRANDS = ["Visa", "Mastercard", "Amex", "PayPal"] as const;
 
 export function isPayPalConfigured(): boolean {
   return Boolean(process.env.PAYPAL_CLIENT_ID && process.env.PAYPAL_CLIENT_SECRET);
 }
 
+export function isStripeConfigured(): boolean {
+  return Boolean(
+    process.env.STRIPE_SECRET_KEY && process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+  );
+}
+
+export function getStripePaymentMethodTypes(): "card"[] {
+  return ["card"];
+}
+
 export function getEnabledPaymentMethods(locale: "es" | "en"): EnabledPaymentMethod[] {
-  return [
-    {
+  const methods: EnabledPaymentMethod[] = [];
+
+  if (isStripeConfigured()) {
+    methods.push({
+      id: "stripe",
+      label: locale === "en" ? "Pay by card" : "Pagar con tarjeta",
+      description:
+        locale === "en"
+          ? "Visa, Mastercard, Amex, Apple Pay and Google Pay."
+          : "Visa, Mastercard, Amex, Apple Pay y Google Pay.",
+      brands: ["Visa", "Mastercard", "Amex"],
+    });
+  }
+
+  if (isPayPalConfigured()) {
+    methods.push({
       id: "paypal",
       label: locale === "en" ? "Pay with PayPal" : "Pagar con PayPal",
       description:
@@ -19,12 +43,14 @@ export function getEnabledPaymentMethods(locale: "es" | "en"): EnabledPaymentMet
           ? "Pay securely with your PayPal account or card."
           : "Paga de forma segura con tu cuenta PayPal o tarjeta.",
       brands: ["PayPal"],
-    },
-  ];
+    });
+  }
+
+  return methods;
 }
 
 export function hasInstantCheckout(): boolean {
-  return isPayPalConfigured();
+  return isStripeConfigured() || isPayPalConfigured();
 }
 
 export function priceCart(items: CartItem[]): CartPricing {

@@ -195,12 +195,13 @@
     }
   },
   "payments": {
-    "instantTitle": "Pago con PayPal",
-    "instantSubtitle": "Serás redirigido a PayPal para completar el pago de forma segura.",
-    "payNow": "Pagar con PayPal",
+    "instantTitle": "Pago online",
+    "instantSubtitle": "Elige tu método de pago y completa la compra de forma segura.",
+    "chooseMethod": "Elige método de pago",
+    "payNow": "Pagar ahora",
     "notPayable": "Hay productos sin precio online en el carrito. Solicita presupuesto B2B o elimina esos artículos.",
-    "pendingSetup": "Añade PAYPAL_CLIENT_ID y PAYPAL_CLIENT_SECRET en el servidor para activar pagos.",
-    "secure": "Pagos procesados por PayPal. No almacenamos tus credenciales.",
+    "pendingSetup": "El pago online se activará en breve. Solicita presupuesto B2B mientras tanto.",
+    "secure": "Pagos seguros y cifrados. No almacenamos los datos de tu tarjeta.",
     "orQuote": "o solicita presupuesto B2B"
   },
   "shopPage": {
