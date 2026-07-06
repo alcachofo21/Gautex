@@ -6,7 +6,7 @@
     "priceLabel": "€20.90"
   },
   "viva-condoms": {
-    "name": "Viva Condoms",
+    "name": "Viva Condoms (rectangular foil)",
     "shortDescription": "Natural rectangular condom, smooth and lubricated. Box of 144 units.",
     "description": "100% natural rubber latex male condom, smooth, symmetrical, transparent, lubricated, with transparent reservoir and individually wrapped.",
     "priceLabel": "€18.20"
@@ -112,5 +112,47 @@
     "shortDescription": "FFP-2 respirator masks with high filtration efficiency. CE marked.",
     "description": "FFP-2 filtering facepiece respirators for professional use. High filtration efficiency. Available for hospitals and wholesale distribution.",
     "priceLabel": "Request quote"
+  },
+  "alvita-intimo-250": {
+    "name": "Alvita Intimate Gel Tea Tree 250 ml",
+    "shortDescription": "External intimate gel with tea tree extract. 250 ml bottle.",
+    "description": "Alvita intimate gel with tea tree extract for daily intimate hygiene. 250 ml bottle.",
+    "priceLabel": "€18.90"
+  },
+  "nexus-condoms-nature": {
+    "name": "Nexus Nature Condoms",
+    "shortDescription": "Nexus Condom natural latex. Box of 1000 units.",
+    "description": "Natural latex lubricated condom in bulk format for professional distribution.",
+    "priceLabel": "€24.50"
+  },
+  "matrix-condoms-extra-fuerte": {
+    "name": "Matrix Condoms Extra Strong",
+    "shortDescription": "Matrix Condoms extra strong. Box of 144 units.",
+    "description": "Natural latex Matrix condom with increased thickness, lubricated with reservoir.",
+    "priceLabel": "€21.50"
+  },
+  "matrix-condoms-strong": {
+    "name": "Matrix Condoms Strong",
+    "shortDescription": "Matrix Condoms Strong. Box of 144 units.",
+    "description": "Matrix Strong natural latex condom for greater strength. Box of 144 units.",
+    "priceLabel": "€21.50"
+  },
+  "matrix-condoms-xl": {
+    "name": "Matrix Condoms XL",
+    "shortDescription": "Matrix Condoms XL wider fit. Box of 144 units.",
+    "description": "Matrix XL natural latex condom, lubricated. Wider format. Box of 144 units.",
+    "priceLabel": "€22.50"
+  },
+  "viva-condoms-cuadrado": {
+    "name": "Viva Condoms (square foil)",
+    "shortDescription": "Natural condom with square foil wrap. Box of 144 units.",
+    "description": "VIVA natural latex condom with square aluminium foil packaging.",
+    "priceLabel": "€18.20"
+  },
+  "sexydam-wipes": {
+    "name": "Sexy Dam Latex-free Wipes",
+    "shortDescription": "Latex-free wipes to complement Sexy Dam barriers.",
+    "description": "Latex-free wipes for hygiene and complementary use with Sexy Dam barriers.",
+    "priceLabel": "€8.50"
   }
 }

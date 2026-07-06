@@ -23,7 +23,7 @@
   {
     "id": "viva-condoms",
     "slug": "viva-condoms",
-    "name": "Preservativos Viva",
+    "name": "Preservativos Viva (foil rectangular)",
     "category": "preventivo",
     "featured": true,
     "shortDescription": "Preservativo natural rectangular, liso y lubricado. Caja de 144 unidades.",
@@ -366,5 +366,143 @@
     "certifications": ["CE"],
     "color": "#7F8C8D",
     "image": "/images/products/mascarilla-ffp2.webp"
+  },
+  {
+    "id": "alvita-intimo-250",
+    "slug": "alvita-intimo-250",
+    "name": "Gel íntimo Alvita Árbol de Té 250 ml",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Gel íntimo de uso externo con extracto de árbol de té. Frasco 250 ml.",
+    "description": "Gel íntimo Alvita con extracto de árbol de té para higiene íntima diaria. Formato frasco de 250 ml.",
+    "price": 18.9,
+    "priceLabel": "18,90 €",
+    "specs": {
+      "Presentación": "Frasco 250 ml",
+      "Extracto": "Árbol de té"
+    },
+    "certifications": ["CE 0120 SGS"],
+    "color": "#2d6a4f",
+    "image": "/images/products/max-gel.webp",
+    "sku": "101700"
+  },
+  {
+    "id": "nexus-condoms-nature",
+    "slug": "nexus-condoms-nature",
+    "name": "Preservativos Nexus Nature",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Preservativo natural Nexus Condom. Caja de 1000 unidades.",
+    "description": "Preservativo masculino de látex natural, lubricado, formato bulk para distribución profesional y puntos de venta.",
+    "price": 24.5,
+    "priceLabel": "24,50 €",
+    "specs": {
+      "Presentación": "Caja de 1000 unidades",
+      "Marca": "Nexus Condom",
+      "Tipo": "Nature"
+    },
+    "certifications": ["CEE 120", "ISO 4074/2002"],
+    "color": "#0f766e",
+    "image": "/images/products/matrix-condoms.webp",
+    "sku": "42060PN"
+  },
+  {
+    "id": "matrix-condoms-extra-fuerte",
+    "slug": "matrix-condoms-extra-fuerte",
+    "name": "Preservativos Matrix Extra Fuerte",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Preservativo Matrix Condoms extrafuerte. Caja de 144 unidades.",
+    "description": "Preservativo masculino Matrix de látex natural con mayor espesor, lubricado y con depósito. Caja de 144 unidades.",
+    "price": 21.5,
+    "priceLabel": "21,50 €",
+    "specs": {
+      "Presentación": "Caja de 144 unidades",
+      "Variante": "Extrafuerte",
+      "Ancho": "54 mm"
+    },
+    "certifications": ["CEE 120", "ISO 4074/2002", "ISO 13485/2003"],
+    "color": "#1e3a5f",
+    "image": "/images/products/matrix-condoms.webp",
+    "sku": "45025M"
+  },
+  {
+    "id": "matrix-condoms-strong",
+    "slug": "matrix-condoms-strong",
+    "name": "Preservativos Matrix Strong",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Preservativo Matrix Condoms Strong. Caja de 144 unidades.",
+    "description": "Preservativo masculino Matrix Strong de látex natural, lubricado, para mayor resistencia. Caja de 144 unidades.",
+    "price": 21.5,
+    "priceLabel": "21,50 €",
+    "specs": {
+      "Presentación": "Caja de 144 unidades",
+      "Variante": "Strong",
+      "Ancho": "54 mm"
+    },
+    "certifications": ["CEE 120", "ISO 4074/2002", "ISO 13485/2003"],
+    "color": "#1e4f7a",
+    "image": "/images/products/matrix-condoms.webp",
+    "sku": "45025MG"
+  },
+  {
+    "id": "matrix-condoms-xl",
+    "slug": "matrix-condoms-xl",
+    "name": "Preservativos Matrix XL",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Preservativo Matrix Condoms XL de mayor ancho. Caja de 144 unidades.",
+    "description": "Preservativo masculino Matrix XL de látex natural lubricado. Formato de mayor ancho. Caja de 144 unidades.",
+    "price": 22.5,
+    "priceLabel": "22,50 €",
+    "specs": {
+      "Presentación": "Caja de 144 unidades",
+      "Variante": "XL",
+      "Ancho": "58 mm"
+    },
+    "certifications": ["CEE 120", "ISO 4074/2002", "ISO 13485/2003"],
+    "color": "#153a5c",
+    "image": "/images/products/matrix-condoms.webp",
+    "sku": "45030M"
+  },
+  {
+    "id": "viva-condoms-cuadrado",
+    "slug": "viva-condoms-cuadrado",
+    "name": "Preservativos Viva (foil cuadrado)",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Preservativo natural con foil cuadrado. Caja de 144 unidades.",
+    "description": "Preservativo masculino VIVA de látex natural, liso, lubricado, con envase de aluminio en formato cuadrado.",
+    "price": 18.2,
+    "priceLabel": "18,20 €",
+    "specs": {
+      "Presentación": "Caja de 144 unidades",
+      "Formato foil": "Cuadrado",
+      "Ancho": "54 mm"
+    },
+    "certifications": ["CEE 120", "ISO 4074/2002", "ISO 13485/2003"],
+    "color": "#2563eb",
+    "image": "/images/products/viva-condoms.webp",
+    "sku": "46010"
+  },
+  {
+    "id": "sexydam-wipes",
+    "slug": "sexydam-wipes",
+    "name": "Toallitas Sexy Dam sin látex",
+    "category": "preventivo",
+    "featured": false,
+    "shortDescription": "Toallitas sin látex complementarias a la barrera Sexy Dam.",
+    "description": "Toallitas sin látex para higiene y uso complementario con barreras Sexy Dam.",
+    "price": 8.5,
+    "priceLabel": "8,50 €",
+    "specs": {
+      "Presentación": "Paquete",
+      "Material": "Sin látex"
+    },
+    "certifications": ["CEE 120"],
+    "color": "#E85D75",
+    "image": "/images/products/sexydam.webp",
+    "sku": "8201"
   }
 ]

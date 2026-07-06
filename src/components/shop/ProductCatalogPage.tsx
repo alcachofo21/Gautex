@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { ProductCatalog } from "@/components/shop/ProductCatalog";
 import { getCategories, getUi, type Locale } from "@/lib/locale";
-import { localizeProducts, products } from "@/lib/products";
+import { localizeProducts, shopProducts } from "@/lib/products";
 
 interface ProductCatalogPageProps {
   locale: Locale;
@@ -11,7 +11,7 @@ export function ProductCatalogPage({ locale }: ProductCatalogPageProps) {
   const ui = getUi(locale);
   const shop = ui.shopPage;
   const categoryList = getCategories(locale);
-  const allProducts = localizeProducts(products, locale);
+  const allProducts = localizeProducts(shopProducts, locale);
 
   return (
     <div className="py-12 sm:py-16">

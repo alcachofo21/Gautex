@@ -217,7 +217,12 @@
   "product": {
     "addToCart": "Add",
     "addToCartFull": "Add to cart",
-    "requestQuote": "Request B2B quote"
+    "requestQuote": "Request B2B quote",
+    "inStock": "{n} boxes in stock",
+    "lowStock": "Only {n} boxes left",
+    "unavailable": "Not available online",
+    "quoteOnly": "Quote only",
+    "quoteOnlyHint": "Available on request. Contact our sales team."
   },
   "cookies": {
     "message": "We use technical cookies to improve your experience.",
