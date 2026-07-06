@@ -2,8 +2,11 @@ import { NextResponse } from "next/server";
 import type { CartItem } from "@/types";
 import {
   createPayPalOrder,
+  createStripeCheckoutSession,
   getEnabledPaymentMethods,
   hasInstantCheckout,
+  isPayPalConfigured,
+  isStripeConfigured,
   priceCart,
 } from "@/lib/payments";
 import { rateLimit, clientIp } from "@/lib/rate-limit";
@@ -16,9 +19,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Demasiadas solicitudes" }, { status: 429 });
     }
 
-    const { items, locale, provider = "paypal" } = await request.json();
+    const { items, locale, provider = "paypal", customerEmail } = await request.json();
+    const loc = locale === "en" ? "en" : "es";
 
-    if (provider !== "paypal") {
+    if (provider !== "paypal" && provider !== "stripe") {
       return NextResponse.json({ error: "Proveedor no soportado" }, { status: 400 });
     }
 
@@ -30,12 +34,26 @@ export async function POST(request: Request) {
       );
     }
 
-    const { approvalUrl } = await createPayPalOrder(pricing, locale === "en" ? "en" : "es");
+    if (provider === "stripe") {
+      if (!isStripeConfigured()) {
+        return NextResponse.json({ error: "Stripe no configurado" }, { status: 503 });
+      }
+      const session = await createStripeCheckoutSession({
+        pricing,
+        locale: loc,
+        customerEmail: customerEmail || undefined,
+      });
+      return NextResponse.json({ url: session.url });
+    }
 
+    if (!isPayPalConfigured()) {
+      return NextResponse.json({ error: "PayPal no configurado" }, { status: 503 });
+    }
+    const { approvalUrl } = await createPayPalOrder(pricing, loc);
     return NextResponse.json({ url: approvalUrl });
   } catch (error) {
     console.error("[GAUTEX CHECKOUT]", error);
-    const msg = error instanceof Error ? error.message : "Error al crear pedido PayPal";
+    const msg = error instanceof Error ? error.message : "Error al crear el pago";
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
@@ -57,7 +75,6 @@ export async function GET(request: Request) {
 
   return NextResponse.json({
     instantCheckoutEnabled: hasInstantCheckout(),
-    provider: "paypal",
     methods: getEnabledPaymentMethods(locale),
     pricing,
   });
