@@ -79,7 +79,7 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
     }
   };
 
-  const handleStripe = async () => {
+  const handlePayPal = async () => {
     setStatus("loading");
     try {
       const res = await fetch("/api/checkout", {
@@ -88,13 +88,13 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
         body: JSON.stringify({
           items,
           locale,
-          provider: "stripe",
+          provider: "paypal",
           customerEmail: form.email || undefined,
         }),
       });
       const data = await res.json();
       if (data.url) {
-        trackEvent("begin_checkout", { items: items.length });
+        trackEvent("begin_checkout", { items: items.length, provider: "paypal" });
         window.location.href = data.url;
       } else {
         setStatus("error");
@@ -166,7 +166,7 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
           methods={methods}
           totalLabel={formatEur(totalCents, locale)}
           loading={status === "loading"}
-          onPay={handleStripe}
+          onPay={handlePayPal}
           payable={payable}
           checkoutReady={checkoutReady}
           labels={{

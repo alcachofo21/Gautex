@@ -178,7 +178,7 @@
     "title": "Checkout",
     "summary": "Summary",
     "items": "items",
-    "payStripe": "Pay with Stripe",
+    "payPayPal": "Pay with PayPal",
     "requestQuote": "Request B2B quote",
     "quoteFormTitle": "Quote details",
     "error": "Error sending. Please try again.",
@@ -195,12 +195,12 @@
     }
   },
   "payments": {
-    "instantTitle": "Instant payment",
-    "instantSubtitle": "Visa, Mastercard, Amex, Apple Pay, Google Pay and PayPal (via Stripe).",
-    "payNow": "Pay now",
+    "instantTitle": "Pay with PayPal",
+    "instantSubtitle": "You will be redirected to PayPal to complete your payment securely.",
+    "payNow": "Pay with PayPal",
     "notPayable": "Some cart items have no online price. Request a B2B quote or remove them.",
-    "pendingSetup": "Online payment will be enabled shortly. Request a B2B quote below in the meantime.",
-    "secure": "Secure payments powered by Stripe. We never store card details.",
+    "pendingSetup": "Add PAYPAL_CLIENT_ID and PAYPAL_CLIENT_SECRET on the server to enable payments.",
+    "secure": "Payments processed by PayPal. We never store your credentials.",
     "orQuote": "or request a B2B quote"
   },
   "shopPage": {

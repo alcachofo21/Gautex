@@ -32,6 +32,7 @@ export async function createPayPalOrder(
 ): Promise<{ orderId: string; approvalUrl: string }> {
   const token = await getAccessToken();
   const prefix = locale === "en" ? "/en" : "";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
   const body = {
     intent: "CAPTURE",
@@ -62,8 +63,8 @@ export async function createPayPalOrder(
       brand_name: "Gautex Medica",
       landing_page: "NO_PREFERENCE",
       user_action: "PAY_NOW",
-      return_url: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}${prefix}/checkout/paypal/return`,
-      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}${prefix}/carrito`,
+      return_url: `${siteUrl}${prefix}/checkout/paypal/return`,
+      cancel_url: `${siteUrl}${prefix}/carrito`,
       locale: locale === "en" ? "en-GB" : "es-ES",
     },
   };

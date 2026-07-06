@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
 import type { CartItem } from "@/types";
 import {
-  createStripeCheckoutSession,
+  createPayPalOrder,
   getEnabledPaymentMethods,
   hasInstantCheckout,
-  getStripePaymentMethodTypes,
   priceCart,
 } from "@/lib/payments";
 import { rateLimit, clientIp } from "@/lib/rate-limit";
@@ -17,30 +16,26 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Demasiadas solicitudes" }, { status: 429 });
     }
 
-    const { items, locale, customerEmail, provider = "stripe" } = await request.json();
+    const { items, locale, provider = "paypal" } = await request.json();
 
-    if (provider !== "stripe") {
+    if (provider !== "paypal") {
       return NextResponse.json({ error: "Proveedor no soportado" }, { status: 400 });
     }
 
     const pricing = priceCart(items as CartItem[]);
     if (!pricing.payable) {
       return NextResponse.json(
-        { error: "Algunos productos no tienen precio online. Use presupuesto B2B." },
+        { error: "Algunos productos no tienen precio online o no hay stock. Use presupuesto B2B." },
         { status: 400 }
       );
     }
 
-    const session = await createStripeCheckoutSession({
-      pricing,
-      locale: locale === "en" ? "en" : "es",
-      customerEmail,
-    });
+    const { approvalUrl } = await createPayPalOrder(pricing, locale === "en" ? "en" : "es");
 
-    return NextResponse.json({ url: session.url });
+    return NextResponse.json({ url: approvalUrl });
   } catch (error) {
     console.error("[GAUTEX CHECKOUT]", error);
-    const msg = error instanceof Error ? error.message : "Error al crear sesión";
+    const msg = error instanceof Error ? error.message : "Error al crear pedido PayPal";
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
@@ -62,8 +57,8 @@ export async function GET(request: Request) {
 
   return NextResponse.json({
     instantCheckoutEnabled: hasInstantCheckout(),
+    provider: "paypal",
     methods: getEnabledPaymentMethods(locale),
-    paymentMethodTypes: getStripePaymentMethodTypes(),
     pricing,
   });
 }

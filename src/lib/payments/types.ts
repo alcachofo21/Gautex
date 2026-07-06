@@ -1,6 +1,6 @@
 import type { CartItem } from "@/types";
 
-export type PaymentProvider = "stripe" | "paypal";
+export type PaymentProvider = "paypal";
 
 export interface PricedCartLine {
   item: CartItem;

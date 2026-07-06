@@ -1,6 +1,5 @@
 "use client";
 
-import { CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import type { EnabledPaymentMethod } from "@/lib/payments/types";
 
@@ -46,24 +45,17 @@ export function InstantPaymentPanel({
           <p className="mt-4 text-2xl font-bold text-text">{totalLabel}</p>
 
           {checkoutReady ? (
-            <Button fullWidth onClick={onPay} disabled={loading} className="mt-4">
-              <CreditCard className="h-5 w-5" />
+            <Button
+              fullWidth
+              onClick={onPay}
+              disabled={loading}
+              className="mt-4 bg-[#0070ba] font-semibold hover:bg-[#003087]"
+            >
               {labels.payNow}
             </Button>
           ) : (
             <p className="mt-4 rounded-xl bg-blue-50 px-4 py-3 text-sm text-blue-900">{labels.pendingSetup}</p>
           )}
-
-          <ul className="mt-5 flex flex-wrap gap-2">
-            {(method.brands || []).map((brand) => (
-              <li
-                key={brand}
-                className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-semibold text-text-muted"
-              >
-                {brand}
-              </li>
-            ))}
-          </ul>
 
           <p className="mt-3 text-xs text-text-muted">{method.description}</p>
           {checkoutReady ? <p className="mt-2 text-xs text-text-muted">{labels.secure}</p> : null}
