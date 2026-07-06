@@ -6,7 +6,6 @@ import type { Product } from "@/types";
 import { useCart } from "@/lib/cart";
 import { canPurchaseOnline } from "@/lib/products";
 import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
 import { getUi, localizedPath, type Locale } from "@/lib/locale";
 import { trackEvent } from "@/lib/analytics";
 
@@ -25,11 +24,6 @@ export function ProductActions({ product, locale = "es" }: ProductActionsProps) 
 
   return (
     <div className="mt-6 flex flex-col gap-4">
-      {product.stockQuantity != null && purchasable && (
-        <Badge className="w-fit bg-emerald-50 text-emerald-800">
-          {p.inStock.replace("{n}", String(product.stockQuantity))}
-        </Badge>
-      )}
       {!purchasable && product.price === null && (
         <p className="text-sm text-text-muted">{p.quoteOnlyHint}</p>
       )}

@@ -23,11 +23,6 @@ export function ProductCard({ product, locale = "es", priority = false }: Produc
   const p = ui.product;
   const categoryName = getCategories(locale).find((c) => c.id === product.category)?.name ?? product.category;
   const purchasable = canPurchaseOnline(product);
-  const lowStock =
-    purchasable &&
-    product.stockQuantity !== null &&
-    product.stockQuantity !== undefined &&
-    product.stockQuantity <= 10;
 
   const handleAdd = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -62,11 +57,6 @@ export function ProductCard({ product, locale = "es", priority = false }: Produc
           <Badge variant="outline" className="w-fit text-[10px]">
             {categoryName}
           </Badge>
-          {lowStock && (
-            <Badge className="bg-amber-100 text-amber-900 text-[10px]">
-              {p.lowStock.replace("{n}", String(product.stockQuantity))}
-            </Badge>
-          )}
           {!purchasable && product.price === null && (
             <Badge variant="outline" className="text-[10px]">
               {p.quoteOnly}
@@ -80,14 +70,7 @@ export function ProductCard({ product, locale = "es", priority = false }: Produc
           {product.shortDescription}
         </p>
         <div className="mt-4 flex items-center justify-between gap-2">
-          <div>
-            <span className="font-semibold text-primary">{product.priceLabel}</span>
-            {purchasable && product.stockQuantity != null && (
-              <p className="text-xs text-text-muted">
-                {p.inStock.replace("{n}", String(product.stockQuantity))}
-              </p>
-            )}
-          </div>
+          <span className="font-semibold text-primary">{product.priceLabel}</span>
           {purchasable ? (
             <Button
               size="sm"

@@ -218,8 +218,6 @@
     "addToCart": "Añadir",
     "addToCartFull": "Añadir al carrito",
     "requestQuote": "Solicitar presupuesto B2B",
-    "inStock": "{n} cajas en stock",
-    "lowStock": "Quedan {n} cajas",
     "unavailable": "Sin stock online",
     "quoteOnly": "Solo presupuesto",
     "quoteOnlyHint": "Producto disponible bajo presupuesto. Contacta con nuestro equipo comercial."
