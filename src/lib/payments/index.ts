@@ -3,10 +3,8 @@ export {
   formatEur,
   getEnabledPaymentMethods,
   hasInstantCheckout,
-  isStripeConfigured,
-  isStripePayPalEnabled,
-  getStripePaymentMethodTypes,
+  isPayPalConfigured,
   PAYMENT_BRANDS,
 } from "./config";
-export { createStripeCheckoutSession } from "./stripe-checkout";
+export { createPayPalOrder, capturePayPalOrder } from "./paypal";
 export type { CartPricing, EnabledPaymentMethod, PaymentProvider } from "./types";

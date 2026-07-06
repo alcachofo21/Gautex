@@ -1,0 +1,156 @@
+{
+  "updatedAt": "2026-07-06",
+  "unit": "boxes",
+  "notes": "Stock en cajas/paquetes comercializables. SKUs public_entity no se publican en la web.",
+  "skus": [
+    {
+      "sku": "45110E",
+      "name": "PRESERVATIVO MATRIX COM MADRID EXTRAFUERTE",
+      "stockBoxes": 293,
+      "channel": "public_entity",
+      "webVisible": false
+    },
+    {
+      "sku": "45110XL",
+      "name": "PRESERVATIVO MATRIX COM MADRID XL",
+      "stockBoxes": 120,
+      "channel": "public_entity",
+      "webVisible": false
+    },
+    {
+      "sku": "101700",
+      "productId": "alvita-intimo-250",
+      "name": "GEL INTIMO ALVITA EXT. ÁRBOL DE TE 250ML",
+      "stockBoxes": 21,
+      "channel": "b2c",
+      "webVisible": true
+    },
+    {
+      "sku": "42060PN",
+      "productId": "nexus-condoms-nature",
+      "name": "Preservativo NEXUS CONDOM nature B.1000",
+      "stockBoxes": 17,
+      "channel": "b2c",
+      "webVisible": true
+    },
+    {
+      "sku": "45010MN",
+      "productId": "matrix-condoms",
+      "name": "PRESERV. MATRIX CONDOMS NATURE 54 MM",
+      "stockBoxes": 640,
+      "channel": "b2c",
+      "webVisible": true
+    },
+    {
+      "sku": "45015E",
+      "productId": "viva-condoms-fresa",
+      "name": "Preservativo VIVA Sabor/Color Fresa",
+      "stockBoxes": 1688,
+      "channel": "b2c",
+      "webVisible": true
+    },
+    {
+      "sku": "45025M",
+      "productId": "matrix-condoms-extra-fuerte",
+      "name": "Preservativo Matrix Condoms EXTRAFUERTE",
+      "stockBoxes": 40,
+      "channel": "b2c",
+      "webVisible": true
+    },
+    {
+      "sku": "45025MG",
+      "productId": "matrix-condoms-strong",
+      "name": "MATRIX CONDOMS STRONG",
+      "stockBoxes": 145,
+      "channel": "b2c",
+      "webVisible": true
+    },
+    {
+      "sku": "45030M",
+      "productId": "matrix-condoms-xl",
+      "name": "Preservativo Matrix Condoms XL",
+      "stockBoxes": 10,
+      "channel": "b2c",
+      "webVisible": true
+    },
+    {
+      "sku": "46010",
+      "productId": "viva-condoms-cuadrado",
+      "name": "Preservativo VIVA Plain Foil Cuadrado",
+      "stockBoxes": 821,
+      "channel": "b2c",
+      "webVisible": true
+    },
+    {
+      "sku": "46015",
+      "productId": "viva-condoms",
+      "name": "Preservativo VIVA Plain Foil Rectangular",
+      "stockBoxes": 1950,
+      "channel": "b2c",
+      "webVisible": true
+    },
+    {
+      "sku": "47004",
+      "productId": "preservativo-femenino",
+      "name": "Preservativo Femenino FC2 Nitrilo",
+      "stockBoxes": 2,
+      "channel": "b2c",
+      "webVisible": true
+    },
+    {
+      "sku": "480003",
+      "productId": "gecofun",
+      "name": "CUBRESONDAS ABDOMINAL LUMBAR GECOFUN",
+      "stockBoxes": 15650,
+      "channel": "b2c",
+      "webVisible": true
+    },
+    {
+      "sku": "51010",
+      "productId": "preservativo-femenino",
+      "name": "FC2 FEMALE CONDOM",
+      "stockBoxes": 2,
+      "channel": "b2c",
+      "webVisible": true,
+      "aggregate": true
+    },
+    {
+      "sku": "60138",
+      "productId": "max-gel",
+      "name": "Gel lubricant Monodosis Max GEL 6ml",
+      "stockBoxes": 2108,
+      "channel": "b2c",
+      "webVisible": true
+    },
+    {
+      "sku": "8200",
+      "productId": "sexydam",
+      "name": "Barrera Látex SEXY DAM Uso Sexual",
+      "stockBoxes": 9,
+      "channel": "b2c",
+      "webVisible": true
+    },
+    {
+      "sku": "8201",
+      "productId": "sexydam-wipes",
+      "name": "TOALLITAS SIN LATEX SEXY",
+      "stockBoxes": 2,
+      "channel": "b2c",
+      "webVisible": true
+    }
+  ],
+  "productOverrides": {
+    "viva-condoms-xl": { "webVisible": false, "stockBoxes": 0 },
+    "viva-condoms-extra-fuerte": { "webVisible": false, "stockBoxes": 0 },
+    "viva-condoms-manzana": { "webVisible": false, "stockBoxes": 0 },
+    "viva-condoms-banana": { "webVisible": false, "stockBoxes": 0 },
+    "max-gel-3-5ml": { "webVisible": false, "stockBoxes": 0 },
+    "body-ars-4ml": { "webVisible": false, "stockBoxes": 0 },
+    "ultra-gecogel-250": { "webVisible": false, "channel": "quote_only" },
+    "ultra-gecogel-1000": { "webVisible": false, "channel": "quote_only" },
+    "nadal-covid-ag": { "webVisible": false, "channel": "quote_only" },
+    "nadal-covid-igg-igm": { "webVisible": false, "channel": "quote_only" },
+    "mascarilla-quirurgica": { "webVisible": false, "channel": "quote_only" },
+    "mascarilla-ffp2": { "webVisible": false, "channel": "quote_only" }
+  }
+}

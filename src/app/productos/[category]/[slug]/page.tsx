@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getProductBySlug, getRelatedProducts, products } from "@/lib/products";
+import { getProductBySlug, getRelatedProducts, shopProducts } from "@/lib/products";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { StickyAddToCart } from "@/components/shop/StickyAddToCart";
 import { ProductActions } from "./ProductActions";
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return products.map((p) => ({ category: p.category, slug: p.slug }));
+  return shopProducts.map((p) => ({ category: p.category, slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props) {

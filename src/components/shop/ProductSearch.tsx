@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search, X } from "lucide-react";
-import { products, localizeProduct } from "@/lib/products";
+import { shopProducts, localizeProduct } from "@/lib/products";
 import { getLocaleFromPath, getUi, localizedPath, getCategories } from "@/lib/locale";
 
 export function ProductSearch() {
@@ -19,7 +19,7 @@ export function ProductSearch() {
   const results = useMemo(() => {
     if (!query.trim()) return [];
     const q = query.toLowerCase();
-    return products
+    return shopProducts
       .filter((p) => {
         const localized = localizeProduct(p, locale);
         return (

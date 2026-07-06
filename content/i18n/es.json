@@ -178,7 +178,7 @@
     "title": "Checkout",
     "summary": "Resumen",
     "items": "productos",
-    "payStripe": "Pagar con Stripe",
+    "payPayPal": "Pagar con PayPal",
     "requestQuote": "Solicitar presupuesto B2B",
     "quoteFormTitle": "Datos para presupuesto",
     "error": "Error al enviar.",
@@ -195,12 +195,12 @@
     }
   },
   "payments": {
-    "instantTitle": "Pago instantáneo",
-    "instantSubtitle": "Visa, Mastercard, Amex, Apple Pay, Google Pay y PayPal (vía Stripe).",
-    "payNow": "Pagar ahora",
+    "instantTitle": "Pago con PayPal",
+    "instantSubtitle": "Serás redirigido a PayPal para completar el pago de forma segura.",
+    "payNow": "Pagar con PayPal",
     "notPayable": "Hay productos sin precio online en el carrito. Solicita presupuesto B2B o elimina esos artículos.",
-    "pendingSetup": "El pago online se activará en breve. Mientras tanto, solicita presupuesto B2B abajo.",
-    "secure": "Pagos seguros con Stripe. No almacenamos datos de tarjeta.",
+    "pendingSetup": "Añade PAYPAL_CLIENT_ID y PAYPAL_CLIENT_SECRET en el servidor para activar pagos.",
+    "secure": "Pagos procesados por PayPal. No almacenamos tus credenciales.",
     "orQuote": "o solicita presupuesto B2B"
   },
   "shopPage": {
@@ -217,7 +217,10 @@
   "product": {
     "addToCart": "Añadir",
     "addToCartFull": "Añadir al carrito",
-    "requestQuote": "Solicitar presupuesto B2B"
+    "requestQuote": "Solicitar presupuesto B2B",
+    "unavailable": "Sin stock online",
+    "quoteOnly": "Solo presupuesto",
+    "quoteOnlyHint": "Producto disponible bajo presupuesto. Contacta con nuestro equipo comercial."
   },
   "cookies": {
     "message": "Utilizamos cookies técnicas para mejorar su experiencia.",

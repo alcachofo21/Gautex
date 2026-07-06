@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { products, categories } from "@/lib/products";
+import { shopProducts, categories } from "@/lib/products";
 import { getBlogPosts, getSectors } from "@/lib/locale";
 import { getSiteUrl } from "@/lib/site";
 
@@ -63,7 +63,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  const productPages = products.flatMap((p) => [
+  const productPages = shopProducts.flatMap((p) => [
     {
       url: `${base}/productos/${p.category}/${p.slug}`,
       lastModified: new Date(),

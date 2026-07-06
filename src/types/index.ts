@@ -12,6 +12,12 @@ export interface Product {
   certifications: string[];
   color: string;
   image?: string;
+  /** ERP / warehouse SKU */
+  sku?: string;
+  /** Available sellable boxes (merged from inventory.json) */
+  stockQuantity?: number | null;
+  /** false = hidden from B2C shop (public entity, quote-only, etc.) */
+  webVisible?: boolean;
 }
 
 export interface Category {

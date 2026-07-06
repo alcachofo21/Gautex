@@ -1,6 +1,18 @@
+"use client";
+
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { CartItem } from "@/types";
+import { products } from "@/lib/products";
+import { maxOrderQuantity } from "@/lib/inventory";
+
+function clampQuantity(productId: string, quantity: number): number {
+  const product = products.find((p) => p.id === productId);
+  if (!product) return Math.max(1, quantity);
+  const max = maxOrderQuantity(product);
+  if (max === null) return Math.max(1, quantity);
+  return Math.max(1, Math.min(quantity, max));
+}
 
 interface CartStore {
   items: CartItem[];
@@ -22,18 +34,19 @@ export const useCart = create<CartStore>()(
       isOpen: false,
       addItem: (item, quantity = 1) => {
         set((state) => {
+          const qty = clampQuantity(item.productId, quantity);
           const existing = state.items.find((i) => i.productId === item.productId);
           if (existing) {
             return {
               items: state.items.map((i) =>
                 i.productId === item.productId
-                  ? { ...i, quantity: i.quantity + quantity }
+                  ? { ...i, quantity: clampQuantity(item.productId, i.quantity + qty) }
                   : i
               ),
               isOpen: true,
             };
           }
-          return { items: [...state.items, { ...item, quantity }], isOpen: true };
+          return { items: [...state.items, { ...item, quantity: qty }], isOpen: true };
         });
       },
       removeItem: (productId) =>
@@ -47,7 +60,7 @@ export const useCart = create<CartStore>()(
         }
         set((state) => ({
           items: state.items.map((i) =>
-            i.productId === productId ? { ...i, quantity } : i
+            i.productId === productId ? { ...i, quantity: clampQuantity(productId, quantity) } : i
           ),
         }));
       },

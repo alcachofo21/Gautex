@@ -3,6 +3,7 @@
 import { ShoppingCart } from "lucide-react";
 import type { Product } from "@/types";
 import { useCart } from "@/lib/cart";
+import { canPurchaseOnline } from "@/lib/products";
 import { Button } from "@/components/ui/Button";
 import { getUi, type Locale } from "@/lib/locale";
 
@@ -14,6 +15,9 @@ interface StickyAddToCartProps {
 export function StickyAddToCart({ product, locale = "es" }: StickyAddToCartProps) {
   const { addItem } = useCart();
   const ui = getUi(locale);
+  const purchasable = canPurchaseOnline(product);
+
+  if (!purchasable) return null;
 
   return (
     <div
@@ -34,6 +38,7 @@ export function StickyAddToCart({ product, locale = "es" }: StickyAddToCartProps
               category: product.category,
               priceLabel: product.priceLabel,
               color: product.color,
+              image: product.image,
             })
           }
         >

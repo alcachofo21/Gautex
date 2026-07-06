@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/Button";
 import { InstantPaymentPanel } from "@/components/shop/InstantPaymentPanel";
@@ -12,11 +11,13 @@ import type { EnabledPaymentMethod } from "@/lib/payments/types";
 
 interface CheckoutPageContentProps {
   locale?: Locale;
+  paymentSuccess?: boolean;
 }
 
-export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps) {
-  const searchParams = useSearchParams();
-  const paymentSuccess = searchParams.get("success") === "true";
+export function CheckoutPageContent({
+  locale = "es",
+  paymentSuccess = false,
+}: CheckoutPageContentProps) {
   const ui = getUi(locale);
   const t = ui.checkout;
   const p = ui.payments;
@@ -81,7 +82,7 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
     }
   };
 
-  const handleStripe = async () => {
+  const handlePayPal = async () => {
     setStatus("loading");
     setPayError(null);
     try {
@@ -91,13 +92,13 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
         body: JSON.stringify({
           items,
           locale,
-          provider: "stripe",
+          provider: "paypal",
           customerEmail: form.email || undefined,
         }),
       });
       const data = await res.json();
       if (data.url) {
-        trackEvent("begin_checkout", { items: items.length });
+        trackEvent("begin_checkout", { items: items.length, provider: "paypal" });
         window.location.href = data.url;
       } else {
         setStatus("error");
@@ -171,7 +172,7 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
           methods={methods}
           totalLabel={formatEur(totalCents, locale)}
           loading={status === "loading"}
-          onPay={handleStripe}
+          onPay={handlePayPal}
           payable={payable}
           checkoutReady={checkoutReady}
           labels={{

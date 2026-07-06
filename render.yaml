@@ -13,14 +13,12 @@ services:
         value: "false"
       - key: NEXT_PUBLIC_SITE_URL
         value: https://www.gautex.com
-      - key: STRIPE_SECRET_KEY
+      - key: PAYPAL_CLIENT_ID
         sync: false
-      - key: NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+      - key: PAYPAL_CLIENT_SECRET
         sync: false
-      - key: STRIPE_WEBHOOK_SECRET
-        sync: false
-      - key: STRIPE_PAYPAL_ENABLED
-        value: "false"
+      - key: PAYPAL_MODE
+        value: live
 
   - type: web
     name: gautex-web-staging
@@ -36,11 +34,9 @@ services:
         value: "false"
       - key: NEXT_PUBLIC_SITE_URL
         value: https://gautex-web-staging.onrender.com
-      - key: STRIPE_SECRET_KEY
+      - key: PAYPAL_CLIENT_ID
         sync: false
-      - key: NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+      - key: PAYPAL_CLIENT_SECRET
         sync: false
-      - key: STRIPE_WEBHOOK_SECRET
-        sync: false
-      - key: STRIPE_PAYPAL_ENABLED
-        value: "false"
+      - key: PAYPAL_MODE
+        value: sandbox
