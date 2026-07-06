@@ -2,7 +2,6 @@
   "nav": {
     "shop": "Tienda online",
     "campaigns": "Campañas",
-    "distributors": "Distribuidores",
     "quality": "Calidad",
     "about": "Nosotros",
     "contact": "Contacto",
@@ -10,8 +9,7 @@
     "cart": "Carrito"
   },
   "topbar": {
-    "shipping": "Envío a toda Europa",
-    "distributors": "Área de distribuidores"
+    "shipping": "Envío a toda Europa"
   },
   "home": {
     "featured": "Productos destacados",
@@ -22,8 +20,7 @@
     "ctaTitle": "¿Listo para pedir o personalizar?",
     "ctaDesc": "Añade productos al carrito, solicita presupuesto B2B o diseña una campaña con tu marca. Respuesta en 24–48h laborables.",
     "ctaShop": "Ir a tienda online",
-    "ctaQuote": "Solicitar presupuesto",
-    "ctaDistributors": "Área de distribuidores"
+    "ctaQuote": "Solicitar presupuesto"
   },
   "footer": {
     "products": "Productos",
@@ -35,8 +32,7 @@
     "rights": "Todos los derechos reservados",
     "since": "Desde",
     "blog": "Blog",
-    "sectors": "Sectores",
-    "distributors": "Distribuidores"
+    "sectors": "Sectores"
   },
   "lang": {
     "switch": "English",
@@ -283,20 +279,6 @@
     "title": "Soluciones por sector",
     "cta": "Solicitar presupuesto",
     "ctaShop": "Ver catálogo"
-  },
-  "distributors": {
-    "title": "Área de distribuidores",
-    "subtitle": "Acceso a tarifas, catálogo PDF y canal comercial prioritario.",
-    "loginTitle": "Acceso distribuidor",
-    "codeLabel": "Código de acceso",
-    "login": "Entrar",
-    "logout": "Cerrar sesión",
-    "invalidCode": "Código incorrecto",
-    "resourcesTitle": "Recursos exclusivos",
-    "catalogPdf": "Descargar catálogo PDF",
-    "priceList": "Solicitar lista de precios",
-    "contactSales": "Contactar comercial",
-    "portalDesc": "Si eres distribuidor autorizado, introduce el código que te ha facilitado Gautex."
   },
   "notFound": {
     "title": "Página no encontrada",
