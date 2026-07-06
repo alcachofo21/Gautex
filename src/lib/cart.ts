@@ -76,15 +76,14 @@ export const useCart = create<CartStore>()(
 );
 
 export function useCartHydrated(): boolean {
-  const [hydrated, setHydrated] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (useCart.persist.hasHydrated()) {
-      setHydrated(true);
-      return;
+    setMounted(true);
+    if (!useCart.persist.hasHydrated()) {
+      void useCart.persist.rehydrate();
     }
-    return useCart.persist.onFinishHydration(() => setHydrated(true));
   }, []);
 
-  return hydrated;
+  return mounted;
 }
