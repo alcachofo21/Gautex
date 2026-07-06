@@ -1,18 +1,15 @@
-import { Suspense } from "react";
 import { CheckoutPageContent } from "@/components/shop/CheckoutPageContent";
-import { getUi } from "@/lib/locale";
 
 export const metadata = {
   title: "Checkout",
   description: "Finaliza tu pedido o solicita presupuesto B2B en Gautex Medica.",
 };
 
-export default function CheckoutPage() {
-  const t = getUi("es").checkout;
+interface Props {
+  searchParams: Promise<{ success?: string }>;
+}
 
-  return (
-    <Suspense fallback={<div className="container-page py-20 text-center">{t.loading}</div>}>
-      <CheckoutPageContent locale="es" />
-    </Suspense>
-  );
+export default async function CheckoutPage({ searchParams }: Props) {
+  const { success } = await searchParams;
+  return <CheckoutPageContent locale="es" paymentSuccess={success === "true"} />;
 }

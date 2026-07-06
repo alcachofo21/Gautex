@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Minus, Plus, Trash2 } from "lucide-react";
-import { useCart } from "@/lib/cart";
+import { useCart, useCartHydrated } from "@/lib/cart";
 import { Button } from "@/components/ui/Button";
 import { getUi, localizedPath, type Locale } from "@/lib/locale";
 import { CartItemThumb } from "@/components/shop/CartItemThumb";
@@ -14,7 +14,16 @@ interface CartPageContentProps {
 export function CartPageContent({ locale = "es" }: CartPageContentProps) {
   const ui = getUi(locale);
   const c = ui.cart;
+  const hydrated = useCartHydrated();
   const { items, updateQuantity, removeItem, clearCart } = useCart();
+
+  if (!hydrated) {
+    return (
+      <div className="container-page py-20 text-center">
+        <p className="text-text-muted">{ui.checkout.loading}</p>
+      </div>
+    );
+  }
 
   if (items.length === 0) {
     return (
