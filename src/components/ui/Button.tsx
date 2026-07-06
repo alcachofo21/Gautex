@@ -1,17 +1,18 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> {
   variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   href?: string;
   fullWidth?: boolean;
+  onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
 const variants = {
-  primary: "bg-accent text-white hover:bg-accent-hover shadow-md",
-  secondary: "bg-primary text-white hover:bg-primary-dark shadow-md",
-  outline: "border-2 border-primary text-primary hover:bg-primary/5",
+  primary: "bg-accent text-white hover:bg-accent-hover shadow-md shadow-accent/25",
+  secondary: "bg-primary text-white hover:bg-primary-dark shadow-md shadow-primary/20",
+  outline: "border-2 border-primary/25 text-primary hover:border-primary hover:bg-primary/5",
   ghost: "text-text hover:bg-black/5",
 };
 
@@ -31,23 +32,25 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 active:scale-[0.98]",
     variants[variant],
     sizes[size],
     fullWidth && "w-full",
     className
   );
 
+  const { onClick, ...rest } = props;
+
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} onClick={onClick}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button className={classes} {...props}>
+    <button className={classes} onClick={onClick} {...rest}>
       {children}
     </button>
   );

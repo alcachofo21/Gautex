@@ -1,7 +1,10 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { ProductGrid } from "@/components/shop/ProductGrid";
-import { getProductsByCategory, localizeProducts } from "@/lib/products";
-import { getCategories } from "@/lib/locale";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
+import { getProductsByCategory, localizeProducts, sortByCollection } from "@/lib/products";
+import { getCategories, getUi } from "@/lib/locale";
+import { ShopCatalog } from "@/components/shop/ShopCatalog";
 
 interface Props {
   params: Promise<{ category: string }>;
@@ -23,16 +26,29 @@ export default async function EnCategoryPage({ params }: Props) {
   const cat = getCategories("en").find((c) => c.id === category);
   if (!cat) notFound();
 
-  const products = localizeProducts(getProductsByCategory(category), "en");
+  const ui = getUi("en");
+  const products = localizeProducts(sortByCollection(getProductsByCategory(category)), "en");
 
   return (
-    <div className="py-12 sm:py-16">
-      <div className="container-page">
-        <h1 className="text-fluid-title font-display font-bold">{cat.name}</h1>
-        <p className="mt-4 max-w-2xl text-text-muted">{cat.description}</p>
-        <div className="mt-12">
-          <ProductGrid products={products} locale="en" />
+    <div className="pb-16">
+      <section className="border-b border-line bg-surface">
+        <div className="container-page py-8 sm:py-12">
+          <nav className="mb-3 flex items-center gap-1 text-sm text-text-muted">
+            <Link href="/en/productos" className="hover:text-primary">
+              {ui.nav.shop}
+            </Link>
+            <ChevronRight className="h-4 w-4" />
+            <span className="text-text">{cat.name}</span>
+          </nav>
+          <h1 className="text-fluid-title font-display font-bold">{cat.name}</h1>
+          <p className="mt-3 max-w-2xl text-text-muted">{cat.description}</p>
         </div>
+      </section>
+
+      <div className="container-page pt-8">
+        <Suspense fallback={null}>
+          <ShopCatalog products={products} locale="en" />
+        </Suspense>
       </div>
     </div>
   );

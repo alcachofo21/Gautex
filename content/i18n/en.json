@@ -208,14 +208,31 @@
     "orQuote": "or request a B2B quote"
   },
   "shopPage": {
-    "title": "Our products",
-    "subtitle": "Full catalogue of CE-certified medical products. Filter by category or browse everything.",
+    "title": "Online shop",
+    "subtitle": "Buy condoms, lubricants, ultrasound probe covers and CE-certified medical supplies. Add to cart and receive across Europe.",
     "filterAll": "All",
     "results": "{count} products",
     "categoryFilters": {
       "preventivo": "Prevention",
       "ginecologia": "Gynaecology",
       "covid-19": "COVID-19"
+    },
+    "sortLabel": "Sort",
+    "sortFeatured": "Featured",
+    "sortPriceAsc": "Price: low to high",
+    "sortPriceDesc": "Price: high to low",
+    "sortName": "Name A-Z",
+    "empty": "No products match this filter.",
+    "clearFilters": "Clear filters",
+    "collections": {
+      "all": "Full catalogue",
+      "preservativos": "Condoms",
+      "lubricantes": "Lubricants",
+      "cubresondas": "Probe covers",
+      "ecografia": "Ultrasound gels",
+      "tests": "Tests",
+      "mascarillas": "Masks",
+      "otros": "Other"
     }
   },
   "product": {

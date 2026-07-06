@@ -1,6 +1,10 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { ProductGrid } from "@/components/shop/ProductGrid";
-import { getCategoryById, getProductsByCategory, categories } from "@/lib/products";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
+import { getCategoryById, getProductsByCategory, categories, sortByCollection } from "@/lib/products";
+import { getUi } from "@/lib/locale";
+import { ShopCatalog } from "@/components/shop/ShopCatalog";
 
 interface Props {
   params: Promise<{ category: string }>;
@@ -25,16 +29,29 @@ export default async function CategoryPage({ params }: Props) {
   const cat = getCategoryById(category);
   if (!cat) notFound();
 
-  const products = getProductsByCategory(category);
+  const ui = getUi("es");
+  const products = sortByCollection(getProductsByCategory(category));
 
   return (
-    <div className="py-12 sm:py-16">
-      <div className="container-page">
-        <h1 className="text-fluid-title font-display font-bold">{cat.name}</h1>
-        <p className="mt-4 max-w-2xl text-text-muted">{cat.description}</p>
-        <div className="mt-12">
-          <ProductGrid products={products} />
+    <div className="pb-16">
+      <section className="border-b border-line bg-surface">
+        <div className="container-page py-8 sm:py-12">
+          <nav className="mb-3 flex items-center gap-1 text-sm text-text-muted">
+            <Link href="/productos" className="hover:text-primary">
+              {ui.nav.shop}
+            </Link>
+            <ChevronRight className="h-4 w-4" />
+            <span className="text-text">{cat.name}</span>
+          </nav>
+          <h1 className="text-fluid-title font-display font-bold">{cat.name}</h1>
+          <p className="mt-3 max-w-2xl text-text-muted">{cat.description}</p>
         </div>
+      </section>
+
+      <div className="container-page pt-8">
+        <Suspense fallback={null}>
+          <ShopCatalog products={products} locale="es" />
+        </Suspense>
       </div>
     </div>
   );

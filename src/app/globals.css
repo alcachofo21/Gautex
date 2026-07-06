@@ -75,7 +75,7 @@
 }
 
 @media print {
-  header, footer, .print\\:hidden {
+  header, footer, .print\:hidden {
     display: none !important;
   }
 }

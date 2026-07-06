@@ -17,13 +17,13 @@ export function StickyAddToCart({ product, locale = "es" }: StickyAddToCartProps
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-30 border-t border-gray-200 bg-white p-4 shadow-2xl lg:hidden"
+      className="fixed bottom-0 left-0 right-0 z-30 border-t border-line bg-white/95 p-4 shadow-2xl backdrop-blur lg:hidden"
       style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}
     >
       <div className="flex items-center gap-4">
-        <div className="flex-1">
-          <p className="text-sm text-text-muted">{product.name}</p>
-          <p className="font-bold text-primary">{product.priceLabel}</p>
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-sm text-text-muted">{product.name}</p>
+          <p className="price text-lg">{product.priceLabel}</p>
         </div>
         <Button
           onClick={() =>
@@ -34,6 +34,7 @@ export function StickyAddToCart({ product, locale = "es" }: StickyAddToCartProps
               category: product.category,
               priceLabel: product.priceLabel,
               color: product.color,
+              image: product.image,
             })
           }
         >

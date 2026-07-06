@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getProductBySlug, getRelatedProducts, products } from "@/lib/products";
+import { ChevronRight, Truck, ShieldCheck, Lock, PackageCheck } from "lucide-react";
+import { getProductBySlug, getRelatedProducts, products, getCategoryById } from "@/lib/products";
 import { ProductGrid } from "@/components/shop/ProductGrid";
 import { StickyAddToCart } from "@/components/shop/StickyAddToCart";
 import { ProductActions } from "./ProductActions";
 import { Badge } from "@/components/ui/Badge";
-import { AccordionItem } from "@/components/ui/Accordion";
 import { ProductImage } from "@/components/shop/ProductImage";
 
 interface Props {
@@ -32,6 +32,8 @@ export default async function ProductPage({ params }: Props) {
   if (!product) notFound();
 
   const related = getRelatedProducts(product);
+  const categoryName = getCategoryById(category)?.name ?? category;
+  const hasPrice = product.price !== null && product.price !== undefined;
 
   const productSchema = {
     "@context": "https://schema.org",
@@ -42,38 +44,58 @@ export default async function ProductPage({ params }: Props) {
     category: product.category,
   };
 
+  const trust = [
+    { icon: ShieldCheck, text: "Certificado CE · ISO 13485" },
+    { icon: Truck, text: "Envío a toda Europa" },
+    { icon: Lock, text: "Pago seguro con Stripe" },
+    { icon: PackageCheck, text: "Embalaje discreto" },
+  ];
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <div className="pb-24 lg:pb-12">
-        <div className="container-page py-12">
-          <nav className="mb-6 text-sm text-text-muted">
-            <Link href="/productos" className="hover:text-primary">Productos</Link>
-            {" / "}
-            <Link href={`/productos/${category}`} className="hover:text-primary capitalize">{category}</Link>
-            {" / "}
+        <div className="container-page py-8 sm:py-12">
+          <nav className="mb-6 flex flex-wrap items-center gap-1 text-sm text-text-muted">
+            <Link href="/productos" className="hover:text-primary">
+              Tienda
+            </Link>
+            <ChevronRight className="h-4 w-4" />
+            <Link href={`/productos/${category}`} className="hover:text-primary">
+              {categoryName}
+            </Link>
+            <ChevronRight className="h-4 w-4" />
             <span className="text-text">{product.name}</span>
           </nav>
 
           <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-            <ProductImage
-              src={product.image}
-              alt={product.name}
-              color={product.color}
-              className="aspect-square w-full rounded-2xl"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-              quality={85}
-            />
+            <div className="lg:sticky lg:top-40 lg:self-start">
+              <ProductImage
+                src={product.image}
+                alt={product.name}
+                color={product.color}
+                className="aspect-square w-full rounded-3xl border border-line"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+            </div>
 
             <div>
-              <Badge className="mb-3">{product.category}</Badge>
-              <h1 className="font-display text-3xl font-bold sm:text-4xl">{product.name}</h1>
-              <p className="mt-2 text-2xl font-bold text-primary">{product.priceLabel}</p>
-              <p className="mt-4 text-text-muted">{product.description}</p>
+              <Badge variant="outline" className="mb-3">
+                {categoryName}
+              </Badge>
+              <h1 className="font-display text-3xl font-extrabold sm:text-4xl">{product.name}</h1>
+
+              <div className="mt-4 flex items-baseline gap-3">
+                {hasPrice ? (
+                  <span className="price text-4xl">{product.priceLabel}</span>
+                ) : (
+                  <span className="text-2xl font-bold text-primary">{product.priceLabel}</span>
+                )}
+                {hasPrice && <span className="text-sm text-text-muted">IVA no incluido</span>}
+              </div>
+
+              <p className="mt-4 leading-relaxed text-text-muted">{product.description}</p>
 
               <ProductActions product={product} />
 
@@ -86,12 +108,21 @@ export default async function ProductPage({ params }: Props) {
                 </Link>
               </p>
 
-              <div className="mt-8 hidden lg:block">
+              <div className="mt-6 grid grid-cols-2 gap-3 rounded-2xl border border-line bg-surface p-4">
+                {trust.map((item) => (
+                  <div key={item.text} className="flex items-center gap-2 text-sm text-text">
+                    <item.icon className="h-5 w-5 shrink-0 text-accent" />
+                    {item.text}
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8">
                 <h2 className="mb-4 font-display text-lg font-bold">Especificaciones</h2>
                 <table className="w-full text-sm">
                   <tbody>
                     {Object.entries(product.specs).map(([key, value]) => (
-                      <tr key={key} className="border-b border-gray-100">
+                      <tr key={key} className="border-b border-line/70">
                         <td className="py-3 font-medium text-text-muted">{key}</td>
                         <td className="py-3 text-right font-semibold">{value}</td>
                       </tr>
@@ -100,24 +131,13 @@ export default async function ProductPage({ params }: Props) {
                 </table>
               </div>
 
-              <div className="mt-6 lg:hidden">
-                <AccordionItem title="Especificaciones técnicas" defaultOpen>
-                  <dl className="space-y-3">
-                    {Object.entries(product.specs).map(([key, value]) => (
-                      <div key={key} className="flex justify-between rounded-lg bg-surface p-3">
-                        <dt className="text-sm text-text-muted">{key}</dt>
-                        <dd className="text-sm font-semibold">{value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </AccordionItem>
-              </div>
-
               <div className="mt-6">
                 <h2 className="mb-3 font-display text-lg font-bold">Certificaciones</h2>
                 <div className="flex flex-wrap gap-2">
                   {product.certifications.map((cert) => (
-                    <Badge key={cert} variant="outline">{cert}</Badge>
+                    <Badge key={cert} variant="outline">
+                      {cert}
+                    </Badge>
                   ))}
                 </div>
               </div>

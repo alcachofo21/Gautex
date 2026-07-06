@@ -35,9 +35,68 @@ export function getCategoryById(id: string): Category | undefined {
 }
 
 export function getRelatedProducts(product: Product, limit = 4): Product[] {
-  return products
-    .filter((p) => p.category === product.category && p.id !== product.id)
-    .slice(0, limit);
+  const sameCollection = products.filter(
+    (p) => p.id !== product.id && getProductCollection(p) === getProductCollection(product)
+  );
+  const sameCategory = products.filter(
+    (p) => p.id !== product.id && p.category === product.category && !sameCollection.includes(p)
+  );
+  return [...sameCollection, ...sameCategory].slice(0, limit);
+}
+
+export type CollectionId =
+  | "preservativos"
+  | "lubricantes"
+  | "cubresondas"
+  | "ecografia"
+  | "tests"
+  | "mascarillas"
+  | "otros";
+
+/**
+ * Maps a product to a retail "collection" so the shop can prioritise and filter
+ * by type (condoms first, then lubricants, cubresondas, etc.) even though the
+ * underlying data only has 3 broad categories.
+ */
+export function getProductCollection(p: Product): CollectionId {
+  const id = p.id.toLowerCase();
+  if (p.category === "preventivo") {
+    if (id.includes("gel") || id.startsWith("body-ars")) return "lubricantes";
+    if (id.includes("condom") || id.includes("preservativo") || id === "sexydam") return "preservativos";
+    return "otros";
+  }
+  if (p.category === "ginecologia") {
+    if (id.includes("gecofun") || id.includes("cubresonda")) return "cubresondas";
+    if (id.includes("gecogel") || id.includes("gel")) return "ecografia";
+    return "otros";
+  }
+  if (p.category === "covid-19") {
+    if (id.includes("nadal") || id.includes("covid")) return "tests";
+    if (id.includes("mascarilla")) return "mascarillas";
+    return "otros";
+  }
+  return "otros";
+}
+
+export const collectionOrder: CollectionId[] = [
+  "preservativos",
+  "lubricantes",
+  "cubresondas",
+  "ecografia",
+  "tests",
+  "mascarillas",
+  "otros",
+];
+
+/** Sorts products so condoms come first, then lubricants, cubresondas, etc. */
+export function sortByCollection(list: Product[]): Product[] {
+  return [...list].sort(
+    (a, b) => collectionOrder.indexOf(getProductCollection(a)) - collectionOrder.indexOf(getProductCollection(b))
+  );
+}
+
+export function getProductsByCollection(collection: CollectionId): Product[] {
+  return products.filter((p) => getProductCollection(p) === collection);
 }
 
 export function localizeProduct(product: Product, locale: "es" | "en"): Product {

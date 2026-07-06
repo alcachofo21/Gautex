@@ -208,14 +208,31 @@
     "orQuote": "o solicita presupuesto B2B"
   },
   "shopPage": {
-    "title": "Nuestros productos",
-    "subtitle": "Catálogo completo de productos sanitarios certificados. Filtra por categoría o explora todo el catálogo.",
+    "title": "Tienda online",
+    "subtitle": "Compra preservativos, lubricantes, cubresondas y material sanitario certificado CE. Añade al carrito y recibe en toda Europa.",
     "filterAll": "Todos",
     "results": "{count} productos",
     "categoryFilters": {
       "preventivo": "Preventivo",
       "ginecologia": "Ginecología",
       "covid-19": "COVID-19"
+    },
+    "sortLabel": "Ordenar",
+    "sortFeatured": "Destacados",
+    "sortPriceAsc": "Precio: menor a mayor",
+    "sortPriceDesc": "Precio: mayor a menor",
+    "sortName": "Nombre A-Z",
+    "empty": "No hay productos que coincidan con este filtro.",
+    "clearFilters": "Quitar filtros",
+    "collections": {
+      "all": "Todo el catálogo",
+      "preservativos": "Preservativos",
+      "lubricantes": "Lubricantes",
+      "cubresondas": "Cubresondas",
+      "ecografia": "Geles de ecografía",
+      "tests": "Tests",
+      "mascarillas": "Mascarillas",
+      "otros": "Otros"
     }
   },
   "product": {
