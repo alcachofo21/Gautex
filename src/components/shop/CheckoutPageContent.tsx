@@ -36,6 +36,7 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
     website: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [payError, setPayError] = useState<string | null>(null);
 
   useEffect(() => {
     if (paymentSuccess) {
@@ -61,6 +62,7 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
   const handleQuote = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+    setPayError(null);
     try {
       const res = await fetch("/api/quote", {
         method: "POST",
@@ -81,6 +83,7 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
 
   const handleStripe = async () => {
     setStatus("loading");
+    setPayError(null);
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
@@ -98,9 +101,11 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
         window.location.href = data.url;
       } else {
         setStatus("error");
+        setPayError(data.error || t.error);
       }
     } catch {
       setStatus("error");
+      setPayError(t.error);
     }
   };
 
@@ -178,6 +183,10 @@ export function CheckoutPageContent({ locale = "es" }: CheckoutPageContentProps)
             secure: p.secure,
           }}
         />
+
+          {payError && status === "error" && (
+            <p className="mt-4 text-sm text-red-500">{payError}</p>
+          )}
 
         <div className="relative my-8 text-center">
           <span className="bg-surface px-4 text-sm font-medium text-text-muted">{p.orQuote}</span>

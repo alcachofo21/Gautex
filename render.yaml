@@ -20,7 +20,7 @@ services:
       - key: STRIPE_WEBHOOK_SECRET
         sync: false
       - key: STRIPE_PAYPAL_ENABLED
-        value: "true"
+        value: "false"
 
   - type: web
     name: gautex-web-staging
@@ -43,4 +43,4 @@ services:
       - key: STRIPE_WEBHOOK_SECRET
         sync: false
       - key: STRIPE_PAYPAL_ENABLED
-        value: "true"
+        value: "false"
