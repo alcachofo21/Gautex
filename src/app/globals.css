@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand structure (trust / medical) */
-  --color-primary: #143a5e;
-  --color-primary-dark: #0d2b47;
-  --color-primary-light: #2f6ea3;
+  /* Azul corporativo + blanco */
+  --color-primary: #1e4f7a;
+  --color-primary-dark: #153a5c;
+  --color-primary-light: #3b8cc4;
 
-  /* Retail accent (CTAs, prices, highlights) */
-  --color-accent: #f43f6b;
-  --color-accent-hover: #e02b58;
-  --color-accent-soft: #ffe4ec;
+  /* Acento = azul brillante (CTAs, enlaces, destacados) */
+  --color-accent: #3b8cc4;
+  --color-accent-hover: #2d7aad;
+  --color-accent-soft: #e8f4fc;
 
-  /* Secondary support */
-  --color-teal: #0fb5a6;
+  /* Apoyo en gama azul */
+  --color-teal: #4a9fd4;
 
-  /* Neutrals & states */
-  --color-surface: #f6f8fb;
-  --color-surface-alt: #eef3f9;
-  --color-line: #e3e9f0;
-  --color-text: #16232f;
-  --color-text-muted: #5a6b7d;
+  /* Neutros blancos / grises fríos */
+  --color-surface: #f4f8fc;
+  --color-surface-alt: #eef4fa;
+  --color-line: #dce8f2;
+  --color-text: #1a2b3c;
+  --color-text-muted: #5a6f85;
   --color-success: #16a34a;
-  --color-sale: #f43f6b;
+  --color-sale: #2d7aad;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
@@ -82,7 +82,7 @@
     box-shadow: var(--shadow-product);
   }
   .card-product:hover {
-    @apply -translate-y-1 border-accent/30;
+    @apply -translate-y-1 border-primary-light/40;
     box-shadow: var(--shadow-product-hover);
   }
 
@@ -110,7 +110,7 @@
     @apply bg-accent text-white;
   }
   .pill-new {
-    @apply bg-teal/15 text-teal;
+    @apply bg-accent-soft text-primary;
   }
   .pill-soft {
     @apply bg-surface-alt text-primary;
