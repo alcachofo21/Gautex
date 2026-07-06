@@ -2,7 +2,6 @@
   "nav": {
     "shop": "Online shop",
     "campaigns": "Campaigns",
-    "distributors": "Distributors",
     "quality": "Quality",
     "about": "About us",
     "contact": "Contact",
@@ -10,8 +9,7 @@
     "cart": "Cart"
   },
   "topbar": {
-    "shipping": "Shipping across Europe",
-    "distributors": "Distributor area"
+    "shipping": "Shipping across Europe"
   },
   "home": {
     "featured": "Featured products",
@@ -22,8 +20,7 @@
     "ctaTitle": "Ready to order or customise?",
     "ctaDesc": "Add products to cart, request a B2B quote or design a branded campaign. Response within 24–48 business hours.",
     "ctaShop": "Go to online shop",
-    "ctaQuote": "Request a quote",
-    "ctaDistributors": "Distributor area"
+    "ctaQuote": "Request a quote"
   },
   "footer": {
     "products": "Products",
@@ -35,8 +32,7 @@
     "rights": "All rights reserved",
     "since": "Since",
     "blog": "Blog",
-    "sectors": "Sectors",
-    "distributors": "Distributors"
+    "sectors": "Sectors"
   },
   "lang": {
     "switch": "Español",
@@ -283,20 +279,6 @@
     "title": "Solutions by sector",
     "cta": "Request a quote",
     "ctaShop": "View catalogue"
-  },
-  "distributors": {
-    "title": "Distributor area",
-    "subtitle": "Access to pricing, PDF catalogue and priority sales channel.",
-    "loginTitle": "Distributor login",
-    "codeLabel": "Access code",
-    "login": "Sign in",
-    "logout": "Sign out",
-    "invalidCode": "Invalid code",
-    "resourcesTitle": "Exclusive resources",
-    "catalogPdf": "Download PDF catalogue",
-    "priceList": "Request price list",
-    "contactSales": "Contact sales",
-    "portalDesc": "If you are an authorised distributor, enter the code provided by Gautex."
   },
   "notFound": {
     "title": "Page not found",

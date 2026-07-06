@@ -42,7 +42,6 @@ export function getLocaleFromPath(pathname: string): Locale {
 
 export function localizedPath(path: string, locale: Locale): string {
   const aliases: Record<string, string> = {
-    "/distribuidores": "/distributors",
     "/sectores": "/sectors",
   };
   const normalized = aliases[path] && locale === "en" ? aliases[path] : path;

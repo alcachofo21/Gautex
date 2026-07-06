@@ -21,9 +21,6 @@ export function StoreCta({ locale = "es" }: StoreCtaProps) {
             <Button href={localizedPath("/productos", locale)} size="lg" className="bg-accent hover:bg-accent-hover">
               {ui.home.ctaShop}
             </Button>
-            <Button href={localizedPath("/distribuidores", locale)} variant="outline" size="lg" className="border-white/40 bg-white/10 text-white hover:bg-white/20">
-              {ui.home.ctaDistributors}
-            </Button>
             <Button href={localizedPath("/contacto", locale)} variant="outline" size="lg" className="border-white/40 bg-white/10 text-white hover:bg-white/20">
               {ui.home.ctaQuote}
             </Button>

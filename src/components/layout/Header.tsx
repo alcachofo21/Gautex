@@ -74,9 +74,6 @@ export function Header() {
               <Phone className="h-4 w-4" />
               {corporate.company.phone}
             </a>
-            <Button href={localizedPath("/distribuidores", locale)} variant="secondary" size="sm" className="hidden md:inline-flex">
-              {ui.nav.distributors}
-            </Button>
             <Button href={localizedPath("/contacto", locale)} variant="outline" size="sm" className="hidden sm:inline-flex">
               {ui.nav.quote}
             </Button>

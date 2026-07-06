@@ -30,7 +30,6 @@ export function Footer() {
         { href: localizedPath("/colaboradores", locale), label: locale === "en" ? "Partners" : "Colaboradores" },
         { href: localizedPath("/blog", locale), label: ui.footer.blog },
         { href: locale === "en" ? "/en/sectors/pharmacy" : "/sectores/farmacia", label: ui.footer.sectors },
-        { href: localizedPath("/distribuidores", locale), label: ui.footer.distributors },
         { href: localizedPath("/contacto", locale), label: ui.nav.contact },
       ],
     },

@@ -26,9 +26,6 @@ export function TopBar() {
           </span>
         </div>
         <div className="flex items-center gap-4">
-          <Link href={localizedPath("/distribuidores", locale)} className="font-semibold hover:underline">
-            {ui.topbar.distributors} →
-          </Link>
           <Badge className="bg-white/20 text-white">CE 0120</Badge>
           <Badge className="bg-white/20 text-white">ISO 13485</Badge>
         </div>
