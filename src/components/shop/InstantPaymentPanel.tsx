@@ -44,18 +44,18 @@ export function InstantPaymentPanel({
         <>
           <p className="mt-4 text-2xl font-bold text-text">{totalLabel}</p>
 
-          {checkoutReady ? (
-            <Button
-              fullWidth
-              onClick={onPay}
-              disabled={loading}
-              className="mt-4 bg-[#0070ba] font-semibold hover:bg-[#003087]"
-            >
-              {labels.payNow}
-            </Button>
-          ) : (
-            <p className="mt-4 rounded-xl bg-blue-50 px-4 py-3 text-sm text-blue-900">{labels.pendingSetup}</p>
-          )}
+          <Button
+            fullWidth
+            onClick={onPay}
+            disabled={loading || !checkoutReady}
+            className="mt-4 bg-[#0070ba] font-semibold hover:bg-[#003087] disabled:opacity-60"
+          >
+            {labels.payNow}
+          </Button>
+
+          {!checkoutReady ? (
+            <p className="mt-3 rounded-xl bg-blue-50 px-4 py-3 text-sm text-blue-900">{labels.pendingSetup}</p>
+          ) : null}
 
           <p className="mt-3 text-xs text-text-muted">{method.description}</p>
           {checkoutReady ? <p className="mt-2 text-xs text-text-muted">{labels.secure}</p> : null}

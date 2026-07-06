@@ -8,6 +8,11 @@ export const metadata = buildPageMetadata({
   locale: "es",
 });
 
-export default function ProductosPage() {
-  return <ProductCatalogPage locale="es" />;
+export default async function ProductosPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ c?: string }>;
+}) {
+  const { c } = await searchParams;
+  return <ProductCatalogPage locale="es" categoryFilter={c ?? null} />;
 }

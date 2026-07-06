@@ -51,18 +51,10 @@ export function applyInventory(product: Product): Product {
     };
   }
 
-  if (stockFromSku !== undefined) {
-    return {
-      ...product,
-      stockQuantity: stockFromSku,
-      webVisible: true,
-    };
-  }
-
   return {
     ...product,
-    stockQuantity: 0,
-    webVisible: false,
+    stockQuantity: stockFromSku ?? 0,
+    webVisible: true,
   };
 }
 
