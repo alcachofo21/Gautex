@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useCart, useCartHydrated } from "@/lib/cart";
+import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/Button";
 import { InstantPaymentPanel } from "@/components/shop/InstantPaymentPanel";
 import { getUi, localizedPath, type Locale } from "@/lib/locale";
@@ -18,7 +18,6 @@ export function CheckoutPageContent({
   locale = "es",
   paymentSuccess = false,
 }: CheckoutPageContentProps) {
-  const hydrated = useCartHydrated();
   const ui = getUi(locale);
   const t = ui.checkout;
   const p = ui.payments;
@@ -105,14 +104,6 @@ export function CheckoutPageContent({
       setStatus("error");
     }
   };
-
-  if (!hydrated) {
-    return (
-      <div className="container-page py-20 text-center">
-        <p className="text-text-muted">{t.loading}</p>
-      </div>
-    );
-  }
 
   if (items.length === 0 && status !== "success") {
     return (

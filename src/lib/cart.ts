@@ -2,7 +2,6 @@
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { useEffect, useState } from "react";
 import type { CartItem } from "@/types";
 import { products } from "@/lib/products";
 import { maxOrderQuantity } from "@/lib/inventory";
@@ -74,16 +73,3 @@ export const useCart = create<CartStore>()(
     { name: "gautex-cart" }
   )
 );
-
-export function useCartHydrated(): boolean {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    if (!useCart.persist.hasHydrated()) {
-      void useCart.persist.rehydrate();
-    }
-  }, []);
-
-  return mounted;
-}
