@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "./Button";
+import { CONSENT_CHANGE_EVENT, COOKIE_CONSENT_KEY } from "@/lib/analytics";
 import { getLocaleFromPath, getUi, localizedPath } from "@/lib/locale";
 
 export function CookieBanner() {
@@ -13,13 +14,14 @@ export function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("gautex-cookie-consent");
+    const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
     if (!consent) setVisible(true);
   }, []);
 
   const setConsent = (value: "accepted" | "rejected") => {
-    localStorage.setItem("gautex-cookie-consent", value);
+    localStorage.setItem(COOKIE_CONSENT_KEY, value);
     setVisible(false);
+    window.dispatchEvent(new Event(CONSENT_CHANGE_EVENT));
   };
 
   if (!visible) return null;

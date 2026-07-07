@@ -7,7 +7,7 @@ import { CartDrawer } from "@/components/shop/CartDrawer";
 import { CookieBanner } from "@/components/ui/CookieBanner";
 import { LocaleSync } from "@/components/layout/LocaleSync";
 import { SkipLink } from "@/components/layout/SkipLink";
-import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
+import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 import { corporate } from "@/lib/products";
 import { absoluteUrl } from "@/lib/site";
 import "./globals.css";
@@ -53,6 +53,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: ["/images/hero/condones-seguro.webp"],
   },
+  verification: {
+    google: "d4vwHHQu4itMGMEAxovFaR-d5KRbr2nIIuZBYLt98DY",
+  },
 };
 
 const organizationSchema = {
@@ -92,7 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <CartDrawer />
         <CookieBanner />
-        <AnalyticsScripts />
+        <AnalyticsProvider />
       </body>
     </html>
   );

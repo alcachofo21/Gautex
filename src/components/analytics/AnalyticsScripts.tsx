@@ -3,6 +3,7 @@ import Script from "next/script";
 export function AnalyticsScripts() {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
   const plausible = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
+  const debug = process.env.NEXT_PUBLIC_GA_DEBUG === "true";
 
   return (
     <>
@@ -14,7 +15,10 @@ export function AnalyticsScripts() {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${gaId}', { anonymize_ip: true });
+              gtag('config', '${gaId}', {
+                anonymize_ip: true,
+                send_page_view: true${debug ? ",\n                debug_mode: true" : ""}
+              });
             `}
           </Script>
         </>

@@ -155,7 +155,7 @@
         "text": "You may exercise your rights of access, rectification, erasure, restriction, portability and objection at info@gautex.com, attaching a copy of your ID or valid document. You may also lodge a complaint with the Spanish Data Protection Agency (AEPD)."
       }
     ],
-    "cookies": "This site uses technical cookies necessary for operation and preference cookies to remember your consent. We do not use third-party advertising cookies.",
+    "cookies": "This site uses technical cookies necessary for operation, preference cookies to remember your consent and, if you accept, analytics cookies to measure site usage. We do not use advertising cookies.",
     "cookiesSections": [
       {
         "title": "Technical cookies",
@@ -164,6 +164,10 @@
       {
         "title": "Preference cookies",
         "text": "Store your cookie banner choice so it is not shown again on subsequent visits."
+      },
+      {
+        "title": "Analytics cookies",
+        "text": "If you accept the banner, we use Google Analytics 4 to measure visits, page views and session duration in an aggregated, anonymous way. These cookies are only activated with your consent."
       },
       {
         "title": "Management",

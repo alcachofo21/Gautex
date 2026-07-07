@@ -155,7 +155,7 @@
         "text": "Puede ejercer los derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición en info@gautex.com, acompañando copia de DNI o documento válido. También puede presentar reclamación ante la AEPD."
       }
     ],
-    "cookies": "Este sitio utiliza cookies técnicas necesarias para el funcionamiento y cookies de preferencias para recordar su consentimiento. No utilizamos cookies publicitarias de terceros.",
+    "cookies": "Este sitio utiliza cookies técnicas necesarias para el funcionamiento, cookies de preferencias para recordar su consentimiento y, si usted lo acepta, cookies de analíticas para medir el uso del sitio. No utilizamos cookies publicitarias.",
     "cookiesSections": [
       {
         "title": "Cookies técnicas",
@@ -164,6 +164,10 @@
       {
         "title": "Cookies de preferencias",
         "text": "Almacenan su elección sobre el banner de cookies para no volver a mostrarlo en visitas posteriores."
+      },
+      {
+        "title": "Cookies de analíticas",
+        "text": "Si acepta el banner, utilizamos Google Analytics 4 para medir visitas, páginas vistas y tiempo de sesión de forma agregada y anónima. Estas cookies solo se activan con su consentimiento."
       },
       {
         "title": "Gestión",
