@@ -1,3 +1,4 @@
+import nodemailer from "nodemailer";
 import { escapeHtml, escapeHtmlWithBreaks } from "@/lib/escape-html";
 
 type EmailPayload = {
@@ -7,19 +8,65 @@ type EmailPayload = {
   to?: string | string[];
 };
 
-export async function sendEmail(payload: EmailPayload): Promise<{ ok: boolean; error?: string }> {
-  const resendKey = process.env.RESEND_API_KEY;
-  const contactEmail = process.env.CONTACT_EMAIL || "info@gautex.com";
-  const fromEmail = process.env.RESEND_FROM || "Gautex Web <onboarding@resend.dev>";
-  const recipients = payload.to ?? contactEmail;
+function getFromAddress(): string {
+  return (
+    process.env.SMTP_FROM ||
+    process.env.RESEND_FROM ||
+    `Gautex Medica <${process.env.SMTP_USER || process.env.CONTACT_EMAIL || "info@gautex.com"}>`
+  );
+}
 
-  console.log("[GAUTEX EMAIL]", payload.subject, payload.text);
+function getSmtpTransport() {
+  const host = process.env.SMTP_HOST;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  if (!host || !user || !pass) return null;
 
-  if (!resendKey) {
-    if (process.env.NODE_ENV === "production") {
-      console.warn("[GAUTEX EMAIL] RESEND_API_KEY missing in production");
-    }
+  const port = Number(process.env.SMTP_PORT || 465);
+  const secure = process.env.SMTP_SECURE === "true" || (process.env.SMTP_SECURE !== "false" && port === 465);
+
+  return nodemailer.createTransport({
+    host,
+    port,
+    secure,
+    auth: { user, pass },
+  });
+}
+
+async function sendViaSmtp(
+  payload: EmailPayload,
+  from: string,
+  to: string | string[]
+): Promise<{ ok: boolean; error?: string }> {
+  const transport = getSmtpTransport();
+  if (!transport) {
+    return { ok: false, error: "SMTP no configurado" };
+  }
+
+  try {
+    await transport.sendMail({
+      from,
+      to,
+      subject: payload.subject,
+      html: payload.html,
+      text: payload.text,
+    });
     return { ok: true };
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : "Unknown error";
+    console.error("[GAUTEX EMAIL SMTP ERROR]", msg);
+    return { ok: false, error: msg };
+  }
+}
+
+async function sendViaResend(
+  payload: EmailPayload,
+  from: string,
+  to: string | string[]
+): Promise<{ ok: boolean; error?: string }> {
+  const resendKey = process.env.RESEND_API_KEY;
+  if (!resendKey) {
+    return { ok: false, error: "RESEND_API_KEY missing" };
   }
 
   try {
@@ -30,8 +77,8 @@ export async function sendEmail(payload: EmailPayload): Promise<{ ok: boolean; e
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: fromEmail,
-        to: recipients,
+        from,
+        to,
         subject: payload.subject,
         html: payload.html,
         text: payload.text,
@@ -40,16 +87,38 @@ export async function sendEmail(payload: EmailPayload): Promise<{ ok: boolean; e
 
     if (!res.ok) {
       const err = await res.text();
-      console.error("[GAUTEX EMAIL ERROR]", err);
+      console.error("[GAUTEX EMAIL RESEND ERROR]", err);
       return { ok: false, error: err };
     }
 
     return { ok: true };
   } catch (e) {
     const msg = e instanceof Error ? e.message : "Unknown error";
-    console.error("[GAUTEX EMAIL ERROR]", msg);
+    console.error("[GAUTEX EMAIL RESEND ERROR]", msg);
     return { ok: false, error: msg };
   }
+}
+
+export async function sendEmail(payload: EmailPayload): Promise<{ ok: boolean; error?: string }> {
+  const contactEmail = process.env.CONTACT_EMAIL || "info@gautex.com";
+  const fromEmail = getFromAddress();
+  const recipients = payload.to ?? contactEmail;
+
+  console.log("[GAUTEX EMAIL]", payload.subject, payload.text);
+
+  if (getSmtpTransport()) {
+    return sendViaSmtp(payload, fromEmail, recipients);
+  }
+
+  if (process.env.RESEND_API_KEY) {
+    return sendViaResend(payload, fromEmail, recipients);
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    console.warn("[GAUTEX EMAIL] Sin SMTP ni RESEND_API_KEY — email no enviado");
+  }
+
+  return { ok: true };
 }
 
 function esc(value: string | undefined, fallback = "—"): string {
