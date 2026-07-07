@@ -45,7 +45,19 @@
     "name": "Sexydam",
     "shortDescription": "Latex barrier for oral sex. Pack of 10 units.",
     "description": "Latex sheet for oral sex, available in several scents and colours. 100% natural latex, smooth and transparent. Single-use individual packaging.",
-    "priceLabel": "€16.50"
+    "priceLabel": "€16.50",
+    "datasheetVariants": [
+      {
+        "name": "Sexydam latex-free",
+        "specs": {
+          "Presentation": "Pack of 10 units",
+          "Material": "Latex-free",
+          "Dimensions": "2540 x 1524 mm",
+          "Thickness": "80 microns",
+          "Packaging": "85 x 120 mm opaque"
+        }
+      }
+    ]
   },
   "max-gel": {
     "name": "Max Gel 6 ml",

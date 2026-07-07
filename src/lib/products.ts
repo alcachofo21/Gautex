@@ -20,7 +20,13 @@ export const partners = partnersData;
 export const testimonials = testimonialsData;
 export const productsEn = productsEnData as Record<
   string,
-  { name?: string; shortDescription?: string; description?: string; priceLabel?: string }
+  {
+    name?: string;
+    shortDescription?: string;
+    description?: string;
+    priceLabel?: string;
+    datasheetVariants?: Array<{ name: string; specs: Record<string, string> }>;
+  }
 >;
 
 export function getProductBySlug(category: string, slug: string): Product | undefined {
@@ -54,6 +60,7 @@ export function localizeProduct(product: Product, locale: "es" | "en"): Product 
       shortDescription: en.shortDescription ?? product.shortDescription,
       description: en.description ?? product.description,
       priceLabel: en.priceLabel ?? "Request quote",
+      datasheetVariants: en.datasheetVariants ?? product.datasheetVariants,
     };
   }
   return product;

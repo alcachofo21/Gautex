@@ -151,10 +151,23 @@
     "priceLabel": "16,50 €",
     "specs": {
       "Presentación": "Paquete de 10 unidades",
+      "Material": "100% látex natural",
       "Dimensiones": "2540 x 1524 mm",
       "Grosor": "80 micras",
       "Envase": "85 x 120 mm opaco"
     },
+    "datasheetVariants": [
+      {
+        "name": "Sexydam sin látex",
+        "specs": {
+          "Presentación": "Paquete de 10 unidades",
+          "Material": "Sin látex",
+          "Dimensiones": "2540 x 1524 mm",
+          "Grosor": "80 micras",
+          "Envase": "85 x 120 mm opaco"
+        }
+      }
+    ],
     "certifications": ["CEE 120", "ISO 9001/2008", "ISO 13485/2003"],
     "color": "#E85D75",
     "image": "/images/products/sexydam.webp"

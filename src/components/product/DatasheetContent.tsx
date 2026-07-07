@@ -38,7 +38,10 @@ export function DatasheetContent({ product, locale = "es" }: DatasheetContentPro
             className="aspect-square rounded-xl"
           />
           <div>
-            <h2 className="font-display text-lg font-bold">{ui.specs}</h2>
+            <h2 className="font-display text-lg font-bold">
+              {ui.specs}
+              {product.datasheetVariants?.length ? ` — ${product.name}` : ""}
+            </h2>
             <table className="mt-4 w-full text-sm">
               <tbody>
                 {Object.entries(product.specs).map(([key, value]) => (
@@ -51,6 +54,22 @@ export function DatasheetContent({ product, locale = "es" }: DatasheetContentPro
             </table>
           </div>
         </div>
+
+        {product.datasheetVariants?.map((variant) => (
+          <section key={variant.name} className="mt-8">
+            <h2 className="font-display text-lg font-bold">{variant.name}</h2>
+            <table className="mt-4 w-full text-sm">
+              <tbody>
+                {Object.entries(variant.specs).map(([key, value]) => (
+                  <tr key={key} className="border-b border-gray-100">
+                    <td className="py-2 font-medium text-text-muted">{key}</td>
+                    <td className="py-2 text-right font-semibold">{value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        ))}
 
         <section className="mt-8">
           <h2 className="font-display text-lg font-bold">{ui.certifications}</h2>

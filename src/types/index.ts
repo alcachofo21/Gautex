@@ -18,6 +18,8 @@ export interface Product {
   stockQuantity?: number | null;
   /** false = hidden from B2C shop (public entity, quote-only, etc.) */
   webVisible?: boolean;
+  /** Additional variants shown on the technical datasheet (e.g. material variants) */
+  datasheetVariants?: Array<{ name: string; specs: Record<string, string> }>;
 }
 
 export interface Category {

@@ -4,15 +4,13 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, ShoppingCart, Phone } from "lucide-react";
+import { Menu, ShoppingCart } from "lucide-react";
 import { useCart } from "@/lib/cart";
-import { getCorporate, getLocaleFromPath, getUi, localizedPath } from "@/lib/locale";
+import { getLocaleFromPath, getSectors, getUi, localizedPath, sectorPath } from "@/lib/locale";
 import { MobileNav } from "./MobileNav";
 import { Button } from "@/components/ui/Button";
-import { ProductSearch } from "@/components/shop/ProductSearch";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { SectorsNavDropdown } from "./SectorsNavDropdown";
-import { LOGO_BLUR } from "@/lib/image-blur";
+import { NavDropdown, navLinkClass } from "./NavDropdown";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -20,24 +18,37 @@ export function Header() {
   const count = totalItems();
   const pathname = usePathname();
   const locale = getLocaleFromPath(pathname);
-  const corporate = getCorporate(locale);
   const ui = getUi(locale);
+  const sectors = getSectors(locale);
 
-  const navLinks = [
+  const mainLinks = [
     { href: localizedPath("/productos", locale), label: ui.nav.shop },
     { href: localizedPath("/campanas", locale), label: ui.nav.campaigns },
     { href: localizedPath("/calidad", locale), label: ui.nav.quality },
     { href: localizedPath("/nosotros", locale), label: ui.nav.about },
+    { href: localizedPath("/contacto", locale), label: ui.nav.contact },
+  ];
+
+  const sectorLinks = sectors.map((s) => ({
+    href: sectorPath(s.id, locale),
+    label: s.title,
+  }));
+
+  const moreLinks = [
     { href: localizedPath("/blog", locale), label: ui.nav.blog },
     { href: localizedPath("/recursos", locale), label: ui.nav.resources },
-    { href: localizedPath("/contacto", locale), label: ui.nav.contact },
   ];
 
   return (
     <>
-      <header className="sticky top-0 z-40 overflow-hidden border-b border-gray-200 bg-white/95 backdrop-blur-md">
-        <div className="container-page flex h-24 items-center justify-between gap-3 lg:h-[7.5rem]">
-          <Link href={localizedPath("/", locale)} className="flex shrink-0 items-center">
+      <header className="sticky top-0 z-40 border-b border-gray-200 bg-white/95 backdrop-blur-md">
+        <div className="container-page flex h-24 items-center justify-between gap-4 lg:grid lg:h-[7.5rem] lg:grid-cols-[1fr_auto_1fr] lg:items-center">
+          {/* Logo */}
+          <Link
+            href={localizedPath("/", locale)}
+            className="flex shrink-0 items-center lg:justify-self-start"
+            aria-label="Gautex Medica"
+          >
             <Image
               src="/images/logo/gautex.webp"
               alt="Gautex Medica"
@@ -47,37 +58,49 @@ export function Header() {
               sizes="(max-width: 640px) 264px, 312px"
               quality={75}
               priority
-              placeholder="blur"
-              blurDataURL={LOGO_BLUR}
             />
           </Link>
 
-          <nav className="hidden items-center gap-4 xl:gap-5 lg:flex">
-            {navLinks.slice(0, 2).map((link) => {
+          {/* Nav centrada en desktop */}
+          <nav
+            className="hidden items-center justify-center gap-1 xl:gap-3 lg:flex lg:justify-self-center"
+            aria-label="Main"
+          >
+            {mainLinks.slice(0, 2).map((link) => {
               const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors ${
-                    active ? "text-primary" : "text-text-muted hover:text-primary"
-                  }`}
+                  className={navLinkClass(active)}
                   aria-current={active ? "page" : undefined}
                 >
                   {link.label}
                 </Link>
               );
             })}
-            <SectorsNavDropdown locale={locale} />
-            {navLinks.slice(2).map((link) => {
+            <NavDropdown label={ui.nav.sectors} links={sectorLinks} />
+            {mainLinks.slice(2, 4).map((link) => {
               const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors ${
-                    active ? "text-primary" : "text-text-muted hover:text-primary"
-                  }`}
+                  className={navLinkClass(active)}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+            <NavDropdown label={ui.nav.more} links={moreLinks} />
+            {mainLinks.slice(4).map((link) => {
+              const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={navLinkClass(active)}
                   aria-current={active ? "page" : undefined}
                 >
                   {link.label}
@@ -86,17 +109,15 @@ export function Header() {
             })}
           </nav>
 
-          <div className="flex items-center gap-1 sm:gap-2">
+          {/* Acciones */}
+          <div className="flex items-center justify-end gap-1 sm:gap-2 lg:justify-self-end">
             <LanguageSwitcher />
-            <ProductSearch />
-            <a
-              href={`tel:${corporate.company.phone.replace(/-/g, "")}`}
-              className="hidden items-center gap-1 text-sm font-semibold text-primary md:flex"
+            <Button
+              href={localizedPath("/contacto", locale)}
+              variant="outline"
+              size="sm"
+              className="hidden lg:inline-flex"
             >
-              <Phone className="h-4 w-4" />
-              {corporate.company.phone}
-            </a>
-            <Button href={localizedPath("/contacto", locale)} variant="outline" size="sm" className="hidden sm:inline-flex">
               {ui.nav.quote}
             </Button>
             <button
@@ -116,7 +137,7 @@ export function Header() {
               type="button"
               onClick={() => setMobileOpen(true)}
               className="flex h-11 w-11 items-center justify-center rounded-xl hover:bg-surface lg:hidden"
-              aria-label={getUi(locale).a11y.menu}
+              aria-label={ui.a11y.menu}
             >
               <Menu className="h-6 w-6" />
             </button>

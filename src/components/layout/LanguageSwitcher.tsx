@@ -14,12 +14,12 @@ export function LanguageSwitcher() {
   return (
     <Link
       href={target}
-      className="flex h-11 items-center gap-1.5 rounded-xl px-3 text-sm font-semibold text-text-muted hover:bg-surface hover:text-primary"
+      className="flex h-11 items-center gap-1.5 rounded-xl px-2.5 text-sm font-semibold text-text-muted hover:bg-surface hover:text-primary sm:px-3"
       aria-label={`Switch to ${ui.lang.switch}`}
     >
-      <Globe className="h-4 w-4" />
-      <span className="hidden sm:inline">{ui.lang.switch}</span>
-      <span className="rounded-md bg-surface px-1.5 py-0.5 text-xs">{ui.lang.current}</span>
+      <Globe className="h-4 w-4 shrink-0" />
+      <span className="hidden md:inline">{ui.lang.switch}</span>
+      <span className="rounded-md bg-surface px-1.5 py-0.5 text-xs font-bold">{ui.lang.current}</span>
     </Link>
   );
 }
