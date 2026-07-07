@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { HERO_BLUR } from "@/lib/image-blur";
-import { localizedPath, type Locale } from "@/lib/locale";
+import { getUi, localizedPath, sectorPath, type Locale } from "@/lib/locale";
 
 const copy = {
   es: {
@@ -40,6 +40,8 @@ interface HeroProps {
 
 export function Hero({ locale = "es" }: HeroProps) {
   const t = copy[locale];
+  const quick = getUi(locale).hero.quickLinks;
+  const pharmacySector = locale === "en" ? "pharmacy" : "farmacia";
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -134,6 +136,27 @@ export function Hero({ locale = "es" }: HeroProps) {
               >
                 {t.campaign}
               </Button>
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              <Link
+                href={sectorPath(pharmacySector, locale)}
+                className="rounded-full border border-white/30 bg-white/10 px-3 py-1.5 text-xs font-medium text-white backdrop-blur transition hover:bg-white/20"
+              >
+                {quick.pharmacy}
+              </Link>
+              <Link
+                href={sectorPath("hospital", locale)}
+                className="rounded-full border border-white/30 bg-white/10 px-3 py-1.5 text-xs font-medium text-white backdrop-blur transition hover:bg-white/20"
+              >
+                {quick.hospital}
+              </Link>
+              <Link
+                href={localizedPath("/campanas", locale)}
+                className="rounded-full border border-white/30 bg-white/10 px-3 py-1.5 text-xs font-medium text-white backdrop-blur transition hover:bg-white/20"
+              >
+                {quick.campaign}
+              </Link>
             </div>
           </div>
 

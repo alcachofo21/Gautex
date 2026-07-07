@@ -28,7 +28,6 @@ export function Button({
   fullWidth,
   className,
   children,
-  onClick,
   ...props
 }: ButtonProps) {
   const classes = cn(
@@ -41,14 +40,14 @@ export function Button({
 
   if (href) {
     return (
-      <Link href={href} className={classes} onClick={onClick}>
+      <Link href={href} className={classes}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button className={classes} onClick={onClick} {...props}>
+    <button type="button" className={classes} {...props}>
       {children}
     </button>
   );

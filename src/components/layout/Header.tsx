@@ -10,6 +10,8 @@ import { getCorporate, getLocaleFromPath, getUi, localizedPath } from "@/lib/loc
 import { MobileNav } from "./MobileNav";
 import { Button } from "@/components/ui/Button";
 import { ProductSearch } from "@/components/shop/ProductSearch";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { SectorsNavDropdown } from "./SectorsNavDropdown";
 import { LOGO_BLUR } from "@/lib/image-blur";
 
 export function Header() {
@@ -26,6 +28,8 @@ export function Header() {
     { href: localizedPath("/campanas", locale), label: ui.nav.campaigns },
     { href: localizedPath("/calidad", locale), label: ui.nav.quality },
     { href: localizedPath("/nosotros", locale), label: ui.nav.about },
+    { href: localizedPath("/blog", locale), label: ui.nav.blog },
+    { href: localizedPath("/recursos", locale), label: ui.nav.resources },
     { href: localizedPath("/contacto", locale), label: ui.nav.contact },
   ];
 
@@ -48,8 +52,24 @@ export function Header() {
             />
           </Link>
 
-          <nav className="hidden items-center gap-5 lg:flex">
-            {navLinks.map((link) => {
+          <nav className="hidden items-center gap-4 xl:gap-5 lg:flex">
+            {navLinks.slice(0, 2).map((link) => {
+              const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors ${
+                    active ? "text-primary" : "text-text-muted hover:text-primary"
+                  }`}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+            <SectorsNavDropdown locale={locale} />
+            {navLinks.slice(2).map((link) => {
               const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
               return (
                 <Link

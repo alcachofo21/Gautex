@@ -2,14 +2,18 @@
   "nav": {
     "shop": "Online shop",
     "campaigns": "Campaigns",
+    "sectors": "Sectors",
     "quality": "Quality",
     "about": "About us",
+    "blog": "Blog",
+    "resources": "Resources",
     "contact": "Contact",
     "quote": "Get a quote",
     "cart": "Cart"
   },
   "topbar": {
-    "shipping": "Shipping across Europe"
+    "shipping": "Shipping across Europe",
+    "responseTime": "Response within 24–48h"
   },
   "home": {
     "featured": "Featured products",
@@ -20,7 +24,38 @@
     "ctaTitle": "Ready to order or customise?",
     "ctaDesc": "Add products to cart, request a B2B quote or design a branded campaign. Response within 24–48 business hours.",
     "ctaShop": "Go to online shop",
-    "ctaQuote": "Request a quote"
+    "ctaQuote": "Request a quote",
+    "sectors": {
+      "title": "What is your sector?",
+      "subtitle": "Tailored solutions for pharmacy, hospital and wholesale distribution across Europe."
+    },
+    "stats": [
+      { "value": "+20", "label": "Years in the market" },
+      { "value": "26+", "label": "Catalogue references" },
+      { "value": "3", "label": "Product lines" },
+      { "value": "24–48h", "label": "Quote response time" }
+    ],
+    "blog": {
+      "title": "News and updates",
+      "subtitle": "Catalogue updates, medical regulations and prevention campaigns.",
+      "viewAll": "View all news"
+    },
+    "brands": {
+      "title": "Our brands",
+      "items": [
+        { "name": "Matrix", "claim": "Premium condoms" },
+        { "name": "Viva", "claim": "Accessible prevention" },
+        { "name": "Max Gel", "claim": "Medical lubrication" },
+        { "name": "Gecofun", "claim": "Gynaecology and wellness" }
+      ]
+    }
+  },
+  "hero": {
+    "quickLinks": {
+      "pharmacy": "I'm a pharmacy",
+      "hospital": "I'm a hospital",
+      "campaign": "I want a custom campaign"
+    }
   },
   "footer": {
     "products": "Products",
@@ -284,8 +319,78 @@
   },
   "sectors": {
     "title": "Solutions by sector",
+    "subtitle": "Healthcare products and custom campaigns for pharmacy, hospital and professional distribution.",
     "cta": "Request a quote",
-    "ctaShop": "View catalogue"
+    "ctaShop": "View catalogue",
+    "recommended": "Recommended products",
+    "processTitle": "How we work with you"
+  },
+  "campaignsPage": {
+    "badge": "Custom branding",
+    "title": "Campaigns with your brand",
+    "desc": "Design cases, PVC wallets and promotional packaging with your logo. No-obligation quote within 24–48 business hours.",
+    "cta": "Configure campaign",
+    "stickyCta": "Configure my campaign",
+    "steps": [
+      { "title": "Choose format", "desc": "Case, wallet, flow pack or custom foil." },
+      { "title": "Upload your logo", "desc": "PNG, JPG or PDF. Design preview included." },
+      { "title": "Receive quote", "desc": "Our team reviews and contacts you." }
+    ]
+  },
+  "campaignCases": {
+    "title": "Success stories",
+    "desc": "Real campaign examples for pharmacies, hospitals and distributors.",
+    "viewAll": "View campaigns"
+  },
+  "productPage": {
+    "related": "Related products",
+    "breadcrumbs": { "products": "Products" },
+    "purchaseInfo": {
+      "title": "How to buy",
+      "onlineDesc": "This product is available for online purchase. Add to cart and pay by card or PayPal.",
+      "quoteDesc": "This product requires a B2B quote. Request one and we will contact you within 24–48 business hours.",
+      "onlineCta": "Available in online shop",
+      "quoteCta": "Request a quote",
+      "priceNote": "Indicative prices. VAT and shipping not included in online quotes."
+    }
+  },
+  "resources": {
+    "title": "Resources and documentation",
+    "subtitle": "Datasheets, certifications and guides for healthcare professionals.",
+    "guideTitle": "How to request a custom campaign",
+    "guideDesc": "Choose a format, upload your design and request a quote in a few steps. Our team will review your artwork and reply with lead times and terms.",
+    "guideCta": "Go to campaign configurator",
+    "datasheetsTitle": "Product datasheets",
+    "certsTitle": "Quality certifications",
+    "certsDesc": "Gautex Medica holds ISO 9001 and ISO 13485 certified management systems, audited by Notified Body No. 0120 (SGS).",
+    "certsCta": "View full quality page",
+    "categories": [
+      { "id": "preventivo", "label": "Prevention" },
+      { "id": "ginecologia", "label": "Gynaecology" },
+      { "id": "covid-19", "label": "COVID-19 tests" }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "Quick answers about orders, campaigns and certifications.",
+    "items": [
+      {
+        "q": "How do I request a quote?",
+        "a": "Add products to cart and choose «Request a quote», or use the contact form. We reply within 24–48 business hours."
+      },
+      {
+        "q": "Can I customise packaging with my logo?",
+        "a": "Yes. In Campaigns you can choose a format, upload your logo and request a no-obligation quote."
+      },
+      {
+        "q": "Do you have CE certifications?",
+        "a": "Yes. We work with notified body 0120 SGS and ISO 13485 and ISO 9001 certifications."
+      },
+      {
+        "q": "Do you ship across Spain?",
+        "a": "We distribute in Spain and across Europe. Lead times depend on order type and stock."
+      }
+    ]
   },
   "notFound": {
     "title": "Page not found",

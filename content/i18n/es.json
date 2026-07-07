@@ -2,14 +2,18 @@
   "nav": {
     "shop": "Tienda online",
     "campaigns": "Campañas",
+    "sectors": "Sectores",
     "quality": "Calidad",
     "about": "Nosotros",
+    "blog": "Blog",
+    "resources": "Recursos",
     "contact": "Contacto",
     "quote": "Presupuesto",
     "cart": "Carrito"
   },
   "topbar": {
-    "shipping": "Envío a toda Europa"
+    "shipping": "Envío a toda Europa",
+    "responseTime": "Respuesta en 24–48h"
   },
   "home": {
     "featured": "Productos destacados",
@@ -20,7 +24,38 @@
     "ctaTitle": "¿Listo para pedir o personalizar?",
     "ctaDesc": "Añade productos al carrito, solicita presupuesto B2B o diseña una campaña con tu marca. Respuesta en 24–48h laborables.",
     "ctaShop": "Ir a tienda online",
-    "ctaQuote": "Solicitar presupuesto"
+    "ctaQuote": "Solicitar presupuesto",
+    "sectors": {
+      "title": "¿Cuál es tu sector?",
+      "subtitle": "Soluciones adaptadas para farmacia, hospital y distribución mayorista en toda Europa."
+    },
+    "stats": [
+      { "value": "+20", "label": "Años en el mercado" },
+      { "value": "26+", "label": "Referencias en catálogo" },
+      { "value": "3", "label": "Líneas de producto" },
+      { "value": "24–48h", "label": "Respuesta a presupuestos" }
+    ],
+    "brands": {
+      "title": "Nuestras marcas",
+      "items": [
+        { "name": "Matrix", "claim": "Preservativos de alta rotación para farmacia" },
+        { "name": "Viva", "claim": "Línea premium con presentaciones variadas" },
+        { "name": "Max Gel", "claim": "Geles lubricantes monodosis y formatos bulk" },
+        { "name": "Gecofun", "claim": "Cubresondas para ecografía hospitalaria" }
+      ]
+    },
+    "blog": {
+      "title": "Actualidad y novedades",
+      "subtitle": "Catálogo, normativa sanitaria y campañas de prevención.",
+      "viewAll": "Ver todo el blog"
+    }
+  },
+  "hero": {
+    "quickLinks": {
+      "pharmacy": "Soy farmacia",
+      "hospital": "Soy hospital",
+      "campaign": "Quiero campaña personalizada"
+    }
   },
   "footer": {
     "products": "Productos",
@@ -284,8 +319,78 @@
   },
   "sectors": {
     "title": "Soluciones por sector",
+    "subtitle": "Productos sanitarios y campañas personalizadas para farmacia, hospital y distribución profesional.",
     "cta": "Solicitar presupuesto",
-    "ctaShop": "Ver catálogo"
+    "ctaShop": "Ver catálogo",
+    "recommended": "Productos recomendados",
+    "processTitle": "Cómo trabajamos contigo"
+  },
+  "campaignsPage": {
+    "badge": "Personalización",
+    "title": "Campañas con tu marca",
+    "desc": "Diseña estuches, fundas PVC y packaging promocional con tu logo. Presupuesto sin compromiso en 24–48h.",
+    "cta": "Configurar campaña",
+    "stickyCta": "Configurar mi campaña",
+    "steps": [
+      { "title": "Elige formato", "desc": "Estuche, funda, flow pack o foil personalizado." },
+      { "title": "Sube tu logo", "desc": "PNG, JPG o PDF. Previsualización del diseño." },
+      { "title": "Recibe presupuesto", "desc": "Nuestro equipo revisa y te contacta." }
+    ]
+  },
+  "campaignCases": {
+    "title": "Casos de éxito",
+    "desc": "Ejemplos reales de campañas para farmacias, hospitales y distribuidores.",
+    "viewAll": "Ver campañas"
+  },
+  "productPage": {
+    "related": "Productos relacionados",
+    "breadcrumbs": { "products": "Productos" },
+    "purchaseInfo": {
+      "title": "Cómo comprar",
+      "onlineDesc": "Este producto está disponible para compra online. Añádelo al carrito y paga con tarjeta o PayPal.",
+      "quoteDesc": "Este producto requiere presupuesto B2B. Solicítalo y te contactaremos en 24–48h laborables.",
+      "onlineCta": "Disponible en tienda online",
+      "quoteCta": "Solicitar presupuesto",
+      "priceNote": "Precios orientativos. IVA y gastos de envío no incluidos en presupuestos online."
+    }
+  },
+  "resources": {
+    "title": "Recursos y documentación",
+    "subtitle": "Fichas técnicas, certificaciones y guías para profesionales del sector sanitario.",
+    "guideTitle": "Cómo pedir una campaña personalizada",
+    "guideDesc": "Elige formato, sube tu diseño y solicita presupuesto en pocos pasos. Nuestro equipo revisará tu artwork y te responderá con plazos y condiciones.",
+    "guideCta": "Ir al configurador de campañas",
+    "datasheetsTitle": "Fichas técnicas de producto",
+    "certsTitle": "Certificaciones de calidad",
+    "certsDesc": "Gautex Medica cuenta con sistema de gestión certificado ISO 9001 e ISO 13485, auditado por el Organismo Notificador nº 0120 (SGS).",
+    "certsCta": "Ver página de calidad completa",
+    "categories": [
+      { "id": "preventivo", "label": "Material preventivo" },
+      { "id": "ginecologia", "label": "Ginecología" },
+      { "id": "covid-19", "label": "Tests COVID-19" }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "subtitle": "Respuestas rápidas sobre pedidos, campañas y certificaciones.",
+    "items": [
+      {
+        "q": "¿Cómo solicito un presupuesto?",
+        "a": "Añade productos al carrito y elige «Solicitar presupuesto», o usa el formulario de contacto. Respondemos en 24–48h laborables."
+      },
+      {
+        "q": "¿Puedo personalizar packaging con mi logo?",
+        "a": "Sí. En la sección Campañas puedes elegir formato, subir tu logo y solicitar presupuesto sin compromiso."
+      },
+      {
+        "q": "¿Tenéis certificaciones CE?",
+        "a": "Sí. Trabajamos con el organismo notificador 0120 SGS y certificaciones ISO 13485 e ISO 9001."
+      },
+      {
+        "q": "¿Hacéis envíos a toda España?",
+        "a": "Distribuimos en España y mercado europeo. Los plazos dependen del tipo de pedido y stock."
+      }
+    ]
   },
   "notFound": {
     "title": "Página no encontrada",

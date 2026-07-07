@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Phone, Truck } from "lucide-react";
+import { Phone, Truck, Clock } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Badge } from "@/components/ui/Badge";
 import { getCorporate, getLocaleFromPath, getUi, localizedPath } from "@/lib/locale";
@@ -23,6 +23,10 @@ export function TopBar() {
           <span className="flex items-center gap-2 opacity-90">
             <Truck className="h-4 w-4" />
             {ui.topbar.shipping}
+          </span>
+          <span className="hidden items-center gap-2 opacity-90 md:flex">
+            <Clock className="h-4 w-4" />
+            {ui.topbar.responseTime}
           </span>
         </div>
         <div className="flex items-center gap-4">

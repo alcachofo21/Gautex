@@ -149,4 +149,36 @@ Build producción: `npm run build` (verificado OK)
 
 ```bash
 npm run test:coverage   # incluye tests de validación, upload, api-guard, rate-limit
+npm run typecheck       # TypeScript (código de app, sin tests)
+npm audit --audit-level=high
 ```
+
+## CI en GitHub Actions
+
+Cada push a `staging` o `main` (y cada PR hacia esas ramas) ejecuta el workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
+
+| Job | Qué comprueba |
+|-----|----------------|
+| Lint | ESLint (`next lint`) |
+| Typecheck | TypeScript (`tsc`) |
+| Unit tests | Vitest + cobertura mínima |
+| Security audit | `npm audit` (vulnerabilidades high+) |
+| Dependency review | Solo en PRs — dependencias nuevas |
+| Build | `next build` (producción) |
+| E2E | Playwright (contacto, shop, checkout, upload) |
+| **CI success** | Falla si cualquier job anterior falla |
+
+### Bloquear merge a `main` sin CI verde
+
+En GitHub → **Settings** → **Branches** → **Add branch protection rule** para `main`:
+
+1. **Require a pull request before merging** (recomendado)
+2. **Require status checks to pass** → marcar **CI success**
+3. Opcional: misma regla en `staging` si quieres PRs también ahí
+
+Render despliega al hacer push; con la regla anterior solo llegará código a `main` (prod) si la CI pasó en el PR.
+
+Flujo recomendado:
+
+1. Trabajar en `staging` → push → CI + deploy staging en Render
+2. PR `staging` → `main` → CI debe pasar → merge → deploy prod en Render

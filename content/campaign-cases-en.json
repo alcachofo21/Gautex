@@ -1,0 +1,20 @@
+[
+  {
+    "entity": "Municipal council",
+    "format": "Custom case",
+    "result": "15,000 units for a municipal prevention campaign",
+    "image": "/images/campaigns/estuche.webp"
+  },
+  {
+    "entity": "Community pharmacy",
+    "format": "Flow pack with gel",
+    "result": "POS material and single-dose packs for high-turnover retail",
+    "image": "/images/campaigns/flow-pack.webp"
+  },
+  {
+    "entity": "Public health NGO",
+    "format": "Custom PVC sleeve",
+    "result": "Event distribution with full-colour branded design",
+    "image": "/images/campaigns/funda-pvc.webp"
+  }
+]

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { getCorporate, getUi, localizedPath, type Locale } from "@/lib/locale";
+import { getCorporate, getSectors, getUi, localizedPath, sectorPath, type Locale } from "@/lib/locale";
 
 interface MobileNavProps {
   open: boolean;
@@ -14,12 +14,15 @@ interface MobileNavProps {
 export function MobileNav({ open, onClose, locale }: MobileNavProps) {
   const corporate = getCorporate(locale);
   const ui = getUi(locale);
+  const sectors = getSectors(locale);
 
   const navLinks = [
     { href: localizedPath("/productos", locale), label: ui.nav.shop },
     { href: localizedPath("/campanas", locale), label: ui.nav.campaigns },
     { href: localizedPath("/calidad", locale), label: ui.nav.quality },
     { href: localizedPath("/nosotros", locale), label: ui.nav.about },
+    { href: localizedPath("/blog", locale), label: ui.nav.blog },
+    { href: localizedPath("/recursos", locale), label: ui.nav.resources },
     { href: localizedPath("/contacto", locale), label: ui.nav.contact },
   ];
 
@@ -35,7 +38,7 @@ export function MobileNav({ open, onClose, locale }: MobileNavProps) {
             <X className="h-6 w-6" />
           </button>
         </div>
-        <div className="flex flex-1 flex-col gap-1 p-4">
+        <div className="flex flex-1 flex-col gap-1 overflow-y-auto p-4">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -44,6 +47,19 @@ export function MobileNav({ open, onClose, locale }: MobileNavProps) {
               className="min-h-[48px] rounded-lg px-4 py-3 text-lg font-medium hover:bg-surface"
             >
               {link.label}
+            </Link>
+          ))}
+          <p className="mt-4 px-4 text-xs font-semibold uppercase tracking-wide text-text-muted">
+            {ui.nav.sectors}
+          </p>
+          {sectors.map((sector) => (
+            <Link
+              key={sector.id}
+              href={sectorPath(sector.id, locale)}
+              onClick={onClose}
+              className="min-h-[44px] rounded-lg px-4 py-2 text-base text-text-muted hover:bg-surface hover:text-primary"
+            >
+              {sector.title}
             </Link>
           ))}
         </div>

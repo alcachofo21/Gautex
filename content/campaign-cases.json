@@ -1,0 +1,20 @@
+[
+  {
+    "entity": "Ayuntamiento",
+    "format": "Estuche personalizado",
+    "result": "15.000 unidades para campaña de prevención municipal",
+    "image": "/images/campaigns/estuche.webp"
+  },
+  {
+    "entity": "Farmacia comunitaria",
+    "format": "Flow pack con gel",
+    "result": "Material POS y monodosis para mostrador de alta rotación",
+    "image": "/images/campaigns/flow-pack.webp"
+  },
+  {
+    "entity": "ONG de salud pública",
+    "format": "Funda PVC personalizada",
+    "result": "Distribución en eventos con diseño a todo color",
+    "image": "/images/campaigns/funda-pvc.webp"
+  }
+]

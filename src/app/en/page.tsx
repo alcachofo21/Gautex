@@ -4,10 +4,15 @@ import { CampaignsBlock } from "@/components/home/CampaignsBlock";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { TrustBadges } from "@/components/home/TrustBadges";
 import { PartnersBlock } from "@/components/home/PartnersBlock";
-import { AboutSnippet } from "@/components/home/AboutSnippet";
 import { NewsletterContact } from "@/components/home/NewsletterContact";
 import { StoreCta } from "@/components/home/StoreCta";
 import { Testimonials } from "@/components/home/Testimonials";
+import { CategoryCards } from "@/components/home/CategoryCards";
+import { SectorSelector } from "@/components/home/SectorSelector";
+import { StatsStrip } from "@/components/home/StatsStrip";
+import { BrandFamilies } from "@/components/home/BrandFamilies";
+import { BlogTeaser } from "@/components/home/BlogTeaser";
+import { CampaignSuccessCases } from "@/components/campaigns/CampaignSuccessCases";
 import { getFeaturedProducts, localizeProducts } from "@/lib/products";
 import { getUi } from "@/lib/locale";
 
@@ -23,7 +28,12 @@ export default function EnHomePage() {
   return (
     <>
       <Hero locale="en" />
-      <section className="py-12 sm:py-16">
+      <TrustBadges locale="en" />
+      <StatsStrip locale="en" />
+      <CategoryCards locale="en" />
+      <CampaignsBlock locale="en" />
+      <SectorSelector locale="en" />
+      <section className="bg-surface py-12 sm:py-16">
         <div className="container-page">
           <h2 className="text-fluid-title mb-8 font-display font-bold">
             {ui.home.featured}
@@ -31,12 +41,12 @@ export default function EnHomePage() {
           <ProductGrid products={featured} locale="en" />
         </div>
       </section>
-      <CampaignsBlock locale="en" />
+      <BrandFamilies locale="en" />
       <ProcessSteps locale="en" />
+      <CampaignSuccessCases locale="en" compact />
       <Testimonials locale="en" />
-      <TrustBadges locale="en" />
       <PartnersBlock locale="en" />
-      <AboutSnippet locale="en" />
+      <BlogTeaser locale="en" />
       <StoreCta locale="en" />
       <NewsletterContact locale="en" />
     </>

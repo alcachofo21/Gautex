@@ -4,16 +4,21 @@ import { CampaignsBlock } from "@/components/home/CampaignsBlock";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { TrustBadges } from "@/components/home/TrustBadges";
 import { PartnersBlock } from "@/components/home/PartnersBlock";
-import { Testimonials } from "@/components/home/Testimonials";
-import { AboutSnippet } from "@/components/home/AboutSnippet";
 import { NewsletterContact } from "@/components/home/NewsletterContact";
 import { StoreCta } from "@/components/home/StoreCta";
+import { Testimonials } from "@/components/home/Testimonials";
+import { CategoryCards } from "@/components/home/CategoryCards";
+import { SectorSelector } from "@/components/home/SectorSelector";
+import { StatsStrip } from "@/components/home/StatsStrip";
+import { BrandFamilies } from "@/components/home/BrandFamilies";
+import { BlogTeaser } from "@/components/home/BlogTeaser";
+import { CampaignSuccessCases } from "@/components/campaigns/CampaignSuccessCases";
 import { getFeaturedProducts } from "@/lib/products";
 import { getUi } from "@/lib/locale";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
-  title: "Gautex Medica - Repartiendo salud",
+  title: "Gautex Medica — Repartiendo salud",
   description: "Distribución y fabricación de productos sanitarios certificados CE. Preservativos, geles, tests COVID-19 y campañas personalizadas.",
   path: "/",
   locale: "es",
@@ -26,7 +31,12 @@ export default function HomePage() {
   return (
     <>
       <Hero locale="es" />
-      <section className="py-12 sm:py-16">
+      <TrustBadges locale="es" />
+      <StatsStrip locale="es" />
+      <CategoryCards locale="es" />
+      <CampaignsBlock locale="es" />
+      <SectorSelector locale="es" />
+      <section className="bg-surface py-12 sm:py-16">
         <div className="container-page">
           <h2 className="text-fluid-title mb-8 font-display font-bold">
             {ui.home.featured}
@@ -34,12 +44,12 @@ export default function HomePage() {
           <ProductGrid products={featured} locale="es" />
         </div>
       </section>
-      <CampaignsBlock locale="es" />
+      <BrandFamilies locale="es" />
       <ProcessSteps locale="es" />
+      <CampaignSuccessCases locale="es" compact />
       <Testimonials locale="es" />
-      <TrustBadges locale="es" />
       <PartnersBlock locale="es" />
-      <AboutSnippet locale="es" />
+      <BlogTeaser locale="es" />
       <StoreCta locale="es" />
       <NewsletterContact locale="es" />
     </>
