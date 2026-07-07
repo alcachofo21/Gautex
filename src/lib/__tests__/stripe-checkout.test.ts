@@ -104,4 +104,39 @@ describe("fulfillStripeCheckoutSession", () => {
     expect(result.alreadySent).toBe(true);
     expect(sendPurchaseEmails).not.toHaveBeenCalled();
   });
+
+  it("returns error when payment is not completed", async () => {
+    mockRetrieve.mockResolvedValue({
+      id: "cs_test",
+      payment_status: "unpaid",
+      metadata: {},
+    });
+
+    const result = await fulfillStripeCheckoutSession("cs_test");
+
+    expect(result.ok).toBe(false);
+    expect(result.error).toMatch(/Pago no completado/);
+  });
+
+  it("returns error when stripe is not configured", async () => {
+    vi.mocked(getStripe).mockReturnValueOnce(null);
+    const result = await fulfillStripeCheckoutSession("cs_test");
+    expect(result.ok).toBe(false);
+  });
+
+  it("returns error when purchase emails fail", async () => {
+    mockRetrieve.mockResolvedValue({
+      id: "cs_test",
+      payment_status: "paid",
+      amount_total: 2090,
+      customer_details: { email: "buyer@test.com" },
+      metadata: { locale: "es", totalCents: "2090" },
+    });
+    vi.mocked(sendPurchaseEmails).mockResolvedValueOnce({ ok: false, error: "SMTP down" });
+
+    const result = await fulfillStripeCheckoutSession("cs_test");
+
+    expect(result.ok).toBe(false);
+    expect(result.error).toBe("SMTP down");
+  });
 });

@@ -47,4 +47,15 @@ describe("sendUserConfirmation", () => {
       })
     );
   });
+
+  it("adds unsubscribe header for newsletter confirmations", async () => {
+    await sendUserConfirmation("user@test.com", "es", "newsletter", "Ana");
+
+    expect(globalThis.fetch).toHaveBeenCalledWith(
+      "https://api.resend.com/emails",
+      expect.objectContaining({
+        body: expect.stringContaining("List-Unsubscribe"),
+      })
+    );
+  });
 });

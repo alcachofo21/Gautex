@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ShoppingCart, FileText } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { canPurchaseOnline } from "@/lib/products";

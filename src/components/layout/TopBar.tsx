@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { Phone, Truck, Clock } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Badge } from "@/components/ui/Badge";
-import { getCorporate, getLocaleFromPath, getUi, localizedPath } from "@/lib/locale";
+import { getCorporate, getLocaleFromPath, getUi } from "@/lib/locale";
 
 export function TopBar() {
   const pathname = usePathname();

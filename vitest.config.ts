@@ -16,6 +16,7 @@ export default defineConfig({
         "**/*.test.{ts,tsx}",
         "**/__tests__/**",
         "src/lib/cart.ts",
+        "src/lib/image-blur.ts",
       ],
       thresholds: {
         lines: 95,

@@ -1,5 +1,11 @@
 import { describe, it, expect } from "vitest";
-import { contactEmailHtml, quoteEmailHtml, userConfirmationHtml } from "@/lib/email";
+import {
+  contactEmailHtml,
+  purchaseConfirmationHtml,
+  purchaseNotificationHtml,
+  quoteEmailHtml,
+  userConfirmationHtml,
+} from "@/lib/email";
 
 describe("email HTML escaping", () => {
   it("escapes script tags in contact email", () => {
@@ -53,5 +59,25 @@ describe("email HTML escaping", () => {
     });
     expect(html).toContain("Foil frontal");
     expect(html).toContain("Foil reverso");
+  });
+
+  it("renders purchase confirmation and notification html", () => {
+    const details = {
+      provider: "stripe" as const,
+      orderId: "cs_test",
+      locale: "es" as const,
+      totalCents: 2090,
+      customerEmail: "buyer@test.com",
+      customerName: "Ana",
+      itemsSummary: "Producto × 1",
+    };
+
+    const confirmation = purchaseConfirmationHtml(details);
+    const notification = purchaseNotificationHtml(details);
+
+    expect(confirmation).toContain("Ana");
+    expect(confirmation).toContain("cs_test");
+    expect(notification).toContain("buyer@test.com");
+    expect(notification).not.toContain("<script>");
   });
 });

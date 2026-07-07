@@ -182,4 +182,19 @@ describe("sendPurchaseEmails", () => {
 
     expect(globalThis.fetch).toHaveBeenCalledTimes(1);
   });
+
+  it("returns error when internal notification fails", async () => {
+    vi.stubEnv("RESEND_API_KEY", "re_test");
+    globalThis.fetch = vi.fn().mockResolvedValue(new Response("fail", { status: 500 }));
+
+    const result = await sendPurchaseEmails({
+      provider: "paypal",
+      orderId: "ORDER123",
+      locale: "es",
+      totalCents: 2090,
+      customerEmail: "buyer@test.com",
+    });
+
+    expect(result.ok).toBe(false);
+  });
 });

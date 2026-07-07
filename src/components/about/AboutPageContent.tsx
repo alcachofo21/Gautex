@@ -12,6 +12,7 @@ import {
   ShieldCheck,
   Truck,
 } from "lucide-react";
+import { StatsStrip } from "@/components/home/StatsStrip";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { getCorporate, getUi, localizedPath, type Locale } from "@/lib/locale";
@@ -105,17 +106,7 @@ export function AboutPageContent({ locale = "es" }: AboutPageContentProps) {
         </div>
       </section>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {about.stats.map((stat) => (
-          <div
-            key={stat.label}
-            className="rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm"
-          >
-            <p className="font-display text-3xl font-bold text-primary">{stat.value}</p>
-            <p className="mt-2 text-sm leading-snug text-text-muted">{stat.label}</p>
-          </div>
-        ))}
-      </div>
+      <StatsStrip locale={locale} className="mt-10 border-none" />
 
       <section className="mt-16">
         <h2 className="font-display text-2xl font-bold">{t.historyTitle}</h2>

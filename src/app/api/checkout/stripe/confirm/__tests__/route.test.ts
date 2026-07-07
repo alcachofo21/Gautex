@@ -49,4 +49,16 @@ describe("POST /api/checkout/stripe/confirm", () => {
     );
     expect(res.status).toBe(502);
   });
+
+  it("returns 500 on unexpected error", async () => {
+    vi.mocked(fulfillStripeCheckoutSession).mockRejectedValueOnce(new Error("boom"));
+    const res = await POST(
+      createApiRequest("/api/checkout/stripe/confirm", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId: "cs_test" }),
+      })
+    );
+    expect(res.status).toBe(500);
+  });
 });
