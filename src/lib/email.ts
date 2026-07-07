@@ -99,6 +99,30 @@ async function sendViaResend(
   }
 }
 
+function hasSmtpConfig(): boolean {
+  return Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
+}
+
+function hasResendConfig(): boolean {
+  return Boolean(process.env.RESEND_API_KEY);
+}
+
+/** resend = API HTTPS (Render free). smtp = Arsys (requiere Render Starter). auto = Resend si hay clave, si no SMTP. */
+export function resolveEmailTransport(): "resend" | "smtp" | null {
+  const mode = (process.env.EMAIL_TRANSPORT || "auto").toLowerCase();
+
+  if (mode === "resend") {
+    return hasResendConfig() ? "resend" : null;
+  }
+  if (mode === "smtp") {
+    return hasSmtpConfig() ? "smtp" : null;
+  }
+
+  if (hasResendConfig()) return "resend";
+  if (hasSmtpConfig()) return "smtp";
+  return null;
+}
+
 export async function sendEmail(payload: EmailPayload): Promise<{ ok: boolean; error?: string }> {
   const contactEmail = process.env.CONTACT_EMAIL || "info@gautex.com";
   const fromEmail = getFromAddress();
@@ -106,16 +130,18 @@ export async function sendEmail(payload: EmailPayload): Promise<{ ok: boolean; e
 
   console.log("[GAUTEX EMAIL]", payload.subject, payload.text);
 
-  if (getSmtpTransport()) {
-    return sendViaSmtp(payload, fromEmail, recipients);
-  }
+  const transport = resolveEmailTransport();
 
-  if (process.env.RESEND_API_KEY) {
+  if (transport === "resend") {
     return sendViaResend(payload, fromEmail, recipients);
   }
 
+  if (transport === "smtp") {
+    return sendViaSmtp(payload, fromEmail, recipients);
+  }
+
   if (process.env.NODE_ENV === "production") {
-    console.warn("[GAUTEX EMAIL] Sin SMTP ni RESEND_API_KEY — email no enviado");
+    console.warn("[GAUTEX EMAIL] Sin transporte de email (RESEND_API_KEY o SMTP)");
   }
 
   return { ok: true };

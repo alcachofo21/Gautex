@@ -96,5 +96,5 @@ Deploy $stag
 
 Write-Host ""
 Write-Host "Listo. Espera 3-5 min al redeploy y prueba el checkout:"
-Write-Host "  Producción: https://gautex-web.onrender.com/checkout"
-Write-Host "  Staging:    https://gautex-web-staging.onrender.com/checkout"
+Write-Host "  Producción: https://gautex-web-zzbo.onrender.com/checkout"
+Write-Host "  Staging:    https://gautex-web-staging-dcib.onrender.com/checkout"

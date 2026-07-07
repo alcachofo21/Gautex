@@ -57,7 +57,21 @@ describe("sendEmail", () => {
     );
   });
 
-  it("prefers SMTP over Resend when both are set", async () => {
+  it("prefers Resend over SMTP in auto mode when both are set", async () => {
+    vi.stubEnv("SMTP_HOST", "smtp.serviciodecorreo.es");
+    vi.stubEnv("SMTP_USER", "info@gautex.com");
+    vi.stubEnv("SMTP_PASS", "secret");
+    vi.stubEnv("RESEND_API_KEY", "re_test_key");
+    globalThis.fetch = vi.fn().mockResolvedValue(new Response("{}", { status: 200 }));
+
+    await sendEmail({ subject: "Test", html: "<p>Hi</p>", text: "Hi" });
+
+    expect(globalThis.fetch).toHaveBeenCalled();
+    expect(sendMail).not.toHaveBeenCalled();
+  });
+
+  it("uses SMTP when EMAIL_TRANSPORT=smtp", async () => {
+    vi.stubEnv("EMAIL_TRANSPORT", "smtp");
     vi.stubEnv("SMTP_HOST", "smtp.serviciodecorreo.es");
     vi.stubEnv("SMTP_USER", "info@gautex.com");
     vi.stubEnv("SMTP_PASS", "secret");
