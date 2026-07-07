@@ -1,4 +1,6 @@
-import { Award, ClipboardCheck, FileCheck, RefreshCw, ShieldCheck, Truck, Users } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Award, ClipboardCheck, FileCheck, RefreshCw, ShieldCheck, Truck, Users, Download } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import type corporateEs from "../../../content/corporate.json";
 
@@ -9,9 +11,11 @@ const processIcons = [Users, ClipboardCheck, Truck, RefreshCw];
 
 interface QualityPageContentProps {
   quality: QualityData;
+  resourcesHref?: string;
+  resourcesLabel?: string;
 }
 
-export function QualityPageContent({ quality }: QualityPageContentProps) {
+export function QualityPageContent({ quality, resourcesHref = "/recursos", resourcesLabel }: QualityPageContentProps) {
   return (
     <>
       <p className="mt-6 max-w-3xl text-lg leading-relaxed text-text-muted">{quality.intro}</p>
@@ -28,7 +32,8 @@ export function QualityPageContent({ quality }: QualityPageContentProps) {
         ))}
       </div>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_320px] lg:items-start">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
         {quality.certifications.map((cert) => (
           <div key={cert.name} className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
             <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
@@ -41,6 +46,30 @@ export function QualityPageContent({ quality }: QualityPageContentProps) {
             <p className="mt-3 text-sm leading-relaxed text-text-muted">{cert.description}</p>
           </div>
         ))}
+        </div>
+        <div className="space-y-4">
+          <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+            <div className="relative aspect-[4/3]">
+              <Image
+                src="/images/quality/certificaciones.webp"
+                alt="Certificaciones Gautex Medica"
+                fill
+                className="object-cover"
+                sizes="320px"
+                quality={80}
+              />
+            </div>
+          </div>
+          {resourcesLabel && (
+            <Link
+              href={resourcesHref}
+              className="flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm font-semibold text-primary hover:bg-primary/10"
+            >
+              <Download className="h-4 w-4" />
+              {resourcesLabel}
+            </Link>
+          )}
+        </div>
       </div>
 
       <div className="mt-12 flex flex-col gap-4 rounded-2xl bg-primary/5 p-8 sm:flex-row sm:items-start">

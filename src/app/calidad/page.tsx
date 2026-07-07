@@ -1,5 +1,6 @@
 import { corporate } from "@/lib/products";
 import { QualityPageContent } from "@/components/quality/QualityPageContent";
+import { getUi } from "@/lib/locale";
 
 export const metadata = {
   title: "Calidad y certificaciones",
@@ -8,12 +9,17 @@ export const metadata = {
 };
 
 export default function CalidadPage() {
+  const ui = getUi("es");
   return (
     <div className="py-12 sm:py-16">
       <div className="container-page max-w-5xl">
         <h1 className="text-fluid-title font-display font-bold">{corporate.quality.title}</h1>
         <p className="mt-4 text-xl text-text-muted">{corporate.quality.subtitle}</p>
-        <QualityPageContent quality={corporate.quality} />
+        <QualityPageContent
+          quality={corporate.quality}
+          resourcesHref="/recursos"
+          resourcesLabel={ui.resources.certsCta}
+        />
       </div>
     </div>
   );
