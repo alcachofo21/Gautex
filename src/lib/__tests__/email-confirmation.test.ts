@@ -33,6 +33,7 @@ describe("sendUserConfirmation", () => {
   });
 
   it("sends via SMTP when configured", async () => {
+    vi.stubEnv("EMAIL_TRANSPORT", "smtp");
     vi.stubEnv("SMTP_HOST", "smtp.serviciodecorreo.es");
     vi.stubEnv("SMTP_USER", "info@gautex.com");
     vi.stubEnv("SMTP_PASS", "secret");
