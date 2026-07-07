@@ -90,7 +90,7 @@ Set-Var $prodId "STRIPE_PAYPAL_ENABLED" "false"
 Set-Var $prodId "SMTP_HOST" "smtp.serviciodecorreo.es"
 Set-Var $prodId "SMTP_PORT" "465"
 Set-Var $prodId "SMTP_USER" "info@gautex.com"
-Set-Var $prodId "SMTP_FROM" "Gautex Medica <info@gautex.com>"
+Set-Var $prodId "SMTP_FROM" 'Gautex Medica <info@gautex.com>'
 Deploy $prodId
 
 Write-Host "`nListo. Webhooks Stripe (crear en dashboard test/live):"

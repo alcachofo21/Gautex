@@ -8,10 +8,16 @@ type EmailPayload = {
   to?: string | string[];
 };
 
-function getFromAddress(): string {
+function getFromAddress(transport: "resend" | "smtp" | null): string {
+  if (transport === "resend" && process.env.RESEND_FROM) {
+    return process.env.RESEND_FROM;
+  }
+  if (transport === "smtp" && process.env.SMTP_FROM) {
+    return process.env.SMTP_FROM;
+  }
   return (
-    process.env.SMTP_FROM ||
     process.env.RESEND_FROM ||
+    process.env.SMTP_FROM ||
     `Gautex Medica <${process.env.SMTP_USER || process.env.CONTACT_EMAIL || "info@gautex.com"}>`
   );
 }
@@ -125,12 +131,11 @@ export function resolveEmailTransport(): "resend" | "smtp" | null {
 
 export async function sendEmail(payload: EmailPayload): Promise<{ ok: boolean; error?: string }> {
   const contactEmail = process.env.CONTACT_EMAIL || "info@gautex.com";
-  const fromEmail = getFromAddress();
   const recipients = payload.to ?? contactEmail;
+  const transport = resolveEmailTransport();
+  const fromEmail = getFromAddress(transport);
 
   console.log("[GAUTEX EMAIL]", payload.subject, payload.text);
-
-  const transport = resolveEmailTransport();
 
   if (transport === "resend") {
     return sendViaResend(payload, fromEmail, recipients);
