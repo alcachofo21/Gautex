@@ -1,4 +1,5 @@
 import { ContactForm } from "@/app/contacto/ContactForm";
+import { FaqSection } from "@/components/faq/FaqSection";
 import { getCorporate } from "@/lib/locale";
 import { Phone, Mail, MapPin, Clock, Printer } from "lucide-react";
 
@@ -65,6 +66,8 @@ export default function EnContactoPage() {
             </div>
           </div>
         </div>
+
+        <FaqSection locale="en" className="mt-16" />
       </div>
     </div>
   );

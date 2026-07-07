@@ -1,4 +1,5 @@
 import { ContactForm } from "./ContactForm";
+import { FaqSection } from "@/components/faq/FaqSection";
 import { corporate } from "@/lib/products";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
@@ -79,6 +80,8 @@ export default function ContactoPage() {
             </div>
           </div>
         </div>
+
+        <FaqSection locale="es" className="mt-16" />
       </div>
     </div>
   );

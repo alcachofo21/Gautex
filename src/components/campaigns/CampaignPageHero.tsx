@@ -1,8 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { getUi, localizedPath, type Locale } from "@/lib/locale";
+import { getUi, type Locale } from "@/lib/locale";
 
 interface CampaignPageHeroProps {
   locale?: Locale;
