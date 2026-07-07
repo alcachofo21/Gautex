@@ -7,7 +7,7 @@ import { sendEmail, sendUserConfirmation } from "@/lib/email";
 vi.mock("@/lib/email", () => ({
   sendEmail: vi.fn().mockResolvedValue({ ok: true }),
   contactEmailHtml: vi.fn().mockReturnValue("<p>html</p>"),
-  sendUserConfirmation: vi.fn().mockResolvedValue(undefined),
+  sendUserConfirmation: vi.fn().mockResolvedValue({ ok: true }),
 }));
 
 vi.mock("@/lib/crm", () => ({
@@ -18,7 +18,7 @@ describe("POST /api/contact", () => {
   beforeEach(() => {
     resetRateLimitBuckets();
     vi.mocked(sendEmail).mockResolvedValue({ ok: true });
-    vi.mocked(sendUserConfirmation).mockResolvedValue(undefined);
+    vi.mocked(sendUserConfirmation).mockResolvedValue({ ok: true });
   });
 
   it("returns success for valid contact", async () => {

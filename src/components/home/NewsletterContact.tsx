@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { getCorporate, getUi, localizedPath, type Locale } from "@/lib/locale";
 import { trackEvent } from "@/lib/analytics";
+import { readApiErrorMessage } from "@/lib/form-api";
 
 interface NewsletterContactProps {
   locale?: Locale;
@@ -14,10 +15,13 @@ export function NewsletterContact({ locale = "es" }: NewsletterContactProps) {
   const ui = getUi(locale);
   const n = ui.newsletter;
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus("loading");
+    setErrorMessage(null);
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -31,13 +35,17 @@ export function NewsletterContact({ locale = "es" }: NewsletterContactProps) {
           locale,
         }),
       });
-      setStatus(res.ok ? "success" : "error");
       if (res.ok) {
+        setStatus("success");
         trackEvent("newsletter_signup");
         setEmail("");
+      } else {
+        setStatus("error");
+        setErrorMessage(await readApiErrorMessage(res, n.error));
       }
     } catch {
       setStatus("error");
+      setErrorMessage(n.error);
     }
   };
 
@@ -57,10 +65,12 @@ export function NewsletterContact({ locale = "es" }: NewsletterContactProps) {
                 placeholder={n.placeholder}
                 className="min-h-[48px] flex-1 rounded-xl border border-gray-300 px-4 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
               />
-              <Button type="submit">{n.submit}</Button>
+              <Button type="submit" disabled={status === "loading"}>
+                {status === "loading" ? "..." : n.submit}
+              </Button>
             </form>
             {status === "success" && <p className="mt-2 text-sm text-primary">{n.success}</p>}
-            {status === "error" && <p className="mt-2 text-sm text-red-500">{n.error}</p>}
+            {status === "error" && <p className="mt-2 text-sm text-red-500">{errorMessage || n.error}</p>}
           </div>
           <div className="flex flex-col justify-center border-t border-gray-200 pt-8 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
             <h3 className="font-display text-xl font-bold">{n.quickContact}</h3>

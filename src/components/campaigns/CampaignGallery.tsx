@@ -29,7 +29,7 @@ export function CampaignGallery({ locale = "es" }: CampaignGalleryProps) {
             className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
           >
             <div className="relative aspect-[4/3] bg-surface">
-              <Image src={item.src} alt={g.items[item.key]} fill className="object-contain p-4" sizes="33vw" quality={75} loading="lazy" />
+              <Image src={item.src} alt={g.items[item.key]} fill className="object-contain p-4" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" quality={75} loading="lazy" />
             </div>
             <figcaption className="border-t px-4 py-3 text-sm font-medium text-text-muted">
               {g.items[item.key]}

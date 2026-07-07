@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props) {
   if (!product) return { title: "Datasheet" };
   const localized = localizeProduct(product, "en");
   return buildPageMetadata({
-    title: `Datasheet — ${localized.name}`,
+    title: `Datasheet - ${localized.name}`,
     description: localized.shortDescription,
     path: `/productos/${category}/${slug}/ficha`,
     locale: "en",

@@ -22,10 +22,21 @@ describe("assertSameOrigin", () => {
     expect(result?.status).toBe(403);
   });
 
-  it("rejects missing origin", () => {
-    const req = new Request("http://localhost:3000/api/contact", { method: "POST" });
-    const result = assertSameOrigin(req);
-    expect(result?.status).toBe(403);
+  it("rejects missing origin on unknown host", () => {
+    process.env.NODE_ENV = "production";
+    process.env.NEXT_PUBLIC_SITE_URL = "https://www.gautex.com";
+    const req = new Request("https://evil.com/api/contact", { method: "POST" });
+    expect(assertSameOrigin(req)?.status).toBe(403);
+  });
+
+  it("allows same-host API calls without origin on Render", () => {
+    process.env.NODE_ENV = "production";
+    process.env.NEXT_PUBLIC_SITE_URL = "https://gautex-web-staging-dcib.onrender.com";
+    const req = new Request("https://gautex-web-staging.onrender.com/api/contact", {
+      method: "POST",
+      headers: { host: "gautex-web-staging.onrender.com" },
+    });
+    expect(assertSameOrigin(req)).toBeNull();
   });
 
   it("allows configured production origin", () => {

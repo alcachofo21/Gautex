@@ -7,7 +7,7 @@ import { sendEmail } from "@/lib/email";
 vi.mock("@/lib/email", () => ({
   sendEmail: vi.fn().mockResolvedValue({ ok: true }),
   quoteEmailHtml: vi.fn().mockReturnValue("<p>html</p>"),
-  sendUserConfirmation: vi.fn().mockResolvedValue(undefined),
+  sendUserConfirmation: vi.fn().mockResolvedValue({ ok: true }),
 }));
 
 vi.mock("@/lib/crm", () => ({

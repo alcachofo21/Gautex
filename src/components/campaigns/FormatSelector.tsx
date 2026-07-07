@@ -29,7 +29,7 @@ export function FormatSelector({ formats, selected, onSelect, locale = "es" }: F
   return (
     <div className="relative z-0 space-y-6">
       <div className="grid gap-4 sm:grid-cols-2">
-        {formats.map((format) => {
+        {formats.map((format, index) => {
           const Icon = iconMap[format.icon] || Package;
           const isSelected = selected === format.id;
           const inputId = `campaign-format-${format.id}`;
@@ -70,7 +70,8 @@ export function FormatSelector({ formats, selected, onSelect, locale = "es" }: F
                       sizes="(max-width: 640px) 100vw, 50vw"
                       draggable={false}
                       quality={75}
-                      loading="lazy"
+                      priority={index < 2}
+                      loading={index < 2 ? undefined : "lazy"}
                     />
                   </div>
                 ) : (
@@ -104,7 +105,7 @@ export function FormatSelector({ formats, selected, onSelect, locale = "es" }: F
                 {active.variants.map((variant) => (
                   <li key={variant.id} className="text-sm">
                     <span className="font-semibold text-text">{variant.name}</span>
-                    <span className="text-text-muted"> — {variant.description}</span>
+                    <span className="text-text-muted"> - {variant.description}</span>
                   </li>
                 ))}
               </ul>

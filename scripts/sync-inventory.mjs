@@ -27,7 +27,7 @@ hiddenPublic.forEach((r) => console.log(`  - ${r.sku} ${r.name} (${r.stockBoxes}
 console.log(`\nB2C catalog with stock (${shopIds.size} product IDs):`);
 for (const [id, stock] of [...stockById.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
   const p = products.find((x) => x.id === id);
-  console.log(`  ${id}: ${stock} cajas${p ? ` — ${p.name}` : " (missing in products.json!)"}`);
+  console.log(`  ${id}: ${stock} cajas${p ? ` - ${p.name}` : " (missing in products.json!)"}`);
 }
 
 const missing = products.filter((p) => p.price && !shopIds.has(p.id) && !inventory.productOverrides[p.id]);

@@ -10,7 +10,7 @@ import { getCorporate, getLocaleFromPath, getUi, localizedPath } from "@/lib/loc
 import { MobileNav } from "./MobileNav";
 import { Button } from "@/components/ui/Button";
 import { ProductSearch } from "@/components/shop/ProductSearch";
-import { LanguageSwitcher } from "./LanguageSwitcher";
+import { LOGO_BLUR } from "@/lib/image-blur";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -37,12 +37,14 @@ export function Header() {
             <Image
               src="/images/logo/gautex.webp"
               alt="Gautex Medica"
-              width={440}
-              height={440}
+              width={512}
+              height={512}
               className="h-[5.5rem] w-auto sm:h-24 lg:h-[6.5rem]"
               sizes="(max-width: 640px) 264px, 312px"
               quality={75}
               priority
+              placeholder="blur"
+              blurDataURL={LOGO_BLUR}
             />
           </Link>
 

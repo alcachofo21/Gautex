@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
-import { sendEmail } from "@/lib/email";
+import { fulfillStripeCheckoutSession } from "@/lib/payments/stripe-checkout";
 
 export async function POST(request: Request) {
   const stripe = getStripe();
@@ -27,14 +27,12 @@ export async function POST(request: Request) {
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
-    await sendEmail({
-      subject: `[Gautex] Pago Stripe completado — ${session.id}`,
-      html: `<p>Pago recibido vía Stripe Checkout.</p>
-        <p>Session: ${session.id}</p>
-        <p>Email: ${session.customer_details?.email || "—"}</p>
-        <p>Total: ${((session.amount_total || 0) / 100).toFixed(2)} EUR</p>`,
-      text: JSON.stringify(session.metadata, null, 2),
-    });
+    const result = await fulfillStripeCheckoutSession(session.id);
+
+    if (!result.ok) {
+      console.error("[STRIPE WEBHOOK] Email failed:", result.error);
+      return NextResponse.json({ error: "Error al enviar email" }, { status: 502 });
+    }
   }
 
   return NextResponse.json({ received: true });

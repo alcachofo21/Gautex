@@ -176,7 +176,7 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
   const configSummary = buildConfigSummary(selectedFormat?.configOptions, configSelections);
 
   const formatLabel = selectedFormat
-    ? [selectedFormat.name, selectedVariant?.name, selectedPresentation?.name].filter(Boolean).join(" — ")
+    ? [selectedFormat.name, selectedVariant?.name, selectedPresentation?.name].filter(Boolean).join(" - ")
     : "";
 
   const step2Title = (() => {
@@ -495,9 +495,14 @@ export function CampaignConfigurator({ locale = "es" }: CampaignConfiguratorProp
             </label>
           )}
 
-          <div className="mt-6 flex justify-between">
+          <p className="mt-4 text-sm text-text-muted">{t.skipStep3Hint}</p>
+
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
             <Button variant="ghost" onClick={() => setStep(2)}>{t.back}</Button>
-            <Button disabled={!canProceedStep3} onClick={() => setStep(4)}>{t.next}</Button>
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={() => setStep(4)}>{t.skipStep3}</Button>
+              <Button disabled={!canProceedStep3} onClick={() => setStep(4)}>{t.next}</Button>
+            </div>
           </div>
         </div>
       )}

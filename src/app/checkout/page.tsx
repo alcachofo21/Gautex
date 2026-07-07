@@ -6,10 +6,18 @@ export const metadata = {
 };
 
 interface Props {
-  searchParams: Promise<{ success?: string }>;
+  searchParams: Promise<{ success?: string; provider?: string; session_id?: string; error?: string }>;
 }
 
 export default async function CheckoutPage({ searchParams }: Props) {
-  const { success } = await searchParams;
-  return <CheckoutPageContent locale="es" paymentSuccess={success === "true"} />;
+  const { success, provider, session_id, error } = await searchParams;
+  return (
+    <CheckoutPageContent
+      locale="es"
+      paymentSuccess={success === "true"}
+      paymentProvider={provider === "stripe" || provider === "paypal" ? provider : undefined}
+      stripeSessionId={session_id}
+      paymentError={error === "paypal" ? "paypal" : undefined}
+    />
+  );
 }

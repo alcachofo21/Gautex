@@ -17,6 +17,10 @@ export function CartDrawer() {
   const { items, isOpen, closeCart, updateQuantity, removeItem, totalItems } = useCart();
 
   useEffect(() => {
+    closeCart();
+  }, [pathname, closeCart]);
+
+  useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {

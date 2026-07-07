@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { HERO_BLUR } from "@/lib/image-blur";
 import { localizedPath, type Locale } from "@/lib/locale";
 
 const copy = {
@@ -80,6 +81,8 @@ export function Hero({ locale = "es" }: HeroProps) {
           fill
           className="object-cover"
           priority
+          placeholder="blur"
+          blurDataURL={HERO_BLUR}
           sizes="100vw"
           quality={75}
         />

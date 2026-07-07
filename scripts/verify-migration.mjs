@@ -23,12 +23,12 @@ const results = [];
 
 function pass(name, detail = "") {
   results.push({ ok: true, name, detail });
-  console.log(`  OK  ${name}${detail ? ` — ${detail}` : ""}`);
+  console.log(`  OK  ${name}${detail ? ` - ${detail}` : ""}`);
 }
 
 function fail(name, detail = "") {
   results.push({ ok: false, name, detail });
-  console.log(`  FAIL ${name}${detail ? ` — ${detail}` : ""}`);
+  console.log(`  FAIL ${name}${detail ? ` - ${detail}` : ""}`);
 }
 
 async function fetchHead(url, opts = {}) {
@@ -43,7 +43,7 @@ async function checkNextJsHome() {
     const server = res.headers.get("server") || "";
     const powered = res.headers.get("x-powered-by") || "";
     if (server.toLowerCase().includes("cm4all")) {
-      fail(name, `Server: ${server} — DNS aún apunta a CM4all`);
+      fail(name, `Server: ${server} - DNS aún apunta a CM4all`);
       return;
     }
     if (powered.toLowerCase().includes("next")) {
@@ -172,7 +172,7 @@ async function checkApiReachable() {
 }
 
 async function main() {
-  console.log(`\nVerificación migración — base: ${base}\n`);
+  console.log(`\nVerificación migración - base: ${base}\n`);
 
   await checkSsl();
   await checkNextJsHome();

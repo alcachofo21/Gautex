@@ -16,7 +16,7 @@ Repositorio: https://github.com/alcachofo21/Gautex
 
 ## 2. Crear servicio en Render
 
-### Opción A — Dashboard (recomendado)
+### Opción A - Dashboard (recomendado)
 
 1. Ir a https://dashboard.render.com
 2. **New +** → **Web Service**
@@ -31,11 +31,11 @@ Repositorio: https://github.com/alcachofo21/Gautex
    - `NEXT_PUBLIC_SITE_URL` = `https://TU-SERVICIO.onrender.com`
 6. Deploy
 
-### Opción B — Blueprint
+### Opción B - Blueprint
 
 Render detectará `render.yaml` automáticamente al importar el repo.
 
-### Opción C — API
+### Opción C - API
 
 ```powershell
 $env:RENDER_API_KEY = "tu_token_aqui"
@@ -55,7 +55,7 @@ $env:RENDER_API_KEY = "tu_token_aqui"
 | `STRIPE_SECRET_KEY` | Pagos online | Clave secreta (`sk_test_…` o `sk_live_…`) |
 | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Pagos online | Clave publicable (`pk_test_…` o `pk_live_…`) |
 | `STRIPE_WEBHOOK_SECRET` | Recomendada | Firma webhook (`whsec_…`) para confirmar pagos |
-| `NEXT_PUBLIC_GA_ID` | Opcional | Google Analytics 4 — `G-V86Q4399E2` (ya en `render.yaml`) |
+| `NEXT_PUBLIC_GA_ID` | Opcional | Google Analytics 4 - `G-V86Q4399E2` (ya en `render.yaml`) |
 | `NEXT_PUBLIC_GA_DEBUG` | Staging | `true` en staging para depurar en consola del navegador |
 | `CLOUDINARY_CLOUD_NAME` | Producción | Obligatorio para uploads de campañas |
 | `CLOUDINARY_UPLOAD_PRESET` | Producción | Preset unsigned de Cloudinary |

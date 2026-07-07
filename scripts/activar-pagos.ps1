@@ -1,5 +1,5 @@
 # ============================================================================
-#  Activar pagos en Render (Gautex) — PayPal y/o Stripe live
+#  Activar pagos en Render (Gautex) - PayPal y/o Stripe live
 # ----------------------------------------------------------------------------
 #  Configura las credenciales en PRODUCCIÓN (gautex-web) y STAGING
 #  (gautex-web-staging) y redespliega ambos servicios automáticamente.
@@ -75,7 +75,7 @@ function Deploy($serviceId) {
     Write-Host "    Deploy lanzado: $($d.id)"
 }
 
-# ---------------- PRODUCCIÓN (gautex-web) — PayPal en modo live ----------------
+# ---------------- PRODUCCIÓN (gautex-web) - PayPal en modo live ----------------
 $prod = Get-ServiceId "gautex-web"
 Write-Host "PRODUCCIÓN gautex-web ($prod)"
 Set-Var $prod "PAYPAL_CLIENT_ID"     $PaypalClientId
@@ -86,7 +86,7 @@ Set-Var $prod "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY" $StripePublishableKey
 Set-Var $prod "STRIPE_WEBHOOK_SECRET"          $StripeWebhookSecret
 Deploy $prod
 
-# ---------------- STAGING (gautex-web-staging) — PayPal en sandbox ------------
+# ---------------- STAGING (gautex-web-staging) - PayPal en sandbox ------------
 $stag = Get-ServiceId "gautex-web-staging"
 Write-Host "STAGING gautex-web-staging ($stag)"
 Set-Var $stag "PAYPAL_CLIENT_ID"     $PaypalClientIdSandbox

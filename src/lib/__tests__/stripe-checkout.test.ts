@@ -1,24 +1,38 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { createStripeCheckoutSession } from "@/lib/payments/stripe-checkout";
+import {
+  createStripeCheckoutSession,
+  fulfillStripeCheckoutSession,
+} from "@/lib/payments/stripe-checkout";
 import { priceCart } from "@/lib/payments/config";
 import { makeCartItem } from "@/test-helpers/api";
 import { getStripe } from "@/lib/stripe";
 
 const mockCreate = vi.fn().mockResolvedValue({ url: "https://checkout.stripe.com/test" });
+const mockRetrieve = vi.fn();
+const mockUpdate = vi.fn().mockResolvedValue({});
 
 vi.mock("@/lib/stripe", () => ({
   getStripe: vi.fn(() => ({
     checkout: {
-      sessions: { create: mockCreate },
+      sessions: { create: mockCreate, retrieve: mockRetrieve, update: mockUpdate },
     },
   })),
 }));
 
+vi.mock("@/lib/email", () => ({
+  sendPurchaseEmails: vi.fn().mockResolvedValue({ ok: true }),
+}));
+
+import { sendPurchaseEmails } from "@/lib/email";
+
 describe("createStripeCheckoutSession", () => {
   beforeEach(() => {
     mockCreate.mockClear();
+    mockRetrieve.mockReset();
+    mockUpdate.mockClear();
+    vi.mocked(sendPurchaseEmails).mockResolvedValue({ ok: true });
     vi.mocked(getStripe).mockReturnValue({
-      checkout: { sessions: { create: mockCreate } },
+      checkout: { sessions: { create: mockCreate, retrieve: mockRetrieve, update: mockUpdate } },
     } as never);
     vi.stubEnv("NEXT_PUBLIC_SITE_URL", "http://localhost:3000");
   });
@@ -48,5 +62,46 @@ describe("createStripeCheckoutSession", () => {
     await expect(createStripeCheckoutSession({ pricing, locale: "es" })).rejects.toThrow(
       /Stripe/
     );
+  });
+});
+
+describe("fulfillStripeCheckoutSession", () => {
+  beforeEach(() => {
+    mockRetrieve.mockReset();
+    mockUpdate.mockClear();
+    vi.mocked(sendPurchaseEmails).mockClear();
+    vi.mocked(sendPurchaseEmails).mockResolvedValue({ ok: true });
+    vi.mocked(getStripe).mockReturnValue({
+      checkout: { sessions: { create: mockCreate, retrieve: mockRetrieve, update: mockUpdate } },
+    } as never);
+  });
+
+  it("sends purchase emails for paid sessions", async () => {
+    mockRetrieve.mockResolvedValue({
+      id: "cs_test",
+      payment_status: "paid",
+      amount_total: 2090,
+      customer_details: { email: "buyer@test.com", name: "Ana López" },
+      metadata: { locale: "es", itemSummary: "Producto × 1", totalCents: "2090" },
+    });
+
+    const result = await fulfillStripeCheckoutSession("cs_test");
+
+    expect(result.ok).toBe(true);
+    expect(sendPurchaseEmails).toHaveBeenCalled();
+    expect(mockUpdate).toHaveBeenCalled();
+  });
+
+  it("skips duplicate emails", async () => {
+    mockRetrieve.mockResolvedValue({
+      id: "cs_test",
+      payment_status: "paid",
+      metadata: { purchaseEmailSent: "true" },
+    });
+
+    const result = await fulfillStripeCheckoutSession("cs_test");
+
+    expect(result.alreadySent).toBe(true);
+    expect(sendPurchaseEmails).not.toHaveBeenCalled();
   });
 });

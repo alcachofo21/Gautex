@@ -43,7 +43,16 @@ describe("PayPal", () => {
         new Response(
           JSON.stringify({
             status: "COMPLETED",
-            payer: { email_address: "buyer@test.com" },
+            payer: {
+              email_address: "buyer@test.com",
+              name: { given_name: "Ana", surname: "López" },
+            },
+            purchase_units: [
+              {
+                amount: { value: "20.90" },
+                items: [{ name: "Preservativos Matrix", quantity: "1" }],
+              },
+            ],
           }),
           { status: 200 }
         )
@@ -52,6 +61,9 @@ describe("PayPal", () => {
     const result = await capturePayPalOrder("ORDER123");
     expect(result.status).toBe("COMPLETED");
     expect(result.payerEmail).toBe("buyer@test.com");
+    expect(result.payerName).toBe("Ana López");
+    expect(result.totalCents).toBe(2090);
+    expect(result.itemsSummary).toContain("Preservativos Matrix");
   });
 
   it("throws when not configured", async () => {

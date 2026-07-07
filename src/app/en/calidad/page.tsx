@@ -4,7 +4,7 @@ import { QualityPageContent } from "@/components/quality/QualityPageContent";
 export const metadata = {
   title: "Quality & certifications",
   description:
-    "ISO 13485, ISO 9001 certifications and Notified Body 0120 (SGS) audits — Gautex Medica.",
+    "ISO 13485, ISO 9001 certifications and Notified Body 0120 (SGS) audits - Gautex Medica.",
 };
 
 export default function EnCalidadPage() {

@@ -1,4 +1,4 @@
-# Gautex Medica — Web
+# Gautex Medica - Web
 
 Rediseño moderno de [gautex.com](https://gautex.com/) con escaparate e-commerce, catálogo de productos sanitarios y campañas personalizadas.
 

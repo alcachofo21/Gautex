@@ -17,7 +17,7 @@ const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakart
 
 export const metadata: Metadata = {
   title: {
-    default: "Gautex Medica — Repartiendo salud",
+    default: "Gautex Medica - Repartiendo salud",
     template: "%s | Gautex Medica",
   },
   description:
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Gautex Medica — Repartiendo salud",
+    title: "Gautex Medica - Repartiendo salud",
     description: "Productos sanitarios certificados para farmacia y sector hospitalario.",
     locale: "es_ES",
     type: "website",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
         url: "/images/hero/condones-seguro.webp",
         width: 1280,
         height: 720,
-        alt: "Gautex Medica — Productos sanitarios certificados",
+        alt: "Gautex Medica - Productos sanitarios certificados",
       },
     ],
   },

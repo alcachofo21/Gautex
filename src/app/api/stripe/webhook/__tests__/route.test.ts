@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { POST } from "@/app/api/stripe/webhook/route";
-import { sendEmail } from "@/lib/email";
+import { fulfillStripeCheckoutSession } from "@/lib/payments/stripe-checkout";
 import { getStripe } from "@/lib/stripe";
 
 const mockConstructEvent = vi.fn();
@@ -11,8 +11,8 @@ vi.mock("@/lib/stripe", () => ({
   })),
 }));
 
-vi.mock("@/lib/email", () => ({
-  sendEmail: vi.fn().mockResolvedValue({ ok: true }),
+vi.mock("@/lib/payments/stripe-checkout", () => ({
+  fulfillStripeCheckoutSession: vi.fn().mockResolvedValue({ ok: true }),
 }));
 
 describe("POST /api/stripe/webhook", () => {
@@ -79,9 +79,6 @@ describe("POST /api/stripe/webhook", () => {
       data: {
         object: {
           id: "cs_test",
-          amount_total: 2090,
-          customer_details: { email: "buyer@test.com" },
-          metadata: {},
         },
       },
     });
@@ -96,7 +93,28 @@ describe("POST /api/stripe/webhook", () => {
     expect(res.status).toBe(200);
     const data = await res.json();
     expect(data.received).toBe(true);
-    expect(sendEmail).toHaveBeenCalled();
+    expect(fulfillStripeCheckoutSession).toHaveBeenCalledWith("cs_test");
+  });
+
+  it("returns 502 when purchase email fails", async () => {
+    vi.mocked(fulfillStripeCheckoutSession).mockResolvedValueOnce({ ok: false, error: "SMTP down" });
+    mockConstructEvent.mockReturnValue({
+      type: "checkout.session.completed",
+      data: {
+        object: {
+          id: "cs_test",
+        },
+      },
+    });
+
+    const res = await POST(
+      new Request("http://localhost:3000/api/stripe/webhook", {
+        method: "POST",
+        body: "{}",
+        headers: { "stripe-signature": "valid_sig" },
+      })
+    );
+    expect(res.status).toBe(502);
   });
 
   it("returns received for other event types", async () => {

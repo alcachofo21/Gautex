@@ -10,7 +10,7 @@ vi.mock("nodemailer", () => ({
   default: { createTransport },
 }));
 
-import { sendEmail } from "@/lib/email";
+import { sendEmail, sendPurchaseEmails } from "@/lib/email";
 
 describe("sendEmail", () => {
   beforeEach(() => {
@@ -129,9 +129,57 @@ describe("sendEmail", () => {
       text: "Hi",
     });
 
-    expect(result.ok).toBe(true);
+    expect(result.ok).toBe(false);
+    expect(result.error).toBe("Email no configurado");
     expect(warn).toHaveBeenCalled();
     warn.mockRestore();
     process.env.NODE_ENV = "test";
+  });
+});
+
+describe("sendPurchaseEmails", () => {
+  beforeEach(() => {
+    vi.unstubAllEnvs();
+    vi.clearAllMocks();
+    sendMail.mockResolvedValue({ messageId: "test" });
+    createTransport.mockReturnValue({ sendMail });
+    globalThis.fetch = vi.fn().mockResolvedValue(new Response("{}", { status: 200 }));
+  });
+
+  it("sends internal and customer confirmation emails", async () => {
+    vi.stubEnv("RESEND_API_KEY", "re_test");
+    vi.stubEnv("CONTACT_EMAIL", "shop@gautex.com");
+
+    const result = await sendPurchaseEmails({
+      provider: "paypal",
+      orderId: "ORDER123",
+      locale: "es",
+      totalCents: 2090,
+      customerEmail: "buyer@test.com",
+      customerName: "Ana",
+      itemsSummary: "Preservativos Matrix × 1",
+    });
+
+    expect(result.ok).toBe(true);
+    expect(globalThis.fetch).toHaveBeenCalledTimes(2);
+    expect(globalThis.fetch).toHaveBeenCalledWith(
+      "https://api.resend.com/emails",
+      expect.objectContaining({
+        body: expect.stringContaining("buyer@test.com"),
+      })
+    );
+  });
+
+  it("sends only internal email when customer email is missing", async () => {
+    vi.stubEnv("RESEND_API_KEY", "re_test");
+
+    await sendPurchaseEmails({
+      provider: "stripe",
+      orderId: "cs_test",
+      locale: "en",
+      totalCents: 1000,
+    });
+
+    expect(globalThis.fetch).toHaveBeenCalledTimes(1);
   });
 });

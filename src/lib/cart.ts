@@ -8,6 +8,7 @@ import { clampQuantity } from "@/lib/cart-utils";
 interface CartStore {
   items: CartItem[];
   isOpen: boolean;
+  hasHydrated: boolean;
   addItem: (item: Omit<CartItem, "quantity">, quantity?: number) => void;
   removeItem: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
@@ -23,6 +24,7 @@ export const useCart = create<CartStore>()(
     (set, get) => ({
       items: [],
       isOpen: false,
+      hasHydrated: false,
       addItem: (item, quantity = 1) => {
         set((state) => {
           const qty = clampQuantity(item.productId, quantity);
@@ -61,6 +63,12 @@ export const useCart = create<CartStore>()(
       toggleCart: () => set((state) => ({ isOpen: !state.isOpen })),
       totalItems: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
     }),
-    { name: "gautex-cart" }
+    {
+      name: "gautex-cart",
+      onRehydrateStorage: () => () => {
+        useCart.setState({ hasHydrated: true });
+      },
+      partialize: (state) => ({ items: state.items }),
+    }
   )
 );

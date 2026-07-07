@@ -4,7 +4,7 @@ import { AboutPageContent } from "@/components/about/AboutPageContent";
 export const metadata = {
   title: "About us",
   description:
-    "GAUTEX MÉDICA S.L. — Spreading health since 2002. Certified medical product distribution and manufacturing in Europe.",
+    "GAUTEX MÉDICA S.L. - Spreading health since 2002. Certified medical product distribution and manufacturing in Europe.",
 };
 
 export default function EnNosotrosPage() {

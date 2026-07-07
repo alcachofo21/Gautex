@@ -4,7 +4,7 @@ import { AboutPageContent } from "@/components/about/AboutPageContent";
 export const metadata = {
   title: "Quiénes somos",
   description:
-    "GAUTEX MÉDICA S.L. — Repartiendo salud desde 2002. Distribución y fabricación de productos sanitarios certificados en Europa.",
+    "GAUTEX MÉDICA S.L. - Repartiendo salud desde 2002. Distribución y fabricación de productos sanitarios certificados en Europa.",
 };
 
 export default function NosotrosPage() {

@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { capturePayPalOrder } from "@/lib/payments/paypal";
-import { sendEmail } from "@/lib/email";
+import { sendPurchaseEmails } from "@/lib/email";
 
 interface Props {
   searchParams: Promise<{ token?: string }>;
@@ -13,11 +13,18 @@ export default async function EnPayPalReturnPage({ searchParams }: Props) {
   try {
     const result = await capturePayPalOrder(token);
     if (result.status === "COMPLETED") {
-      await sendEmail({
-        subject: `[Gautex] PayPal payment completed — ${token}`,
-        html: `<p>Payment received via PayPal.</p><p>Order: ${token}</p><p>Email: ${result.payerEmail || "—"}</p>`,
-        text: `PayPal order ${token}`,
+      const emailResult = await sendPurchaseEmails({
+        provider: "paypal",
+        orderId: token,
+        locale: "en",
+        totalCents: result.totalCents,
+        customerEmail: result.payerEmail,
+        customerName: result.payerName,
+        itemsSummary: result.itemsSummary,
       });
+      if (!emailResult.ok) {
+        console.error("[PAYPAL RETURN] Email failed:", emailResult.error);
+      }
       redirect("/en/checkout?success=true&provider=paypal");
     }
   } catch (error) {

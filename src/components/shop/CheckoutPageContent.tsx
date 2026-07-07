@@ -12,16 +12,22 @@ import type { EnabledPaymentMethod, PaymentProvider } from "@/lib/payments/types
 interface CheckoutPageContentProps {
   locale?: Locale;
   paymentSuccess?: boolean;
+  paymentProvider?: PaymentProvider;
+  stripeSessionId?: string;
+  paymentError?: "paypal";
 }
 
 export function CheckoutPageContent({
   locale = "es",
   paymentSuccess = false,
+  paymentProvider,
+  stripeSessionId,
+  paymentError,
 }: CheckoutPageContentProps) {
   const ui = getUi(locale);
   const t = ui.checkout;
   const p = ui.payments;
-  const { items, clearCart } = useCart();
+  const { items, clearCart, hasHydrated } = useCart();
   const [methods, setMethods] = useState<EnabledPaymentMethod[]>([]);
   const [provider, setProvider] = useState<PaymentProvider | null>(null);
   const [payable, setPayable] = useState(false);
@@ -41,11 +47,28 @@ export function CheckoutPageContent({
   const [payError, setPayError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (paymentError === "paypal") {
+      setPayError(t.paymentPayPalError);
+      setStatus("error");
+    }
+  }, [paymentError, t.paymentPayPalError]);
+
+  useEffect(() => {
     if (paymentSuccess) {
       setStatus("success");
       clearCart();
     }
   }, [paymentSuccess, clearCart]);
+
+  useEffect(() => {
+    if (!paymentSuccess || paymentProvider !== "stripe" || !stripeSessionId) return;
+
+    fetch("/api/checkout/stripe/confirm", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sessionId: stripeSessionId }),
+    }).catch(() => {});
+  }, [paymentSuccess, paymentProvider, stripeSessionId]);
 
   useEffect(() => {
     if (items.length === 0) return;
@@ -115,6 +138,14 @@ export function CheckoutPageContent({
       setPayError(t.error);
     }
   };
+
+  if (!hasHydrated) {
+    return (
+      <div className="container-page py-20 text-center">
+        <p className="text-text-muted">{t.loading}</p>
+      </div>
+    );
+  }
 
   if (items.length === 0 && status !== "success") {
     return (

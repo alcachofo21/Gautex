@@ -95,7 +95,15 @@ export async function createPayPalOrder(
   return { orderId: data.id, approvalUrl: approval.href };
 }
 
-export async function capturePayPalOrder(orderId: string): Promise<{ status: string; payerEmail?: string }> {
+export type PayPalCaptureResult = {
+  status: string;
+  payerEmail?: string;
+  payerName?: string;
+  totalCents: number;
+  itemsSummary?: string;
+};
+
+export async function capturePayPalOrder(orderId: string): Promise<PayPalCaptureResult> {
   const token = await getAccessToken();
   const res = await fetch(`${paypalBaseUrl()}/v2/checkout/orders/${orderId}/capture`, {
     method: "POST",
@@ -113,8 +121,29 @@ export async function capturePayPalOrder(orderId: string): Promise<{ status: str
 
   const data = (await res.json()) as {
     status: string;
-    payer?: { email_address?: string };
+    payer?: {
+      email_address?: string;
+      name?: { given_name?: string; surname?: string };
+    };
+    purchase_units?: {
+      amount?: { value?: string };
+      items?: { name?: string; quantity?: string }[];
+    }[];
   };
 
-  return { status: data.status, payerEmail: data.payer?.email_address };
+  const unit = data.purchase_units?.[0];
+  const payerName = [data.payer?.name?.given_name, data.payer?.name?.surname]
+    .filter(Boolean)
+    .join(" ");
+  const itemsSummary = unit?.items
+    ?.map((item) => `${item.name || "Producto"} × ${item.quantity || "1"}`)
+    .join(", ");
+
+  return {
+    status: data.status,
+    payerEmail: data.payer?.email_address,
+    payerName: payerName || undefined,
+    totalCents: Math.round(parseFloat(unit?.amount?.value || "0") * 100),
+    itemsSummary: itemsSummary || undefined,
+  };
 }

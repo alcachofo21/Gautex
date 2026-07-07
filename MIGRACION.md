@@ -1,4 +1,4 @@
-# Migración Opción A — Dominio Arsys + App en Render
+# Migración Opción A - Dominio Arsys + App en Render
 
 Guía para pasar de la web CM4all actual (`www.gautex.com`) a la nueva web Next.js en Render.
 
@@ -23,13 +23,13 @@ flowchart LR
 | Componente | Dónde vive |
 |------------|------------|
 | Dominio `gautex.com` | Arsys |
-| Correo `@gautex.com` | Arsys (registros MX — no tocar) |
+| Correo `@gautex.com` | Arsys (registros MX - no tocar) |
 | Web Next.js | Render (`gautex-web`) |
 | Dominio canónico | `https://www.gautex.com` |
 
 ---
 
-## Fase 0 — Mientras se termina la web (ahora)
+## Fase 0 - Mientras se termina la web (ahora)
 
 La web pública sigue en **CM4all**. La nueva se prueba en:
 
@@ -52,22 +52,45 @@ Definidos en `src/lib/redirects.ts`, incluyen rutas CM4all `/ES/*`, `/EN/*` y va
 
 ---
 
-## Fase 1 — Servicios externos (día D, antes del DNS)
+## Fase 1 - Servicios externos (día D, antes del DNS)
 
 Configurar **antes** del corte DNS. No activar claves live hasta estar listos.
 
-### 1.1 Resend (emails)
+### 1.1 Correo (SMTP Arsys en producción)
 
-1. Cuenta en https://resend.com
-2. Verificar dominio `gautex.com`
-3. En Arsys DNS: añadir registros SPF/DKIM de Resend (**no modificar MX**)
-4. Variables en Render (`gautex-web`):
+**Producción** usa SMTP Arsys (`info@gautex.com`). Requiere plan **Starter** en Render ($7/mes) - el plan free bloquea puertos SMTP.
+
+**Staging** envía notificaciones a `gautexmedica@gmail.com` (Resend en plan free).
+
+1. Contraseña SMTP en panel Arsys para `info@gautex.com`
+2. Variables en Render (`gautex-web`):
 
 | Variable | Valor |
 |----------|-------|
-| `RESEND_API_KEY` | `re_…` |
-| `RESEND_FROM` | `Gautex Web <notificaciones@gautex.com>` |
+| `EMAIL_TRANSPORT` | `smtp` |
+| `SMTP_HOST` | `smtp.serviciodecorreo.es` |
+| `SMTP_PORT` | `465` |
+| `SMTP_USER` | `info@gautex.com` |
+| `SMTP_PASS` | contraseña Arsys |
+| `SMTP_FROM` | `Gautex Medica <info@gautex.com>` |
 | `CONTACT_EMAIL` | `info@gautex.com` |
+
+3. Staging (`gautex-web-staging`):
+
+| Variable | Valor |
+|----------|-------|
+| `CONTACT_EMAIL` | `gautexmedica@gmail.com` |
+| `EMAIL_TRANSPORT` | `resend` |
+| `RESEND_API_KEY` | `re_…` (misma cuenta Resend) |
+
+**Script rápido:**
+
+```powershell
+$env:RENDER_API_KEY = "rnd_..."
+.\scripts\setup-email-arsys-render.ps1 -SmtpPass "..."
+```
+
+Resend (opcional): si prefieres API en lugar de SMTP, verifica dominio en https://resend.com y usa `EMAIL_TRANSPORT=resend`.
 
 ### 1.2 Cloudinary (uploads campañas)
 
@@ -141,7 +164,7 @@ $env:RENDER_API_KEY = "rnd_..."
 
 ---
 
-## Fase 2 — Dominio en Render
+## Fase 2 - Dominio en Render
 
 En https://dashboard.render.com → `gautex-web` → **Settings → Custom Domains**:
 
@@ -156,7 +179,7 @@ Confirmar en Render:
 
 ---
 
-## Fase 3 — DNS en Arsys (corte)
+## Fase 3 - DNS en Arsys (corte)
 
 En https://secure.arsys.es → Dominio `gautex.com` → **Zona DNS**
 
@@ -181,7 +204,7 @@ Eliminar registros A de `www` que apunten a `217.76.142.87` (CM4all).
 
 ---
 
-## Fase 4 — Secuencia día D
+## Fase 4 - Secuencia día D
 
 | Momento | Acción |
 |---------|--------|
@@ -216,7 +239,7 @@ node scripts/verify-migration.mjs --base https://www.gautex.com
 - [ ] `/ES/Productos/Viva-Condoms/` → producto correcto
 - [ ] Checkout Stripe live + email confirmación
 - [ ] PayPal live
-- [ ] Formulario contacto envía vía Resend
+- [ ] Formulario contacto envía vía SMTP Arsys
 - [ ] Upload en configurador campañas (Cloudinary)
 - [ ] `https://www.gautex.com/sitemap.xml` accesible
 
@@ -228,7 +251,7 @@ node scripts/verify-migration.mjs --base https://www.gautex.com
 |--------|------------|
 | Cold start Render free (~30s) | Plan de pago ($7/mes) antes del go-live |
 | Formularios 403 en apex | Middleware redirige apex→www; api-guard acepta ambos orígenes |
-| Emails no enviados | Resend + verificación dominio obligatoria |
+| Emails no enviados | SMTP en Render Starter o Resend + verificación dominio |
 | Upload campañas falla | Cloudinary obligatorio en producción |
 | SEO | Redirects 301 + sitemap + Search Console |
 | Correo roto | No modificar MX al cambiar DNS web |

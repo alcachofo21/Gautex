@@ -12,7 +12,7 @@ import { getFeaturedProducts, localizeProducts } from "@/lib/products";
 import { getUi } from "@/lib/locale";
 
 export const metadata = {
-  title: "Gautex Medica — Spreading health",
+  title: "Gautex Medica - Spreading health",
   description: "CE-certified medical products for pharmacy and healthcare. Condoms, gels, COVID-19 tests and custom campaigns.",
 };
 

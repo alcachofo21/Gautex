@@ -2,7 +2,24 @@ import { NextResponse } from "next/server";
 
 export const MAX_JSON_BODY_BYTES = 100 * 1024;
 
-function allowedOrigins(): string[] {
+function isGautexDeploymentHost(hostname: string): boolean {
+  if (hostname.endsWith(".onrender.com")) return true;
+  return hostname === "gautex.com" || hostname === "www.gautex.com";
+}
+
+function requestDeploymentOrigin(request: Request): string | null {
+  const host =
+    request.headers.get("x-forwarded-host")?.split(",")[0]?.trim() ||
+    request.headers.get("host")?.split(":")[0];
+  if (!host || !isGautexDeploymentHost(host)) return null;
+
+  const proto =
+    request.headers.get("x-forwarded-proto")?.split(",")[0]?.trim() ||
+    (request.url.startsWith("https") ? "https" : "http");
+  return `${proto}://${host}`;
+}
+
+function allowedOrigins(request?: Request): string[] {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
   const origins: string[] = [];
 
@@ -11,7 +28,6 @@ function allowedOrigins(): string[] {
       const url = new URL(siteUrl);
       origins.push(url.origin);
 
-      // Allow apex when canonical host is www (e.g. gautex.com + www.gautex.com)
       if (url.hostname.startsWith("www.")) {
         const apex = new URL(url);
         apex.hostname = url.hostname.slice(4);
@@ -22,11 +38,26 @@ function allowedOrigins(): string[] {
     }
   }
 
+  const extra =
+    process.env.EXTRA_ALLOWED_ORIGINS?.split(",").map((value) => value.trim()).filter(Boolean) ?? [];
+  for (const value of extra) {
+    try {
+      origins.push(new URL(value.includes("://") ? value : `https://${value}`).origin);
+    } catch {
+      /* ignore invalid URL */
+    }
+  }
+
+  if (request) {
+    const deployment = requestDeploymentOrigin(request);
+    if (deployment) origins.push(deployment);
+  }
+
   if (process.env.NODE_ENV !== "production") {
     origins.push("http://localhost:3000", "http://127.0.0.1:3000");
   }
 
-  return origins;
+  return [...new Set(origins)];
 }
 
 function requestOrigin(request: Request): string | null {
@@ -44,21 +75,26 @@ function requestOrigin(request: Request): string | null {
 }
 
 export function assertSameOrigin(request: Request): NextResponse | null {
+  const allowed = allowedOrigins(request);
   const origin = requestOrigin(request);
-  if (!origin) {
-    return NextResponse.json({ error: "Origen no permitido" }, { status: 403 });
+
+  if (origin) {
+    if (!allowed.includes(origin)) {
+      return NextResponse.json({ error: "Origen no permitido" }, { status: 403 });
+    }
+    return null;
   }
 
-  const allowed = allowedOrigins();
+  const deploymentOrigin = requestDeploymentOrigin(request);
+  if (deploymentOrigin && allowed.includes(deploymentOrigin)) {
+    return null;
+  }
+
   if (allowed.length === 0 && process.env.NODE_ENV !== "production") {
     return null;
   }
 
-  if (!allowed.includes(origin)) {
-    return NextResponse.json({ error: "Origen no permitido" }, { status: 403 });
-  }
-
-  return null;
+  return NextResponse.json({ error: "Origen no permitido" }, { status: 403 });
 }
 
 export async function readJsonBodyWithLimit(

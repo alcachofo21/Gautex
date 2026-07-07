@@ -83,7 +83,7 @@ export function FoilPreview({
         { label: labels.length, value: `${productSpec.lengthMm} mm` },
         { label: labels.thickness, value: `${productSpec.thicknessMicron} µ` },
         { label: labels.lubricant, value: productSpec.lubricantMg },
-        { label: labels.deposit, value: productSpec.deposit ? labels.yes : "—" },
+        { label: labels.deposit, value: productSpec.deposit ? labels.yes : "-" },
       ]
     : [];
 

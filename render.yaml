@@ -17,8 +17,12 @@ services:
         value: G-V86Q4399E2
       - key: CONTACT_EMAIL
         value: info@gautex.com
+      - key: REPLY_TO_EMAIL
+        value: info@gautex.com
+      - key: EXTRA_ALLOWED_ORIGINS
+        value: https://gautex-web.onrender.com
       - key: EMAIL_TRANSPORT
-        value: resend
+        value: smtp
       - key: RESEND_API_KEY
         sync: false
       - key: RESEND_FROM
@@ -69,7 +73,11 @@ services:
       - key: NEXT_PUBLIC_GA_DEBUG
         value: "true"
       - key: CONTACT_EMAIL
+        value: gautexmedica@gmail.com
+      - key: REPLY_TO_EMAIL
         value: info@gautex.com
+      - key: EXTRA_ALLOWED_ORIGINS
+        value: https://gautex-web-staging.onrender.com
       - key: EMAIL_TRANSPORT
         value: resend
       - key: RESEND_API_KEY

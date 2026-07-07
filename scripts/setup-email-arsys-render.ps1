@@ -1,6 +1,9 @@
 # ============================================================================
-#  Configurar correo Arsys (SMTP) en Render — Gautex
+#  Configurar correo Arsys (SMTP) en Render - Gautex
 # ----------------------------------------------------------------------------
+#  Producción: SMTP Arsys (info@gautex.com) - requiere Render Starter ($7/mes)
+#  Staging:    notificaciones a gautexmedica@gmail.com (Resend en plan free)
+#
 #  USO:
 #    $env:RENDER_API_KEY = "rnd_..."
 #    .\scripts\setup-email-arsys-render.ps1 -SmtpPass "tu_contraseña"
@@ -9,7 +12,8 @@
 #    .\scripts\setup-email-arsys-render.ps1 `
 #        -SmtpUser "info@gautex.com" `
 #        -SmtpPass "..." `
-#        -ContactEmail "info@gautex.com"
+#        -ContactEmail "info@gautex.com" `
+#        -StagingContactEmail "gautexmedica@gmail.com"
 # ============================================================================
 
 param(
@@ -19,6 +23,7 @@ param(
     [string]$SmtpPass,
     [string]$SmtpFrom = "Gautex Medica <info@gautex.com>",
     [string]$ContactEmail = "info@gautex.com",
+    [string]$StagingContactEmail = "gautexmedica@gmail.com",
     [string]$RenderApiKey = $env:RENDER_API_KEY,
     [switch]$SkipStaging
 )
@@ -63,9 +68,10 @@ function Deploy($serviceId) {
     Write-Host "    Deploy lanzado: $($d.id)"
 }
 
-function Configure-Email($serviceName) {
+function Configure-ProductionEmail($serviceName) {
     $id = Get-ServiceId $serviceName
-    Write-Host "$serviceName ($id)"
+    Write-Host "$serviceName ($id) - SMTP producción"
+    Set-Var $id "EMAIL_TRANSPORT" "smtp"
     Set-Var $id "SMTP_HOST" $SmtpHost
     Set-Var $id "SMTP_PORT" $SmtpPort
     Set-Var $id "SMTP_USER" $SmtpUser
@@ -75,11 +81,25 @@ function Configure-Email($serviceName) {
     Deploy $id
 }
 
-Write-Host "`nConfigurando correo Arsys en Render...`n"
-Configure-Email "gautex-web"
-
-if (-not $SkipStaging) {
-    Configure-Email "gautex-web-staging"
+function Configure-StagingEmail($serviceName) {
+    $id = Get-ServiceId $serviceName
+    Write-Host "$serviceName ($id) - pruebas a $StagingContactEmail"
+    Set-Var $id "EMAIL_TRANSPORT" "resend"
+    Set-Var $id "CONTACT_EMAIL" $StagingContactEmail
+    Set-Var $id "SMTP_HOST" $SmtpHost
+    Set-Var $id "SMTP_PORT" $SmtpPort
+    Set-Var $id "SMTP_USER" $SmtpUser
+    Set-Var $id "SMTP_PASS" $SmtpPass
+    Set-Var $id "SMTP_FROM" $SmtpFrom
+    Deploy $id
 }
 
-Write-Host "`nListo. Espera 3-5 min al redeploy y prueba /contacto en staging.`n"
+Write-Host "`nConfigurando correo en Render...`n"
+Configure-ProductionEmail "gautex-web"
+
+if (-not $SkipStaging) {
+    Configure-StagingEmail "gautex-web-staging"
+}
+
+Write-Host "`nListo. Producción envía vía SMTP a $ContactEmail."
+Write-Host "Staging envía notificaciones a $StagingContactEmail (Resend en plan free).`n"

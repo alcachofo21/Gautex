@@ -1,8 +1,8 @@
 # ============================================================================
-#  Configuración económica Render — staging (test) vs producción (live)
+#  Configuración económica Render - staging (test) vs producción (live)
 # ----------------------------------------------------------------------------
 #  Estrategia $0/mes en Render Free:
-#    - Email: Resend API (HTTPS) — NO SMTP Arsys (bloqueado en free)
+#    - Email: Resend API (HTTPS) - NO SMTP Arsys (bloqueado en free)
 #    - Pagos staging: Stripe test + PayPal sandbox
 #    - Pagos prod: claves live (sin usar hasta go-live DNS)
 #    - Cloudinary: plan free (misma cuenta en ambos)
@@ -20,6 +20,7 @@ param(
     [string]$ResendApiKey,
     [string]$ResendFrom = "Gautex Medica <onboarding@resend.dev>",
     [string]$ContactEmail = "info@gautex.com",
+    [string]$StagingContactEmail = "gautexmedica@gmail.com",
     [string]$CloudinaryCloudName,
     [string]$CloudinaryUploadPreset,
     [string]$StagingUrl = "https://gautex-web-staging-dcib.onrender.com",
@@ -74,6 +75,7 @@ function Configure-Common($serviceId) {
 Write-Host "`n=== STAGING (test) ==="
 $stagingId = Get-ServiceId "gautex-web-staging"
 Configure-Common $stagingId
+Set-Var $stagingId "CONTACT_EMAIL" $StagingContactEmail
 Set-Var $stagingId "NEXT_PUBLIC_SITE_URL" $StagingUrl
 Set-Var $stagingId "NEXT_PUBLIC_GA_DEBUG" "true"
 Set-Var $stagingId "PAYPAL_MODE" "sandbox"
@@ -83,6 +85,8 @@ Deploy $stagingId
 Write-Host "`n=== PRODUCCIÓN (live vars, DNS pendiente) ==="
 $prodId = Get-ServiceId "gautex-web"
 Configure-Common $prodId
+Set-Var $prodId "CONTACT_EMAIL" $ContactEmail
+Set-Var $prodId "EMAIL_TRANSPORT" "smtp"
 Set-Var $prodId "NEXT_PUBLIC_SITE_URL" $CanonicalProdUrl
 Set-Var $prodId "PAYPAL_MODE" "live"
 Set-Var $prodId "STRIPE_PAYPAL_ENABLED" "false"

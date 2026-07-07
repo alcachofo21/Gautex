@@ -38,6 +38,7 @@ export async function POST(request: Request) {
       subject: `[Gautex] ${type === "newsletter" ? "Newsletter" : "Contacto"} - ${firstName} ${lastName}`,
       html: contactEmailHtml({ firstName, lastName, email, phone, message, type: type || "contact" }),
       text,
+      replyTo: email,
     });
 
     if (!result.ok) {
@@ -45,7 +46,10 @@ export async function POST(request: Request) {
     }
 
     const kind = type === "newsletter" ? "newsletter" : "contact";
-    await sendUserConfirmation(email, locale, kind, firstName);
+    const confirmation = await sendUserConfirmation(email, locale, kind, firstName);
+    if (!confirmation.ok) {
+      console.error("[GAUTEX CONTACT] Confirmación al usuario falló:", confirmation.error);
+    }
     await notifyCrm(kind, { firstName, lastName, email, phone, message, type });
 
     return NextResponse.json({ success: true });

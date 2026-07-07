@@ -53,6 +53,8 @@
     "step3FoilTitle": "Step 3: Design your foil",
     "step3Desc": "PNG, JPG or PDF. Max 5 MB.",
     "step3FoilDesc": "Upload your design for the front and, if selected, the back of the wrapper. The image adapts automatically to the printable area.",
+    "skipStep3": "Skip this step",
+    "skipStep3Hint": "You can send your design later; we will get in touch with you.",
     "step4Title": "Step 4: Details and quantity",
     "selectFile": "Choose file",
     "back": "Back",
@@ -182,6 +184,7 @@
     "requestQuote": "Request B2B quote",
     "quoteFormTitle": "Quote details",
     "error": "Error sending. Please try again.",
+    "paymentPayPalError": "PayPal payment could not be completed. Please try again or request a B2B quote.",
     "submit": "Send quote request",
     "submitting": "Sending...",
     "fields": {

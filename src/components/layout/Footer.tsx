@@ -104,7 +104,7 @@ export function Footer() {
         </div>
 
         <p className="mt-6 text-center text-xs text-white/50">
-          © {new Date().getFullYear()} {corporate.company.name} — {ui.footer.rights}
+          © {new Date().getFullYear()} {corporate.company.name} - {ui.footer.rights}
         </p>
       </div>
     </footer>

@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props) {
   const product = getProductBySlug(category, slug);
   if (!product) return { title: "Ficha técnica" };
   return buildPageMetadata({
-    title: `Ficha técnica — ${product.name}`,
+    title: `Ficha técnica - ${product.name}`,
     description: product.shortDescription,
     path: `/productos/${category}/${slug}/ficha`,
     locale: "es",

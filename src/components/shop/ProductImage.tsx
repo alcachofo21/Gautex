@@ -10,6 +10,8 @@ interface ProductImageProps {
   sizes?: string;
   priority?: boolean;
   quality?: number;
+  placeholder?: "blur";
+  blurDataURL?: string;
 }
 
 export function ProductImage({
@@ -20,7 +22,9 @@ export function ProductImage({
   className,
   sizes = "(max-width: 640px) 50vw, 25vw",
   priority = false,
-  quality = 80,
+  quality = 75,
+  placeholder,
+  blurDataURL,
 }: ProductImageProps) {
   if (src) {
     return (
@@ -33,6 +37,8 @@ export function ProductImage({
           sizes={sizes}
           priority={priority}
           quality={quality}
+          placeholder={placeholder}
+          blurDataURL={blurDataURL}
           loading={priority ? undefined : "lazy"}
         />
       </div>

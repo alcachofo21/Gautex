@@ -1,5 +1,5 @@
 # ============================================================================
-#  Go-live Gautex — configurar variables de producción en Render
+#  Go-live Gautex - configurar variables de producción en Render
 # ----------------------------------------------------------------------------
 #  Ejecutar el día D, antes o durante el corte DNS. Configura gautex-web
 #  (producción) y opcionalmente pagos en staging.
@@ -33,6 +33,7 @@ param(
     [string]$ResendApiKey,
     [string]$ResendFrom = "Gautex Web <notificaciones@gautex.com>",
     [string]$ContactEmail = "info@gautex.com",
+    [string]$StagingContactEmail = "gautexmedica@gmail.com",
     [string]$CloudinaryCloudName,
     [string]$CloudinaryUploadPreset,
     [string]$GaId,
@@ -100,11 +101,12 @@ if ($hasPayments) {
 
 # Email, Cloudinary, GA en producción
 $prod = Get-ServiceId "gautex-web"
-Write-Host "PRODUCCIÓN gautex-web ($prod) — email / cloudinary / GA"
+Write-Host "PRODUCCIÓN gautex-web ($prod) - email / cloudinary / GA"
 Set-Var $prod "NEXT_PUBLIC_SITE_URL" "https://www.gautex.com"
 Set-Var $prod "RESEND_API_KEY" $ResendApiKey
 Set-Var $prod "RESEND_FROM" $ResendFrom
 Set-Var $prod "CONTACT_EMAIL" $ContactEmail
+Set-Var $prod "EMAIL_TRANSPORT" "smtp"
 Set-Var $prod "CLOUDINARY_CLOUD_NAME" $CloudinaryCloudName
 Set-Var $prod "CLOUDINARY_UPLOAD_PRESET" $CloudinaryUploadPreset
 Set-Var $prod "NEXT_PUBLIC_GA_ID" $GaId
@@ -116,10 +118,11 @@ if ($hasOther) {
 # Staging: solo email/cloudinary si se pidió (sin tocar pagos si ya corrió activar-pagos)
 if (-not $SkipStaging -and $hasOther) {
     $stag = Get-ServiceId "gautex-web-staging"
-    Write-Host "STAGING gautex-web-staging ($stag) — email / cloudinary / GA"
+    Write-Host "STAGING gautex-web-staging ($stag) - email / cloudinary / GA"
     Set-Var $stag "RESEND_API_KEY" $ResendApiKey
     Set-Var $stag "RESEND_FROM" $ResendFrom
-    Set-Var $stag "CONTACT_EMAIL" $ContactEmail
+    Set-Var $stag "CONTACT_EMAIL" $StagingContactEmail
+    Set-Var $stag "EMAIL_TRANSPORT" "resend"
     Set-Var $stag "CLOUDINARY_CLOUD_NAME" $CloudinaryCloudName
     Set-Var $stag "CLOUDINARY_UPLOAD_PRESET" $CloudinaryUploadPreset
     Set-Var $stag "NEXT_PUBLIC_GA_ID" $GaId

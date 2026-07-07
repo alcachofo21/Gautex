@@ -20,12 +20,12 @@ métodos de pago que tengan credenciales en Render. Solo falta **PayPal**.
 
 ## Activarlo (elige UNA opción)
 
-### Opción A — Me pasas las credenciales y lo hago yo
+### Opción A - Me pasas las credenciales y lo hago yo
 Pégame aquí el **Client ID** y el **Secret** y yo los configuro en Render
 (producción en modo `live`, staging en `sandbox`) y redespliego. No tienes que
 hacer nada más.
 
-### Opción B — Lo haces tú con un solo comando
+### Opción B - Lo haces tú con un solo comando
 En PowerShell, desde la carpeta del proyecto:
 
 ```powershell
@@ -36,7 +36,7 @@ El script te pedirá la **API key de Render** (Panel Render → Account Settings
 API Keys), configura producción y staging y lanza el redeploy. En 3–5 minutos el
 botón de PayPal aparecerá junto al de tarjeta.
 
-### Opción C — A mano en Render
+### Opción C - A mano en Render
 En <https://dashboard.render.com> → servicio `gautex-web` → **Environment**,
 añade:
 
@@ -75,3 +75,35 @@ O añádelas a mano en Render (`STRIPE_SECRET_KEY`,
 
 Añade un producto al carrito y, en el checkout, verás el selector con **Tarjeta
 (Stripe)** y **PayPal**.
+
+### Emails de confirmación de compra
+
+Tras un pago, se envían dos correos:
+
+1. **Notificación interna** → `CONTACT_EMAIL` (`info@gautex.com` en prod, `gautexmedica@gmail.com` en staging)
+2. **Confirmación al cliente** → email del comprador (Stripe/PayPal)
+
+**Stripe:** configura el webhook en el dashboard (modo test para staging):
+
+- URL staging: `https://gautex-web-staging-dcib.onrender.com/api/stripe/webhook`
+- Evento: `checkout.session.completed`
+- Secret → `STRIPE_WEBHOOK_SECRET` en Render
+
+Si el webhook no está configurado, la página de éxito también dispara el envío
+como respaldo automático.
+
+### URLs de retorno PayPal (registrar en PayPal Developer)
+
+Cuando tengas credenciales, asegúrate de que `NEXT_PUBLIC_SITE_URL` coincide con
+el dominio desplegado. Las URLs de retorno que usa la app son:
+
+| Entorno | ES | EN |
+|---------|----|----|
+| Producción | `https://www.gautex.com/checkout/paypal/return` | `https://www.gautex.com/en/checkout/paypal/return` |
+| Staging | `https://gautex-web-staging.onrender.com/checkout/paypal/return` | `https://gautex-web-staging.onrender.com/en/checkout/paypal/return` |
+
+Variables en Render (ya en `render.yaml`, valores en el dashboard):
+
+- `PAYPAL_CLIENT_ID`
+- `PAYPAL_CLIENT_SECRET`
+- `PAYPAL_MODE` (`live` en prod, `sandbox` en staging)

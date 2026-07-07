@@ -53,6 +53,8 @@
     "step3FoilTitle": "Paso 3: Diseña tu foil",
     "step3Desc": "PNG, JPG o PDF. Máximo 5 MB.",
     "step3FoilDesc": "Sube tu diseño para el frontal y, si lo has elegido, el reverso del envase. La imagen se adapta automáticamente al área imprimible.",
+    "skipStep3": "Saltar este paso",
+    "skipStep3Hint": "Puedes enviar el diseño más adelante; nos pondremos en contacto contigo.",
     "step4Title": "Paso 4: Datos y cantidad",
     "selectFile": "Seleccionar archivo",
     "back": "Atrás",
@@ -182,6 +184,7 @@
     "requestQuote": "Solicitar presupuesto B2B",
     "quoteFormTitle": "Datos para presupuesto",
     "error": "Error al enviar.",
+    "paymentPayPalError": "No se pudo completar el pago con PayPal. Inténtalo de nuevo o solicita presupuesto B2B.",
     "submit": "Enviar solicitud de presupuesto",
     "submitting": "Enviando...",
     "fields": {

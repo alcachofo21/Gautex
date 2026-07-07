@@ -16,7 +16,7 @@ vi.mock("@/components/shop/InstantPaymentPanel", () => ({
 
 describe("CheckoutPageContent", () => {
   beforeEach(() => {
-    useCart.setState({ items: [], isOpen: false });
+    useCart.setState({ items: [], isOpen: false, hasHydrated: true });
     globalThis.fetch = vi.fn().mockResolvedValue(
       new Response(
         JSON.stringify({
@@ -48,6 +48,7 @@ describe("CheckoutPageContent", () => {
         },
       ],
       isOpen: false,
+      hasHydrated: true,
     });
 
     render(<CheckoutPageContent locale="es" />);

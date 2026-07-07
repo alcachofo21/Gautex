@@ -40,6 +40,7 @@ export async function POST(request: Request) {
       subject: `[Gautex] Presupuesto - ${parsed.data.firstName} ${parsed.data.lastName || ""}`,
       html: quoteEmailHtml(payload),
       text: JSON.stringify(payload, null, 2),
+      replyTo: parsed.data.email,
     });
 
     if (!result.ok) {
@@ -47,7 +48,15 @@ export async function POST(request: Request) {
     }
 
     const kind = parsed.data.type === "campaign" ? "campaign" : "quote";
-    await sendUserConfirmation(parsed.data.email, locale, kind, parsed.data.firstName);
+    const confirmation = await sendUserConfirmation(
+      parsed.data.email,
+      locale,
+      kind,
+      parsed.data.firstName
+    );
+    if (!confirmation.ok) {
+      console.error("[GAUTEX QUOTE] Confirmación al usuario falló:", confirmation.error);
+    }
     await notifyCrm(kind, payload);
 
     return NextResponse.json({ success: true });
