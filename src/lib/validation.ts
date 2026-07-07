@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const honeypot = z.string().max(0).optional();
+const honeypot = z.string().optional();
 
 export const contactSchema = z.object({
   firstName: z.string().min(1).max(100),
@@ -50,5 +50,27 @@ export const quoteSchema = z.object({
   website: honeypot,
 });
 
+export const checkoutSchema = z.object({
+  items: z
+    .array(
+      z.object({
+        productId: z.string().max(50),
+        slug: z.string().max(100),
+        name: z.string().max(200),
+        category: z.string().max(100),
+        quantity: z.number().int().positive().max(9999),
+        priceLabel: z.string().max(100),
+        color: z.string().max(50),
+        image: z.string().max(500).optional(),
+      })
+    )
+    .min(1)
+    .max(50),
+  locale: z.enum(["es", "en"]).optional(),
+  provider: z.enum(["paypal", "stripe"]).default("paypal"),
+  customerEmail: z.string().email().max(200).optional(),
+});
+
 export type ContactInput = z.infer<typeof contactSchema>;
 export type QuoteInput = z.infer<typeof quoteSchema>;
+export type CheckoutInput = z.infer<typeof checkoutSchema>;

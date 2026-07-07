@@ -1,3 +1,5 @@
+import { escapeHtml, escapeHtmlWithBreaks } from "@/lib/escape-html";
+
 type EmailPayload = {
   subject: string;
   html: string;
@@ -50,43 +52,55 @@ export async function sendEmail(payload: EmailPayload): Promise<{ ok: boolean; e
   }
 }
 
+function esc(value: string | undefined, fallback = "—"): string {
+  return escapeHtml(value || fallback);
+}
+
 export function contactEmailHtml(data: Record<string, string | undefined>): string {
   return `
     <h2>Nuevo mensaje — Gautex Web</h2>
-    <p><strong>Nombre:</strong> ${data.firstName} ${data.lastName}</p>
-    <p><strong>Email:</strong> ${data.email}</p>
-    <p><strong>Teléfono:</strong> ${data.phone || "—"}</p>
-    <p><strong>Tipo:</strong> ${data.type || "contact"}</p>
+    <p><strong>Nombre:</strong> ${esc(data.firstName)} ${esc(data.lastName)}</p>
+    <p><strong>Email:</strong> ${esc(data.email)}</p>
+    <p><strong>Teléfono:</strong> ${esc(data.phone)}</p>
+    <p><strong>Tipo:</strong> ${esc(data.type, "contact")}</p>
     <p><strong>Mensaje:</strong></p>
-    <p>${(data.message || "").replace(/\n/g, "<br>")}</p>
+    <p>${escapeHtmlWithBreaks(data.message || "")}</p>
   `;
 }
 
 export function quoteEmailHtml(data: Record<string, unknown>): string {
   const items = Array.isArray(data.items)
     ? (data.items as { name: string; quantity: number; priceLabel: string }[])
-        .map((i) => `<li>${i.name} × ${i.quantity} (${i.priceLabel})</li>`)
+        .map(
+          (i) =>
+            `<li>${esc(i.name)} × ${escapeHtml(String(i.quantity))} (${esc(i.priceLabel)})</li>`
+        )
         .join("")
     : "";
 
+  const urlField = (label: string, url: unknown, fileName: unknown) =>
+    url
+      ? `<p><strong>${label}:</strong> <a href="${esc(String(url))}">${esc(String(fileName || url))}</a></p>`
+      : "";
+
   return `
     <h2>Solicitud de presupuesto — Gautex Web</h2>
-    <p><strong>Tipo:</strong> ${data.type}</p>
-    <p><strong>Cliente:</strong> ${data.firstName} ${data.lastName || ""}</p>
-    <p><strong>Email:</strong> ${data.email}</p>
-    <p><strong>Teléfono:</strong> ${data.phone || "—"}</p>
-    <p><strong>Empresa:</strong> ${data.company || "—"}</p>
-    <p><strong>CIF:</strong> ${data.cif || "—"}</p>
-    <p><strong>Sector:</strong> ${data.sector || "—"}</p>
-    ${data.formatName ? `<p><strong>Formato campaña:</strong> ${data.formatName}</p>` : ""}
-    ${data.configOptionsSummary ? `<p><strong>Opciones:</strong> ${data.configOptionsSummary}</p>` : ""}
-    ${data.quantity ? `<p><strong>Cantidad:</strong> ${data.quantity}</p>` : ""}
-    ${data.logoUrl ? `<p><strong>Logo:</strong> <a href="${data.logoUrl}">${data.logoFileName || data.logoUrl}</a></p>` : ""}
-    ${data.foilFrontUrl ? `<p><strong>Foil frontal:</strong> <a href="${data.foilFrontUrl}">${data.foilFrontFileName || data.foilFrontUrl}</a></p>` : ""}
-    ${data.foilBackUrl ? `<p><strong>Foil reverso:</strong> <a href="${data.foilBackUrl}">${data.foilBackFileName || data.foilBackUrl}</a></p>` : ""}
+    <p><strong>Tipo:</strong> ${esc(String(data.type ?? ""))}</p>
+    <p><strong>Cliente:</strong> ${esc(String(data.firstName ?? ""))} ${esc(String(data.lastName ?? ""))}</p>
+    <p><strong>Email:</strong> ${esc(String(data.email ?? ""))}</p>
+    <p><strong>Teléfono:</strong> ${esc(String(data.phone ?? ""))}</p>
+    <p><strong>Empresa:</strong> ${esc(String(data.company ?? ""))}</p>
+    <p><strong>CIF:</strong> ${esc(String(data.cif ?? ""))}</p>
+    <p><strong>Sector:</strong> ${esc(String(data.sector ?? ""))}</p>
+    ${data.formatName ? `<p><strong>Formato campaña:</strong> ${esc(String(data.formatName))}</p>` : ""}
+    ${data.configOptionsSummary ? `<p><strong>Opciones:</strong> ${esc(String(data.configOptionsSummary))}</p>` : ""}
+    ${data.quantity ? `<p><strong>Cantidad:</strong> ${esc(String(data.quantity))}</p>` : ""}
+    ${urlField("Logo", data.logoUrl, data.logoFileName)}
+    ${urlField("Foil frontal", data.foilFrontUrl, data.foilFrontFileName)}
+    ${urlField("Foil reverso", data.foilBackUrl, data.foilBackFileName)}
     ${items ? `<p><strong>Productos:</strong></p><ul>${items}</ul>` : ""}
     <p><strong>Mensaje:</strong></p>
-    <p>${String(data.message || "—").replace(/\n/g, "<br>")}</p>
+    <p>${escapeHtmlWithBreaks(String(data.message || "—"))}</p>
   `;
 }
 
@@ -115,9 +129,9 @@ export function userConfirmationHtml(
   }[locale];
 
   return `
-    <h2>${copy.greeting} ${name},</h2>
-    <p>${copy[kind]}</p>
-    <p style="margin-top:24px;color:#64748b;font-size:14px;">${copy.footer}</p>
+    <h2>${escapeHtml(copy.greeting)} ${escapeHtml(name)},</h2>
+    <p>${escapeHtml(copy[kind])}</p>
+    <p style="margin-top:24px;color:#64748b;font-size:14px;">${escapeHtml(copy.footer)}</p>
   `;
 }
 

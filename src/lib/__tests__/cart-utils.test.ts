@@ -1,0 +1,19 @@
+import { describe, it, expect } from "vitest";
+import { clampQuantity } from "@/lib/cart-utils";
+
+describe("clampQuantity", () => {
+  it("returns at least 1", () => {
+    expect(clampQuantity("matrix-condoms", 0)).toBe(1);
+    expect(clampQuantity("matrix-condoms", -5)).toBe(1);
+  });
+
+  it("clamps to max stock for known product", () => {
+    const qty = clampQuantity("matrix-condoms", 999999);
+    expect(qty).toBeGreaterThanOrEqual(1);
+    expect(qty).toBeLessThan(999999);
+  });
+
+  it("handles unknown product", () => {
+    expect(clampQuantity("unknown-id", 5)).toBe(5);
+  });
+});

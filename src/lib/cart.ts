@@ -3,16 +3,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { CartItem } from "@/types";
-import { products } from "@/lib/products";
-import { maxOrderQuantity } from "@/lib/inventory";
-
-function clampQuantity(productId: string, quantity: number): number {
-  const product = products.find((p) => p.id === productId);
-  if (!product) return Math.max(1, quantity);
-  const max = maxOrderQuantity(product);
-  if (max === null) return Math.max(1, quantity);
-  return Math.max(1, Math.min(quantity, max));
-}
+import { clampQuantity } from "@/lib/cart-utils";
 
 interface CartStore {
   items: CartItem[];

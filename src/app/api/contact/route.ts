@@ -3,17 +3,23 @@ import { contactSchema } from "@/lib/validation";
 import { sendEmail, contactEmailHtml, sendUserConfirmation } from "@/lib/email";
 import { notifyCrm } from "@/lib/crm";
 import { rateLimit, clientIp } from "@/lib/rate-limit";
+import { assertSameOrigin, readJsonBodyWithLimit } from "@/lib/api-guard";
 
 export async function POST(request: Request) {
   try {
+    const originError = assertSameOrigin(request);
+    if (originError) return originError;
+
     const ip = clientIp(request);
     const limited = rateLimit(`contact:${ip}`);
     if (!limited.ok) {
       return NextResponse.json({ error: "Demasiadas solicitudes" }, { status: 429 });
     }
 
-    const body = await request.json();
-    const parsed = contactSchema.safeParse(body);
+    const parsedBody = await readJsonBodyWithLimit(request);
+    if ("error" in parsedBody) return parsedBody.error;
+
+    const parsed = contactSchema.safeParse(parsedBody.body);
 
     if (!parsed.success) {
       return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
@@ -24,6 +30,7 @@ export async function POST(request: Request) {
     }
 
     const { firstName, lastName, email, phone, message, type } = parsed.data;
+    const body = parsedBody.body as Record<string, unknown>;
     const locale = body.locale === "en" ? "en" : "es";
     const text = JSON.stringify({ firstName, lastName, email, phone, message, type }, null, 2);
 

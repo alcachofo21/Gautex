@@ -17,6 +17,17 @@ npm run dev
 
 Abre [http://localhost:3000](http://localhost:3000).
 
+## Tests
+
+```bash
+npm run test              # unitarios + integración (Vitest)
+npm run test:coverage     # cobertura (~87% lib/API)
+npm run test:e2e          # E2E (Playwright, requiere build)
+npm run lint
+```
+
+CI en GitHub Actions ejecuta lint, tests con cobertura y E2E en PRs a `main`.
+
 ## Variables de entorno
 
 Copia `.env.example` a `.env.local` y configura las variables necesarias.

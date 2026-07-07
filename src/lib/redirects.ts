@@ -20,6 +20,8 @@ export const legacyRedirects: Redirect[] = [
   ...productRedirects,
   { source: "/ES/Inicio", destination: "/", permanent: true },
   { source: "/ES/Inicio/", destination: "/", permanent: true },
+  { source: "/ES/inicio", destination: "/", permanent: true },
+  { source: "/ES/inicio/", destination: "/", permanent: true },
   { source: "/ES/Productos", destination: "/productos", permanent: true },
   { source: "/ES/Productos/", destination: "/productos", permanent: true },
   { source: "/ES/Productos/Material-preventivo-y-uso-sexual", destination: "/productos/preventivo", permanent: true },
@@ -54,4 +56,8 @@ export const legacyRedirects: Redirect[] = [
   { source: "/EN/Contact/", destination: "/en/contacto", permanent: true },
   { source: "/EN/About", destination: "/en/nosotros", permanent: true },
   { source: "/EN/About/", destination: "/en/nosotros", permanent: true },
+  { source: "/EN/Campaigns", destination: "/en/campanas", permanent: true },
+  { source: "/EN/Campaigns/", destination: "/en/campanas", permanent: true },
+  { source: "/EN/Products/:path*", destination: "/en/productos", permanent: true },
+  { source: "/EN/Tienda-online/:path*", destination: "/en/productos", permanent: true },
 ];

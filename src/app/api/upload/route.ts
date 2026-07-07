@@ -1,14 +1,16 @@
 import { NextResponse } from "next/server";
 import { uploadFile } from "@/lib/storage";
-import { rateLimit, clientIp } from "@/lib/rate-limit";
-
-const MAX_SIZE = 5 * 1024 * 1024;
-const ALLOWED = ["image/png", "image/jpeg", "image/jpg", "application/pdf"];
+import { rateLimit, clientIp, RATE_LIMIT_UPLOAD } from "@/lib/rate-limit";
+import { assertSameOrigin } from "@/lib/api-guard";
+import { UPLOAD_MAX_SIZE, validateUploadBuffer } from "@/lib/upload-validation";
 
 export async function POST(request: Request) {
   try {
+    const originError = assertSameOrigin(request);
+    if (originError) return originError;
+
     const ip = clientIp(request);
-    const limited = rateLimit(`upload:${ip}`, 5);
+    const limited = rateLimit(`upload:${ip}`, RATE_LIMIT_UPLOAD);
     if (!limited.ok) {
       return NextResponse.json({ error: "Demasiadas subidas" }, { status: 429 });
     }
@@ -20,15 +22,18 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Archivo requerido" }, { status: 400 });
     }
 
-    if (!ALLOWED.includes(file.type)) {
-      return NextResponse.json({ error: "Formato no permitido (PNG, JPG, PDF)" }, { status: 400 });
-    }
-
-    if (file.size > MAX_SIZE) {
+    if (file.size > UPLOAD_MAX_SIZE) {
       return NextResponse.json({ error: "Archivo demasiado grande (máx. 5 MB)" }, { status: 400 });
     }
 
-    const result = await uploadFile(file, "campaigns");
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const validation = await validateUploadBuffer(buffer, file.name, file.type);
+    if (!validation.ok) {
+      return NextResponse.json({ error: validation.error }, { status: 400 });
+    }
+
+    const validatedFile = new File([buffer], file.name, { type: validation.mime });
+    const result = await uploadFile(validatedFile, "campaigns");
 
     return NextResponse.json({
       success: true,
@@ -38,6 +43,7 @@ export async function POST(request: Request) {
     });
   } catch (e) {
     console.error("[GAUTEX UPLOAD]", e);
-    return NextResponse.json({ error: "Error al subir archivo" }, { status: 500 });
+    const msg = e instanceof Error ? e.message : "Error al subir archivo";
+    return NextResponse.json({ error: msg }, { status: 500 });
   }
 }

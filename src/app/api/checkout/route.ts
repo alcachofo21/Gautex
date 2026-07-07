@@ -9,22 +9,31 @@ import {
   isStripeConfigured,
   priceCart,
 } from "@/lib/payments";
-import { rateLimit, clientIp } from "@/lib/rate-limit";
+import { rateLimit, clientIp, RATE_LIMIT_CHECKOUT } from "@/lib/rate-limit";
+import { assertSameOrigin, readJsonBodyWithLimit } from "@/lib/api-guard";
+import { checkoutSchema } from "@/lib/validation";
 
 export async function POST(request: Request) {
   try {
+    const originError = assertSameOrigin(request);
+    if (originError) return originError;
+
     const ip = clientIp(request);
-    const limited = rateLimit(`checkout:${ip}`, 5);
+    const limited = rateLimit(`checkout:${ip}`, RATE_LIMIT_CHECKOUT);
     if (!limited.ok) {
       return NextResponse.json({ error: "Demasiadas solicitudes" }, { status: 429 });
     }
 
-    const { items, locale, provider = "paypal", customerEmail } = await request.json();
-    const loc = locale === "en" ? "en" : "es";
+    const parsedBody = await readJsonBodyWithLimit(request);
+    if ("error" in parsedBody) return parsedBody.error;
 
-    if (provider !== "paypal" && provider !== "stripe") {
-      return NextResponse.json({ error: "Proveedor no soportado" }, { status: 400 });
+    const parsed = checkoutSchema.safeParse(parsedBody.body);
+    if (!parsed.success) {
+      return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
     }
+
+    const { items, locale, provider, customerEmail } = parsed.data;
+    const loc = locale === "en" ? "en" : "es";
 
     const pricing = priceCart(items as CartItem[]);
     if (!pricing.payable) {

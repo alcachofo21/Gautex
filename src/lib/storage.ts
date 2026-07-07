@@ -15,6 +15,12 @@ export async function uploadFile(
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
   const uploadPreset = process.env.CLOUDINARY_UPLOAD_PRESET;
 
+  if (process.env.NODE_ENV === "production" && (!cloudName || !uploadPreset)) {
+    throw new Error(
+      "Cloudinary es obligatorio en producción. Configure CLOUDINARY_CLOUD_NAME y CLOUDINARY_UPLOAD_PRESET."
+    );
+  }
+
   if (cloudName && uploadPreset) {
     const fd = new FormData();
     fd.append("file", file);
