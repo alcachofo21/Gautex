@@ -4,6 +4,7 @@ import { TopBar } from "@/components/layout/TopBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/shop/CartDrawer";
+import { CartHydration } from "@/components/shop/CartHydration";
 import { CookieBanner } from "@/components/ui/CookieBanner";
 import { LocaleSync } from "@/components/layout/LocaleSync";
 import { SkipLink } from "@/components/layout/SkipLink";
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <LocaleSync />
+        <CartHydration />
         <SkipLink />
         <TopBar />
         <Header />

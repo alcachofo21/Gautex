@@ -1,7 +1,7 @@
 "use client";
 
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 import type { CartItem } from "@/types";
 import { clampQuantity } from "@/lib/cart-utils";
 
@@ -65,10 +65,12 @@ export const useCart = create<CartStore>()(
     }),
     {
       name: "gautex-cart",
-      onRehydrateStorage: () => () => {
+      storage: createJSONStorage(() => localStorage),
+      skipHydration: true,
+      partialize: (state) => ({ items: state.items }),
+      onRehydrateStorage: () => (_state, _error) => {
         useCart.setState({ hasHydrated: true });
       },
-      partialize: (state) => ({ items: state.items }),
     }
   )
 );
