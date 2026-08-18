@@ -38,7 +38,7 @@ export async function POST(request: Request) {
     const pricing = priceCart(items as CartItem[]);
     if (!pricing.payable) {
       return NextResponse.json(
-        { error: "Algunos productos no tienen precio online o no hay stock. Use presupuesto B2B." },
+        { error: "Algunos productos no tienen precio online. Use presupuesto B2B." },
         { status: 400 }
       );
     }

@@ -71,11 +71,9 @@ export function AboutPageContent({ locale = "es" }: AboutPageContentProps) {
         <div className="relative grid gap-8 p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:p-12">
           <div>
             <div className="mb-4 flex flex-wrap gap-2">
-              <Badge className="bg-white/15 text-white backdrop-blur">CE 0120 SGS</Badge>
-              <Badge className="bg-accent/90 text-white">ISO 13485</Badge>
-              <Badge className="bg-white/15 text-white backdrop-blur">
-                {locale === "es" ? `Desde ${company.founded}` : `Since ${company.founded}`}
-              </Badge>
+              <Badge className="bg-white/15 text-white backdrop-blur">CE MDR 2017/745</Badge>
+              <Badge className="bg-accent/90 text-white">ISO 13485:2016</Badge>
+              <Badge className="bg-white/15 text-white backdrop-blur">ISO 9001</Badge>
             </div>
             <p className="text-2xl font-display font-bold text-accent sm:text-3xl">{company.slogan}</p>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">

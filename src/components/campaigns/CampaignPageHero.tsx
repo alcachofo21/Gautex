@@ -26,7 +26,7 @@ export function CampaignPageHero({ locale = "es" }: CampaignPageHeroProps) {
       <div className="relative grid gap-8 p-8 sm:p-10 lg:grid-cols-2 lg:items-center lg:p-12">
         <div>
           <div className="mb-4 flex flex-wrap gap-2">
-            <Badge className="bg-white/15 text-white backdrop-blur">CE 0120</Badge>
+            <Badge className="bg-white/15 text-white backdrop-blur">CE MDR 2017/745</Badge>
             <Badge className="bg-accent/90 text-white">{ui.badge}</Badge>
           </div>
           <h1 className="text-fluid-title font-display font-bold">{ui.title}</h1>

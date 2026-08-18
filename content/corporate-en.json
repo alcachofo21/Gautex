@@ -22,8 +22,8 @@
     "title": "Who we are",
     "paragraphs": [
       "GAUTEX MÉDICA, S.L. was founded in 2002. Dedicated to the distribution, marketing and manufacturing of medical products for the pharmaceutical and healthcare sectors, we have a strong presence across the European market.",
-      "The company complies with all international quality standards, certified and audited by Notified Body No. 0120 SGS, holding ISO 13485:2013 and ISO 9001:2008 certifications.",
-      "We are working to obtain the CE Certificate in accordance with Directive 93/42/EEC, issued by the same Notified Body No. 0120 SGS.",
+      "The company complies with all international quality standards, certified and audited by Notified Body No. 0120 SGS, holding ISO 13485:2016 and ISO 9001 certifications.",
+      "We market medical devices with CE marking under Regulation (EU) 2017/745 (MDR), issued with the same Notified Body No. 0120 SGS.",
       "Our philosophy is to offer the best medical and pharmaceutical products with maximum guarantees for patients and users, ensuring exhaustive quality controls on every product we manufacture or distribute in EUROPE.",
       "GAUTEX MÉDICA, S.L. is made up of a young, entrepreneurial team committed to providing professional service to our clients."
     ],
@@ -33,7 +33,7 @@
     "stats": [
       { "value": "2002", "label": "Founded in Barcelona" },
       { "value": "0120", "label": "SGS Notified Body" },
-      { "value": "ISO", "label": "13485 · 9001 certified" },
+      { "value": "ISO", "label": "13485:2016 · 9001" },
       { "value": "EU", "label": "European market" }
     ],
     "activities": [
@@ -54,39 +54,39 @@
   "quality": {
     "title": "Quality & certifications",
     "subtitle": "Why trust us?",
-    "intro": "We hold certifications that attest to exemplary quality standards in medical device distribution. Our management system is certified and audited by Notified Body No. 0120 (SGS).",
-    "badges": ["ISO 9001:2008", "ISO 13485:2013", "EN ISO 13485:2012", "NB 0120 · SGS"],
+    "intro": "We hold certifications that attest to exemplary quality standards in medical device distribution. Our management system is certified to ISO 13485:2016 and ISO 9001, audited by Notified Body No. 0120 (SGS), and we market with CE marking under MDR 2017/745.",
+    "badges": ["ISO 13485:2016", "ISO 9001", "CE MDR 2017/745", "NB 0120 · SGS"],
     "certifications": [
       {
-        "name": "ISO 9001:2008",
+        "name": "ISO 13485:2016",
+        "scope": "Medical devices",
+        "description": "Quality management system for medical devices: distribution of gynaecology and prevention products, with batch traceability and incoming inspection."
+      },
+      {
+        "name": "ISO 9001",
         "scope": "Quality management system",
-        "description": "Distribution of medical devices: gynaecology products, intimate lubricant gel, ultrasound probe covers, pregnancy tests and drug tests."
+        "description": "Distribution of medical devices: gynaecology products, intimate lubricant gel, ultrasound probe covers and prevention products."
       },
       {
-        "name": "ISO 13485:2013",
-        "scope": "Medical devices",
-        "description": "Distribution of medical devices: gynaecology products and prevention products."
-      },
-      {
-        "name": "EN ISO 13485:2012",
-        "scope": "Medical devices",
-        "description": "Quality management system for medical devices under the European regulatory framework."
+        "name": "CE MDR 2017/745",
+        "scope": "CE marking",
+        "description": "Medical devices marketed under Regulation (EU) 2017/745 on medical devices, replacing Directive 93/42/EEC."
       }
     ],
     "notifiedBody": {
       "title": "Notified Body No. 0120 (SGS)",
       "description": "The company complies with international quality standards, certified and audited by Notified Body No. 0120 SGS. We ensure exhaustive quality controls on every product we manufacture or distribute across Europe."
     },
-    "ceNote": "We are working to obtain the CE Certificate in accordance with Directive 93/42/EEC, issued by the same Notified Body No. 0120 SGS.",
+    "ceNote": "Gautex medical devices are marketed with CE marking under Regulation (EU) 2017/745 (MDR), with Notified Body No. 0120 SGS.",
     "pillarsTitle": "Regulatory commitment",
     "pillars": [
       {
         "title": "Certified management system",
-        "description": "Medical device distribution processes under ISO 9001 and ISO 13485, subject to periodic audits."
+        "description": "Medical device distribution processes under ISO 13485:2016 and ISO 9001, subject to periodic audits."
       },
       {
         "title": "European regulation",
-        "description": "Distribution in compliance with the applicable EU medical device and IVD regulatory framework."
+        "description": "Distribution in compliance with Regulation (EU) 2017/745 (MDR) and the wider EU medical device and IVD framework."
       },
       {
         "title": "Traceability & control",

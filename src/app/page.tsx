@@ -19,7 +19,7 @@ import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
   title: "Gautex Medica — Repartiendo salud",
-  description: "Distribución y fabricación de productos sanitarios certificados CE. Preservativos, geles, tests COVID-19 y campañas personalizadas.",
+  description: "Distribución y fabricación de productos sanitarios con marcado CE MDR 2017/745. Preservativos, geles, tests COVID-19 y campañas personalizadas.",
   path: "/",
   locale: "es",
 });

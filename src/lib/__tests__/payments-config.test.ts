@@ -34,9 +34,10 @@ describe("payments config", () => {
     expect(pricing.unpublishable.length).toBeGreaterThan(0);
   });
 
-  it("rejects quantity over stock", () => {
+  it("allows large quantities without warehouse stock caps", () => {
     const pricing = priceCart([{ ...makeCartItem(), quantity: 999999 }]);
-    expect(pricing.payable).toBe(false);
+    expect(pricing.payable).toBe(true);
+    expect(pricing.lines[0]?.quantity).toBe(999999);
   });
 
   it("formats EUR", () => {
@@ -76,14 +77,14 @@ describe("payments config", () => {
     expect(methods[0].id).toBe("paypal");
   });
 
-  it("flags out-of-stock products in cart", () => {
+  it("flags quote-only products in cart", () => {
     const pricing = priceCart([
       { ...makeCartItem(), productId: "preservativo-femenino", name: "PF" },
     ]);
     expect(pricing.payable).toBe(false);
   });
 
-  it("flags in-stock product with zero warehouse quantity", () => {
+  it("rejects hidden catalogue products", () => {
     const pricing = priceCart([
       { ...makeCartItem(), productId: "viva-condoms-xl", name: "XL" },
     ]);

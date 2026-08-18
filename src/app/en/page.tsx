@@ -18,7 +18,7 @@ import { getUi } from "@/lib/locale";
 
 export const metadata = {
   title: "Gautex Medica - Spreading health",
-  description: "CE-certified medical products for pharmacy and healthcare. Condoms, gels, COVID-19 tests and custom campaigns.",
+  description: "Medical devices with CE marking under MDR 2017/745 for pharmacy and healthcare. Condoms, gels, COVID-19 tests and custom campaigns.",
 };
 
 export default function EnHomePage() {

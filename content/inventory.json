@@ -141,7 +141,6 @@
   ],
   "productOverrides": {
     "viva-condoms-xl": { "webVisible": false, "stockBoxes": 0 },
-    "viva-condoms-extra-fuerte": { "webVisible": false, "stockBoxes": 0 },
     "viva-condoms-manzana": { "webVisible": false, "stockBoxes": 0 },
     "viva-condoms-banana": { "webVisible": false, "stockBoxes": 0 },
     "max-gel-3-5ml": { "webVisible": false, "stockBoxes": 0 },

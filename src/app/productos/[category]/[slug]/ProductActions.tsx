@@ -20,7 +20,6 @@ export function ProductActions({ product, locale = "es" }: ProductActionsProps) 
   const { addItem } = useCart();
   const [quantity, setQuantity] = useState(1);
   const purchasable = canPurchaseOnline(product);
-  const maxQty = purchasable && product.stockQuantity != null ? product.stockQuantity : undefined;
 
   return (
     <div className="mt-6 flex flex-col gap-4">
@@ -35,11 +34,9 @@ export function ProductActions({ product, locale = "es" }: ProductActionsProps) 
               <input
                 type="number"
                 min={1}
-                max={maxQty}
                 value={quantity}
                 onChange={(e) => {
-                  const n = Math.max(1, parseInt(e.target.value) || 1);
-                  setQuantity(maxQty ? Math.min(n, maxQty) : n);
+                  setQuantity(Math.max(1, parseInt(e.target.value) || 1));
                 }}
                 className="w-20 min-h-[48px] rounded-xl border border-gray-300 px-3 text-center"
               />

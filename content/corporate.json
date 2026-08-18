@@ -22,8 +22,8 @@
     "title": "¿Quiénes somos?",
     "paragraphs": [
       "GAUTEX MÉDICA, S.L., nace en el año 2002. Dedicada a la distribución, comercialización y fabricación de productos sanitarios para los sectores farmacéutico y sanitario, cuenta con una presencia importante en el mercado europeo.",
-      "La compañía cumple con todas las normas internacionales de calidad, siendo certificada y auditada por el Organismo notificador nº 0120 SGS, obteniendo las certificaciones ISO 13485:2013 e ISO 9001:2008.",
-      "Estamos trabajando para disponer del Certificado CE de acuerdo con la Directiva 93/42/CEE, emitido por el mismo Organismo Notificador nº 0120 SGS.",
+      "La compañía cumple con todas las normas internacionales de calidad, siendo certificada y auditada por el Organismo notificador nº 0120 SGS, obteniendo las certificaciones ISO 13485:2016 e ISO 9001.",
+      "Comercializamos productos sanitarios con marcado CE conforme al Reglamento (UE) 2017/745 (MDR), con el mismo Organismo Notificador nº 0120 SGS.",
       "La filosofía de nuestra compañía es ofrecer los mejores productos sanitarios y farmacéuticos con las máximas garantías para los pacientes y usuarios, garantizando unos controles de calidad exhaustivos en cada uno de los productos que fabricamos o comercializamos en EUROPA.",
       "GAUTEX MÉDICA, S.L. está compuesta por un equipo joven, emprendedor y preocupado por ofrecer un servicio profesional a sus clientes."
     ],
@@ -33,7 +33,7 @@
     "stats": [
       { "value": "2002", "label": "Fundación en Barcelona" },
       { "value": "0120", "label": "Organismo notificador SGS" },
-      { "value": "ISO", "label": "13485 · 9001 certificados" },
+      { "value": "ISO", "label": "13485:2016 · 9001" },
       { "value": "EU", "label": "Mercado europeo" }
     ],
     "activities": [
@@ -54,39 +54,39 @@
   "quality": {
     "title": "Calidad y certificaciones",
     "subtitle": "¿Por qué confiar en nosotros?",
-    "intro": "Contamos con certificaciones que acreditan unos estándares de calidad ejemplares en la distribución de equipos médicos. Nuestro sistema de gestión está certificado y auditado por el Organismo Notificador nº 0120 (SGS).",
-    "badges": ["ISO 9001:2008", "ISO 13485:2013", "EN ISO 13485:2012", "ON 0120 · SGS"],
+    "intro": "Contamos con certificaciones que acreditan unos estándares de calidad ejemplares en la distribución de productos sanitarios. Nuestro sistema de gestión está certificado ISO 13485:2016 e ISO 9001, auditado por el Organismo Notificador nº 0120 (SGS), y comercializamos con marcado CE conforme al Reglamento MDR 2017/745.",
+    "badges": ["ISO 13485:2016", "ISO 9001", "CE MDR 2017/745", "ON 0120 · SGS"],
     "certifications": [
       {
-        "name": "ISO 9001:2008",
+        "name": "ISO 13485:2016",
+        "scope": "Productos sanitarios",
+        "description": "Sistema de gestión de la calidad para productos sanitarios: distribución de material de ginecología y de prevención, con trazabilidad de lote y controles en recepción."
+      },
+      {
+        "name": "ISO 9001",
         "scope": "Sistema de gestión de la calidad",
-        "description": "Distribución de equipos médicos: productos de ginecología, gel lubricante íntimo, cubre sondas de ultrasonidos, tests de embarazo y tests de drogas."
+        "description": "Distribución de equipos médicos: productos de ginecología, gel lubricante íntimo, cubre sondas de ultrasonidos y material preventivo."
       },
       {
-        "name": "ISO 13485:2013",
-        "scope": "Productos sanitarios",
-        "description": "Distribución de equipos médicos: productos de ginecología y productos dedicados a la prevención."
-      },
-      {
-        "name": "EN ISO 13485:2012",
-        "scope": "Productos sanitarios",
-        "description": "Sistema de gestión de la calidad para productos sanitarios en el marco de la normativa europea."
+        "name": "CE MDR 2017/745",
+        "scope": "Marcado CE",
+        "description": "Productos sanitarios comercializados conforme al Reglamento (UE) 2017/745 sobre productos sanitarios, en sustitución de la Directiva 93/42/CEE."
       }
     ],
     "notifiedBody": {
       "title": "Organismo Notificador nº 0120 (SGS)",
       "description": "La compañía cumple con las normas internacionales de calidad, siendo certificada y auditada por el Organismo Notificador nº 0120 SGS. Garantizamos controles de calidad exhaustivos en cada producto que fabricamos o comercializamos en Europa."
     },
-    "ceNote": "Estamos trabajando para disponer del Certificado CE de acuerdo con la Directiva 93/42/CEE, emitido por el mismo Organismo Notificador nº 0120 SGS.",
+    "ceNote": "Los productos sanitarios de Gautex se comercializan con marcado CE conforme al Reglamento (UE) 2017/745 (MDR), con el Organismo Notificador nº 0120 SGS.",
     "pillarsTitle": "Compromiso regulatorio",
     "pillars": [
       {
         "title": "Sistema de gestión certificado",
-        "description": "Procesos de distribución de productos sanitarios bajo normas ISO 9001 e ISO 13485, auditados periódicamente."
+        "description": "Procesos de distribución de productos sanitarios bajo ISO 13485:2016 e ISO 9001, auditados periódicamente."
       },
       {
         "title": "Normativa europea",
-        "description": "Distribución conforme al marco regulatorio de productos sanitarios e IVD aplicable en la Unión Europea."
+        "description": "Distribución conforme al Reglamento (UE) 2017/745 (MDR) y al resto del marco regulatorio de productos sanitarios e IVD aplicable en la Unión Europea."
       },
       {
         "title": "Trazabilidad y control",

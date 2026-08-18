@@ -7,8 +7,8 @@
   },
   "viva-condoms": {
     "name": "Viva Condoms (rectangular foil)",
-    "shortDescription": "Natural rectangular condom, smooth and lubricated. Box of 144 units.",
-    "description": "100% natural rubber latex male condom, smooth, symmetrical, transparent, lubricated, with transparent reservoir and individually wrapped.",
+    "shortDescription": "Natural latex, smooth and lubricated, rectangular foil. Box of 144 units.",
+    "description": "Natural latex male condom, smooth and lubricated, with reservoir and individual rectangular foil wrap. 144-unit box for pharmacy, professional distribution and prevention programmes. CE marked under MDR 2017/745.",
     "priceLabel": "€18.20"
   },
   "viva-condoms-xl": {
@@ -18,9 +18,9 @@
     "priceLabel": "€21.60"
   },
   "viva-condoms-extra-fuerte": {
-    "name": "Viva Condoms Extra Strong",
-    "shortDescription": "VIVA CONDOMS® extra strong condom. Box of 144 units.",
-    "description": "Natural latex condom with increased thickness for greater strength, lubricated with reservoir.",
+    "name": "Viva Condoms Strong",
+    "shortDescription": "Viva Strong for greater resistance. Box of 144 units.",
+    "description": "Viva Strong natural latex condom, lubricated with reservoir and increased thickness where more resistance is required. 144-unit box for professional distribution and prevention programmes.",
     "priceLabel": "€21.20"
   },
   "viva-condoms-manzana": {
@@ -37,8 +37,8 @@
   },
   "viva-condoms-fresa": {
     "name": "Viva Condoms Strawberry Flavour",
-    "shortDescription": "Flavoured and coloured strawberry condom. Box of 144 units.",
-    "description": "Natural latex lubricated condom with strawberry flavour and colour. Individually wrapped.",
+    "shortDescription": "Viva strawberry flavour and colour. Box of 144 units.",
+    "description": "Natural latex lubricated condom with strawberry flavour and colour, reservoir and individual wrap. 144-unit box for retail, distribution and campaigns. CE marked under MDR 2017/745.",
     "priceLabel": "€20.30"
   },
   "sexydam": {

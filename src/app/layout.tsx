@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Gautex Medica",
   },
   description:
-    "Distribución y fabricación de productos sanitarios certificados CE. Preservativos, geles, tests COVID-19 y campañas personalizadas.",
+    "Distribución y fabricación de productos sanitarios con marcado CE MDR 2017/745. Preservativos, geles, tests COVID-19 y campañas personalizadas.",
   icons: {
     icon: "/images/logo/gautex.webp",
     apple: "/images/logo/gautex.webp",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Gautex Medica - Repartiendo salud",
-    description: "Productos sanitarios certificados para farmacia y sector hospitalario.",
+    description: "Productos sanitarios con marcado CE MDR 2017/745 para farmacia y sector hospitalario.",
     locale: "es_ES",
     type: "website",
     images: [

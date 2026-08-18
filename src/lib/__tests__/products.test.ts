@@ -67,4 +67,12 @@ describe("products", () => {
       expect(canPurchaseOnline(quoteOnly)).toBe(false);
     }
   });
+
+  it("allows online purchase for priced products regardless of warehouse stock", () => {
+    const priced = products.find((p) => p.price !== null && p.price > 0 && p.webVisible !== false);
+    expect(priced).toBeTruthy();
+    if (priced) {
+      expect(canPurchaseOnline({ ...priced, stockQuantity: 0 })).toBe(true);
+    }
+  });
 });

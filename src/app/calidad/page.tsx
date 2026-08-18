@@ -5,7 +5,7 @@ import { getUi } from "@/lib/locale";
 export const metadata = {
   title: "Calidad y certificaciones",
   description:
-    "Certificaciones ISO 13485, ISO 9001 y auditorías del Organismo Notificador 0120 (SGS) - Gautex Medica.",
+    "Certificaciones ISO 13485:2016, ISO 9001 y marcado CE MDR 2017/745 - Gautex Medica.",
 };
 
 export default function CalidadPage() {

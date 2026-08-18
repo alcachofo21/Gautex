@@ -3,7 +3,7 @@ import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
   title: "Tienda online",
-  description: "Catálogo completo de productos sanitarios Gautex Medica: preventivo, ginecología y tests COVID-19.",
+  description: "Catálogo Gautex Medica: preservativos de látex natural en caja de 144, geles y ginecología. ISO 13485:2016, ISO 9001 y CE MDR 2017/745.",
   path: "/productos",
   locale: "es",
 });

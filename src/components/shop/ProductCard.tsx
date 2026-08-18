@@ -82,7 +82,7 @@ export function ProductCard({ product, locale = "es", priority = false }: Produc
               <span className="hidden sm:inline">{ui.product.addToCart}</span>
             </Button>
           ) : (
-            <span className="text-xs font-medium text-text-muted">{p.unavailable}</span>
+            <span className="text-xs font-medium text-text-muted">{p.quoteOnly}</span>
           )}
         </div>
       </div>

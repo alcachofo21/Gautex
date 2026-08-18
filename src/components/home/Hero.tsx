@@ -18,7 +18,6 @@ const copy = {
     desc: "Distribución, comercialización y fabricación de productos sanitarios para farmacia y sector hospitalario en toda Europa.",
     shop: "Ver tienda",
     campaign: "Personalizar campaña",
-    since: "Desde 2002",
     labels: ["Preservativos Matrix", "Preservativos Viva", "Max Gel", "Campañas"],
   },
   en: {
@@ -29,7 +28,6 @@ const copy = {
     desc: "Distribution, marketing and manufacturing of medical products for pharmacy and healthcare across Europe.",
     shop: "View shop",
     campaign: "Customise campaign",
-    since: "Since 2002",
     labels: ["Matrix Condoms", "Viva Condoms", "Max Gel", "Campaigns"],
   },
 };
@@ -96,9 +94,9 @@ export function Hero({ locale = "es" }: HeroProps) {
         <div className="grid items-center gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 xl:gap-10">
           <div className="max-w-xl lg:max-w-none">
             <div className="mb-3 flex flex-wrap gap-1.5">
-              <Badge className="bg-white/20 px-2.5 py-0.5 text-xs text-white backdrop-blur">CE 0120 SGS</Badge>
-              <Badge className="bg-accent/90 px-2.5 py-0.5 text-xs text-white">ISO 13485</Badge>
-              <Badge className="bg-white/20 px-2.5 py-0.5 text-xs text-white backdrop-blur">{t.since}</Badge>
+              <Badge className="bg-white/20 px-2.5 py-0.5 text-xs text-white backdrop-blur">CE MDR 2017/745</Badge>
+              <Badge className="bg-accent/90 px-2.5 py-0.5 text-xs text-white">ISO 13485:2016</Badge>
+              <Badge className="bg-white/20 px-2.5 py-0.5 text-xs text-white backdrop-blur">ISO 9001</Badge>
             </div>
 
             <h1 className="text-fluid-hero font-display font-bold text-white">

@@ -161,7 +161,7 @@
   },
   "trust": {
     "title": "Certified trust",
-    "badges": ["ISO 13485:2013", "ISO 9001:2008", "CE 0120 SGS", "Since 2002", "Barcelona"]
+    "badges": ["ISO 13485:2016", "ISO 9001", "CE MDR 2017/745", "Since 2002", "Barcelona"]
   },
   "partners": {
     "viewAll": "View all partners →"
@@ -173,7 +173,7 @@
     "valuesTitle": "Our values",
     "activitiesTitle": "Scope of activity",
     "qualityTitle": "Certified quality",
-    "qualityDesc": "Management system audited by Notified Body No. 0120 (SGS) with ISO 13485 and ISO 9001 certifications.",
+    "qualityDesc": "ISO 13485:2016 and ISO 9001 management system, audited by Notified Body No. 0120 (SGS), with CE marking under MDR 2017/745.",
     "qualityCta": "View certifications",
     "contactCta": "Contact us",
     "productsTitle": "Our product lines",
@@ -245,7 +245,8 @@
   },
   "shopPage": {
     "title": "Our products",
-    "subtitle": "Full catalogue of CE-certified medical products. Filter by category or browse everything.",
+    "subtitle": "Prevention and gynaecology supplies for pharmacy, hospital and professional distribution.",
+    "description": "The Gautex catalogue covers regular supply of medical devices for retail, hospital and public-health programmes. Natural latex condoms come in 144-unit boxes: smooth, lubricated and with a reservoir, in a format built for high turnover and professional use. The range also includes gels, barriers and probe covers. Marketed under ISO 13485:2016, ISO 9001 and CE marking in accordance with Regulation (EU) 2017/745.",
     "filterAll": "All",
     "results": "{count} products",
     "categoryFilters": {
@@ -363,7 +364,7 @@
     "guideCta": "Go to campaign configurator",
     "datasheetsTitle": "Product datasheets",
     "certsTitle": "Quality certifications",
-    "certsDesc": "Gautex Medica holds ISO 9001 and ISO 13485 certified management systems, audited by Notified Body No. 0120 (SGS).",
+    "certsDesc": "Gautex Medica holds ISO 13485:2016 and ISO 9001 certified management systems, audited by Notified Body No. 0120 (SGS), with CE marking under MDR 2017/745.",
     "certsCta": "View full quality page",
     "categories": [
       { "id": "preventivo", "label": "Prevention" },
@@ -385,7 +386,7 @@
       },
       {
         "q": "Do you have CE certifications?",
-        "a": "Yes. We work with notified body 0120 SGS and ISO 13485 and ISO 9001 certifications."
+        "a": "Yes. We market with CE marking under MDR 2017/745, notified body 0120 SGS, plus ISO 13485:2016 and ISO 9001."
       },
       {
         "q": "Do you ship across Spain?",

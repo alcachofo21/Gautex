@@ -1,5 +1,4 @@
 import { products } from "@/lib/products";
-import { isInStock, maxOrderQuantity } from "@/lib/inventory";
 import type { CartItem } from "@/types";
 import type { CartPricing, EnabledPaymentMethod, PricedCartLine } from "./types";
 
@@ -55,29 +54,19 @@ export function hasInstantCheckout(): boolean {
 
 export function priceCart(items: CartItem[]): CartPricing {
   const unpublishable: string[] = [];
-  const outOfStock: string[] = [];
   const lines: PricedCartLine[] = [];
 
   for (const item of items) {
     const product = products.find((p) => p.id === item.productId);
-    if (!product?.price) {
+    if (!product?.price || product.webVisible === false) {
       unpublishable.push(item.name);
-      continue;
-    }
-    if (!isInStock(product)) {
-      outOfStock.push(item.name);
-      continue;
-    }
-    const max = maxOrderQuantity(product);
-    if (max !== null && item.quantity > max) {
-      outOfStock.push(item.name);
       continue;
     }
     lines.push({
       item,
       productId: item.productId,
       name: item.name,
-      quantity: item.quantity,
+      quantity: Math.max(1, item.quantity),
       unitAmountCents: Math.round(product.price * 100),
       currency: "eur",
     });
@@ -87,7 +76,7 @@ export function priceCart(items: CartItem[]): CartPricing {
 
   return {
     payable: lines.length === items.length && items.length > 0 && totalCents > 0,
-    unpublishable: [...unpublishable, ...outOfStock],
+    unpublishable,
     lines,
     totalCents,
     currency: "eur",

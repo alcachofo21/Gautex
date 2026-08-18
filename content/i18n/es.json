@@ -161,7 +161,7 @@
   },
   "trust": {
     "title": "Confianza certificada",
-    "badges": ["ISO 13485:2013", "ISO 9001:2008", "CE 0120 SGS", "Desde 2002", "Barcelona"]
+    "badges": ["ISO 13485:2016", "ISO 9001", "CE MDR 2017/745", "Desde 2002", "Barcelona"]
   },
   "partners": {
     "viewAll": "Ver todos los colaboradores →"
@@ -173,7 +173,7 @@
     "valuesTitle": "Nuestros valores",
     "activitiesTitle": "Ámbito de actividad",
     "qualityTitle": "Calidad certificada",
-    "qualityDesc": "Sistema de gestión auditado por el Organismo Notificador nº 0120 (SGS) con certificaciones ISO 13485 e ISO 9001.",
+    "qualityDesc": "Sistema de gestión ISO 13485:2016 e ISO 9001, auditado por el Organismo Notificador nº 0120 (SGS), con marcado CE conforme al Reglamento MDR 2017/745.",
     "qualityCta": "Ver certificaciones",
     "contactCta": "Contactar con nosotros",
     "productsTitle": "Nuestras líneas de producto",
@@ -245,7 +245,8 @@
   },
   "shopPage": {
     "title": "Nuestros productos",
-    "subtitle": "Catálogo completo de productos sanitarios certificados. Filtra por categoría o explora todo el catálogo.",
+    "subtitle": "Material preventivo y de ginecología para farmacia, hospital y distribución profesional.",
+    "description": "El catálogo Gautex cubre el suministro regular de productos sanitarios para mostrador, hospital y campañas de salud pública. Los preservativos de látex natural se presentan en caja de 144 unidades: lisos, lubricados y con depósito, en un formato pensado para rotación alta y uso profesional. Completamos la línea con geles, barreras y cubresondas. Comercialización bajo ISO 13485:2016, ISO 9001 y marcado CE conforme al Reglamento (UE) 2017/745.",
     "filterAll": "Todos",
     "results": "{count} productos",
     "categoryFilters": {
@@ -363,7 +364,7 @@
     "guideCta": "Ir al configurador de campañas",
     "datasheetsTitle": "Fichas técnicas de producto",
     "certsTitle": "Certificaciones de calidad",
-    "certsDesc": "Gautex Medica cuenta con sistema de gestión certificado ISO 9001 e ISO 13485, auditado por el Organismo Notificador nº 0120 (SGS).",
+    "certsDesc": "Gautex Medica cuenta con sistema de gestión certificado ISO 13485:2016 e ISO 9001, auditado por el Organismo Notificador nº 0120 (SGS), y marcado CE conforme al Reglamento MDR 2017/745.",
     "certsCta": "Ver página de calidad completa",
     "categories": [
       { "id": "preventivo", "label": "Material preventivo" },
@@ -385,7 +386,7 @@
       },
       {
         "q": "¿Tenéis certificaciones CE?",
-        "a": "Sí. Trabajamos con el organismo notificador 0120 SGS y certificaciones ISO 13485 e ISO 9001."
+        "a": "Sí. Comercializamos con marcado CE conforme al Reglamento MDR 2017/745, organismo notificador 0120 SGS, e ISO 13485:2016 e ISO 9001."
       },
       {
         "q": "¿Hacéis envíos a toda España?",

@@ -7,10 +7,8 @@ describe("clampQuantity", () => {
     expect(clampQuantity("matrix-condoms", -5)).toBe(1);
   });
 
-  it("clamps to max stock for known product", () => {
-    const qty = clampQuantity("matrix-condoms", 999999);
-    expect(qty).toBeGreaterThanOrEqual(1);
-    expect(qty).toBeLessThan(999999);
+  it("does not clamp to warehouse stock", () => {
+    expect(clampQuantity("matrix-condoms", 999999)).toBe(999999);
   });
 
   it("handles unknown product", () => {

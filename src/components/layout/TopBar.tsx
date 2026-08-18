@@ -29,8 +29,8 @@ export function TopBar() {
           </span>
         </div>
         <div className="flex items-center gap-4">
-          <Badge className="bg-white/20 text-white">CE 0120</Badge>
-          <Badge className="bg-white/20 text-white">ISO 13485</Badge>
+          <Badge className="bg-white/20 text-white">CE MDR 2017/745</Badge>
+          <Badge className="bg-white/20 text-white">ISO 13485:2016</Badge>
         </div>
       </div>
     </div>

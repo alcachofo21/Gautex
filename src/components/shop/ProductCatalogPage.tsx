@@ -31,7 +31,8 @@ export function ProductCatalogPage({ locale, categoryFilter }: ProductCatalogPag
     <div className="py-12 sm:py-16">
       <div className="container-page">
         <h1 className="text-fluid-title font-display font-bold">{shop.title}</h1>
-        <p className="mt-4 max-w-2xl text-text-muted">{shop.subtitle}</p>
+        <p className="mt-4 max-w-3xl text-lg text-text-muted">{shop.subtitle}</p>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-muted">{shop.description}</p>
 
         <ProductCategoryFilters
           categories={categoryList}

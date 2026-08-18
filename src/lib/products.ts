@@ -6,7 +6,7 @@ import partnersData from "../../content/partners.json";
 import testimonialsData from "../../content/testimonials.json";
 import productsEnData from "../../content/products-en.json";
 import type { Product, Category } from "@/types";
-import { applyInventory, enrichProducts, getShopProducts, isInStock, maxOrderQuantity } from "./inventory";
+import { applyInventory, enrichProducts, getShopProducts } from "./inventory";
 
 export { applyInventory, enrichProducts, getShopProducts, isInStock, maxOrderQuantity, getInventoryUpdatedAt } from "./inventory";
 
@@ -71,5 +71,5 @@ export function localizeProducts(list: Product[], locale: "es" | "en"): Product[
 }
 
 export function canPurchaseOnline(product: Product): boolean {
-  return isInStock(product) && product.price !== null && product.price > 0;
+  return product.price !== null && product.price > 0;
 }
