@@ -12,7 +12,8 @@ export function CartHydration() {
       if (!cancelled) useCart.setState({ hasHydrated: true });
     };
 
-    void useCart.persist.rehydrate().then(markHydrated).catch(markHydrated);
+    const result = useCart.persist.rehydrate();
+    void Promise.resolve(result).then(markHydrated).catch(markHydrated);
 
     const timeout = window.setTimeout(markHydrated, 500);
 
