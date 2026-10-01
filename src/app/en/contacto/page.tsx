@@ -1,4 +1,5 @@
 import { ContactForm } from "@/app/contacto/ContactForm";
+import { ContactMap } from "@/components/contact/ContactMap";
 import { FaqSection } from "@/components/faq/FaqSection";
 import { getCorporate } from "@/lib/locale";
 import { Phone, Mail, MapPin, Clock, Printer } from "lucide-react";
@@ -10,7 +11,6 @@ export const metadata = {
 
 export default function EnContactoPage() {
   const corporate = getCorporate("en");
-  const mapQuery = encodeURIComponent(corporate.company.mapQuery);
 
   return (
     <div className="py-12 sm:py-16">
@@ -22,15 +22,11 @@ export default function EnContactoPage() {
         <div className="mt-12 grid gap-12 lg:grid-cols-2">
           <ContactForm locale="en" />
           <div className="space-y-6">
-            <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
-              <iframe
-                title="Gautex Medica location"
-                src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-                className="h-56 w-full border-0 sm:h-64"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+            <ContactMap
+              mapQuery={corporate.company.mapQuery}
+              title="Gautex Medica location"
+              openInMapsLabel="Open in Google Maps"
+            />
             <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
               <h2 className="font-display text-lg font-bold">Contact details</h2>
               <ul className="mt-6 space-y-4">

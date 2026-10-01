@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useCart } from "@/lib/cart";
+import { useCartReady } from "@/lib/use-cart-ready";
 import { Button } from "@/components/ui/Button";
 import { getUi, localizedPath, type Locale } from "@/lib/locale";
 import { CartItemThumb } from "@/components/shop/CartItemThumb";
@@ -15,6 +16,15 @@ export function CartPageContent({ locale = "es" }: CartPageContentProps) {
   const ui = getUi(locale);
   const c = ui.cart;
   const { items, updateQuantity, removeItem, clearCart } = useCart();
+  const cartReady = useCartReady();
+
+  if (!cartReady) {
+    return (
+      <div className="container-page py-20 text-center">
+        <p className="text-text-muted">{ui.checkout.loading}</p>
+      </div>
+    );
+  }
 
   if (items.length === 0) {
     return (

@@ -9,7 +9,7 @@ function buildCsp(): string {
     "img-src 'self' data: blob: https://res.cloudinary.com https://*.cloudinary.com",
     "font-src 'self' data:",
     "connect-src 'self' https://www.google-analytics.com https://plausible.io https://api.stripe.com https://api-m.paypal.com https://api-m.sandbox.paypal.com",
-    "frame-src https://js.stripe.com https://www.paypal.com https://www.sandbox.paypal.com",
+    "frame-src https://js.stripe.com https://www.paypal.com https://www.sandbox.paypal.com https://www.google.com https://maps.google.com",
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",

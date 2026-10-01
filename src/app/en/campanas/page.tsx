@@ -1,4 +1,4 @@
-import { CampaignConfigurator } from "@/components/campaigns/CampaignConfigurator";
+import { CampaignFormatsShowcase } from "@/components/campaigns/CampaignFormatsShowcase";
 import { CampaignGallery } from "@/components/campaigns/CampaignGallery";
 import { CampaignPageHero } from "@/components/campaigns/CampaignPageHero";
 import { CampaignSuccessCases } from "@/components/campaigns/CampaignSuccessCases";
@@ -6,7 +6,8 @@ import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
   title: "Custom campaigns",
-  description: "Customise condoms, cases, PVC sleeves and flow packs for prevention and public health campaigns.",
+  description:
+    "Campaign formats: cases, PVC wallets, custom condoms and flow packs for prevention and public health.",
   path: "/campanas",
   locale: "en",
 });
@@ -16,12 +17,7 @@ export default function EnCampanasPage() {
     <div className="py-12 sm:py-16">
       <div className="container-page">
         <CampaignPageHero locale="en" />
-
-        <section id="configurador" className="mt-12 scroll-mt-28">
-          <h2 className="mb-6 font-display text-2xl font-bold">Configure your campaign</h2>
-          <CampaignConfigurator locale="en" />
-        </section>
-
+        <CampaignFormatsShowcase locale="en" />
         <CampaignSuccessCases locale="en" />
         <CampaignGallery locale="en" />
       </div>

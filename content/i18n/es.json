@@ -328,15 +328,20 @@
     "processTitle": "Cómo trabajamos contigo"
   },
   "campaignsPage": {
-    "badge": "Personalización",
-    "title": "Campañas con tu marca",
-    "desc": "Diseña estuches, fundas PVC y packaging promocional con tu logo. Presupuesto sin compromiso en 24–48h.",
-    "cta": "Configurar campaña",
-    "stickyCta": "Configurar mi campaña",
+    "badge": "Campañas B2B",
+    "title": "Formatos de campaña",
+    "desc": "Estuches, fundas PVC, preservativos personalizados y flow packs para entidades de salud y prevención. Solicita presupuesto sin compromiso en 24–48h.",
+    "cta": "Ver formatos",
+    "stickyCta": "Ver formatos",
+    "formatsTitle": "Nuestros formatos",
+    "formatsDesc": "Elige el soporte que mejor encaje con tu campaña. Te ayudamos con cantidades, plazos e impresión a medida.",
+    "quoteTitle": "¿Quieres personalizar una campaña?",
+    "quoteDesc": "Cuéntanos el formato, la cantidad orientativa y tu entidad. Te enviamos presupuesto sin compromiso.",
+    "quoteCta": "Solicitar presupuesto",
     "steps": [
-      { "title": "Elige formato", "desc": "Estuche, funda, flow pack o foil personalizado." },
-      { "title": "Sube tu logo", "desc": "PNG, JPG o PDF. Previsualización del diseño." },
-      { "title": "Recibe presupuesto", "desc": "Nuestro equipo revisa y te contacta." }
+      { "title": "Elige formato", "desc": "Estuche, funda, flow pack o preservativo personalizado." },
+      { "title": "Cuéntanos tu necesidad", "desc": "Cantidad, entidad y mensaje de campaña." },
+      { "title": "Recibe presupuesto", "desc": "Nuestro equipo te contacta en 24–48h." }
     ]
   },
   "campaignCases": {
@@ -360,8 +365,8 @@
     "title": "Recursos y documentación",
     "subtitle": "Fichas técnicas, certificaciones y guías para profesionales del sector sanitario.",
     "guideTitle": "Cómo pedir una campaña personalizada",
-    "guideDesc": "Elige formato, sube tu diseño y solicita presupuesto en pocos pasos. Nuestro equipo revisará tu artwork y te responderá con plazos y condiciones.",
-    "guideCta": "Ir al configurador de campañas",
+    "guideDesc": "Consulta los formatos disponibles (estuche, funda PVC, flow pack o preservativo personalizado) y solicita presupuesto desde contacto. Te responderemos con plazos y condiciones.",
+    "guideCta": "Ver formatos de campaña",
     "datasheetsTitle": "Fichas técnicas de producto",
     "certsTitle": "Certificaciones de calidad",
     "certsDesc": "Gautex Medica cuenta con sistema de gestión certificado ISO 13485:2016 e ISO 9001, auditado por el Organismo Notificador nº 0120 (SGS), y marcado CE conforme al Reglamento MDR 2017/745.",

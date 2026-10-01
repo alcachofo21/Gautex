@@ -67,7 +67,7 @@ export const checkoutSchema = z.object({
     .min(1)
     .max(50),
   locale: z.enum(["es", "en"]).optional(),
-  provider: z.enum(["paypal", "stripe"]).default("paypal"),
+  provider: z.enum(["paypal", "stripe"]).default("stripe"),
   customerEmail: z.string().email().max(200).optional(),
 });
 

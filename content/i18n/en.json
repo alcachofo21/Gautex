@@ -328,15 +328,20 @@
     "processTitle": "How we work with you"
   },
   "campaignsPage": {
-    "badge": "Custom branding",
-    "title": "Campaigns with your brand",
-    "desc": "Design cases, PVC wallets and promotional packaging with your logo. No-obligation quote within 24–48 business hours.",
-    "cta": "Configure campaign",
-    "stickyCta": "Configure my campaign",
+    "badge": "B2B campaigns",
+    "title": "Campaign formats",
+    "desc": "Cases, PVC wallets, custom condoms and flow packs for healthcare and prevention organisations. No-obligation quote within 24–48 business hours.",
+    "cta": "View formats",
+    "stickyCta": "View formats",
+    "formatsTitle": "Our formats",
+    "formatsDesc": "Choose the support that best fits your campaign. We help with quantities, lead times and custom print.",
+    "quoteTitle": "Want a custom campaign?",
+    "quoteDesc": "Tell us the format, approximate quantity and your organisation. We will send a no-obligation quote.",
+    "quoteCta": "Request a quote",
     "steps": [
-      { "title": "Choose format", "desc": "Case, wallet, flow pack or custom foil." },
-      { "title": "Upload your logo", "desc": "PNG, JPG or PDF. Design preview included." },
-      { "title": "Receive quote", "desc": "Our team reviews and contacts you." }
+      { "title": "Choose format", "desc": "Case, wallet, flow pack or custom condom." },
+      { "title": "Tell us your needs", "desc": "Quantity, organisation and campaign message." },
+      { "title": "Receive quote", "desc": "Our team contacts you within 24–48h." }
     ]
   },
   "campaignCases": {
@@ -360,8 +365,8 @@
     "title": "Resources and documentation",
     "subtitle": "Datasheets, certifications and guides for healthcare professionals.",
     "guideTitle": "How to request a custom campaign",
-    "guideDesc": "Choose a format, upload your design and request a quote in a few steps. Our team will review your artwork and reply with lead times and terms.",
-    "guideCta": "Go to campaign configurator",
+    "guideDesc": "Browse the available formats (case, PVC wallet, flow pack or custom condom) and request a quote from the contact page. We will reply with lead times and terms.",
+    "guideCta": "View campaign formats",
     "datasheetsTitle": "Product datasheets",
     "certsTitle": "Quality certifications",
     "certsDesc": "Gautex Medica holds ISO 13485:2016 and ISO 9001 certified management systems, audited by Notified Body No. 0120 (SGS), with CE marking under MDR 2017/745.",

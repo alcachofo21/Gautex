@@ -75,7 +75,7 @@ export function CampaignSuccessCases({ locale = "es", compact = false }: Campaig
           }`}
         >
           <Link
-            href="#configurador"
+            href="#formatos"
             className="flex min-h-[48px] w-full items-center justify-center rounded-xl bg-accent font-semibold text-white"
           >
             {getUi(locale).campaignsPage.stickyCta}

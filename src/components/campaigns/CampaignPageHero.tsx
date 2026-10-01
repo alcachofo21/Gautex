@@ -32,7 +32,7 @@ export function CampaignPageHero({ locale = "es" }: CampaignPageHeroProps) {
           <h1 className="text-fluid-title font-display font-bold">{ui.title}</h1>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-white/80">{ui.desc}</p>
           <Button
-            href="#configurador"
+            href="#formatos"
             size="lg"
             className="mt-6 bg-accent hover:bg-accent-hover"
           >

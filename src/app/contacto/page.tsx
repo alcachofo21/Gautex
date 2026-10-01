@@ -1,4 +1,5 @@
 import { ContactForm } from "./ContactForm";
+import { ContactMap } from "@/components/contact/ContactMap";
 import { FaqSection } from "@/components/faq/FaqSection";
 import { corporate } from "@/lib/products";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
@@ -7,8 +8,6 @@ export const metadata = {
   title: "Contacto",
   description: "Contacta con Gautex Medica. Formulario, teléfono y horario de atención.",
 };
-
-const mapQuery = encodeURIComponent(corporate.company.mapQuery);
 
 export default function ContactoPage() {
   return (
@@ -23,15 +22,11 @@ export default function ContactoPage() {
           <ContactForm />
 
           <div className="space-y-6">
-            <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
-              <iframe
-                title="Ubicación Gautex Medica"
-                src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-                className="h-56 w-full border-0 sm:h-64"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+            <ContactMap
+              mapQuery={corporate.company.mapQuery}
+              title="Ubicación Gautex Medica"
+              openInMapsLabel="Abrir en Google Maps"
+            />
 
             <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
               <h2 className="font-display text-lg font-bold">Datos de contacto</h2>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useCart } from "@/lib/cart";
+import { useCartReady } from "@/lib/use-cart-ready";
 import { Button } from "@/components/ui/Button";
 import { InstantPaymentPanel } from "@/components/shop/InstantPaymentPanel";
 import { getUi, localizedPath, type Locale } from "@/lib/locale";
@@ -27,7 +28,8 @@ export function CheckoutPageContent({
   const ui = getUi(locale);
   const t = ui.checkout;
   const p = ui.payments;
-  const { items, clearCart, hasHydrated } = useCart();
+  const { items, clearCart } = useCart();
+  const cartReady = useCartReady();
   const [methods, setMethods] = useState<EnabledPaymentMethod[]>([]);
   const [provider, setProvider] = useState<PaymentProvider | null>(null);
   const [payable, setPayable] = useState(false);
@@ -139,7 +141,7 @@ export function CheckoutPageContent({
     }
   };
 
-  if (!hasHydrated) {
+  if (!cartReady) {
     return (
       <div className="container-page py-20 text-center">
         <p className="text-text-muted">{t.loading}</p>
