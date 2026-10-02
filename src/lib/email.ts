@@ -153,7 +153,7 @@ function hasResendConfig(): boolean {
   return Boolean(process.env.RESEND_API_KEY);
 }
 
-/** resend = API HTTPS (Render free). smtp = Arsys (requiere Render Starter). auto = Resend si hay clave, si no SMTP. */
+/** resend = API HTTPS (Render free). smtp = Arsys (requiere puerto SMTP abierto). auto = SMTP si hay, si no Resend. */
 export function resolveEmailTransport(): "resend" | "smtp" | null {
   const mode = (process.env.EMAIL_TRANSPORT || "auto").toLowerCase();
 
@@ -164,30 +164,39 @@ export function resolveEmailTransport(): "resend" | "smtp" | null {
     return hasSmtpConfig() ? "smtp" : null;
   }
 
-  if (hasResendConfig()) return "resend";
+  // Prefer SMTP when configured: company domain can reach any customer inbox.
   if (hasSmtpConfig()) return "smtp";
+  if (hasResendConfig()) return "resend";
   return null;
 }
 
 export async function sendEmail(payload: EmailPayload): Promise<{ ok: boolean; error?: string }> {
   const contactEmail = process.env.CONTACT_EMAIL || "info@gautex.com";
   const recipients = payload.to ?? contactEmail;
-  const transport = resolveEmailTransport();
-  const fromEmail = getFromAddress(transport);
+  const preferred = resolveEmailTransport();
 
-  console.log("[GAUTEX EMAIL]", payload.subject, payload.text);
+  console.log("[GAUTEX EMAIL]", preferred ?? "none", payload.subject, payload.text);
 
-  if (transport === "resend") {
-    return sendViaResend(payload, fromEmail, recipients);
-  }
+  const attempts: Array<"smtp" | "resend"> = [];
+  if (preferred) attempts.push(preferred);
+  if (preferred !== "smtp" && hasSmtpConfig()) attempts.push("smtp");
+  if (preferred !== "resend" && hasResendConfig()) attempts.push("resend");
 
-  if (transport === "smtp") {
-    return sendViaSmtp(payload, fromEmail, recipients);
+  let lastError = "Email no configurado";
+  for (const transport of attempts) {
+    const fromEmail = getFromAddress(transport);
+    const result =
+      transport === "smtp"
+        ? await sendViaSmtp(payload, fromEmail, recipients)
+        : await sendViaResend(payload, fromEmail, recipients);
+    if (result.ok) return result;
+    lastError = result.error || lastError;
+    console.warn(`[GAUTEX EMAIL] ${transport} failed:`, lastError);
   }
 
   if (process.env.NODE_ENV === "production") {
-    console.warn("[GAUTEX EMAIL] Sin transporte de email (RESEND_API_KEY o SMTP)");
-    return { ok: false, error: "Email no configurado" };
+    console.warn("[GAUTEX EMAIL] Sin transporte de email usable");
+    return { ok: false, error: lastError };
   }
 
   return { ok: true };

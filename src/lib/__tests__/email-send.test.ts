@@ -57,7 +57,7 @@ describe("sendEmail", () => {
     );
   });
 
-  it("prefers Resend over SMTP in auto mode when both are set", async () => {
+  it("prefers SMTP over Resend in auto mode when both are set", async () => {
     vi.stubEnv("SMTP_HOST", "smtp.serviciodecorreo.es");
     vi.stubEnv("SMTP_USER", "info@gautex.com");
     vi.stubEnv("SMTP_PASS", "secret");
@@ -66,8 +66,24 @@ describe("sendEmail", () => {
 
     await sendEmail({ subject: "Test", html: "<p>Hi</p>", text: "Hi" });
 
+    expect(sendMail).toHaveBeenCalled();
+    expect(globalThis.fetch).not.toHaveBeenCalled();
+  });
+
+  it("falls back to Resend when SMTP fails", async () => {
+    vi.stubEnv("EMAIL_TRANSPORT", "smtp");
+    vi.stubEnv("SMTP_HOST", "smtp.serviciodecorreo.es");
+    vi.stubEnv("SMTP_USER", "info@gautex.com");
+    vi.stubEnv("SMTP_PASS", "secret");
+    vi.stubEnv("RESEND_API_KEY", "re_test_key");
+    vi.stubEnv("RESEND_FROM", "Gautex <onboarding@resend.dev>");
+    sendMail.mockRejectedValueOnce(new Error("SMTP blocked"));
+    globalThis.fetch = vi.fn().mockResolvedValue(new Response("{}", { status: 200 }));
+
+    const result = await sendEmail({ subject: "Test", html: "<p>Hi</p>", text: "Hi" });
+
+    expect(result.ok).toBe(true);
     expect(globalThis.fetch).toHaveBeenCalled();
-    expect(sendMail).not.toHaveBeenCalled();
   });
 
   it("uses SMTP when EMAIL_TRANSPORT=smtp", async () => {
@@ -85,9 +101,12 @@ describe("sendEmail", () => {
   });
 
   it("returns error on SMTP failure", async () => {
+    process.env.NODE_ENV = "production";
+    vi.stubEnv("EMAIL_TRANSPORT", "smtp");
     vi.stubEnv("SMTP_HOST", "smtp.serviciodecorreo.es");
     vi.stubEnv("SMTP_USER", "info@gautex.com");
     vi.stubEnv("SMTP_PASS", "secret");
+    delete process.env.RESEND_API_KEY;
     sendMail.mockRejectedValueOnce(new Error("SMTP auth failed"));
 
     const result = await sendEmail({
@@ -98,6 +117,7 @@ describe("sendEmail", () => {
 
     expect(result.ok).toBe(false);
     expect(result.error).toBe("SMTP auth failed");
+    process.env.NODE_ENV = "test";
   });
 
   it("calls Resend API when only Resend key is set", async () => {
@@ -184,7 +204,12 @@ describe("sendPurchaseEmails", () => {
   });
 
   it("returns error when internal notification fails", async () => {
+    process.env.NODE_ENV = "production";
+    vi.stubEnv("EMAIL_TRANSPORT", "resend");
     vi.stubEnv("RESEND_API_KEY", "re_test");
+    delete process.env.SMTP_HOST;
+    delete process.env.SMTP_USER;
+    delete process.env.SMTP_PASS;
     globalThis.fetch = vi.fn().mockResolvedValue(new Response("fail", { status: 500 }));
 
     const result = await sendPurchaseEmails({
@@ -196,5 +221,6 @@ describe("sendPurchaseEmails", () => {
     });
 
     expect(result.ok).toBe(false);
+    process.env.NODE_ENV = "test";
   });
 });
