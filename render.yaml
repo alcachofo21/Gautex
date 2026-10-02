@@ -12,9 +12,9 @@ services:
       - key: NPM_CONFIG_PRODUCTION
         value: "false"
       - key: NEXT_PUBLIC_SITE_URL
-        value: https://gautex-web.onrender.com
+        value: https://gautex-web-zzbo.onrender.com
       - key: SITE_URL
-        value: https://gautex-web.onrender.com
+        value: https://gautex-web-zzbo.onrender.com
       - key: NEXT_PUBLIC_GA_ID
         value: G-V86Q4399E2
       - key: CONTACT_EMAIL
@@ -22,7 +22,7 @@ services:
       - key: REPLY_TO_EMAIL
         value: info@gautex.com
       - key: EXTRA_ALLOWED_ORIGINS
-        value: https://gautex-web.onrender.com
+        value: https://gautex-web-zzbo.onrender.com
       - key: EMAIL_TRANSPORT
         value: smtp
       - key: RESEND_API_KEY

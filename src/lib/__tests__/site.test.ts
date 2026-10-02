@@ -12,9 +12,15 @@ describe("site", () => {
   });
 
   it("prefers SITE_URL over NEXT_PUBLIC_SITE_URL", () => {
-    process.env.SITE_URL = "https://gautex-web.onrender.com";
+    process.env.SITE_URL = "https://gautex-web-zzbo.onrender.com";
     process.env.NEXT_PUBLIC_SITE_URL = "https://www.gautex.com";
-    expect(getSiteUrl()).toBe("https://gautex-web.onrender.com");
+    expect(getSiteUrl()).toBe("https://gautex-web-zzbo.onrender.com");
+  });
+
+  it("falls back to Render prod host when unset", () => {
+    delete process.env.SITE_URL;
+    delete process.env.NEXT_PUBLIC_SITE_URL;
+    expect(getSiteUrl()).toBe("https://gautex-web-zzbo.onrender.com");
   });
 
   it("builds absolute URL", () => {
