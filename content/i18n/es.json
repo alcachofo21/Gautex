@@ -235,7 +235,7 @@
   },
   "payments": {
     "instantTitle": "Pago online",
-    "instantSubtitle": "Elige tu método de pago y completa la compra de forma segura.",
+    "instantSubtitle": "Elige tu método de pago. En la siguiente pantalla de Stripe indicarás la dirección de envío y los datos de entrega.",
     "chooseMethod": "Elige método de pago",
     "payNow": "Pagar ahora",
     "notPayable": "Hay productos sin precio online en el carrito. Solicita presupuesto B2B o elimina esos artículos.",

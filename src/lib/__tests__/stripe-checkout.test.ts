@@ -81,15 +81,51 @@ describe("fulfillStripeCheckoutSession", () => {
       id: "cs_test",
       payment_status: "paid",
       amount_total: 2090,
-      customer_details: { email: "buyer@test.com", name: "Ana López" },
+      customer_details: {
+        email: "buyer@test.com",
+        name: "Ana López",
+        phone: "+34600111222",
+        address: null,
+      },
+      shipping_details: {
+        name: "Ana López",
+        phone: "+34600111222",
+        address: {
+          line1: "Calle Mallorca 1",
+          line2: "Planta 2",
+          city: "Barcelona",
+          postal_code: "08014",
+          state: "Barcelona",
+          country: "ES",
+        },
+      },
       metadata: { locale: "es", itemSummary: "Producto × 1", totalCents: "2090" },
     });
 
     const result = await fulfillStripeCheckoutSession("cs_test");
 
     expect(result.ok).toBe(true);
-    expect(sendPurchaseEmails).toHaveBeenCalled();
+    expect(sendPurchaseEmails).toHaveBeenCalledWith(
+      expect.objectContaining({
+        shippingAddress: expect.stringContaining("Calle Mallorca 1"),
+        customerPhone: "+34600111222",
+      })
+    );
     expect(mockUpdate).toHaveBeenCalled();
+  });
+
+  it("requests shipping address on checkout session", async () => {
+    const pricing = priceCart([makeCartItem()]);
+    await createStripeCheckoutSession({ pricing, locale: "es" });
+    expect(mockCreate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        shipping_address_collection: expect.objectContaining({
+          allowed_countries: expect.arrayContaining(["ES", "PT", "FR"]),
+        }),
+        billing_address_collection: "required",
+        phone_number_collection: { enabled: true },
+      })
+    );
   });
 
   it("skips duplicate emails", async () => {

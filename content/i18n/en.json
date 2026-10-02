@@ -235,7 +235,7 @@
   },
   "payments": {
     "instantTitle": "Online payment",
-    "instantSubtitle": "Choose your payment method and complete your purchase securely.",
+    "instantSubtitle": "Choose your payment method. On the next Stripe screen you will enter the shipping address and delivery details.",
     "chooseMethod": "Choose payment method",
     "payNow": "Pay now",
     "notPayable": "Some cart items have no online price. Request a B2B quote or remove them.",

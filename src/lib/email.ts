@@ -300,7 +300,9 @@ export type PurchaseEmailDetails = {
   totalCents: number;
   customerEmail?: string;
   customerName?: string;
+  customerPhone?: string;
   itemsSummary?: string;
+  shippingAddress?: string;
 };
 
 function purchaseCopy(locale: "es" | "en") {
@@ -315,6 +317,8 @@ function purchaseCopy(locale: "es" | "en") {
       total: "Total",
       method: "Método de pago",
       products: "Productos",
+      phone: "Teléfono",
+      shipping: "Dirección de envío",
       footer: "Gautex Medica - Repartiendo salud",
       customerFallback: "Cliente",
     },
@@ -328,6 +332,8 @@ function purchaseCopy(locale: "es" | "en") {
       total: "Total",
       method: "Payment method",
       products: "Products",
+      phone: "Phone",
+      shipping: "Shipping address",
       footer: "Gautex Medica - Spreading health",
       customerFallback: "Customer",
     },
@@ -341,6 +347,12 @@ export function purchaseNotificationHtml(details: PurchaseEmailDetails): string 
   const items = details.itemsSummary
     ? `<p><strong>${copy.products}:</strong> ${esc(details.itemsSummary)}</p>`
     : "";
+  const phone = details.customerPhone
+    ? `<p><strong>${copy.phone}:</strong> ${esc(details.customerPhone)}</p>`
+    : "";
+  const shipping = details.shippingAddress
+    ? `<p><strong>${copy.shipping}:</strong><br/>${escapeHtmlWithBreaks(details.shippingAddress)}</p>`
+    : "";
 
   return wrapEmailHtml(
     copy.internalTitle,
@@ -350,8 +362,10 @@ export function purchaseNotificationHtml(details: PurchaseEmailDetails): string 
     <p><strong>${copy.method}:</strong> ${escapeHtml(provider)}</p>
     <p><strong>Email cliente:</strong> ${esc(details.customerEmail)}</p>
     <p><strong>Cliente:</strong> ${customer}</p>
+    ${phone}
     <p><strong>${copy.total}:</strong> ${escapeHtml(formatEur(details.totalCents, details.locale))}</p>
     ${items}
+    ${shipping}
   `,
     "Notificación automática de pedido."
   );
@@ -364,6 +378,9 @@ export function purchaseConfirmationHtml(details: PurchaseEmailDetails): string 
   const items = details.itemsSummary
     ? `<p><strong>${copy.products}:</strong> ${esc(details.itemsSummary)}</p>`
     : "";
+  const shipping = details.shippingAddress
+    ? `<p><strong>${copy.shipping}:</strong><br/>${escapeHtmlWithBreaks(details.shippingAddress)}</p>`
+    : "";
 
   return wrapEmailHtml(
     copy.customerTitle,
@@ -374,6 +391,7 @@ export function purchaseConfirmationHtml(details: PurchaseEmailDetails): string 
     <p><strong>${copy.method}:</strong> ${escapeHtml(provider)}</p>
     <p><strong>${copy.total}:</strong> ${escapeHtml(formatEur(details.totalCents, details.locale))}</p>
     ${items}
+    ${shipping}
   `,
     copy.footer
   );
@@ -391,8 +409,10 @@ export async function sendPurchaseEmails(
       copy.internalTitle,
       `${copy.order}: ${details.orderId}`,
       `Email: ${details.customerEmail || "-"}`,
+      details.customerPhone ? `${copy.phone}: ${details.customerPhone}` : "",
       `${copy.total}: ${formatEur(details.totalCents, details.locale)}`,
       details.itemsSummary ? `${copy.products}: ${details.itemsSummary}` : "",
+      details.shippingAddress ? `${copy.shipping}:\n${details.shippingAddress}` : "",
     ]
       .filter(Boolean)
       .join("\n"),
