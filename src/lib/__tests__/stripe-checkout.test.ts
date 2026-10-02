@@ -85,21 +85,15 @@ describe("fulfillStripeCheckoutSession", () => {
         email: "buyer@test.com",
         name: "Ana López",
         phone: "+34600111222",
-        address: null,
       },
-      shipping_details: {
-        name: "Ana López",
-        phone: "+34600111222",
-        address: {
-          line1: "Calle Mallorca 1",
-          line2: "Planta 2",
-          city: "Barcelona",
-          postal_code: "08014",
-          state: "Barcelona",
-          country: "ES",
-        },
+      metadata: {
+        locale: "es",
+        itemSummary: "Producto × 1",
+        totalCents: "2090",
+        shippingAddress: "Ana López\nCalle Mallorca 1\n08014 Barcelona\nBarcelona\nTel: +34600111222",
+        shippingPhone: "+34600111222",
+        shippingName: "Ana López",
       },
-      metadata: { locale: "es", itemSummary: "Producto × 1", totalCents: "2090" },
     });
 
     const result = await fulfillStripeCheckoutSession("cs_test");
@@ -114,16 +108,30 @@ describe("fulfillStripeCheckoutSession", () => {
     expect(mockUpdate).toHaveBeenCalled();
   });
 
-  it("requests shipping address on checkout session", async () => {
+  it("stores manual shipping address in session metadata", async () => {
     const pricing = priceCart([makeCartItem()]);
-    await createStripeCheckoutSession({ pricing, locale: "es" });
+    await createStripeCheckoutSession({
+      pricing,
+      locale: "es",
+      shipping: {
+        fullName: "Ana López",
+        addressLine: "Calle Mallorca 1",
+        postalCode: "08014",
+        city: "Barcelona",
+        province: "Barcelona",
+        phone: "600111222",
+      },
+    });
     expect(mockCreate).toHaveBeenCalledWith(
       expect.objectContaining({
-        shipping_address_collection: expect.objectContaining({
-          allowed_countries: expect.arrayContaining(["ES", "PT", "FR"]),
+        metadata: expect.objectContaining({
+          shippingAddress: expect.stringContaining("08014 Barcelona"),
         }),
-        billing_address_collection: "required",
-        phone_number_collection: { enabled: true },
+      })
+    );
+    expect(mockCreate).toHaveBeenCalledWith(
+      expect.not.objectContaining({
+        shipping_address_collection: expect.anything(),
       })
     );
   });

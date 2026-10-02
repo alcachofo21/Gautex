@@ -45,12 +45,36 @@ describe("POST /api/checkout", () => {
           items: [makeCartItem()],
           provider: "stripe",
           customerEmail: "buyer@test.com",
+          shipping: {
+            fullName: "Ana López",
+            addressLine: "Calle Mallorca 1",
+            postalCode: "08014",
+            city: "Barcelona",
+            province: "Barcelona",
+          },
         }),
       })
     );
     expect(res.status).toBe(200);
     const data = await res.json();
     expect(data.url).toContain("stripe.com");
+  });
+
+  it("returns 400 when Stripe checkout lacks shipping", async () => {
+    vi.stubEnv("STRIPE_SECRET_KEY", "sk_test");
+    vi.stubEnv("NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY", "pk_test");
+
+    const res = await POST(
+      createApiRequest("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: [makeCartItem()],
+          provider: "stripe",
+        }),
+      })
+    );
+    expect(res.status).toBe(400);
   });
 
   it("returns 400 for invalid cart", async () => {

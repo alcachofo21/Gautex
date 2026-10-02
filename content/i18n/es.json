@@ -230,12 +230,21 @@
       "company": "Empresa",
       "cif": "CIF",
       "sector": "Sector (farmacia, hospital, distribuidor...)",
-      "message": "Mensaje"
+      "message": "Mensaje",
+      "shippingTitle": "Dirección de envío",
+      "shippingDesc": "Indica dónde debemos enviar el pedido.",
+      "fullName": "Nombre y apellidos *",
+      "addressLine": "Dirección *",
+      "postalCode": "C.P. *",
+      "city": "Ciudad *",
+      "province": "Provincia *",
+      "phone": "Teléfono"
     }
   },
   "payments": {
     "instantTitle": "Pago online",
-    "instantSubtitle": "Elige tu método de pago. En la siguiente pantalla de Stripe indicarás la dirección de envío y los datos de entrega.",
+    "instantSubtitle": "Rellena la dirección de envío, elige método de pago y completa la compra de forma segura.",
+    "shippingRequired": "Completa la dirección de envío antes de pagar.",
     "chooseMethod": "Elige método de pago",
     "payNow": "Pagar ahora",
     "notPayable": "Hay productos sin precio online en el carrito. Solicita presupuesto B2B o elimina esos artículos.",

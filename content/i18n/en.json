@@ -230,12 +230,21 @@
       "company": "Company",
       "cif": "VAT ID",
       "sector": "Sector (pharmacy, hospital, distributor...)",
-      "message": "Message"
+      "message": "Message",
+      "shippingTitle": "Shipping address",
+      "shippingDesc": "Tell us where we should deliver the order.",
+      "fullName": "Full name *",
+      "addressLine": "Address *",
+      "postalCode": "Postcode *",
+      "city": "City *",
+      "province": "Province / region *",
+      "phone": "Phone"
     }
   },
   "payments": {
     "instantTitle": "Online payment",
-    "instantSubtitle": "Choose your payment method. On the next Stripe screen you will enter the shipping address and delivery details.",
+    "instantSubtitle": "Enter the shipping address, choose a payment method and complete your purchase securely.",
+    "shippingRequired": "Please complete the shipping address before paying.",
     "chooseMethod": "Choose payment method",
     "payNow": "Pay now",
     "notPayable": "Some cart items have no online price. Request a B2B quote or remove them.",

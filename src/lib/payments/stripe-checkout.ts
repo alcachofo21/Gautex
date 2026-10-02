@@ -5,78 +5,45 @@ import { sendPurchaseEmails } from "@/lib/email";
 import { getStripePaymentMethodTypes } from "./config";
 import type { CartPricing } from "./types";
 
-/** EU + nearby markets Gautex typically ships to. */
-const SHIPPING_COUNTRIES: Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry[] =
-  [
-    "ES",
-    "PT",
-    "FR",
-    "DE",
-    "IT",
-    "BE",
-    "NL",
-    "LU",
-    "AT",
-    "IE",
-    "PL",
-    "CZ",
-    "SK",
-    "HU",
-    "RO",
-    "BG",
-    "HR",
-    "SI",
-    "GR",
-    "SE",
-    "DK",
-    "FI",
-    "EE",
-    "LV",
-    "LT",
-    "MT",
-    "CY",
-    "AD",
-    "CH",
-    "GB",
-  ];
+export type CheckoutShipping = {
+  fullName: string;
+  addressLine: string;
+  postalCode: string;
+  city: string;
+  province: string;
+  phone?: string;
+};
 
 type CreateStripeSessionInput = {
   pricing: CartPricing;
   locale: "es" | "en";
   customerEmail?: string;
+  shipping?: CheckoutShipping;
 };
 
-function formatShippingAddress(
-  shipping: Stripe.Checkout.Session.ShippingDetails | null | undefined,
-  customer: Stripe.Checkout.Session.CustomerDetails | null | undefined
-): string | undefined {
-  const addr = shipping?.address || customer?.address;
-  if (!addr) return undefined;
-
-  const name = shipping?.name || customer?.name || undefined;
-  const phone = shipping?.phone || customer?.phone || undefined;
-  const lines = [
-    name,
-    addr.line1,
-    addr.line2,
-    [addr.postal_code, addr.city].filter(Boolean).join(" "),
-    addr.state,
-    addr.country,
-    phone ? `Tel: ${phone}` : undefined,
-  ].filter((line): line is string => Boolean(line && String(line).trim()));
-
-  return lines.length ? lines.join("\n") : undefined;
+function formatManualShipping(shipping: CheckoutShipping): string {
+  return [
+    shipping.fullName,
+    shipping.addressLine,
+    `${shipping.postalCode} ${shipping.city}`,
+    shipping.province,
+    shipping.phone ? `Tel: ${shipping.phone}` : undefined,
+  ]
+    .filter(Boolean)
+    .join("\n");
 }
 
 export async function createStripeCheckoutSession({
   pricing,
   locale,
   customerEmail,
+  shipping,
 }: CreateStripeSessionInput): Promise<Stripe.Checkout.Session> {
   const stripe = getStripe();
   if (!stripe) throw new Error("Stripe no configurado");
 
   const prefix = locale === "en" ? "/en" : "";
+  const shippingAddress = shipping ? formatManualShipping(shipping) : undefined;
 
   const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = pricing.lines.map((line) => ({
     price_data: {
@@ -98,11 +65,8 @@ export async function createStripeCheckoutSession({
       `${prefix}/checkout?success=true&provider=stripe&session_id={CHECKOUT_SESSION_ID}`
     ),
     cancel_url: absoluteUrl(`${prefix}/carrito`),
-    billing_address_collection: "required",
+    billing_address_collection: "auto",
     phone_number_collection: { enabled: true },
-    shipping_address_collection: {
-      allowed_countries: SHIPPING_COUNTRIES,
-    },
     customer_email: customerEmail || undefined,
     metadata: {
       provider: "stripe",
@@ -110,6 +74,9 @@ export async function createStripeCheckoutSession({
       itemIds: pricing.lines.map((l) => `${l.productId}x${l.quantity}`).join(","),
       itemSummary: pricing.lines.map((l) => `${l.name} × ${l.quantity}`).join(", "),
       totalCents: String(pricing.totalCents),
+      ...(shippingAddress ? { shippingAddress: shippingAddress.slice(0, 450) } : {}),
+      ...(shipping?.phone ? { shippingPhone: shipping.phone.slice(0, 30) } : {}),
+      ...(shipping?.fullName ? { shippingName: shipping.fullName.slice(0, 100) } : {}),
     },
   });
 }
@@ -134,12 +101,11 @@ export async function fulfillStripeCheckoutSession(
   const locale = session.metadata?.locale === "en" ? "en" : "es";
   const totalCents = Number(session.metadata?.totalCents || session.amount_total || 0);
   const customerName =
-    session.shipping_details?.name?.split(" ")[0] ||
+    session.metadata?.shippingName?.split(" ")[0] ||
     session.customer_details?.name?.split(" ")[0];
-  const shippingAddress = formatShippingAddress(
-    session.shipping_details,
-    session.customer_details
-  );
+  const shippingAddress = session.metadata?.shippingAddress || undefined;
+  const customerPhone =
+    session.metadata?.shippingPhone || session.customer_details?.phone || undefined;
 
   const result = await sendPurchaseEmails({
     provider: "stripe",
@@ -148,7 +114,7 @@ export async function fulfillStripeCheckoutSession(
     totalCents,
     customerEmail: session.customer_details?.email || undefined,
     customerName,
-    customerPhone: session.customer_details?.phone || session.shipping_details?.phone || undefined,
+    customerPhone,
     itemsSummary: session.metadata?.itemSummary || session.metadata?.itemIds,
     shippingAddress,
   });
@@ -161,7 +127,6 @@ export async function fulfillStripeCheckoutSession(
     metadata: {
       ...session.metadata,
       purchaseEmailSent: "true",
-      ...(shippingAddress ? { shippingAddress: shippingAddress.slice(0, 450) } : {}),
     },
   });
 

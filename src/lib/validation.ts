@@ -69,6 +69,16 @@ export const checkoutSchema = z.object({
   locale: z.enum(["es", "en"]).optional(),
   provider: z.enum(["paypal", "stripe"]).default("stripe"),
   customerEmail: z.string().email().max(200).optional(),
+  shipping: z
+    .object({
+      fullName: z.string().min(1).max(120),
+      addressLine: z.string().min(1).max(200),
+      postalCode: z.string().min(1).max(20),
+      city: z.string().min(1).max(100),
+      province: z.string().min(1).max(100),
+      phone: z.string().max(30).optional(),
+    })
+    .optional(),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;

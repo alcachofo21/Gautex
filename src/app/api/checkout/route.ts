@@ -32,7 +32,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
     }
 
-    const { items, locale, provider, customerEmail } = parsed.data;
+    const { items, locale, provider, customerEmail, shipping } = parsed.data;
     const loc = locale === "en" ? "en" : "es";
 
     const pricing = priceCart(items as CartItem[]);
@@ -47,10 +47,17 @@ export async function POST(request: Request) {
       if (!isStripeConfigured()) {
         return NextResponse.json({ error: "Stripe no configurado" }, { status: 503 });
       }
+      if (!shipping) {
+        return NextResponse.json(
+          { error: loc === "en" ? "Shipping address is required" : "La dirección de envío es obligatoria" },
+          { status: 400 }
+        );
+      }
       const session = await createStripeCheckoutSession({
         pricing,
         locale: loc,
         customerEmail: customerEmail || undefined,
+        shipping,
       });
       return NextResponse.json({ url: session.url });
     }

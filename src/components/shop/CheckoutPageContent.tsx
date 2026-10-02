@@ -35,6 +35,15 @@ export function CheckoutPageContent({
   const [payable, setPayable] = useState(false);
   const [checkoutReady, setCheckoutReady] = useState(false);
   const [totalCents, setTotalCents] = useState(0);
+  const [shipping, setShipping] = useState({
+    fullName: "",
+    addressLine: "",
+    postalCode: "",
+    city: "",
+    province: "",
+    phone: "",
+    email: "",
+  });
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -90,6 +99,13 @@ export function CheckoutPageContent({
       .catch(() => {});
   }, [items, locale]);
 
+  const shippingComplete =
+    shipping.fullName.trim() &&
+    shipping.addressLine.trim() &&
+    shipping.postalCode.trim() &&
+    shipping.city.trim() &&
+    shipping.province.trim();
+
   const handleQuote = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
@@ -114,6 +130,11 @@ export function CheckoutPageContent({
 
   const handlePay = async () => {
     if (!provider) return;
+    if (!shippingComplete) {
+      setStatus("error");
+      setPayError(p.shippingRequired);
+      return;
+    }
     setStatus("loading");
     setPayError(null);
     try {
@@ -124,7 +145,15 @@ export function CheckoutPageContent({
           items,
           locale,
           provider,
-          customerEmail: form.email || undefined,
+          customerEmail: shipping.email || form.email || undefined,
+          shipping: {
+            fullName: shipping.fullName.trim(),
+            addressLine: shipping.addressLine.trim(),
+            postalCode: shipping.postalCode.trim(),
+            city: shipping.city.trim(),
+            province: shipping.province.trim(),
+            phone: shipping.phone.trim() || undefined,
+          },
         }),
       });
       const data = await res.json();
@@ -186,6 +215,9 @@ export function CheckoutPageContent({
     { key: "sector", label: t.fields.sector },
   ];
 
+  const inputClass =
+    "w-full min-h-[48px] rounded-xl border border-gray-300 px-4 focus:border-primary focus:outline-none";
+
   return (
     <div className="py-12 sm:py-16">
       <div className="container-page max-w-2xl">
@@ -206,6 +238,96 @@ export function CheckoutPageContent({
             ))}
           </ul>
         </div>
+
+        <section className="mt-6 rounded-2xl border border-gray-200 bg-white p-6">
+          <h2 className="font-semibold">{t.fields.shippingTitle}</h2>
+          <p className="mt-1 text-sm text-text-muted">{t.fields.shippingDesc}</p>
+
+          <div className="mt-4 space-y-3">
+            <div>
+              <label className="mb-1 block text-sm font-medium">{t.fields.fullName}</label>
+              <input
+                type="text"
+                required
+                autoComplete="name"
+                value={shipping.fullName}
+                onChange={(e) => setShipping({ ...shipping, fullName: e.target.value })}
+                className={inputClass}
+              />
+            </div>
+
+            <div>
+              <label className="mb-1 block text-sm font-medium">{t.fields.addressLine}</label>
+              <input
+                type="text"
+                required
+                autoComplete="street-address"
+                value={shipping.addressLine}
+                onChange={(e) => setShipping({ ...shipping, addressLine: e.target.value })}
+                className={inputClass}
+              />
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-3">
+              <div>
+                <label className="mb-1 block text-sm font-medium">{t.fields.postalCode}</label>
+                <input
+                  type="text"
+                  required
+                  autoComplete="postal-code"
+                  value={shipping.postalCode}
+                  onChange={(e) => setShipping({ ...shipping, postalCode: e.target.value })}
+                  className={inputClass}
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-sm font-medium">{t.fields.city}</label>
+                <input
+                  type="text"
+                  required
+                  autoComplete="address-level2"
+                  value={shipping.city}
+                  onChange={(e) => setShipping({ ...shipping, city: e.target.value })}
+                  className={inputClass}
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-sm font-medium">{t.fields.province}</label>
+                <input
+                  type="text"
+                  required
+                  autoComplete="address-level1"
+                  value={shipping.province}
+                  onChange={(e) => setShipping({ ...shipping, province: e.target.value })}
+                  className={inputClass}
+                />
+              </div>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div>
+                <label className="mb-1 block text-sm font-medium">{t.fields.phone}</label>
+                <input
+                  type="tel"
+                  autoComplete="tel"
+                  value={shipping.phone}
+                  onChange={(e) => setShipping({ ...shipping, phone: e.target.value })}
+                  className={inputClass}
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-sm font-medium">{t.fields.email}</label>
+                <input
+                  type="email"
+                  autoComplete="email"
+                  value={shipping.email}
+                  onChange={(e) => setShipping({ ...shipping, email: e.target.value })}
+                  className={inputClass}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
         <InstantPaymentPanel
           methods={methods}
@@ -246,7 +368,7 @@ export function CheckoutPageContent({
                 required={field.label.includes("*")}
                 value={form[field.key]}
                 onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
-                className="w-full min-h-[48px] rounded-xl border border-gray-300 px-4 focus:border-primary focus:outline-none"
+                className={inputClass}
               />
             </div>
           ))}
@@ -269,7 +391,7 @@ export function CheckoutPageContent({
             autoComplete="off"
             aria-hidden
           />
-          {status === "error" && <p className="text-sm text-red-500">{t.error}</p>}
+          {status === "error" && !payError && <p className="text-sm text-red-500">{t.error}</p>}
           <Button type="submit" fullWidth disabled={status === "loading"} variant="outline">
             {status === "loading" ? t.submitting : t.requestQuote}
           </Button>
