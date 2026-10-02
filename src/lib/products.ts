@@ -7,6 +7,7 @@ import testimonialsData from "../../content/testimonials.json";
 import productsEnData from "../../content/products-en.json";
 import type { Product, Category } from "@/types";
 import { applyInventory, enrichProducts, getShopProducts } from "./inventory";
+import { localizeProductFields } from "./localize-specs";
 
 export { applyInventory, enrichProducts, getShopProducts, isInStock, maxOrderQuantity, getInventoryUpdatedAt } from "./inventory";
 
@@ -25,6 +26,7 @@ export const productsEn = productsEnData as Record<
     shortDescription?: string;
     description?: string;
     priceLabel?: string;
+    specs?: Record<string, string>;
     datasheetVariants?: Array<{ name: string; specs: Record<string, string> }>;
   }
 >;
@@ -52,18 +54,30 @@ export function getRelatedProducts(product: Product, limit = 4): Product[] {
 }
 
 export function localizeProduct(product: Product, locale: "es" | "en"): Product {
-  if (locale === "en" && productsEn[product.id]) {
-    const en = productsEn[product.id];
+  if (locale !== "en") return product;
+
+  const fields = localizeProductFields(product, locale);
+  const en = productsEn[product.id];
+
+  if (!en) {
     return {
       ...product,
-      name: en.name ?? product.name,
-      shortDescription: en.shortDescription ?? product.shortDescription,
-      description: en.description ?? product.description,
-      priceLabel: en.priceLabel ?? "Request quote",
-      datasheetVariants: en.datasheetVariants ?? product.datasheetVariants,
+      specs: fields.specs,
+      certifications: fields.certifications,
+      datasheetVariants: fields.datasheetVariants,
     };
   }
-  return product;
+
+  return {
+    ...product,
+    name: en.name ?? product.name,
+    shortDescription: en.shortDescription ?? product.shortDescription,
+    description: en.description ?? product.description,
+    priceLabel: en.priceLabel ?? "Request quote",
+    specs: en.specs ? { ...fields.specs, ...en.specs } : fields.specs,
+    certifications: fields.certifications,
+    datasheetVariants: en.datasheetVariants ?? fields.datasheetVariants,
+  };
 }
 
 export function localizeProducts(list: Product[], locale: "es" | "en"): Product[] {

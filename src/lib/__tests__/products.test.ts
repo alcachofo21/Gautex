@@ -41,6 +41,22 @@ describe("products", () => {
     expect(en.name).toBeTruthy();
   });
 
+  it("translates datasheet specs to English", () => {
+    const product = getProductBySlug("preventivo", "matrix-condoms");
+    expect(product).toBeTruthy();
+    const en = localizeProduct(product!, "en");
+    expect(en.name).toBe("Matrix Condoms");
+    expect(en.specs.Presentation || en.specs.Presentación).toBe("Box of 144 units");
+    expect(en.specs).toHaveProperty("Width");
+    expect(en.specs).not.toHaveProperty("Presentación");
+  });
+
+  it("keeps Spanish specs for es locale", () => {
+    const product = getProductBySlug("preventivo", "matrix-condoms");
+    const es = localizeProduct(product!, "es");
+    expect(es.specs).toHaveProperty("Presentación");
+  });
+
   it("returns Spanish product when no EN translation", () => {
     const product = products.find((p) => !p.id) ?? products[0];
     const es = localizeProduct(product, "es");

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FileText, Award, BookOpen, ChevronRight } from "lucide-react";
-import { shopProducts } from "@/lib/products";
+import { localizeProducts, shopProducts } from "@/lib/products";
 import { getCorporate, getUi, localizedPath, type Locale } from "@/lib/locale";
 
 interface ResourcesPageContentProps {
@@ -10,9 +10,10 @@ interface ResourcesPageContentProps {
 export function ResourcesPageContent({ locale = "es" }: ResourcesPageContentProps) {
   const ui = getUi(locale).resources;
   const corporate = getCorporate(locale);
+  const localizedShop = localizeProducts(shopProducts, locale);
   const productsByCategory = ui.categories.map((cat) => ({
     ...cat,
-    products: shopProducts.filter((p) => p.category === cat.id),
+    products: localizedShop.filter((p) => p.category === cat.id),
   }));
 
   return (
